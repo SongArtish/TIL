@@ -142,3 +142,12 @@ $ git push origin master
 `origin`이라는 이름의 원격 저장소로 commit 기록들을 업로드한다.
 
 이후 변경사항이 생길 때마다, `add`, `commit`, `push`를 반복한다.
+
+### 3. `pull` - 원격 저장소로부터 불러오기
+
+```bash
+$ git pull origin master
+$ git clone {주소}		# 최초로 복사할 경우에는 clone 사용
+```
+
+`origin`이라는 이름의 원격 저장소로부터 새로운 commit 기록들을 불러온다.
