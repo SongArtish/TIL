@@ -167,4 +167,4 @@ ___
 
 이것은 ~~취소선~~입니다.
 
-
+*Copyright* © Song_Artish

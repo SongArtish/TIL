@@ -429,3 +429,5 @@ print(a is b)		# print(id(a) == id(b))
 > 파이썬이 실행 가능한 최소한의 코드 단위 (a syntatic unit of programming)
 
 ![](https://user-images.githubusercontent.com/9452521/87640197-55a7f280-c781-11ea-9cff-19c022ce704a.png)
+
+*Copyright* © Song_Artish

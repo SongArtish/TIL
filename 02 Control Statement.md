@@ -72,3 +72,55 @@ for <임시변수> in <순회가능한데이터(iterable)>:
 > 내장 함수 중 하나로, 인덱스(index)와 값(value)을 함께 활용 할 수 있다. 열거 객체를 돌려준다. iterable은 시퀸스, 이터레이터 또는 이터레이션을 지원하는 다른 객체여야 한다. `enumerate()`에 의해 반환된 이터레이터의 `__next__()` 메서드는 카운트 (기본값 0을 갖는 start부터)와 iterable을 이터레이션 해서 얻어지는 값을 포함하는 튜플을 돌려준다.
 
 ### 3) 반복제어(break, contuinue, for-else)
+
+​	`break`
+
+> 반복문을 종료한다.
+
+```python
+rice = ['보리', '보리', '보리', '쌀', '보리']
+for i in rice:
+    if i == '보리':
+        print(i)
+    else:
+        print(i)
+        print('잡았다!')
+        break
+```
+
+
+
+​	`continue`
+
+> `continue`문은 continue 이후의 코드를 수행하지 않고 다음 요소부터 계속(continue)하여 반복을 수행한다.
+
+```python
+ages = [10, 23, 8, 30, 25, 31]
+for i in ages:
+    if i <= 20:
+      continue
+    print(f'{i}살은 성인입니다.')
+```
+
+​	`for`-`else`
+
+> 끝까지 반복문을 시행한 이후에 실행된다.
+>
+> - 반복에서 리스트의 소진이나 (`for`의 경우) 조건이 거짓이 돼서 (`while`의 경우) 종료할 때 실행된다.
+> - 하지만 반복문이 `break`문으로 종료될 때는 실행되지 않는다. (즉, `break`를 통해 중간에 종료되지 않은 경우만 실행)
+
+```python
+numbers = [1, 5, 10]
+for i in numbers:
+    if i == 4:
+        print(True)
+else: print(False)
+```
+
+​	`pass`
+
+> 아무것도 하지 않는다.
+>
+> - 문법적으로 문장이 필요하지만, 프로그램이 특별히 할 일이 없을 때 자리를 채우는 용도로 사용할 수 있다.
+
+*Copyright* © Song_Artish

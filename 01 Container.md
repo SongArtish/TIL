@@ -176,3 +176,5 @@ c carrot
 ## 정리
 
 ![](https://user-images.githubusercontent.com/18046097/61180439-44e60d80-a651-11e9-9adc-e60fa57c2165.png)
+
+*Copyright* © Song_Artish
