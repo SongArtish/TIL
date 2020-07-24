@@ -2,6 +2,13 @@
 
 > Git은 분산버전관리시스템(DVCS, Distributed Version Control System)이다. 소스코드의 버전 및 이력을 관리할 수 있다.
 
+```한국어
+git 공간
+- working dir: 실제 작업공간
+- staging areaadd: 명령어를 입력했을 때 임시로 저장이 되는 공간
+- local repo (.git)commit: 명령어를 입력했을 때 버전이 기록되는 공간
+```
+
 
 
 ## 준비하기
