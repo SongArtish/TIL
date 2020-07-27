@@ -15,8 +15,8 @@
 $ cd C:\Program Files\Miniconda3\condabin
 
 # 아나콘다 버전 확인
-$ conda -v
-conda 4.6.14	# 나는 확인 오류가 있었다.
+$ conda --v
+conda 4.6.14
 
 # 아나콘다 최신버전 업그레이드
 $ conda update conda
