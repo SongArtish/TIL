@@ -1,5 +1,17 @@
 # 함수 (Function) I
 
+```한국어
+# function vs method
+
+<function>
+print()
+sum()
+
+<method> - 특정 객체에서만 작동하는 함수
+dictionary = {}
+dictiopnary.get()
+```
+
 ## 1. 함수(function)?
 
 > 특정한 기능(function)을 하는 코드의 묶음
@@ -141,3 +153,4 @@ def my_dict(**kwargs):
 my_dict(한국어 = '안녕', 영어 = 'hello')
 ```
 
+*Copyright* © Song_Artish

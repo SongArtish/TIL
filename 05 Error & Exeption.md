@@ -283,3 +283,5 @@ assert type(1) == int, '문자열을 입력하였습니다.'	# 거짓일 경우 
 ```
 
 - `raise`는 항상 예외를 발생시키는 반면, `assert`는 지정한 예외가 발생시킨다.
+
+*Copyright* © Song_Artish

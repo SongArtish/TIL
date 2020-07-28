@@ -56,6 +56,16 @@ print('global_num:', global_num)
 > - 알고리즘 자체가 재귀적인 표현이 자연스러운 경우 재귀함수를 사용한다.
 > - 재귀 호출은 `변수 사용`을 줄여줄 수 있다.
 
+```python
+def recursive(n):
+    if 종료조건:
+        return
+    else:
+        return recursive(n-1)
+```
+
+
+
 ### 1) 팩토리얼 계산
 
 ```python
@@ -96,3 +106,5 @@ def fib_loop(n):
             list.append(list[i-1] + list[i-2])
      return list[n-1]	# 2. 피보나치 수열 리스트에서 가장 마지막 값을 return
 ```
+
+*Copyright* © Song_Artish

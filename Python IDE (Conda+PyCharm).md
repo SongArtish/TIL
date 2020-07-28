@@ -55,3 +55,5 @@ $ conda deactivate
 cmd.exe "/K" C:\Program Files\Miniconda3\condabin\conda activate my_env
     # 윈도우 cmd.exe "\K" 옵션은 명령어 실행 후 세션을 종료하지 않고 유지함
 ```
+
+*Copyright* © Song_Artish

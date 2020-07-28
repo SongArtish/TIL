@@ -41,6 +41,11 @@ num = (1,)
 print(type(num))
 
 <class 'tuple'>
+
+# tuple()은 list나 string을 변환한다
+tuple(['1', '2', '3'])
+tuple('string')
+('s', 't', 'r', 'i', 'n', 'g')
 ```
 
 ### 3) 레인지 (range)
@@ -164,7 +169,7 @@ c carrot
 
 1) 변경 불가능한(`immutable`) 데이터
 
-- 단일 데이터: 숫자, 글자, 참/거짓
+- 단일 데이터: 숫자(Number), 글자(String), 참/거짓(Bool)
 - `range()`, `tuple()`, `forzenset`
 
 2) 변경 가능한(mutable) 데이터
