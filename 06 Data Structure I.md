@@ -320,4 +320,21 @@ cubic_list = list(number ** 3 for number in numbers)
 
 ### 1) `map(function, iterable)`
 
+```python
+# 예시
+numbers = [1, 2, 3]
+new_numbers = map(str, numbers)
+print(list(new_numbers))
+```
+
+### 2) `filter(function, iterable)`
+
+- iterable에서 function의 반환된 결과가 `True`인 것들만 구성하여 반환한다.
+- `filter object`를 반환한다.
+
+### 3) `zip(*iterables)`
+
+- 복수의 iterable 객체를 모다(`zip()`)준다.
+- 결과는 튜플의 모음으로 구성된 `zip obejct`를 반환한다.
+
 *Copyright* © Song_Artish
