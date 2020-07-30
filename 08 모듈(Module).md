@@ -15,6 +15,13 @@
 # pip 설치방법
 $ pip install <pip name>
 $ python -m pip install <pip name>	# 이게 효과적이다.
+$ pip install python-<pip name>
+
+# PyCharm의 경우 가상환경을 사용하고 있기 때문에 terminal에서 따로 설치한다.
+$ pip install <pip name>
+
+# pip 확인
+$ pip list
 ```
 
 

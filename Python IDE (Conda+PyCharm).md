@@ -16,7 +16,7 @@ $ cd C:\Program Files\Miniconda3\condabin
 
 # 아나콘다 버전 확인
 $ conda --v
-conda 4.6.14
+conda 4.8.3
 
 # 아나콘다 최신버전 업그레이드
 $ conda update conda
