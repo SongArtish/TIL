@@ -178,6 +178,7 @@ cafe.extend('ediya')	# 문자열 extend => 'e', 'd', 'i', 'y', 'a'
 ```python
 .index(x)
 # x 값을 찾아 해당 index 값을 반환
+# 찾는 값이 없으면 ValueError을 반환
 ```
 
 ```python
