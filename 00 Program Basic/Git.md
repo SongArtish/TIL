@@ -9,20 +9,47 @@ git 공간
 - local repo (.git)commit: 명령어를 입력했을 때 버전이 기록되는 공간
 ```
 
+```python
+Index
+
+1. git bash 명령어
+2. git 활용법
+ - 준비하기
+ - 로컬저장소 활용하기
+ - 원격저장소 활용하기
+```
+
+
+
+## 1. git bash 명령어
+
+- `ls` : 리스트. 위치 내 폴더 및 파일 표시하기
+- `ls -a`: 숨김 파일까지 표시
+- `mkdir <폴더명>` : '폴더명'이라는 이름의 폴더 생서
+- `pwd` : 현재 위치 확인     *# print working directory*
+- `cd <폴더명>` : 해당 폴더의 위치로 이동
+- `ctrl+L` 혹은 `clear :  현재 화면 창 clear
+
+
+
+## 2. git 활용법
+
 
 
 ## 준비하기
 
 윈도우에서 git을 활용하기 위해서 git bash를 설치한다.
 
-git을 활용하기 위해서 GUI(Graphic User Interface) 툴인 `source tree`, `github desktop` 등을 활용할 수도 있다. (Git-bash는 CLI[Command-line Interface]이다.)
+git을 활용하기 위해서 GUI(Graphic User Interface) 툴인 `source tree`, `github desktop` 등을 활용할 수도 있다. Git-bash는 CLI(Command-line Interface)이다.
 
 초기 설치를 완료한 이후에 컴퓨터에 author 정보를 입력한다.
 
 ```bash
-$ git config --global user.name {user name}
-$ git config --global.user.email {user email}
+$ git config --global user.name {user name}		# 이메일 등록
+$ git config --global.user.email {user email}	# 이름 등록
 ```
+
+- 뒤에 `{}` 항목을 빼고 입력하면 현재 등록 정보를 확인할 수 있다.
 
 - 예시) `git config --global user.email "bulgen@naver.com"`
 
@@ -81,6 +108,8 @@ Changes to be committed:
         new file:   markdown.md
 ```
 
+- git에 등록된 파일/폴더를 삭제하고 싶을 경우, `git rm -r --cached <파일/폴더명>`라는 명령어를 입력한다.
+
 ### 3. `commit`
 
 commit은 **이력을 확정짓는 명령어**로, 해당 시점의 스냅샷을 기록한다.
@@ -93,6 +122,8 @@ $ git commit -m "마크다운 정리"
  1 file changed, 170 insertions(+)
  create mode 100644 markdown.md				# 최초 커밋시의 메시지
 ```
+
+- 커밋 메시지 변경시, `git commit --amend`라는 명령어를 입력한다. 단, 되도록이면 사용하지 않는 것이 좋다.
 
 커밋 이후에는 아래의 명령어를 통해 지금까지 작성된 커밋 이력을 확인한다.
 
@@ -154,7 +185,7 @@ $ git push origin master
 
 ```bash
 $ git pull origin master
-$ git clone {주소}		# 최초로 복사할 경우에는 clone 사용
+$ git clone <주소>		# 최초로 복사할 경우에는 clone 사용
 ```
 
 `origin`이라는 이름의 원격 저장소로부터 새로운 commit 기록들을 불러온다.

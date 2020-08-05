@@ -2,6 +2,19 @@
 
 2020.07.24.
 
+
+
+```python
+Index
+
+1. Anaconda 설치
+2. conda 가상 환경 생성 및 모듈 설치
+3. PyCharm 설치
+4. PyCharm 세팅
+```
+
+
+
 ## 1. Anaconda(Miniconda) 설치
 
 
