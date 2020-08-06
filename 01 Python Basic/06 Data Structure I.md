@@ -133,8 +133,8 @@ dir('string')
 ```
 
 ```python
-.extend(iterable)
-# 리스트에 iterable(list, range, tuple, string[주의]) 값을 붙일 수가 있다.
+    .extend(iterable)
+    # 리스트에 iterable(list, range, tuple, string[주의]) 값을 붙일 수가 있다.
 ```
 
 - append는 끝에 <u>오브젝트</u>를 추가하는 반면, extend는 iterable에서 <u>요소</u>를 추가하여 목록을 확장한다.
