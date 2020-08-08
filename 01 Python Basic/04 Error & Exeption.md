@@ -2,6 +2,19 @@
 
 2020.07.27.
 
+```python
+Index
+
+1. 에러
+2. 예외
+3. 예외 처리
+ - try, except, else, finally
+4. 예외 발생시키기
+ - raise, assert
+```
+
+
+
 ## 1. 에러(Error)
 
 ### 1) 문법 에러(Syntax Error)
@@ -13,7 +26,7 @@
 -  `parser`는 줄에서 에러가 감지된 가장 앞의 위치를 가리키는 작은 '화살표(`^`)'를 표시한다. (통역문제)
 
 ```python
-# 예시1: Invalid syntax
+# 예시1: Invalid syntax(문법 오류)
 if True:
     print('참')
 else
@@ -137,7 +150,7 @@ except (예외):
 ```python
 try:
     <코드 블럭 1>
-except 예외 as err:
+except <예외> as <가변수>:
     <코드 블럭 2>
     
 # 예시
@@ -277,8 +290,11 @@ def my_div(num1, num2):
 > 예외를 발생시키는 다른 방법으로, 보통 **상태를 검증하는데 사용**되며 무조건 `AsserionError`가 발생합니다. (주로 테스트코드 쓸 때 사용)
 
 ```python
-assert Boolean expression, error message
+assert <Boolean expression>, <에러 메시지>
+```
 
+```python
+# 예시
 assert type(1) == int, '문자열을 입력하였습니다.'	# 거짓일 경우 발생
 ```
 

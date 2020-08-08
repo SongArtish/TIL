@@ -2,9 +2,17 @@
 
 > 코드 실행의 순차적인 흐름을 제어(Control Flow)
 
+```python
+Index
+1. 조건문
+2. 반복문 - while문, for문
+```
+
+
+
 ## 1. 조건문(Conditional Statement)
 
-> `if`문은 반드시 참/거짓을 판달할 수 있는 조건과 함께 사용 되어야한다.
+> `if`문은 반드시 참/거짓을 판단할 수 있는 조건과 함께 사용 되어야한다.
 
 ### 1) `if` 조건문
 
@@ -25,7 +33,7 @@ else:
 
 ### 4) 조건 표현식(Conditional Expression)
 
-> 조건 표현식은 일반적으로 조건에 따라 값을 정할 때 활용되며, 삼항 연사자(Ternary Operator)라고 부르기도 한다.
+> 조건 표현식은 일반적으로 조건에 따라 값을 정할 때 활용되며, 삼항 연산자(Ternary Operator)라고 부르기도 한다.
 
 ```python
 true_value if <조건식> else false_value
@@ -35,9 +43,9 @@ true_value if <조건식> else false_value
 
 ## 2. 반복문(Loop Statement)
 
-### 1) `while` 반복문
+### 1) `while` 문
 
-> `while`문은 조건식이 참(True)인 겨웅 반복적으로 코드를 실행하며, **반드시 종료조건을 설정해야 한다.**
+> `while`문은 조건식이 <u>참(True)인 경우</u> 반복적으로 코드를 실행하며, **반드시 종료조건을 설정해야 한다.**
 
 ```python
 while <조건식>:
@@ -69,13 +77,25 @@ for <임시변수> in <순회가능한데이터(iterable)>:
 
 ​	`enumerate()`
 
-> 내장 함수 중 하나로, 인덱스(index)와 값(value)을 함께 활용 할 수 있다. 열거 객체를 돌려준다. iterable은 시퀸스, 이터레이터 또는 이터레이션을 지원하는 다른 객체여야 한다. `enumerate()`에 의해 반환된 이터레이터의 `__next__()` 메서드는 카운트 (기본값 0을 갖는 start부터)와 iterable을 이터레이션 해서 얻어지는 값을 포함하는 튜플을 돌려준다.
+> iterable 자료형(list, set, tuple, dictionary, string)을 입력으로 받아 인덱스 값을 포함하는 enumerate 객체를 리턴한다.
+
+```python
+# 예시
+lunch = ['짜장면', '초밥', '피자', '햄버거']
+for index, menu in enumerate(lunch):
+    print(index, menu)
+
+0 짜장면
+1 초밥
+2 피자
+3 햄버거
+```
 
 ### 3) 반복제어(break, contuinue, for-else)
 
 ​	`break`
 
-> 반복문을 종료한다.
+> 반복문을 종료한다. `for`이나 `while`문을 빠져나간다.
 
 ```python
 rice = ['보리', '보리', '보리', '쌀', '보리']
@@ -119,8 +139,7 @@ else: print(False)
 
 ​	`pass`
 
-> 아무것도 하지 않는다.
+> 아무것도 하지 않는다. 문법적으로 문장이 필요하지만, 프로그램이 특별히 할 일이 없을 때 자리를 채우는 용도로 사용할 수 있다.
 >
-> - 문법적으로 문장이 필요하지만, 프로그램이 특별히 할 일이 없을 때 자리를 채우는 용도로 사용할 수 있다.
 
 *Copyright* © Song_Artish

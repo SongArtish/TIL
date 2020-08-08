@@ -1,5 +1,14 @@
 # Python 기초
 
+```python
+Index
+
+1. 기초 문법
+2. 변수 - 할당연산자, 식별자
+3. Data Type - 숫자, 문자, 참/거짓
+4. 연산자 - 산술 연산자, 비교 연산자, 논리 연산자, 복합 연산자, 기타(concatenation, in)
+```
+
 
 
 ## 1. 기초 문법(Syntax)
@@ -107,7 +116,7 @@ hello
 (1) `int` (정수, integer)
 
 - 모든 정수는`int`로 표현된다.
-- 8진수: `0o` / 2w진수: `0b` / 16진수: `0x`로도 표현 가능하다.
+-  2진수: `0b` (`bin()`) / 8진수: `0o`  (`oct()`) /  16진수: `0x` (`hex()`)로도 표현 가능하다.
 
 arbitrary-precision arthmetic(파이썬에서 아주 큰 정수를 표현할 때 사용하는 메모리의 크기 변화)을 사용하여 오버플로우(overflow)가 없다.
 
@@ -116,6 +125,10 @@ arbitrary-precision arthmetic(파이썬에서 아주 큰 정수를 표현할 때
 import sys		# system
 print(sys.maxsize)
 print(sys.maxsize * sys.maxsize)
+
+# 혹은
+float('inf')
+float('-inf')
 ```
 
 (2) `float` (부동소수점, 실수, floating point number)
@@ -153,7 +166,7 @@ True
 
 ```python
 # 컴퓨터식 지수 표현 방식
-b = 314e-2		# 3.14 = 314*10^2
+b = 314e-2		# 3.14 = 314*10^-2
 print(b)
 
 3.14
@@ -185,7 +198,7 @@ c = complx('3+4j')
 
 **이스케이프 시퀸스**
 
-> 문자열을 활용하는 경우 특수문자 혹은 조작을 하기 위하여 사용되는 것으로 `\`를 활용하여 이를 구분한다.
+> <u>문자열을 활용하는 경우</u> 특수문자 혹은 조작을 하기 위하여 사용되는 것으로 `\`를 활용하여 이를 구분한다.
 
 | 예약문자 |    내용(의미)     |
 | :------: | :---------------: |
@@ -210,6 +223,10 @@ print('hello', end = '2020')
 print('ssafy')
 
 hello2020ssafy
+
+# sep 옵션
+print('hello', 'ssafy', sep = ',')
+hello,ssafy
 ```
 
 **String interpolation** - `f-strings`
@@ -249,6 +266,9 @@ f'올해는 {now:%Y}년 이번달은 {now:%m}월 오늘은 {now:%d}일'
 ```python
 # False로 변환되는 것
 0, 0.0, (), [], {}, '', None		# 0이거나 빈 것
+
+# 나머지는 다 True로 변환된다.
+bool('love')
 ```
 
 **형변환(Type conversion, Typecasting)**
@@ -288,7 +308,6 @@ f'올해는 {now:%Y}년 이번달은 {now:%m}월 오늘은 {now:%d}일'
 |   **   |    거듭제곱    |
 
 - 나눗셈(`/`)은 항상 float를 돌려준다.
-- 정수 나눗셈으로 (소수부 없이) 정수 결과를 얻으려면 `//` 연산자를 사용한다.
 
 ```python
 # divmod 함수
@@ -302,16 +321,24 @@ print(a); print(b)
 
 ### 2) 비교 연산자
 
-| 연산자 |          내용          |
-| :----: | :--------------------: |
-|   <    |          미만          |
-|   <=   |          이하          |
-|   >    |          초과          |
-|   >=   |          이상          |
-|   ==   |          같음          |
-|   !=   |        같지않음        |
-|   is   |    객체 아이덴티티     |
-| is not | 부정된 객체 아이덴티티 |
+| 연산자 |         내용         |
+| :----: | :------------------: |
+|   <    |         미만         |
+|   <=   |         이하         |
+|   >    |         초과         |
+|   >=   |         이상         |
+|   ==   |         같음         |
+|   !=   |       같지않음       |
+|   is   |    객체 identity     |
+| is not | 부정된 객체 identity |
+
+- `is`연산자를 통해 동일한 object(id)인지 확인할 수 있다.
+
+  ```python
+  a = [1, 2, 3]
+  b = [1, 2, 3]
+  print(a is b)		# print(id(a) == id(b))
+  ```
 
 ### 3) 논리 연산자
 
@@ -321,7 +348,7 @@ print(a); print(b)
 | a or b  | a 와 b 모두 False시만 False  |
 |  not a  | True -> False, False -> True |
 
-- `&`, `|`은 파이썬에서 비트 연산자이다.
+- `&`(and), `|`(or)은 파이썬에서 비트 연산자이다.
 
 단축평가 (short-circuit evaluation)
 
@@ -331,7 +358,6 @@ print(a); print(b)
 
 > 복합 연산자는 연산과 대입이 함께 이루어진다.
 >
-> 가장 많이 활용되는 경우는 반복문을 통해서 개수를 카운트하거나 할 때 활용된다.
 
 |  연산자  |    내용    |
 | :------: | :--------: |
@@ -353,9 +379,9 @@ while cnt < 5:
 
 ### 5) 기타 연산자
 
-**Concentenation**
+**Concatenation**
 
-> 숫자가 아닌 자료형은 `+` 연산자를 통해 합칠 수 있다.
+> 숫자가 아닌 자료형(str, list)은 `+` 연산자를 통해 합칠 수 있다.
 
 **Containment Test**
 
@@ -370,16 +396,6 @@ while cnt < 5:
 
 # range
 22 in range(2, 23)		# 0부터 시작, 45 미만
-```
-
-**Identity**
-
-> `is` 연산자를 통해 동일한 object인지 확인할 수 있다.
-
-```python
-a = [1, 2, 3]
-b = [1, 2, 3]
-print(a is b)		# print(id(a) == id(b))
 ```
 
 **Indexing/Slicing**
@@ -409,7 +425,7 @@ print(a is b)		# print(id(a) == id(b))
 ```python
 -3 ** 6
 
-=729		# 우선순위가 제곱연산자가 우선이 되어 음수가 나옴
+=-729		# 제곱연산자가 우선이 되어 음수가 나옴
 ```
 
 

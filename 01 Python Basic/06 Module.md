@@ -26,25 +26,6 @@ $ pip list
 
 
 
-## 다양한 모듈 사용법
-
-### 모듈
-
-```D
-import module
-from module import var, function, Class
-from module import *
-```
-
-### 패키지
-
-```python
-from package import module
-from package.module import var, function, Class
-```
-
-
-
 ## 1. 모듈(Module)
 
 > 모듈은 특정 기능을 하는 코드를 담고 있는 파일(또는 스크립트)이다.
@@ -55,8 +36,14 @@ from package.module import var, function, Class
 
 ### 모듈 활용
 
-- `import`문을 통해 내장 모듈을 이름 공간으로 가져와야한다.
 - 함수를 변수에 할당할 수도 있다.
+
+```python
+import <module>
+from <module> import <var, function, Class>
+from <module> import *	# 모듈의 모든 변수와 함수를 가져옴
+from <모듈> import <데이터> as <별명>
+```
 
 
 
@@ -66,7 +53,7 @@ from package.module import var, function, Class
 
 ### 패키지 생성
 
-```
+```파일 생성
 <folder name>/
 	__init__.py
 	<package name>/
@@ -81,10 +68,8 @@ from package.module import var, function, Class
 ### 패키지 활용
 
 ```python
-from <패키지> import <모듈>
-from <피키지.모듈> import <데이터>
-from <모듈> import *		# 모듈의 모든 변수와 함수를 가져옴
-from <모듈> import <데이터> as <별명>
+from <package> import <module>
+from <package.module> import <var, function, Class>
 ```
 
 

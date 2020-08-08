@@ -2,9 +2,26 @@
 
 > 여러 개의 값을 저장할 수 있는 객체
 
+```python
+Index
+
+1. Sequence
+ 1.1 리스트(list)
+ 1.2 튜플(tuple)
+ 1.3 레인지(range)
+ 1.4 문자형(string)
+ 1.5 바이너리(binary)
+2. Non-sequence
+ 2.1 셋(set)
+ 2.2 딕셔너리(dictionary)
+3. 데이터의 분류 - mutable vs. immutable
+```
+
+
+
 ## 1. 시퀀스(Sequence)형 컨테이너
 
-> `시퀀스`는 데이터가 순서대로 나열된(ordered) 형식을 나타내며, 특정 위치의 데이터를 가리킬 수 있다. (단, 정렬된[sorted] 것은 아니다.)
+> `sequence`는 데이터가 순서대로 나열된(ordered) 형식을 나타내며, 특정 위치의 데이터를 가리킬 수 있다. (단, 정렬된[sorted] 것은 아니다.)
 
 ### 1) 리스트(list)
 
@@ -30,14 +47,19 @@ list[0]
 ```
 
 - `()`로 묶어서 표현하며 수정 불가능(불변, immutable)
+- 직접 사용하기 보다는 파이썬 내부에서 다양한 용도로 활용되고 있다.
 
 ```python
 # swap 코드 역시 tuple 활용
 x, y = y, x
 print(x, y)
 
+# 빈 튜플은 빈 괄호 쌍으로 만든다
+blank = ()
+print(type(blank))
+
 # 하나의 항목으로 구성된 튜플은 값 뒤에 쉼표를 붙여서 만든다
-num = (1,)
+num = (1,)	# num = (1)일 경우, type(num) = int로 출력된다.
 print(type(num))
 
 <class 'tuple'>
@@ -114,9 +136,7 @@ location[1 :3]
 {value1, value2, value3}
 ```
 
-
-
-- 중괄호 `{}`를 통해 만들며, 순서가 없고 중복된 값이 없다.
+- 중괄호 `{}`를 통해 만들며, 순서가 없고 <u>중복된 값이 없다.</u>
 - 빈 집합을 만들려면 `set()`을 사용
 - `list`의 중복된 값을 손쉽게 제거 가능
 
@@ -137,11 +157,7 @@ cart = {'a' : 'apple', 'b' : 'banana', 'c' : 'carrot'}
 print(cart.values())
 print(cart.items())
 
-cart.items()
-
-# tuple 형식으로 반환
-for item in cart.items():
-    print(item)
+cart.items()	# (key, value)의 tuple로 형변환
     
 # item을 사용하는 주된 방법
 for item in cart.item():
@@ -170,7 +186,7 @@ c carrot
 1) 변경 불가능한(`immutable`) 데이터
 
 - 단일 데이터: 숫자(Number), 글자(String), 참/거짓(Bool)
-- `range()`, `tuple()`, `forzenset`
+- `range()`, `tuple()`, `forzenset()`
 
 2) 변경 가능한(mutable) 데이터
 

@@ -7,7 +7,7 @@
 Index
 
 1. 문법
- - Header, List, Code Block, Image, Link, Table 등
+ - Header, List, Code Block, Image, Link, Table, Check Box 등
 ```
 
 
@@ -130,7 +130,19 @@ $ git push origin master
 
 
 
-### 1.7 기타
+### 1.7 Check Box (Task List)
+
+> `-[ ]`을 입력해서 리스트를 만든 후, `[ ]`을 입력하면 체크박스가 자동으로 생성되며, 클릭을 통해 체크박스를 선택/해제 할 수 있다.
+>
+> 예시) SSAFY 오프라인 준비 리스트
+>
+> - [ ] 건강 설문 하기
+> - [ ] 아침 밥 맛있게 먹기
+> - [ ] 러시아워 지하철 2호선 타기
+
+
+
+### 1.8 기타
 
 **인용문** 
 
