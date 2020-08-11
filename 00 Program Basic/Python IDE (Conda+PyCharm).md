@@ -4,14 +4,7 @@
 
 
 
-```python
-Index
-
-1. Anaconda 설치
-2. conda 가상 환경 생성 및 모듈 설치
-3. PyCharm 설치
-4. PyCharm 세팅
-```
+[TOC]
 
 
 
@@ -19,7 +12,7 @@ Index
 
 
 
-## 2. conda 가상 환경 생성 & 필요한 모듈 설치
+## 2. conda 가상 환경 생성 & 모듈 설치
 
 ```
 # cmd에서 실행

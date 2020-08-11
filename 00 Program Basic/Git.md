@@ -9,15 +9,8 @@ git 공간
 - local repo (.git)commit: 명령어를 입력했을 때 버전이 기록되는 공간
 ```
 
-```python
-Index
 
-1. git bash 명령어
-2. git 활용법
- - 준비하기
- - 로컬저장소 활용하기
- - 원격저장소 활용하기
-```
+[TOC]
 
 
 
@@ -29,6 +22,8 @@ Index
 - `pwd` : 현재 위치 확인     *# print working directory*
 - `cd <폴더명>` : 해당 폴더의 위치로 이동
 - `ctrl+L` 혹은 `clear :  현재 화면 창 clear
+- `code test.py`: test.py 창을 연다.
+- `code test.html`: test.html 창을 연다.
 
 
 
@@ -36,7 +31,7 @@ Index
 
 
 
-## 준비하기
+### 준비하기
 
 윈도우에서 git을 활용하기 위해서 git bash를 설치한다.
 
@@ -57,9 +52,9 @@ $ git config --global.user.email {user email}	# 이름 등록
 
 
 
-## 로컬 저장소(repository) 활용하기
+### 로컬 저장소(repository) 활용하기
 
-### 1. 저장소 초기화
+#### 1. 저장소 초기화
 
 ```bash
 $ git init	# 해당 폴더를 git 저장소로 초기화
@@ -69,7 +64,7 @@ Initialized empty Git repository in C:/Users/bulgen/.git/	#예시
 - `.git`폴더가 생성되며, 여기에 git과 관련된 모든 정보가 저장된다.
 - git bash에 `(master)`라고 표시되는데, 이는 현재 폴더가 git으로 관리되고 있다는 뜻이며, `master`라는 branch에 있다는 뜻이다.
 
-### 2. `add` 
+#### 2. `add` 
 
 `working directory`, 즉 작업 공간에서 변경된 사항을 이력으로 저장하기 위해서는 반드시 `staging area`를 거쳐야 한다.
 
@@ -110,7 +105,7 @@ Changes to be committed:
 
 - git에 등록된 파일/폴더를 삭제하고 싶을 경우, `git rm -r --cached <파일/폴더명>`라는 명령어를 입력한다.
 
-### 3. `commit`
+#### 3. `commit`
 
 commit은 **이력을 확정짓는 명령어**로, 해당 시점의 스냅샷을 기록한다.
 
@@ -144,17 +139,17 @@ $ git loge --oneline							     # 이력을 간단하게 보기 위한 명령어
 
 
 
-## 원격 저장소(remote repository) 활용하기
+### 원격 저장소(remote repository) 활용하기
 
 원격 저장소 기능을 제공하는 다양한 서비스 중에 github을 기준으로 설명한다.
 
-### 0. 준비사항
+#### 0. 준비사항
 
 - Github에 repository 생성
 
 
 
-### 1. 원격 저장소 등록
+#### 1. 원격 저장소 등록
 
 ```bash
 $ git remote add origin {github url}
@@ -171,7 +166,7 @@ origin  https://github.com/Song-Artish/TIL.git (push)
 
 
 
-### 2. `push` - 원격 저장소로 업로드
+#### 2. `push` - 원격 저장소로 업로드
 
 ```bash
 $ git push origin master
@@ -181,7 +176,7 @@ $ git push origin master
 
 이후 변경사항이 생길 때마다, `add`, `commit`, `push`를 반복한다.
 
-### 3. `pull` - 원격 저장소로부터 불러오기
+#### 3. `pull` - 원격 저장소로부터 불러오기
 
 ```bash
 $ git pull origin master

@@ -2,22 +2,15 @@
 
 > 스타일, 레이아웃 등을 통해 문서(HTML)를 표시하는 방법을 지정하는 언어
 
-```python
-Index
 
-1. 기초 문법
-2. CSS Selector
-3. CSS 단위
-4. CSS Box Model
-5. CSS Block vs Inline
-6. CSS Position
-```
+
+[TOC]
 
 
 
 ## 1. 기초 문법
 
-### CSS 구문
+### 1.1 CSS 구문`
 
 - `선택자(Selector) - h1
 - 속성(property): 값(value); = 선언(Declaration)
@@ -31,9 +24,9 @@ Index
 </style>
 ```
 
-### CSS 정의 방법
+### 1.2 CSS 정의 방법
 
-#### (1) 인라인 \(inline)
+#### 1.2.1 인라인 \(inline)
 
 > 해당 태그에 직접 `style` 속성을 활용
 
@@ -44,7 +37,7 @@ Index
 </body>
 ```
 
-#### (2) 내부 참조(embedding) 
+#### 1.2.2 내부 참조(embedding) 
 
 > head 태그 내에 `<style>`에 지정
 
@@ -63,7 +56,7 @@ Index
 </head>
 ```
 
-#### (3) 외부 참조(link file)
+#### 1.2.3 외부 참조(link file)
 
 > 외부 CSS 파일을 `<head>`내 `<link>`를 통해 불러오기
 
@@ -176,6 +169,8 @@ Index
 <!-- 예시 -->
 <!-- p:nth-child(n) -->
 <style>
+    /* el:nth-child는 부모의 모든 자식들 중에 n번째인 요소가 "특정 el일 때" (아닐 경우 미출력) */
+    /* id=ssafy의 자식 요소(>) 중 p의 (:) */
     #ssafy > p:nth-child(2) {
         color: red;
         }
@@ -183,10 +178,22 @@ Index
 
 <!-- p:nth-of-type(n) -->
 <style>
+    /* el:nth-of-type은 부모의 자식들 중 el요소들 중 n번째 */
     #ssafy > p:nth-of-type(2) {
         color: red;
         }
 </style>
+
+<!-- body -->
+#ssafy>h2+p*4
+
+<div id="ssafy">
+    <h2>어떻게 선택 될까?</h2>
+    <p>첫번째 단락</p>
+    <p>두번째 단락</p>
+    <p>세번째 단락</p>
+    <p>네번째 단락</p>
+</div>
 ```
 
 - nth-child(n)은 부모 요소의 모든 자식 요소 중 n번째 태그를 지정하는 반면, 
@@ -245,7 +252,7 @@ p {color: hsla(120, 100%, 0.5);}
 
 ### 4.1 Box Model
 
-![Box Model](C:\Users\bulge\Documents\SSAFY\TIL\03 Web\img\css_box_model_box.png)
+![Box Model](02 CSS.assets/css_box_model_box.png)
 
 - Margin: 테두리 바깥의 외부 여백. 배경색을 지정할 수 없다.
 
@@ -258,7 +265,10 @@ p {color: hsla(120, 100%, 0.5);}
 }
 ```
 
-- Border: 테두리 영역
+- Border: <u>테두리 영역</u>
+
+  > - border-style:solid;	- 실선
+  > - border-style: dashed;    - 점선
 ```html
 .border {
 	border-width: 2px;
@@ -318,6 +328,9 @@ p {color: hsla(120, 100%, 0.5);}
 > 줄 바꿈이 일어나지 않는 행의 일부 요소. content 너비만큼 가로 폭을 차지하며, width, height, margin-top, margin-bottom을 지정할 수 없으며 상하 여백은 line-height로 지정한다.
 >
 > - 수평 정렬: `text-align: left;`, `text-align: right;`, `text-align:center;`
+> - `vertical-align` : 형제 요소와  수직 정렬
+> - `line-height:` : 줄 높이를 지정(글자의 높이를 지정). 한 줄인 경우, height와 같은 px 값을 지정하면 위아래 가운데 정렬이 된다.
+>   두 줄의 경우 height(px)/2를 해주면 위아래 가운데 정렬이 된다.
 
 5.2.3 `display`: `inline-block`
 
@@ -346,7 +359,7 @@ div {
 
 ### 6.2 `relative` (상대 위치)
 
-> static 위치를 기준으로 이동 (상대 위치)
+> 상위 요소의 relative 위치를 기준으로 움직인다. static 위치를 기준으로 이동 (상대 위치). (박스의 경우 왼쪽 꼭지점을 기준으로)
 
 ```html
 .relative {

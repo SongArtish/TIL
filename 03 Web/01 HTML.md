@@ -4,20 +4,15 @@
 
 > Hyper Text Markup Language의 약자이며 웹 페이지를 작성하기 위한 언어로, 웹 컨텐츠의 의미와 구조를 정의하는 언어이다. 파일 형식은 `.html`. 현재의 웹 표준은 W3C와 WHATWG를 따른다.
 
-```python
-Index
 
-1. HTML 기본 구조
-2. HTML 문서 구조화 (Tag)
 
-<참고> 태그 정리
-```
+[TOC]
 
 
 
 ## 시작하기 전
 
-**HTML Convention**
+###  HTML Convention
 
 1. 공백은 넣지 않는다.
 2. 쌍따옴표(`""`)를 사용한다.
@@ -25,7 +20,7 @@ Index
 
 
 
-**HTML 개발 환경 설정**
+###  HTML 개발 환경 설정
 
 1. Text Editor (VS Code) **extension** 설치
 
@@ -46,7 +41,7 @@ Index
 
 
 
-### 참고) Markup Language란?
+###  참고) Markup Language란?
 
 - 태그 등을 이용하여 문서나 데이터의 구조를 명시하는 언어
 - 프로그래밍 언어와는 다르게 단순하게 데이터를 표현하는 언어
@@ -107,7 +102,7 @@ Index
 <a href="https://gooogle.com"></a>
 ```
 
-### HTML Global Attribute
+#### HTML Global Attribute
 
 > 모든 HTML 요소가 공통으로 사용할 수 있는 속성 (몇몇 요소에는 아무 효과 없을 수 있다)
 
@@ -142,7 +137,7 @@ id, class, hidden, lang, style, tabindex, title
 <footer></footer>
 ```
 
-## 2) 인라인 / 블록 요소
+### 2) 인라인 / 블록 요소
 
 - 블록 요소 - 자리 전체를 차지한다.
 
@@ -155,6 +150,18 @@ id, class, hidden, lang, style, tabindex, title
 - `<ol>`, `<ul>`
 - `<pre>`, `<blockquote>` : `<pre>`는 사용하지 않는다.
 - `<div>`
+
+```html
+<!-- 리스트 -->
+<ul>
+    <li></li>
+</ul>
+<ol>
+    <li></li>
+</ol>
+```
+
+- `<ol>`(ordered list), `<ul>`(unordered list) > (하위항목) `<li>`
 
 ### 4) 텍스트 관련 요소
 
@@ -187,19 +194,25 @@ id, class, hidden, lang, style, tabindex, title
 
 > 다양한 타입을 가지는 <u>입력 데이터 필드</u>이다. `<input>` 요소 동작은 type에 따라서 달라진다.(자세한 것은 [mdn](https://developer.mozilla.org/ko/)을 참고한다.) 
 >
-> (1) type="text" : 텍스트를 입력받는다.
+> (1) type="**text**" : 텍스트를 입력받는다.
 >
-> (2) type="radio" : 옵션 중 하나만 선택 가능
+> (2) type="**radio**" : 옵션 중 하나만 선택 가능
 >
-> (3) type="checkbox" : 옵션에서 복수 선택 가능
+> (3) type="**checkbox**" : 옵션에서 복수 선택 가능
 >
-> (4) type="email" : 이메일 타입만 입력 받을 수 있다.
+> (4) type="**email**" : 이메일 타입만 입력 받을 수 있다.
 >
-> (5) type="password" :  입력시 입력 값을 별 모양으로 표시한다.
+> (5) type="**password**" :  입력시 입력 값을 별 모양으로 표시한다.
+>
+> (6) type="**reset**" : form tag 안에 있는 input tag들에 작성한 모든 내용 reset
+>
+> (7) type="**button**" : 아무 효과가 없는 버튼이 생성되어 보여진다. 단지 UI적인 관점. (`<a>`로 링크와 연결하여 사용가능하다?)
 >
 > `<input>`의  공통 속성에는 name, placeholder, required, autofocus 등과 같은 것들이 있다.
 >
 > - `autofocus` : 접속시 사용자의 자동위치를 설정한다.
+> - `placeholder` : input 자리에 미리보기 메시지가 표시되게 할 수 있다.
+> - `value` : input 자리에 값 자체가 들어간다.
 
 ```html
 <태그>
@@ -212,7 +225,7 @@ id, class, hidden, lang, style, tabindex, title
 
 ## <참고> 태그 정리
 
-### 1. `<a></a>`
+### 1) `<a></a>`
 
 > 하이퍼링크를 걸어주는 태그이며, 2가지 속성이 있다.
 >
@@ -228,7 +241,7 @@ id, class, hidden, lang, style, tabindex, title
 <a href="https://www.naver.com">Go NAVER</a>
 ```
 
-### 2. `<img>`
+### 2) `<img>`
 
 > 이미지를 보여주는 태그이며, 주요 속성은 다음과 같다.
 >
@@ -246,7 +259,7 @@ id, class, hidden, lang, style, tabindex, title
 <img src="..\images\my_photo.png" alt="ssafy" width="300px">	
 ```
 
-### 3. `<select>`와 `<option>`
+### 3) `<select>`와 `<option>`
 
 > `<select>`는 드랍다운 목록을 만들 때 사용하며, `<option>`은 드랍다운 목록의 항목을 만든다. `<option>`의 속성은 다음과 같다.
 >
