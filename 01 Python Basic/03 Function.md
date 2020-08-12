@@ -1,22 +1,8 @@
 # 함수 (Function)
 
-```python
-Index
 
-1. 함수의 정의
- 1.1 함수의 선언
- 1.2 함수의 출력(output)
- 1.3 함수의 입력(input)
-2. 함수의 인자(argument)
- 2.1 위치 인자(Positional -)
- 2.2 기본 인자 값(Default Argument Values)
- 2.3 키워드 인자(Keyword -)
- 2.4 가변 인자(Arbitrary -)
-3. 함수와 스코프(scope)
- 3.1 이름 검색 규칙
- 3.2 변수의 수명주기
-4. 재귀함수
-```
+
+[TOC]
 
 
 

@@ -23,6 +23,9 @@ Index
 8. 다중 상속(Multiple Inheritance)
 ```
 
+[TOC]
+
+
 ```python
 <1부 정리>
 # 객체(Object)

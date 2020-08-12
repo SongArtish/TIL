@@ -2,20 +2,9 @@
 
 > 여러 개의 값을 저장할 수 있는 객체
 
-```python
-Index
 
-1. Sequence
- 1.1 리스트(list)
- 1.2 튜플(tuple)
- 1.3 레인지(range)
- 1.4 문자형(string)
- 1.5 바이너리(binary)
-2. Non-sequence
- 2.1 셋(set)
- 2.2 딕셔너리(dictionary)
-3. 데이터의 분류 - mutable vs. immutable
-```
+
+[TOC]
 
 
 

@@ -2,9 +2,11 @@
 
 2020.08.05.
 
-
+*****
 
 [TOC]
+
+*****
 
 
 
@@ -22,7 +24,7 @@
 
 
 
-## 1. Key (키 가이드)
+## 1. Basic Key
 
 ### 문자 일괄 선택
 
@@ -60,5 +62,30 @@
 
 - `↑` : 위에서 사용한 명령어 불러오기
 - `Ctrl`+`C` : run 도중 interrupt(중지)
+
+
+
+## 3. HTML
+
+### html 문서 기본세팅
+
+- `!`+`Enter`
+
+```html
+<!-- 예시 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+
 
 *Copyright* © Song_Artish

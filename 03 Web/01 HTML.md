@@ -2,11 +2,13 @@
 
 2020.08.10
 
-> Hyper Text Markup Language의 약자이며 웹 페이지를 작성하기 위한 언어로, 웹 컨텐츠의 의미와 구조를 정의하는 언어이다. 파일 형식은 `.html`. 현재의 웹 표준은 W3C와 WHATWG를 따른다.
+> 웹 페이지를 작성하기 위한 언어로, 웹 컨텐츠의 의미와 구조를 정의하는 마크업 언어이다. 파일 형식은 `.html`. 현재의 웹 표준은 W3C와 WHATWG를 따른다.
 
-
+*****
 
 [TOC]
+
+*****
 
 
 
@@ -41,14 +43,27 @@
 
 
 
-###  참고) Markup Language란?
+## 1. HTML 기초
 
-- 태그 등을 이용하여 문서나 데이터의 구조를 명시하는 언어
-- 프로그래밍 언어와는 다르게 단순하게 데이터를 표현하는 언어
+**Hyper**
+
+- 텍스트 등의 정보가 동일 선상에 있는 것이 아니라 다중으로 연결되어 있는 상태
+
+**Hyper Text**
+
+- 참조(하이퍼링크)를 통해 사용자가 한 문서에서 다른 문서로 즉시 접근 할 수 잇는 텍스트
+- 하이퍼 텍스트가 쓰인 기술등 중 가장 중요한 2가지 (http, html)
+
+**Markup Language**
+
+> 태그 등을 이용하여 문서나 데이터의 구조를 명시하는 언어이며, 프로그래밍 언어와는 다르게 단순하게 데이터를 표현한다.
+
+- 특정 텍스트에 역할을 부여하는, 따라서 "마크업을 한다" 라고 하는 건 제목이 제목이라하고 본문이 본문이라고 마킹을 하는 것
+- ex) h1 tag는 단순히 글자가 커지는 것이 아니라 의미론적으로 그 페이지에서 가장 핵심 주제를 의미하는 것
 
 
 
-## 1. HTML 기본 구조
+## 2. HTML 기본 구조
 
 ```html
 <!DOCTYPE html>
@@ -75,6 +90,8 @@
 
 ### DOM(Document Object Model) 트리
 
+> DOM은 문서의 구조화된 표현(structured representation)을 제공하며 프로그래밍 언어가 DOM 구조에 접근할 수 있는 방법을 제공하여 그들이 문서 구조, 스타일, 내용 등을 변경할 수 있게 도움을 준다. 웹 페이지의 객체 지향 표현.
+
 ```html
 <!-- 다음은 DOM으로 2개의 자식 태그가 있다. -->
 <body>
@@ -88,15 +105,17 @@
 
 ### 1) 요소 (element)
 
->  HTML의 요소는 태그와 내용(contents)로 구성되어 있다.
+>  HTML의 요소는 태그와 내용(contents)로 구성되어 있다. 요소는 중첩될 수 있다.
 
 ```html
 <h1>contents</h1>
 ```
 
+- 내용이 없는 태그들: `br`, `hr`, `img`, `inpu`, `link`, `meta`
+
 ### 2) 속성(attribute)
 
-> 속성명=속성값`의 형태로 입력하며, 태그별로 사용할 수 있는 속성은 다르다
+> `속성명=속성값`의 형태로 입력한다. 태그별로 사용할 수 있는 속성은 다르며, 태그와 상관없이 사용 가능한 속성들(html global attribute)도 있다.
 
 ```html
 <a href="https://gooogle.com"></a>
@@ -112,11 +131,11 @@ id, class, hidden, lang, style, tabindex, title
 
 
 
-## 2. HTML 문서 구조화(Tag)
+## 3. HTML 문서 구조화(Tag)
 
 ### 1) 시맨틱 태그 (Semantic Tag)
 
-> HTML5에서 등장한 <u>의미론적 요소</u>를 담는 태그로, 가독성과 접근성을 높인다. 시맨틱 태그에는 총 13개가 있다. (Non-Semantic Tag는 `div`, `span` 등이 있다.)
+> 브라우저, 검색엔진, 개발자 모두에게 콘텐츠의 의미를 명확히 설명하는 태그. HTML5에서 등장한 <u>의미론적 요소</u>를 담는 태그로, 가독성과 접근성을 높인다. 시맨틱 태그에는 총 13개가 있다. (Non-Semantic Tag는 `div`, `span` 등이 있다.)
 >
 > - header: 문서 전체나  섹션의 헤더 (머릿말 부분)
 > - nav: 네비게이션
@@ -136,6 +155,10 @@ id, class, hidden, lang, style, tabindex, title
 </section>
 <footer></footer>
 ```
+
+***** 시맨틱 웹
+
+> 웹에 존재하는 수많은 웹페이지들에 메타데이터를 부여하여, 기존의 단순한 데이터 집합이었던 웹페이지를 '의미'와 '관련성'을 가지는 거대한 데이터베이스로 구축하고자 하는 발상.
 
 ### 2) 인라인 / 블록 요소
 
@@ -270,16 +293,36 @@ id, class, hidden, lang, style, tabindex, title
 > - `disabled` : 옵션이 비활성화되어 선택할 수 없게 된다.
 
 ```html
- <hr>
-	<label for="region">지역을 선택해주세요.</label><br>
-    <select name="region" id="region">
-    	<option value="">선택</option>
-        <option value="경성">서울</option>
-        <option value="대전">대전</option>
-        <option value="광주" disabled>광주</option>
-        <option value="구미">구미</option>
-	</select>
-</hr>
+<label for="region">지역을 선택해주세요.</label><br>
+<select name="region" id="region">
+    <option value="">선택</option>
+    <option value="경성">서울</option>
+    <option value="대전">대전</option>
+    <option value="광주" disabled>광주</option>
+    <option value="구미">구미</option>
+</select>
+</label>
 ```
 
+### 4) ` <div>`와 `<span>`
+
+> 1. ` <div>는 박스 형태로 영역이 설정되며, `<span>`은 줄 단위로 영역이 설정되기 때문에 배경색의 길이가 다르다. (영역이 다르다)
+> 2. `<div>`는 줄 바꿈이 되지만, `<span>` 태그는 옆으로 붙는다. 결국 영역을 지정하는 방식의 차이가 있다.
+
+### 5) `<hr>`
+
+> 가로줄을 넣는 태그로 `<hr style="border: 선종류 선굵기 선색상">`으로 속성을 지정한다.
+>
+> - 선종류: solid, dotted, dashed, double, groove, ridge, inset, outset
+>
+> 가로줄에 길이를 지정하고 정렬할 수도 있다.
+
+```html
+<!-- <hr> 예시 -->
+<hr align="left" style="border: solid 10px green; width: 50%;">
+```
+
+
+
 *Copyright* © Song_Artish
+

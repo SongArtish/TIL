@@ -2,16 +2,9 @@
 
 2020.07.27.
 
-```python
-Index
 
-1. 에러
-2. 예외
-3. 예외 처리
- - try, except, else, finally
-4. 예외 발생시키기
- - raise, assert
-```
+
+[TOC]
 
 
 

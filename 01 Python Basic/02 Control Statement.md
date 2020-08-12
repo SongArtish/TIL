@@ -2,11 +2,9 @@
 
 > 코드 실행의 순차적인 흐름을 제어(Control Flow)
 
-```python
-Index
-1. 조건문
-2. 반복문 - while문, for문
-```
+
+
+[TOC]
 
 
 
