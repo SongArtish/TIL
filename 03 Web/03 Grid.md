@@ -191,6 +191,11 @@ order: -1;
 
 [Bootstrap Documentation](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - 항상 documentation을 참고하여 활용하도록 한다.
 
+### Bootstrap 시작하기
+
+- CDN 코드 붙여넣기
+- `.container` 박스 만들기
+
 ### CSS 초기화 방법
 
 > CSS를 초기화 하는 방법에는 2가지가 있다.
@@ -285,12 +290,13 @@ order: -1;
 > - 5개의 grid breakpoints
 
 ```html
-<!-- 구조 -->
+<!-- 기본 세팅 구조 -->
 <div class="container">
     <div class="row">
         <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
+        ...
     </div>
 </div>
 ```
@@ -338,16 +344,21 @@ order: -1;
 
 #### 4.1.1 Breakpoint
 
+- 입력한 size의 이상의 값들에 속성을 모두 적용한다!!!!!!
+
 |    Size     | Grid options |     px     |
 | :---------: | :----------: | :--------: |
-|    Small    |     `sm`     |   ~767px   |
+| Extra Small |    (생략)    |    ~575    |
+|    Small    |     `sm`     | 576~767px  |
 |   Middle    |     `md`     | 768~991px  |
 |    Large    |     `lg`     | 992~1199px |
 | Extra Large |     `xl`     |   1200px   |
 
 ```html
-<div class="box bg-warning d-sm-non d-md-block"><보이나 안보이나/div>
-<div class="box bg-success d-md-non d-xl-block">보이나 안 보이나</div>
+<!-- 화면 사이즈에 따라 item의 크기를 다르게 설정하기-->
+<div class="item col-4 col-sm-2">
+	<p>576px 미만 4 <br> 576px 이상 2</p>
+</div>
 ```
 
 #### 4.1.2 Hiding Elements
@@ -361,18 +372,19 @@ order: -1;
 .d-block	<!-- 모든 스크린 사이즈에서 표시(visible) -->
 ```
 
+```html
+<div class="box bg-warning d-sm-non d-md-block"><보이나 안보이나/div>
+<div class="box bg-success d-md-non d-xl-block">보이나 안 보이나</div>
+```
+
 #### 4.1.3 Display
 
 ```html
 <!-- 사용예시 -->
 <h2>Display</h2>
 <div class="d-inline p-2 bg-primary text-white">d-inline</div>
-<div class="d-inline p-2 bg-dark text-white">d-inline</div>
-<span class="box d-block p-2 bg-primary text-white">d-block</span>
-<span class="box d-block p-2 bg-dark text-white">d-block</span>
-
 <div class="box bg-warning d-sm-none d-md-block">보이나 안보이나</div>
-<div class="box bg-success d-md-none d-xl-block">보이나 안 보이나</div>
+<div class="d-flex justify-content-sm-between">small일 때는 space-btw</div>
 ```
 
 ```html
@@ -391,7 +403,7 @@ order: -1;
 
 #### 4.2.1 offset
 
-> `offset-{screen size}-{n}`에서 앞의 n칸을 screen size에 따라 비워준다(?).
+> `offset-{screen size}-{n}`에서 screen size에 따라 앞의 n칸을 비워준다(띄워준다).
 
 ```html
 <div class=".col-md-4 .offset-md-4 .offset-lg-2"></div>

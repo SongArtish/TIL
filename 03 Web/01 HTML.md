@@ -213,6 +213,8 @@ id, class, hidden, lang, style, tabindex, title
 <form action="" mehod=""></form>
 ```
 
+- `<form>` 태그 안에 있는 요소들을 그룹화할 때 사용한다.
+
 ### 7) input
 
 > 다양한 타입을 가지는 <u>입력 데이터 필드</u>이다. `<input>` 요소 동작은 type에 따라서 달라진다.(자세한 것은 [mdn](https://developer.mozilla.org/ko/)을 참고한다.) 
