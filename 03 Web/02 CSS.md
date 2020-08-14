@@ -265,7 +265,7 @@ p {color: hsla(120, 100%, 0.5);}
 
 > 웹 디자인은 contents를 담을 box model을 정의하고 CSS 속성을 통해 스타일(배경, 폰트와 텍스트 등)과 위치 및 정렬을 지정하는 것.
 
-![Box Model](02 CSS.assets/css_box_model_box.png)
+![Box Model](img/css_box_model_box.png)
 
 - Margin: 테두리 바깥의 외부 여백. 배경색을 지정할 수 없다.
 

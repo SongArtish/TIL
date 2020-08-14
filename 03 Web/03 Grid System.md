@@ -62,7 +62,7 @@
 
 
 
-![float와 flex의 차이](03 Grid.assets\float_and_flex.jpg)
+![float와 flex의 차이](img\float_and_flex.jpg)
 
 - column의 높이가 자동으로 맞춰진다.
 
@@ -87,7 +87,7 @@
 /*flex가 block이라면, inline-flex는 inline의 특성을 가지고 있다*/
 ```
 
-![flex와 inline-flex](03 Grid.assets\inline-flex.jpg)
+![flex와 inline-flex](img\inline-flex.jpg)
 
 ### Flex에 적용하는 속성
 
@@ -113,7 +113,7 @@ justify-content: space-around;	/* 균등좌우정렬: 컨텐츠 좌우로 각각
 justify-content: space-evenly;	/* 균등정렬: 컨텐츠 처음/끝은 그리고 사이에 space*/
 ```
 
-![space 속성들 비교](03 Grid.assets\space_attributes.jpg)
+![space 속성들 비교](img\space_attributes.jpg)
 
 ### 2.3 교차축 방향 정렬 : ``align-items`, `align-content`, `align-self`
 
@@ -466,7 +466,4 @@ order: -1;
 </nav>
 ```
 
-
-
 *Copyright* © Song_Artish
-

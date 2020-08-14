@@ -14,6 +14,8 @@
 
 ## 시작하기 전
 
+[MDN 공식문서](https://developer.mozilla.org/ko/)
+
 ###  HTML Convention
 
 1. 공백은 넣지 않는다.
@@ -207,7 +209,7 @@ id, class, hidden, lang, style, tabindex, title
 
 ### 6) form 
 
-> 서버에서 처리될 데이터를 <u>제공</u>하는 역할을 한다. 기본 속성으로는 <u>action</u>(데이터를 어디로 보낼지 설정="url")과 <u>mehod(GET, POST)</u>가 있다. GET은 데이터를 가지고 오는 요청이며, POST는 DB와 관련있다.
+> 서버에서 처리할 데이터를 제공하는 역할(웹페이지 입력 양식)을 한다. 기본 속성으로는 <u>action</u>(데이터를 어디로 보낼지 설정="url")과 <u>mehod(GET, POST)</u>가 있다. GET은 데이터를 가지고 오는 요청이며, POST는 DB와 관련있다.
 
 ```html
 <form action="" mehod=""></form>
