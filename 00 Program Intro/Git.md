@@ -25,6 +25,26 @@ git 공간
 - `code test.py`: test.py 창을 연다.
 - `code test.html`: test.html 창을 연다.
 
+**원격 저장소**
+
+- 원격 저장소 확인
+
+```bash
+$ git remote show
+```
+
+- 특정 원격 저장소 정보 확인
+
+```bash
+$ git remote show <저장소 이름>
+```
+
+- 원격저장소 제거
+
+```bash
+$ git remote rm <저장소 이름>
+```
+
 
 
 ## 2. git 활용법

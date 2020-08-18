@@ -1,4 +1,4 @@
-# 그리드 시스템 (Grid System)
+# CSS Layout
 
 *****
 
@@ -196,14 +196,16 @@ order: -1;
 - CDN 코드 붙여넣기
 - `.container` 박스 만들기
 
-### CSS 초기화 방법
+### Reset CSS
 
+> 모든 HTML 요소 스타일을 일관된 기준으로 재설정하는 간결하고 압축된 규칙 세트.
+>
 > CSS를 초기화 하는 방법에는 2가지가 있다.
 >
-> 1. reset: 공격적인 방법이며, 브라우저 자체 스타일을 모두 제거한다.
-> 2. normalize: 보다 젠틀한 방법으로, 웹 표준을 준수하는 방식이다.
+> 1. **reset CSS**: aggressive solution. 브라우저 자체 스타일을 모두 제거한다.
+> 2. **Normalize CSS**: gentle solution. 웹 표준을 준수하는 방식이다.
 >
-> 최근 들어서는 normalize 방법을 많이 사용한다. Bootstrap 역시 noramlize 방식을 통해 CSS 초기화를 한다.
+> 현재는 Normalize CSS 를 중심으로 사용하고 여기에 적절한 Reset CSS 을 섞어 쓰라고 권장한다. Bootstrap 역시 noramlize 방식을 통해 CSS 초기화를 한다
 
 ### 3.1 CDN (Content Delivery Network)
 
@@ -284,7 +286,7 @@ order: -1;
 
 ## 4. Bootstrap Grid System
 
-> flexbox로 제작된 것으로, **`container`, `rows`, `column`**으로 컨텐츠를 배치하고 정렬한다.
+> flexbox로 제작된 것으로, **`.container > .row > col-*`**으로 컨텐츠를 배치하고 정렬한다.
 >
 > - 12개의 column - 12가 약수가 많기 때문에
 > - 5개의 grid breakpoints
@@ -301,6 +303,14 @@ order: -1;
 </div>
 ```
 - `<div class="container">`는 이하 요소를 중간으로 잡아주는 역할을 한다.
+
+**`.row`**
+
+- 각 column에는 공간 사이를 제어하기 좌우 padding 값이 있는데 이를 `gutter`라고도 한다.
+- row의 margin 값과 gutter를 제거하려면 .row에 `.no-gutters` class를 사용한다.
+
+
+
 ```html
 <!-- 사용예시 -->
 <body>
@@ -395,7 +405,7 @@ order: -1;
 
 #### 4.1.4 Nesting
 
-> 그리드 안에 그리드를 넣는 것
+> 그리드 안에 그리드를 넣는 것으로, **`.row > .col-* > .row > .col-*`**의 방식으로 중첩이 가능하다.
 
 ### 4.2 Component (요소)
 

@@ -97,7 +97,10 @@ return render(request, 'dinner.html', context)
 
 >  Django Template System에서 사용하는 built-in template system으로 `조건`, `반복`, `치환`, `필터`, `변수` 등의 기능을 제공(html에서는 불가)한다. 프로그래밍적 logic이 아니라, 프레젠테이션을 표현하기 위한 것이다.
 >
-> [Django 공식문서](https://docs.djangoproject.com/en/3.0/topics/templates/) 참고
+>  [Django 공식문서](https://docs.djangoproject.com/en/3.0/topics/templates/) 참고
+>
+>  - `{{ __(a)__ }}` : 사용자가 설정한 것.
+>  - `{% __(a)__ %}` : Django에서 제공하는 것. (자세한건 문서 참조)
 
 ### 2.1 Variable
 
@@ -132,6 +135,14 @@ return render(request,'hello.html',context)
 </body>
 ```
 
+```html
+<!-- lorem 예시 -->
+<p>{% lorem %}</p>	<!-- 전체 입력 -->
+<p>{% lorem 3 w %}</p>	<!-- 3개 단어만 출력 (word)-->
+<p>{% lorem 3 w random %}</p>	<!-- 랜덤 출력 -->
+<p> {% lorem 2 p%} </p>	<!-- 2개 문단 출력 (paragraph) -->
+```
+
 ### 2.2 Filter
 
 ```html
@@ -148,25 +159,30 @@ return render(request,'hello.html',context)
 ```
 *****
 
-**length**
+**length** vs. **wordcount**
 
-> Returns the length of the value. This works for both strings and lists.
+> `length`는 문자열이나 리스트의 길이를 반환하며, `wordcount`는 단어 수를 반환한다.
 
 ```html
 {{ value|length }}
 ```
-If `value` is `['a', 'b', 'c', 'd']` or `"abcd"`, the output will be `4`. The filter returns `0` for an undefined variable.
+```html
+{{ value|wordcount }}
+```
 
 *****
 
-**capfirst**
+**title** vs. **capfirst**
+
+> `title`은 각 단어의 첫 문자를 대문자로 변환하는 반면, `capfirst`는 전체의 첫 글자만 대문자로 변환한다.
 
 ```html
-<!-- capfirst -->
 {{ value|capfirst }}
 ```
 
-If `value` is `"django"`, the output will be `"Django"`.
+```html
+{{ value|title }}
+```
 
 *****
 
@@ -186,13 +202,41 @@ This would display as “01h 23m”.
 
 ```html
 {{ value|time }}
-{{ value|time:"TIME_FORMAT" }}
+{{ value|time:"[TIME_FORMAT]" }}
 ```
 
 the output will be the string `"01:23"` (The `"TIME_FORMAT"` format specifier for the `de` locale as shipped with Django is `"H:i"`).
 
+```html
+<!-- 예시 -->
+<!-- 2020년 02월 02일 (Sun) PM 02:02 -->
+{{today|date:Y년 m월 d일 (D) A h:i}}
+```
+
 *****
 
+**truncatewords** vs. **truncatechars**
+
+> 글자 수를 제한한다.
+
+```html
+  <p> {{ my_sentence|truncatewords:3 }} </p>
+  <p> {{ my_sentence|truncatechars:3 }} </p>
+  <p> {{ my_sentence|truncatechars:10 }} </p> 
+  <!-- 빈칸도 글자수로 count하며, 중간에 잘린 단어는 ... 으로 표시된다.-->>
+```
+
+*****
+
+**add**
+
+> 숫자를 더한다.
+
+```html
+{{ number|add:3 }}
+```
+
+*****
 
 
 ### 2.3 Tags
@@ -216,7 +260,7 @@ the output will be the string `"01:23"` (The `"TIME_FORMAT"` format specifier fo
 <!-- for 예시 -->
 <body>
     {% for menu in menus %}
-     	{{ forloop.counter }} : {{ menu }}
+     	{{ forloop.counter }} : {{ menu }}	<!-- 1번부터 출력한다. -->
 	{% endfor %}
 </body>
 <!-- forloop.counter은 넘버링이 필요한 경우 사용한다. -->

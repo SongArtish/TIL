@@ -93,7 +93,7 @@ $ python manage.py runserver
 > 위치: `<프로젝트 폴더>`
 
 ```bash
-$ python mange.py starapp <앱 이름>
+$ python mange.py startapp <앱 이름>
 ```
 
 - 앱 이름은 복수형으로 사용하는 것이 권장된다. (ex. articles)

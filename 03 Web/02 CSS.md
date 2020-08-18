@@ -124,6 +124,13 @@ h2 {
 
 #### 2.1.5 속성 선택자
 
+```css
+/* 예시 */
+p {
+	font-size: 30px;
+}
+```
+
 #### 2.1.6 복합 선택자
 
 - 자손 선택자: `selector A` `(blank)` `selector B`
@@ -357,7 +364,7 @@ p {color: hsla(120, 100%, 0.5);}
 
 
 
-## 6. CSS Position
+## 6. Position
 
 ### 6.1 `static` (default value)
 
@@ -421,6 +428,6 @@ div {
 
 ### 6.6 `z-index`
 
-
+> 요소의 앞뒤 배치를 정의하는 것.
 
 *Copyright* © Song_Artish
