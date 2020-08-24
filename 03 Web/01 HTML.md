@@ -113,7 +113,7 @@
 <h1>contents</h1>
 ```
 
-- 내용이 없는 태그들: `br`, `hr`, `img`, `inpu`, `link`, `meta`
+- 내용이 없는 태그들: `br`, `hr`, `img`, `input`, `link`, `meta`
 
 ### 2) 속성(attribute)
 

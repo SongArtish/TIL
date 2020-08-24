@@ -1,4 +1,4 @@
-# Django Basic
+# Django Intro
 
 2020.08.14.
 
@@ -18,29 +18,28 @@
 >
 > - `Flask`는 micro framework로 더 작은 스케일의 프로젝트에 많이 사용되는 편이다.
 
-### 기본 세팅
+**기본 세팅**
 
-1. python version 3.7 확인
+- python version 3.7 확인
 
-2. VS Code에서 `Django` extension을 설치한다.
+- VS Code에서 `Django` extension을 설치한다.
+  `Ctrl`+`Shift`+`P` > `Preference: Open Settings(JSON)`에 코드를 붙여준다. (`files.associations`, `emmet`)
 
-3. `Ctrl`+`Shift`+`P` > `Preference: Open Settings(JSON)`에 코드를 붙혀준다. (`files.associations`, `emmet`)
-
-4. pip 설치
+**설치**
 
 ```bash
 $ pip install django
 $ pip install django==2.1.15	# 특정 버전 설치
 ```
 
-5. 설치 확인
+- 설치 후 다음의 명령어를 통해 설치 확인한다.
 
 ```bash
 $ pip list
 $ python -m django --version
 ```
 
-### MTV 패턴
+**MTV 패턴**
 
 > Model - 데이터를 관리
 >
@@ -52,12 +51,12 @@ $ python -m django --version
 
 
 
-## 1. Project 생성
+## Project
+
+### 프로젝트 생성
 
 > Django 서버를 만든다.
-
-**1.1 프로젝트 생성**
-
+>
 > 위치: `<원하는 폴더>`
 
 ```bash
@@ -66,7 +65,7 @@ $ django-admin startproject <프로젝트 이름>
 
 - 프로젝트 이름 작성시, <단어_단어> 형식을 권장 (하이픈, 기본 모듈명 등 사용불가)
 
-**1.2 Internationalization**
+**Internationalization**
 
 > 위치: `<프로젝트 폴더>/setting.py > LANGUAGE_CODE (제일 밑)`
 
@@ -76,7 +75,7 @@ LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 ```
 
-**1.3 서버 실행**
+**서버 실행**
 
 > 위치: `<프로젝트 폴더>`
 
@@ -86,51 +85,9 @@ $ python manage.py runserver
 
 - 서버 종료 시에는 `Ctrl` + `C` 키를 사용한다.
 
+---
 
-
-## 2. App 생성
-
-> 위치: `<프로젝트 폴더>`
-
-```bash
-$ python mange.py startapp <앱 이름>
-```
-
-- 앱 이름은 복수형으로 사용하는 것이 권장된다. (ex. articles)
-
-
-
-## 3. App 등록
-
-> 위치: `<프로젝트 폴더>/settings.py > INSTALLED_APPS (33번째 줄)`
-
-```python
-# 앱 작성 순서
-
-INSTALLED_APPS = [
-    # 1. Local Appes
-    'articles',
-    # 2. Third Party Apps
-    'haystack',
-    # 3. Django Apps
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-```
-
-- 등록 후 `python manage.py runserver`를 입력해 오류가 발생하지 않았는지 확인
-
-**Trailing Comma**
-
-> Django만의 독특한 문법으로, 리스트/딕셔너리의 마지막 요소 뒤에도 `,`(콤마)를 붙인다. (없어도 오류가 나는 것은 아니다.)
-
-
-
-## 프로젝트 구조
+### 프로젝트 구조
 
 **`__init__.py`**
 
@@ -158,7 +115,51 @@ INSTALLED_APPS = [
 
 
 
-## 어플리케이션 구조
+## Application
+
+### 앱 생성
+
+> 위치: `<프로젝트 폴더>`
+
+```bash
+$ python mange.py startapp <앱 이름>
+```
+
+- 앱 이름은 복수형으로 사용하는 것이 권장된다. (ex. articles)
+
+---
+
+### 앱 등록
+
+> 위치: `<프로젝트 폴더>/settings.py > INSTALLED_APPS (33번째 줄)`
+
+```python
+# 앱 작성 순서
+
+INSTALLED_APPS = [
+    # 1. Local Appes
+    'articles',
+    # 2. Third Party Apps
+    'haystack',
+    # 3. Django Apps
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+- 등록 후 `python manage.py runserver`를 입력해 오류가 발생하지 않았는지 확인
+
+**`Trailing Comma`**
+
+- 리스트/딕셔너리의 마지막 요소 뒤에도 `,`(콤마)를 붙인다. (없어도 오류가 나는 것은 아니다.)
+
+---
+
+### 앱 구조
 
 **`admin.py`**
 
@@ -166,7 +167,7 @@ INSTALLED_APPS = [
 
 **`apps.py`**
 
-- 앱의 정보가 있는 곳으로 수정할 경우는 없다.
+- 앱의 정보가 있는 곳으로 수정할 일은 없다.
 
 **`models.py`**
 
@@ -179,6 +180,8 @@ INSTALLED_APPS = [
 **`views.py`**
 
 - view가 정의 되는 곳. 
+
+
 
 *Copyright* © Song_Artish
 

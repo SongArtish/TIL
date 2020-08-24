@@ -12,7 +12,7 @@
 
 ## 준비하기
 
-###  기본 shell을 Git Bash로 변경하기
+**기본 shell을 Git Bash로 변경하기**
 
 ​	(1) `Ctrl+Shift+P`를 입력하면 `>`로 시작하는 입력창이 나타난다.
 
@@ -64,10 +64,74 @@
 
 
 
-## 2. Terminal
+## 2. Terminal (Bash)
 
 - `↑` : 위에서 사용한 명령어 불러오기
 - `Ctrl`+`C` : run 도중 interrupt(중지)
+- `code test.py`: test.py 창을 연다.
+- `code test.html`: test.html 창을 연다.
+
+---
+
+**cd** : 현재 bash창의 작업 위치 변경
+
+```bash
+$ cd <폴더명>
+```
+
+```bash
+# 예시: 홈 디렉토리로 이동
+$ cd
+# 예시: 상위폴더로 이동
+$ cd ..
+```
+
+---
+
+**mkdir** : 폴더 생성
+
+```bash
+$ mkdir <폴더명>
+```
+
+---
+
+**리스트**
+
+```bash
+$ ls		# 위치 내 폴더 및 파일 표시
+$ ls -a		# 숨김 파일까지 표시
+$ ls -al
+```
+
+---
+
+- `pwd` : 현재 위치 확인     *# print working directory*
+- `ctrl+L` 혹은 `clear :  현재 화면 창 clear
+
+```bash
+$ touch <파일명.확장자>
+```
+
+```bash
+$ rm <파일명.확장자>
+```
+
+```bash
+$ rm -rf <폴더명>/
+```
+
+---
+
+현재 작업 위치를 VS Code로 열기
+
+```bash
+$ code .
+```
+
+---
+
+
 
 
 

@@ -248,7 +248,7 @@ order: -1;
 
 | alphabet |      full name      |
 | :------: | :-----------------: |
-|    t     |        tp[]         |
+|    t     |         top         |
 |    b     |       bottom        |
 |    l     |        left         |
 |    r     |        right        |
@@ -308,8 +308,6 @@ order: -1;
 
 - 각 column에는 공간 사이를 제어하기 좌우 padding 값이 있는데 이를 `gutter`라고도 한다.
 - row의 margin 값과 gutter를 제거하려면 .row에 `.no-gutters` class를 사용한다.
-
-
 
 ```html
 <!-- 사용예시 -->
