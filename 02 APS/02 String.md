@@ -137,9 +137,8 @@ def atoi(str):
     for i in range(len(str)):
         c = str[i]
         # 정수로 된 문자열의 아스키코드 값으로 변환 후 0의 아스키 코드 값을 빼서 "정수"의 값을 반환한다.
-        digit = ord(c) - ord('0')
+        value = value * 10 + ord(c) - ord('0')
         # 마지막에는 value에 10을 곱해 자릿수를 올려준다.
-        value *= 10
     return value
 ```
 
