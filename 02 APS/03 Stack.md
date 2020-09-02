@@ -164,7 +164,7 @@ def fibo(n):
 
 - 두가지 방법
   - **깊이 우선 탐색 (Depth First Search, DFS)** >> 재귀, stack
-  - **너비 우선 탐색 (Breadth First Search, BFS)** >> queue
+  - **[너비 우선 탐색 (Breadth First Search, BFS)](04 Queue.md)** >> queue
 
 - 재귀는 코드가 더 간단하여 많이 사용되며, stack은 반복을 사용하여 속도가 더 빠르다.
 
@@ -289,7 +289,7 @@ else pop()
 
 
 
-## 부분집합
+### 부분집합:raised_hand_with_fingers_splayed:
 
 ```python
 # 재귀 호출을 이용한 부분집합 생성 알고리즘
@@ -314,6 +314,26 @@ def powerset(n, k):	# n: 원소의 갯수, k: 현재 depth
         powerset(n, k+1)	# 다음 요소 포함 여부 결정
 
 powerset(N, 0)
+```
+
+
+
+### 순열:raised_hand_with_fingers_splayed:
+
+```python
+def perm(n, k):
+    if k == n:
+        print(arr)
+    else:
+        for i in range(k, n):
+            arr[k], arr[i] = arr[i], arr[k]
+            perm(n, k+1)
+            # 원래대로 제자리로 되돌려놓아야 한다.
+            arr[k], arr[i] = arr[i], arr[k]
+
+arr = [1, 2, 3]
+N = len(arr)
+perm(N, 0)  # 원하는 depth, 현재 depth
 ```
 
 
