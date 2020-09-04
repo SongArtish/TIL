@@ -321,6 +321,7 @@ powerset(N, 0)
 ### 순열:raised_hand_with_fingers_splayed:
 
 ```python
+# swap을 이용한 순열 생성
 def perm(n, k):
     if k == n:
         print(arr)
@@ -334,6 +335,25 @@ def perm(n, k):
 arr = [1, 2, 3]
 N = len(arr)
 perm(N, 0)  # 원하는 depth, 현재 depth
+```
+
+```python
+# 방문행렬을 이용한 순열 생성
+def perm(k):
+    if k == N:
+        print(select)
+    for i in range(N):
+        if not visited[i]:
+            select[k] = arr[i]
+            visited[i] = 1
+            perm(k+1)
+            visited[i] = 0
+
+arr = [1, 2, 3]
+N = len(arr)
+select = [0] * N    # 생성할 순열을 저장할 배열
+visited = [0] * N
+perm(0)
 ```
 
 

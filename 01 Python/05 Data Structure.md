@@ -57,8 +57,8 @@ Index
 ```python
 .strip()		# 공백제거. 양쪽 제거
 .strip([chars])	 # 특정 문자 제거
-.lstrip()		# 왼쪽 제거
-.rstip()		# 오른쪽 제거
+.lstrip()		# 왼쪽 공백 제거
+.rstrip()		# 오른쪽 공백 제거
 ```
 
 ```python
@@ -371,6 +371,14 @@ my_dict['pineapple']
 print(my_dict.get('pineapple'))
 print(my_dict.get('pineapple', 0))   # default 값을 None이 아닌 0으로 반환
 ```
+
+> `dict[keys[0]]`
+
+- 딕셔너리 해당 `keys`의 value 값에 접근할 수 있다.
+
+> `print(*args)` 
+
+- ``print(*dict.values())`를 통해 딕셔너리의 모든 value를 출력할 수 있다.
 
 ### 2) 추가 및 삭제
 
