@@ -67,6 +67,18 @@ for <임시변수> in <순회가능한데이터(iterable)>:
     <코드 블럭>
 ```
 
+`for`... `else`... 문
+
+- `for문`이 `break` 없이 잘 종료되었으면, `else 이하의 코드블럭`을 실행한다.
+
+```python
+for <임시변수> in <순회가능한데이터(iterable)>:
+    if <조건>:
+        break
+else:
+    <코드블럭>
+```
+
 리스트(list) 순회에서 index 활용
 
 ​	`range()`
@@ -88,6 +100,8 @@ for index, menu in enumerate(lunch):
 2 피자
 3 햄버거
 ```
+
+
 
 ### 3) 반복제어(break, contuinue, for-else)
 

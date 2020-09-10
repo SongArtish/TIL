@@ -346,10 +346,35 @@ print()
 
 
 
-라이브러리 이용 `heapq`
+**라이브러리 이용 `heapq`**
 
 - `heapq` 라이브러리는 <u>최소힙</u>만 지원한다.
 - `heapq.heappop(힙)`은 가장 작은 원소를 삭제 후에 그 값을 리턴하는데, 이것을 이용해 최대힙을 구한다.
+
+---
+
+:heavy_check_mark:`heappush(heap, item)`
+
+- 힙 불변성을 유지하면서, item 값을 heap으로 푸시한다.
+
+:heavy_check_mark:`heappop(heap)`
+
+- 힙 불변성을 유지하면서, heap에서 가장 작은 항목을 팝하고 반환한다.
+- 힙이 비어 있으면, `IndexError`가 발생한다.
+
+:heavy_check_mark:`heappushpop(heap, item)`
+
+- 힙에 item을 푸시한 다음, heap에서 가장 작은 항목을 팝하고 반환한다.
+
+:heavy_check_mark:`heapify(x)`
+
+- 리스트 x를 선형 시간으로 제자리에서 힙으로 변환한다.
+
+등등
+
+자세한건 [공식문서](https://python.flowdas.com/library/heapq.html) 참조!
+
+---
 
 ```python
 import heapq
