@@ -98,7 +98,7 @@ path('hello/<int: numbers/'), views.hello)
 
 
 
-## 2. `view.py`
+## 2. `views.py`
 
 > `views.py`에서는 함수를 정의하는데, view함수는 첫번째 인자로 `request`가 반드시 입력되어야 한며, `render()`를 사용하여 views.py에서 정의한 변수를 template 파일로 넘겨준다.
 >
@@ -136,6 +136,24 @@ def update(request, pk):
 
 - 위에서 모델명은 Article, 앱 이름은 articles이다.
 - `request`는 요청 간의 모든 정보를 담고 있는 변수이다.
+
+### Render vs. Redirect
+
+**render**
+템플릿을 불러올 때 사용
+
+```python
+render(request, template_name, context=None, content_type=None, status=None, using=None)
+```
+
+**redirect**
+URL로 이동
+
+```python
+redirect(to, permanent=False, *args, **kwargs)
+```
+
+
 
 ### Django Namespace
 
