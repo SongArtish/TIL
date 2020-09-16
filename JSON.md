@@ -10,6 +10,8 @@
 
 
 
+[기본 문법](https://kutar37.tistory.com/entry/JSONJavaScript-Object-Notation-%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95)
+
 ## 1. 데이터 타입
 
 - `문자열(string)`
@@ -51,3 +53,34 @@ var array = [
 ### `JSON.parse()`
 
 - JSON형태의 String을 객체형 object로 변경하는 메소드
+
+```json
+var jsonStr = 
+'{"name":"hse", "age":12}'
+var jsonObj = JSON.parse(jsonStr);
+```
+
+- JSON 객체로 변경한 jsonStr에서 `.key`를 이용해서 value를 꺼낼 수 있다.
+
+```json
+document.write(jsonObj.name+"<br>");
+documnet.write(jsonObj['name']+"<br>")
+```
+
+- 이러한 접근은 JSON string이 이중삼중으로 되어있으때도, 동일하게 사용할 수 있다.
+
+**`JSON.stringify()`**
+
+- JSON Object형을 String타입으로 변경하는 메소드
+
+```json
+var jsonObj = {"name":"hse", "age":22, "bool":false};
+document.write(jsonObj);
+
+var jsonStr = JSON.stringify(jsonObj);
+documnet.write(jsonStr);
+```
+
+
+
+*Copyright* © Song_Artish
