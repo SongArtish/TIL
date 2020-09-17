@@ -69,7 +69,7 @@ documnet.write(jsonObj['name']+"<br>")
 
 - 이러한 접근은 JSON string이 이중삼중으로 되어있으때도, 동일하게 사용할 수 있다.
 
-**`JSON.stringify()`**
+### `JSON.stringify()`
 
 - JSON Object형을 String타입으로 변경하는 메소드
 

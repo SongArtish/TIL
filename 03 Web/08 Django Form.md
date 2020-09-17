@@ -367,7 +367,6 @@ class ArticleForm(forms.ModelForm):
         model = Article
         # 필드는 모든 것을 가지고 올 것이다.
         fields = '__all__'
-
 ```
 
 
