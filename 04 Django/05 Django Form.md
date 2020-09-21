@@ -744,6 +744,9 @@ def delete(request, pk):
 
 - 일반적인 경로를 입력하면 HTML에서 접근할 수 없으므로, servinng file을 통해 접근하도록 한다!
 - 기본 static 경로 : `app_name/static/app_name/images/`
+- 진행 중 적용이 안된다면 서버를 재시작한다.
+
+**이미지 넣기**
 
 ```python
 # settings.py (Default 값)
