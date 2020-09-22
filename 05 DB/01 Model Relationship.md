@@ -1,26 +1,22 @@
-# SQL (ORM)
+# Model Relationship
 
 2020.09.21
 
-*****
-
-[TOC]
-
-*****
-
-
-
-## Model Relationship
-
-**Relationship Fields**
-
-> 모델 간 관계를 나타내는 필드
+> **Relationship Fields**는 모델 간 관계를 나타내는 필드이다.
 
 |    관계    |        필드         |
 | :--------: | :-----------------: |
 | 1 : N 관계 |   `ForeignKey()`    |
 | M : N 관계 | `ManyToManyField()` |
 | 1 : 1 관계 |  `OneToOneField()`  |
+
+
+
+*****
+
+[TOC]
+
+*****
 
 
 
