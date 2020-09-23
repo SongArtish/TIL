@@ -1,4 +1,4 @@
-# Model Relationship
+# DB Relationship (1 : N)
 
 2020.09.21
 
@@ -144,6 +144,8 @@ In [6]: comments.first().content
 # 리스트 형식으로 접근
 In [7]: comments[0].content
 ```
+
+- :small_red_triangle:주의!  DTL에서는 all 뒤의 괄호(`all()`)를 생략한다.
 
 
 
