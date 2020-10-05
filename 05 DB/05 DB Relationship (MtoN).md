@@ -194,7 +194,7 @@ def like(request, article_pk):
     return redirect('accounts:login')
 ```
 
-- 전체에서 1개를 찾는 경우 `.exists()`가 더 빠르게 동작한다.
+- 전체에서 1개를 찾는 경우 **`.exists()`**가 더 빠르게 동작한다. :star:
 - 좋아요가 하나도 존재하지 않는 경우 `.get()`은 오류를 발생한다. `.filter()`의 경우 QuerySet을 반환하기 떄문에 filter를 사용한다.
 
 ```python

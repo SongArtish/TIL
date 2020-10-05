@@ -126,7 +126,9 @@ $ python manage.py showmigrations
 
 **Django Shell**
 
-- 일반 파이썬 shell에서는 Django 프로젝트 환경에 접근할 수 없으며, 이를 위해서는 django shell을 위한 설치 및 세팅이 필요하다.
+> 일반 파이썬 shell에서는 Django 프로젝트 환경에 접근할 수 없으며, 이를 위해서는 django shell을 위한 설치 및 세팅이 필요하다.
+
+- 아래는 `ipython`과 `django-extensions` 설치를 위한 명령어이다.
 
 ```bash
 $ pip install ipython django-extensions
@@ -194,7 +196,7 @@ def __str__(self):
     return f'{self.pk}번 글의 제목은 {self.title}'
 ```
 
-[다음내용은 CRUD에서](./07 Django CRUD.md)
+[다음내용은 CRUD에서](04 Django CRUD.md)
 
 
 
@@ -332,4 +334,4 @@ $ python manage.py loaddata articles/articles.json
 
 
 
-*Copyright* © Song_Artish
+***Copyright* © Song_Artish**

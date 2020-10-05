@@ -117,6 +117,8 @@ def signup(request):
 login(request, user, backend=None)
 ```
 
+**url 작성**
+
 **view 함수 작성**
 
 ```python
@@ -393,6 +395,7 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('email', 'first_name', 'last_name')
 ```
 
+- get_user_model에서 `()괄호`를 빼먹지 않도록 주의한다.
 - 이를 view 함수에 적용해준다.
 
 ```python
@@ -405,7 +408,7 @@ def update(request):
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('article:index')
+            return redirect('articles:index')
     else:
         form = CustomUserChangeForm(instance=request.user)
     context = {
@@ -422,7 +425,7 @@ def update(request):
 
 ```python
 # accounts/urls.py
-path('delete', views.delete, name='delete'),
+path('delete/', views.delete, name='delete'),
 ```
 
 **view 함수 작성**
@@ -514,8 +517,4 @@ def password(request):
 
 
 
-
-
-
-
-*Copyright* © Song_Artish
+***Copyright* © Song_Artish**

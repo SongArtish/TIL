@@ -113,6 +113,7 @@ In [16]: comment = Comment(content = 'second comment', article = article)
 
 ```python
 # articles/admin.py
+from .models import Comment
 
 admin.site.register(Comment)
 ```

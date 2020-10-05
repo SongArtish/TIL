@@ -107,7 +107,7 @@ path('hello/<int: numbers/'), views.hello)
 ```python
 def index(request):
     return render(request, '<템플릿 파일명>.html')
-	# render함수를 ㅌㅇ해 
+	# render함수를 통해 템플릿으로 넘어간다.
 ```
 
 - 앱이 여러 개이며, model이 있는 경우는 다음과 같이 사용할 수도 있다.
@@ -509,4 +509,4 @@ from .models import LogEntry
 
 
 
-*Copyright* © Song_Artish
+***Copyright* © Song_Artish**

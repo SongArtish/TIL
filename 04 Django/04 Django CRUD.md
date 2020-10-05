@@ -53,7 +53,7 @@ article.save()
 
 `get()`
 
-> pk 값을 조회할 때 사용한다.
+> pk 값 등 unique한 값을 조회할 때 사용한다.
 
 - 객체가 없으면 `DoesNotExist` , 객체가 여러개면 `MultipleObjectReturned` 에러가 발생
 - 위와 같은 특징을 가지고 있기 때문에 unique 혹은 Not Null 특징을 가지고 있으면 사용할 수 있다.
@@ -193,6 +193,8 @@ urlpatterns = [
 ```
 
 `settings.py`
+
+- `BASE_DIR` 이후는 base 템플릿이 위치할 폴더를 입력한다.
 
 ```python
 # crud/settings.py
@@ -383,7 +385,7 @@ def index(request):
 **urls 설정**
 
 - variable routing → 주소를 통해 요청이 들어올 때 특정 값을 변수화 시킬 수 있다.
-- 우리는 pk 값을 변수화 시켜 사용할 것 pk는 detail 함수의 pk라는 이름의 인자로 넘어가게 된다!
+- 우리는 pk 값을 변수화 시켜 사용할 것. pk는 detail 함수의 pk라는 이름의 인자로 넘어가게 된다!
 - `index.html` 의 `<a href="/articles/{{ article.pk }}/">[글 보러가기]</a>`  부분에서 `{{ article.pk }}` 가 실제 특정 숫자(pk값)일 것이고 요청이 보내질 때 숫자로 넘어 간다.
 - 그럼 path에서 해당하는 숫자는 pk라는 변수에 저장될 것이다.
 
@@ -451,6 +453,8 @@ def detail(request, pk):
 
 **`humanize` (참고)**
 
+> A set of Django template filters useful for adding a “human touch” to data.
+>
 > https://docs.djangoproject.com/en/3.1/ref/contrib/humanize/#module-django.contrib.humanize
 
 ```django
@@ -570,4 +574,4 @@ def update(request, pk):
 
 
 
-*Copyright* © Song_Artish
+***Copyright* © Song_Artish**
