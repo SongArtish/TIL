@@ -216,7 +216,7 @@ def article_list_json_2(request):
 
 > Django REST Framework를 통해 ModelForm을 활용해서 쉽게 customize를 할 수 있다. [공식문서](https://www.django-rest-framework.org/)
 
-#### <필!참고> `djangorestframework`
+#### <참고> `djangorestframework`
 
 **pip 설치**
 
@@ -400,12 +400,6 @@ def article_detail(request, article_pk):
 
 ### CREATE
 
-**시작하기**
-
-- **`Postman`** 다운로드 및 로그인
-
-  > `Postman`은 API 개발을 위한 협업 플랫폼이다. create 버튼이 없는 상황에서 해당 로직이 제대로 동작하는지를 테스트할 수 있는 툴이다.
-
 **url 및 view함수 생성**
 
 ```python
@@ -517,7 +511,30 @@ def article_detail_update_delete(request, article_pk):
 
 - PUT 로직에서 serializer 작성시 반드시 `ArticleSerializer(instance = article, data=request.data)`를 입력한다. `instance=article`을 넣기 않고 그냥 article을 넣으면 create와 같이새로운 인스턴스가 생성되기 때문이다.
 
-### <추가> Comment 모델
+
+
+#### <참고> `Postman`
+
+> `Postman`은 API 개발을 위한 협업 플랫폼이다. create 버튼이 없는 상황에서 해당 로직이 제대로 동작하는지를 테스트할 수 있는 툴이다.
+
+- request에서 body> `x-www-form-unlencoded` 지정 후 HTTP Method에 대한 응답을 테스트할 수 있다.
+- 단, 서버가 실행되고 있어야 동작한다.
+
+
+
+#### <참고> HTTP Status Code
+
+- 200 : OK. 요청이 **성공**적으로 되었습니다. 성공의 의미는 HTTP 메서드에 따라 달라집니다.
+- 400 : 이 응답은 **잘못된 문법**으로 인하여 서버가 요청을 이해할 수 없음을 의미합니다.
+- 401 : 이 응답은 "**비인증**(unauthenticated)"을 의미합니다.
+- 403 : 클라이언트는 콘텐츠에 **접근할 권리**를 가지고 있지 않습니다.
+  - ex) POST 요청에서 csrf token을 빼먹었을 때
+- 404 : 서버는 요청받은 리소스를 **찾을 수 없습**니다.
+- 500 : 서버가 처리 방법을 모르는 상황이 발생했습니다.
+
+
+
+### 참조모델 작성하기 : Comment
 
 **모델 생성**
 
@@ -530,7 +547,7 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 ```
 
-**Serializer 생성**
+**Serializer 생성** : 참조 serializer
 
 ```python
 # articles/serializers.py
@@ -542,7 +559,10 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'content', 'article',)
+        read_only_fields = ('article',)
 ```
+
+- :white_check_mark:`read_only_field`를 추가해주어야 한다!!
 
 **url 및 view 함수 생성**
 
@@ -563,19 +583,97 @@ def create_comment(request, article_pk):
 ```
 
 - article의 값이 null이 되면 안되므로 `serializer.save(article=article)`로 저장할 때 article의 값을 지정해주어야 한다!!
-- 마지막으로 `READ_ONLY`를 추가해주어야한다. (이건 10/6 실습 시간에 설명을 듣고 노트하자.)
+
+**역참조하는 serializer**
+
+- serializer의 모델이 역참조하는 경우 다음과 같이 작성할 수 있다.
+
+```python
+# music/serializers.py
+
+# 상세 가수 정보 생성/반환
+class ArtistSerializer(serializers.ModelSerializer):
+    music_set = MusicListSerializer(
+        many=True,
+        # 직접작성하는 부분이 아니기 때문에 read_only옵션 넣기
+        read_only=True
+    )
+    music_count = serializers.IntegerField(
+        source='music_set.count',
+        read_only=True
+    )
+
+    class Meta:
+        model = Artist
+        # 사용자에게 보여주기 위한 필드
+        fields = ('id', 'name', 'music_set', 'music_count',)
+```
 
 
 
-## <참고> HTTP Status Code
 
-- 200 : OK. 요청이 **성공**적으로 되었습니다. 성공의 의미는 HTTP 메서드에 따라 달라집니다.
-- 400 : 이 응답은 **잘못된 문법**으로 인하여 서버가 요청을 이해할 수 없음을 의미합니다.
-- 401 : 이 응답은 "**비인증**(unauthenticated)"을 의미합니다.
-- 403 : 클라이언트는 콘텐츠에 **접근할 권리**를 가지고 있지 않습니다.
-  - ex) POST 요청에서 csrf token을 빼먹었을 때
-- 404 : 서버는 요청받은 리소스를 **찾을 수 없습**니다.
-- 500 : 서버가 처리 방법을 모르는 상황이 발생했습니다.
+
+## DRF 문서화 : `drf-yasg`
+
+> DRF를 정의한 API를 문서화할 수 있는 패키지.
+>
+> drf-yasg를 단순히 적용만 해도 정의한 모델, API 목록을 볼 수 있는 문서를 생성할 수 있으며, 필요에 따라 개발자가 내용을 추가하거나 수정할 수 있다. [drf-yasg Github](https://github.com/axnsan12/drf-yasg)
+
+**`djangorestframework` 다운그레이드**
+
+- `drf-yasg`는 현재의 `djangorestframework` 3.12버전을 지원하지 않으므로, 3.11 버전으로 다운그레이드를 진행한다.
+
+```bash
+$ pip uninstall djangorestframework
+$ pip install djangorestframework==3.11
+```
+
+- 이외, 현재의 과정을 진행하기 위해서 `django`, `django-seed`, `django-extensions`가 필요하다.
+
+**pip설치**
+
+```bash
+$ pip install -U drf-yasg
+```
+
+**pip 앱 등록**
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    'drf_yasg',
+]
+```
+
+**url 생성**
+
+- :white_check_mark:`redocs`, `swagger`에서 문서화된 DRF를 확인할 수 있다!
+
+```python
+# music/urls.py
+
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Snippets API",
+      default_version='v1',
+#       description="Test description",
+#       terms_of_service="https://www.google.com/policies/terms/",
+#       contact=openapi.Contact(email="contact@snippets.local"),
+#       license=openapi.License(name="BSD License"),
+#    ),
+#    public=True,
+#    permission_classes=(permissions.AllowAny,
+))
+    
+urlpatterns = [
+    path('redocs/', schema_view.with_ui('redoc'), name='api_docs'),
+    path('swagger/', schema_view.with_ui('swagger'), name='api_swagger'),
+]
+```
 
 
 
