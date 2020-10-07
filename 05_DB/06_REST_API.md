@@ -613,7 +613,7 @@ class ArtistSerializer(serializers.ModelSerializer):
 
 
 
-## DRF 문서화 : `drf-yasg`
+## <참고> DRF 문서화 : `drf-yasg`
 
 > DRF를 정의한 API를 문서화할 수 있는 패키지.
 >
