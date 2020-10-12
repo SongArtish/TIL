@@ -68,6 +68,9 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            # 아래와 같은 코드를 작성하면 회원가입 직후 바로 로그인을 하는 로직을 구현할 수 있다.
+            # user = form.save()
+            # auth_login(request, user)
             return redirect('articles:index')
     else:
         form = UserCreationForm()

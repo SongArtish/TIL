@@ -250,6 +250,8 @@ id, class, hidden, lang, style, tabindex, title
 
 - `<label>` : 서식 입력 요소의 캡션이다. for는 id와 연결되어 있어야 하며, id 값은 항상 (변수명과 같이)고유한 값이어야 한다.
 
+- :white_check_mark:`<input name="name">`에서 name을 지정하고 view 함수에서 `request.POST.get('name')`으로 입력한 데이터를 가져올 수 있다!
+
 ## <참고> 태그 정리
 
 ### 1) `<a></a>`

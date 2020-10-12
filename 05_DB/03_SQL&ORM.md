@@ -144,6 +144,8 @@ TIL
    SELECT * FROM users_user WHERE id == 101;
    ```
 
+   - `=`을 표시할 때, `==`도 동작한다.
+
 4. 해당 user 레코드 수정
 
    - ORM: `101` 번 글의 `last_name` 을 '김' 으로 수정
@@ -160,7 +162,7 @@ TIL
 
       ```sql
    -- sql
-   Update users_user
+   UPDATE users_user
    SET first_name = '철수'
    WHERE id=101;
       ```
@@ -218,7 +220,7 @@ user = User.objects.get(pk=101)
 
    ```python
    # orm
-   Users.objects.filter(age=30).values('first_name')
+   User.objects.filter(age=30).values('first_name')
    ```
 
       ```sql
@@ -462,3 +464,6 @@ User.objects.aggregate(Sum('balance'))
 
 - :white_check_mark: `annotate`도 공식문서 확인하고 사용해보기!
 
+
+
+***Copyright* © 2020 Song_Artish**

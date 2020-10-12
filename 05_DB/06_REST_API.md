@@ -562,7 +562,7 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ('article',)
 ```
 
-- :white_check_mark:`read_only_field`를 추가해주어야 한다!!
+- :white_check_mark:`read_only_fields`를 추가해주어야 한다!!
 
 **url 및 view 함수 생성**
 
@@ -677,4 +677,4 @@ urlpatterns = [
 
 
 
-***Copyright* © Song_Artish**
+***Copyright* © 2020 Song_Artish**

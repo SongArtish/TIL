@@ -154,8 +154,9 @@ followings = models.ManyToManyField(self, symmetrical=False, related_name='follo
 
 ## 3. <실습> Like 만들기
 
-**Model 생성**
+**필드 추가**
 
+- Article 모델에 필드를 추가한다.
 - 역참조 시 기존의 모델의 역참조와 충돌하므로 `related_name`도 입력한다.
 
 ```python
@@ -236,9 +237,9 @@ if article.like_users.filter(pk=request.user.pk).exists():
 <!-- index.html -->
 {% if request.user in article.like_users.all %}
 {% comment %} <input type="submit" value="❤"> {% endcomment %}
-	<button class="btn btn-ling" style="color: crimson,">❤</button>
+	<button class="btn btn-ling" style="color: crimson;">❤</button>
 {% else %}
-	<button class="btn btn-ling" style="color: crimson,">🤍</button>
+	<button class="btn btn-ling" style="color: crimson;">🤍</button>
 {% endif %}
 ```
 
@@ -259,7 +260,7 @@ if article.like_users.filter(pk=request.user.pk).exists():
 ```python
 # accounts/urls.py
 
-path('<username>', views.profile, name='profile'),
+path('<username>/', views.profile, name='profile'),
 ```
 
 **view 함수 생성**
@@ -353,7 +354,7 @@ class User(AbstractUser):
 ```python
 # accounts/urls.py
 
-    path('<int:user_pk>/follow', views.follow, name='follow'),
+path('<int:user_pk>/follow/', views.follow, name='follow'),
 ```
 
 **view 함수 생성**
@@ -449,4 +450,4 @@ def follow(request, user_pk):
 
 
 
-***Copyright* © Song_Artish**
+***Copyright* © 2020 Song_Artish**

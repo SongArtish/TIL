@@ -16,7 +16,7 @@
 
 > 유저 지정 모델을 참조하는 `AUTH_USER_MODEL` 설정 값을 변경해 기본 유저 모델을 재정의(override) 할 수 있다. ( [Customizing authentication in Django](https://docs.djangoproject.com/en/3.1/topics/auth/customizing/#custom-users-and-the-built-in-auth-forms))
 >
-> - **단, 프로젝트의 첫 migrate를 실행하기 전에 완료해야 한다.**
+> - **단, 프로젝트의 첫 migrate를 실행하기 전에 완료해야 한다.** :star:
 
 ### `AUTH_USER_MODEL`
 
@@ -101,9 +101,9 @@ admin.site.register(User, UserAdmin)
 
 ### 2.2 UserCreationFrom 커스텀
 
-- 활성화된 user가 auth.User에서 account.User에서 변경되었기 때문에 account.User를 사용하는 모델폼을 다시 작성해야 한다.
+- :white_check_mark: 활성화된 user가 auth.User에서 account.User에서 변경되었기 때문에 account.User를 사용하는 모델폼을 다시 작성해야 한다.
 - 기존의 `UseCreationForm`을 상속하고, Meta도 기존 `UserCreationForm`의 `Meta`를 상속받는다.
-- ㄱ리고 meta의 model만 활성화된 user mode(`get_user_model`)로 변경해주면 된다.
+- 그리고 meta의 model만 활성화된 `get_user_model`로 변경해주면 된다.
 
 ```python
 # accounts/forms.py
@@ -466,4 +466,4 @@ def comments_delete(request, article_pk, comment_pk):
 
 
 
-***Copyright* © Song_Artish**
+***Copyright* © 2020 Song_Artish**

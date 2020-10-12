@@ -210,6 +210,12 @@ sqlite> .mode column
 
 ## 3. SQLite 테이블
 
+|   명령어    |       기능       |          사용법           |
+| :---------: | :--------------: | :-----------------------: |
+|   CREATE    |   테이블 생성    |    CREATE TABLE _ ();     |
+| ALTER TABLE | 테이블 이름 수정 | ALTER TABEL _ RENAME TO _ |
+|    DROP     |   테이블 삭제    |       DROP TABLE _        |
+
 
 
 ### Table 생성
@@ -670,4 +676,4 @@ sqlite> ALTER TABLE news
 
 
 
-*Copyright* © Song_Artish
+***Copyright* © 2020 Song_Artish**
