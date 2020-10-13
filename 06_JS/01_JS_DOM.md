@@ -20,11 +20,11 @@
 
 **브라우저에서 할 수 있는 일**
 
-|              작업               |                       설명                        |
-| :-----------------------------: | :-----------------------------------------------: |
-|      **[DOM 조작](##DOM)**      |                  문서(HTML) 조작                  |
-|          **BOM 조작**           | navigator, screen, location, frames, history, XHR |
-| **JavaScript Core(ECMAScript)** |     자료 구조(Object, Array), 조건 표현, 순회     |
+|                        작업                         |                       설명                        |
+| :-------------------------------------------------: | :-----------------------------------------------: |
+|              **[DOM 조작](##1. DOM)**               |                  문서(HTML) 조작                  |
+|                    **BOM 조작**                     | navigator, screen, location, frames, history, XHR |
+| **JavaScript Core([ECMAScript](02_ECMAScript.md))** |     자료 구조(Object, Array), 조건 표현, 순회     |
 
 
 
@@ -410,7 +410,6 @@ myButton.addEventListener('click', alertMessage)
 
 - 여기서 `#myButton`은 id가 `myButton`인 태그를 가져온 것이다.
 
-
 **입력 값 가져오기 : `keydown`**
 
 - :white_check_mark:`event.target.value`로 입력 값을 받아 올 수 있다!
@@ -567,16 +566,16 @@ li.addEventListener('click', function (event) {
           event.target.classList.toggle('done')
         })
 
-        const deleteButton = document.createElement('button')
-        deleteButton.innerText = 'X'
-        deleteButton.style.marginLeft = '10px'
-        li.appendChild(deleteButton)
+const deleteButton = document.createElement('button')
+deleteButton.innerText = 'X'
+deleteButton.style.marginLeft = '10px'
+li.appendChild(deleteButton)
 
-        deleteButton.addEventListener('click', function () {
-          li.remove()            
-        }
+deleteButton.addEventListener('click', function () {
+    li.remove()
+})
 ```
 
-
+- 2번째 줄의 `event.target` 대신에 `li` 혹은 `this`를 사용할 수도 있다.
 
 ***Copyright* © 2020 Song_Artish**
