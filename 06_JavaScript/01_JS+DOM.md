@@ -2,6 +2,8 @@
 
 2020.10.12
 
+:star: **학습목표 : 자바스크립트를 통한 DOM 조작**:star:
+
 ---
 
 [TOC]
@@ -268,84 +270,22 @@ console.log(window)
 
 ## 3. 자바스크립트 문법
 
-### 3.1 변수 정의
-
-```javascript
-const myName = 'ssafy 4th'
-```
-
-### 3.2 조건문
-
-```javascript
-if (myName === 'ssafy 4th') {
-    console.log('ssafy 4th님 환영합니다.')
-} else if (myName === 'ssafy 3th') {
-    console.log('ssafy 3th님 환영합니다.')
-} else {
-    console.log('환영합니다.')
-}
-```
-
-- 비교하는 두 대상이 다를 경우 `!==`라는 기호를 사용한다.
-
-### 3.3 반복문
-
-```javascript
-for (let i = 0; i < 6; i++) {
-    console.log(i)
-}
-```
-
-### 3.4 함수 선언식
-
-```javascript
-// 함수 선언식
-function add (num1, num2) {
-    // console.log(num1 + num2)
-    return num1 + num2
-}
-```
-
-### 3.5 함수 표현식
-
-- 함수를 특정 변수에 정의 시킬 수도 있다.
-
-```javascript
-// 함수 표현식
-const sub = function (num1, num2) {
-    // console.log(num1 - num2)
-    return num1 - num2
-}
-```
-
-### 3.6 arrow function
-
-```javascript
-// arrow function
-const multi = (num1, num2) => {
-    return num1 * num2
-}
-```
-
-### 3.7 함수 호출
-
-```javascript
-const result1 = add(2, 7)
-const result2 = sub(7, 2)
-const result3 = multi(7, 2)
-
-console.log(result1, result2, result3)
-```
+> 해당 내용 삭제. 자세한 것은 [ECMAScript](02_ECMAScript.md) 참고
 
 
 
 ## 4. EventListener
 
 > **"특정 이벤트가 발생하면, 할 일을 등록하자"**
-> **`EventTarget.addEventListener(type, listener)`**
 >
-> - type : 특정 이벤트가 발생 인식
-> - listener : 등록할 할 일 (함수) - 매개변수 `() 괄호`를 넣지 않아도 된다!
+> ```javascript
+> EventTarget.addEventListener(type, listener)
+> ```
+>
+> 1. EventTarget : 이벤트 감지를 위한 요소
+> 2. addEventListener : EventTarget에 이벤트를 등록할 때 사용하는 이벤트 핸들러
+> 3. type : 이벤트 종류
+> 4. listener : (콜백 함수) 이벤트가 발생하면 실행되는 함수 - 매개변수 `() 괄호`를 넣지 않아도 된다!
 >
 > [DOM MDN 문서](https://developer.mozilla.org/ko/docs/Web/Events)
 
@@ -577,5 +517,7 @@ deleteButton.addEventListener('click', function () {
 ```
 
 - 2번째 줄의 `event.target` 대신에 `li` 혹은 `this`를 사용할 수도 있다.
+
+
 
 ***Copyright* © 2020 Song_Artish**

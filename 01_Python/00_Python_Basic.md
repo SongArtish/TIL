@@ -1,6 +1,6 @@
 # Python 기초
 
-
+> 파이썬 PEP8 스타일 가이드를 따른다.
 
 [TOC]
 
@@ -441,4 +441,4 @@ while cnt < 5:
 
 ![](https://user-images.githubusercontent.com/9452521/87640197-55a7f280-c781-11ea-9cff-19c022ce704a.png)
 
-*Copyright* © Song_Artish
+***Copyright* © 2020 Song_Artish**

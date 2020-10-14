@@ -4,11 +4,29 @@
 
 > 자바스크립트 표준화를 위해 만들어졌으며, 액션스크립트나 J스크립트 등 다른 구현체도 포함하고 있다.
 
+:star: **학습목표 : 표준화된 자바스크립트 문법 학습** :star:
+
 ---
 
 [TOC]
 
 ---
+
+
+
+**Coding Style Guide**
+
+> 다음과 같이 자바스크립트에서 스타일 가이드가 있다.  [공식문서](https://standardjs.com/rules-kokr.html)
+>
+> - 들여쓰기시 **2칸 공백사용**을 사용한다.
+>
+> - 함수 선언 괄호 앞에 공백을 추가한다.
+>
+>   ```javascript
+>   function name (arg) { ... }
+>   ```
+>
+> - 항상 `==` 대신 `===`을 사용한다. (불일치는 `!==`로 표현한다.)
 
 
 
@@ -195,7 +213,7 @@ console.log(x)
 
 ### 1.3 Hoisting
 
-> `var`로 선언된 변수가 선언 이전에 참조될 수 있는 현상
+> `var`로 선언된 변수가 선언 이전에 참조될 수 있는 현상 (끌어올리는 현상)
 
 - hoisting은 우리가 활용하는 기술이 아니라 피해야 하는 상황이다.
 
@@ -311,21 +329,25 @@ false
 
 #### Empyty Value
 
-- 값이 존재하지 않음을 나타내는 방식은 2가지가 있다.
+> 값이 존재하지 않음을 나타내는 방식은 2가지가 있다.
 
-- `undefined` - 값을 할당하지 않았을 때 JS가 자동으로 할당해주는 값
+**`undefined`**
 
-  ```javascript
-  let name
-  console.log(name)
-  ```
+- 값을 할당하지 않았을 때 JS가 자동으로 할당해주는 값
 
-- `null` = 값이 없음을 나타내기 위해 사용한다.
+```javascript
+let name
+console.log(name)
+```
 
-  ```javascript
-  let name = null
-  consol.log(name)
-  ```
+**`null`**
+
+- 값이 없음을 나타내기 위해 사용한다.
+
+```javascript
+let name = null
+consol.log(name)
+```
 
 ```javascript
 typeof null
@@ -938,7 +960,7 @@ console.log(typeof parseData)	// objects
 
 
 
-### 5.4 Array Helper Method
+### 5.4 Array Helper Method :star:
 
 > helper라는 일종의 라이브러리로 배열을 조작한다.
 
@@ -1120,7 +1142,7 @@ console.log(filteredUsers)
 
 #### reduce
 
-- 배열 내의 숫자 총합, 평균 계산을 하나의 값으로 줄이는 동작
+- 배열 내의 숫자를 총합, 평균 등의 하나의 값으로 줄이는 동작
 
 ```javascript
 arr.reduce(callback(acc, element, index.array), initialValue)
@@ -1290,6 +1312,14 @@ const users = [
 const hasSubmitted = users.every(element => element.submitted === true)
 console.log(hasSubmitted)
 ```
+
+
+
+## <참고> ASI
+
+> Automatic Semicolon Insertion
+>
+> 원래 자바스크립트의 문장이 끝나는 지점에 `세미콜론(;)`을 찍어줘야하지만, 자동으로 세미콜론을 찍어주는 기능이다.
 
 
 
