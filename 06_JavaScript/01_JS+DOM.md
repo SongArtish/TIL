@@ -377,7 +377,7 @@ changeColorInput.addEventListener('keydown', function () {
 
 **submit의 기본 동작 막기**
 
-- :white_check_mark:`.preventDefault()`로 기본 동작을 막을 수 있다. 자세한 건 수요일 수업에서 다룬다.
+- :white_check_mark: **`.preventDefault()`**로 기본 동작을 막을 수 있다. 자세한 건 수요일 수업에서 다룬다.
 
 ```javascript
 const form = document.querySelector('#myForm')

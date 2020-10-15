@@ -120,6 +120,9 @@ setTimeout(function ssafy () {
 console.log('Bye')
 ```
 
+- 첫 번째와 3번째 함수의 경우 특별한 작업 없이 실해 후 종료된다.
+- setTimeout 함수의 경우 Web API를 통해 3초를 카운트한다. 그 후, setTimeout의 callback 함수가 Task Queue로 이동한다. Event Loop가 Call Stack이 비어있음을 확인한 후, Task Queue에 있던 callBack을 Call Stack으로 옮겨 작업을 마무리한다.
+
 
 
 ### Callback Function
@@ -153,6 +156,21 @@ function questionToProfessor ('질문', solveQuestion) {
 }
 ```
 
+- 예시
+
+```javascript
+const promise = new Promise(function (resolve) {
+    setTimeout(function () {
+        resolve('I am from setTimeout')
+    }, 1000)
+})
+promise.then(function (message) {
+    console.log('Hello SSAFY!')
+    console.log(message)
+    console.log('Bye SSAFY!')
+})
+```
+
 
 
 ## 통신객체 : XHR
@@ -184,7 +202,7 @@ xhr.onload = function () {
 
 
 
-## 통신객체 : Axios :star:
+## 통신객체 : axios :star:
 
 > **Promise** based HTTP client for the browser and node.js
 
@@ -193,7 +211,7 @@ xhr.onload = function () {
 
 **CDN 가져오기**
 
-- [Axios Github](https://github.com/axios/axios) 에서 CDN을 가져와서 붙여준다.
+- [axios Github](https://github.com/axios/axios) 에서 CDN을 가져와서 붙여준다.
 - 아래 2개의 CDN은 배포 회사만 다를 뿐이므로, 2개 중 하나만 붙여주면 된다.
 
 ```html
@@ -301,7 +319,7 @@ getTodo()
 ```
 
 - 클래스 선택자로 form태그를 가져온다.
-- `querySelectorAll`로 클래스 선택자를 가져온다. (`querySelector`는 작동하지 않는다. form 태그 내 여러 요소가 있어서 그런건가?) (질문)
+- `querySelectorAll`로 클래스 선택자를 가져온다. (for문을 돌면서 form이 여러개이기 때문이다!)
 
 ```javascript
 const forms = document.querySelectorAll('.like-form')
@@ -309,22 +327,26 @@ const forms = document.querySelectorAll('.like-form')
 
 **4. Event Listener 생성**
 
+> 좋아요 버튼을 클릭하면, ~ 한다.
+
 - EventListener를 만들어준다.
 - form 태그의 기본 submit 기능을 `.preventDefault()`로 막아준다.
 
 ```javascript
+// 모든 form 말고 각각의 요소들에게 클릭시 이벤트를 만들어줘야한다.
 forms.forEach(function (form) {
+    // form은 forms에서 가져오는 각각의 요소
     form.addEventListener('submit', function (event) {
         // 기본으로 잡혀있는 event를 막아준다.
         event.preventDefault()
-        console.log(event)
+        //console.log(event)
     })
 })
 ```
 
 **5. 통신객체 axios 생성**
 
-- axios가 POST요청을 좋아요 url에 요청을 보내도록 다음과 같은 형태의 코드를 작성한다.
+- axios가 **POST요청**을 좋아요 url에 요청을 보내도록 다음과 같은 형태의 코드를 작성한다.
 
 ```javascript
 forms.forEach(function (form) {
@@ -335,22 +357,41 @@ forms.forEach(function (form) {
       })
 ```
 
-**6. [데이터 속성](https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%86%8D%EC%84%B1_%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)을 사용하여 데이터 받기**
+- 다음과 같이 코드를 작성할 수도 있다.
 
-- 데이터 속성을 사용하여 HTML에 저장된 데이터를 `<script>` 태그 내로 전달받는다.
+```javascript
+// 기존
+axios.post('http://127.0.0.1:8000/articles/???/like/')
+// 다른 방법
+axios({
+    method : 'post',
+    url : 'http://127.0.0.1:8000/articles/???/like/',
+})
+```
+
+- `???` 부분은 나중에 template literal로 채워줄 부분을 의미한다.
+
+**6. `article.pk` 데이터 받기**
+
+> [데이터 속성](https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%86%8D%EC%84%B1_%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)을 사용하여 HTML에 저장된 데이터를 `<script>` 태그 내로 전달받는다.
+
 - 먼저 `<form>` 태그에서 데이터 속성을 만들어준다.
+- `data-` 뒤에 만들어줄 데이터 이름을 `- (하이픈)`을 연결해서 만들어준다. (pk 대신 id라는 이름을 쓰는 것이 좋다.)
 
 ```html
 <form class="d-inline like-form" data-article-id="{{ article.pk }}">
 ```
 
 - 넘어온 정보가 event에 저장되어 있으므로, event에서 정보를 가져온다.
+- `data-` 이후의 이름을 `camelCase` (`articleId`)로 만들어주는 것을 확인할 수 있다.
 
 ```javascript
 const articleId = event.target.dataset.articleId
-```
 
-- data 이후의 이름을 camelCase로 만들어주는 것을 확인할 수 있다.
+// 다음의 코드도 가능하다.
+// 정의하는 변수명의 가져오는 데이터의 키값과 같을 때 생략이 가능하다.
+// const { articleId } = event.target.dataset
+```
 
 **7. templates literal로 데이터 입력**
 
@@ -362,14 +403,20 @@ axios.post(`http://127.0.0.1:8000/articles/${articleId}/like/`)
 
 **8. CSRF 토큰 처리**
 
-- 다음 코드를 EventListener 내에 붙여준다. (`사이트에서 검색 후 복붙한 코드`)
+- 다음 코드를 붙여준다. ([사이트](https://docs.djangoproject.com/en/3.1/ref/csrf/)에서 검색 후 복붙한 코드)
 
   ```java
   const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
   // 속성 값의 value(CSRF Token)을 가져온다.
   ```
 
-- `header` 정보가 3번째 위치 이므로 `{}`을 빼먹지 말고 중간에 넣어서 다음과 같은 코드를 작성한다.
+- 그리고 headers 정보를 가져와야하는데, `X-CSRFToken`에 넣어야 한다는 규칙이 있으므로 document를 참조한다.
+
+```javascript
+headers : {'X-CSRFToken' : csrftoken}
+```
+
+- `headers` 정보가 3번째 위치 이므로 `{}`을 빼먹지 말고 중간에 넣어서 다음과 같은 코드를 작성한다.
 
   ```javascript
   axios.post(`http://127.0.0.1:8000/articles/${articleId}/like/`, {}, {
@@ -377,11 +424,22 @@ axios.post(`http://127.0.0.1:8000/articles/${articleId}/like/`)
           'X-CSRFToken' : csrftoken
       }})
   ```
+  
+  ```javascript
+  // 다음과 같이 작성할 수도 있다.
+  axios({
+      method : 'post',
+      url : `http://127.0.0.1:8000/articles/${articleId}/like/`,
+      headers : {'X-CSRFToken' : csrftoken}
+  })
+  ```
 
-**9. view 함수 작성**
+**9. DOM 조작 (view 함수 작성)**
 
-- `liked`를 `True` or `False 값으로 넘겨준다.
-- return 값은 `redirect`가 아닌 `JsonResponse`로 응답값을 작성한다.
+> DOM을 통해 javascript에 대한 요청에 JSON형태의 응답을 하도록 view 함수의 코드를 수정해준다.
+
+- `liked`를 `True` or `False 값을 통해서 boolean으로 DOM을 조작한다.
+- return 값은 `redirect`가 아닌 `JsonResponse`로 응답값을 수정한다.
 
 ```python
 # articles/views.py
@@ -421,14 +479,28 @@ axios.post(`http://127.0.0.1:8000/articles/${articleId}/like/`, {}, {
         'X-CSRFToken' : csrftoken
     }})
     .then(function (res) {
+    // reponse(res)가 가지고 있는 data에서 데이터를 가져온다.
     const count = res.data.count
     const liked = res.data.liked
     })
 ```
 
+- 위의 코드를 다음과 같이 간단하게 작성할 수도 있다.
+
+```javascript
+// 1
+const { liked } = response.data
+const { count } = response.data
+
+// 2
+const { liked, count } = response.data
+```
+
+
+
 **11. 버튼 속성 가져오기**
 
-- `<button>` > `<i>` 태그에 id값을 넣어준다.
+- 버튼 속성을 가져오기 위해 `<button>` > `<i>` 태그에 id값을 넣어준다. (각각의 분기의 button > i 태그에 넣어준다.)
 
 ```html
 <button class="btn btn-link">
@@ -438,22 +510,42 @@ axios.post(`http://127.0.0.1:8000/articles/${articleId}/like/`, {}, {
 
 - button의 i  태그를 id선택자로 가져와서 liked에 따라서 스타일을 분기해준다.
 
-```javascript
-// liked True/False에 따라서 색상 style 넣기
+  ```javascript
+  // liked True/False에 따라서 색상 style 넣기
+  
+  const likeIconColor = document.querySelector(`#like-${articleId}`)
+  
+  if (liked) {
+      likeIconColor.style.color = 'crimson'
+  } else {
+      likeIconColor.style.color = 'black'
+  }
+  ```
 
-const likeIconColor = document.querySelector(`#like-${articleId}`)
+  - 위의 코드를 다음과 같이 **삼항연산자**를 이용하여 간단하게 코드를 작성할 수도 있다.
 
-if (liked) {
-    likeIconColor.style.color = 'crimson'
-} else {
-    likeIconColor.style.color = 'black'
-}
-```
+  ```javascript
+  document.querySelector(`#like-${articleId}`).style.color = liked ? 'crimson' : 'black'
+  ```
+
+  - 가져온 태그의 class 속성을 변경할 때는 다음과 같이 `replace` 메서드를 사용한다.
+
+  ```javascript
+  const button // ...
+  button.classList.replace('btn-secondary', 'btn-primary')
+  ```
+  
+  - :white_check_mark: `classList.toggle()` : 클래스값이 있는지 체크하고 없으면 더하고 있으면 제거한다.
+  
+  ```javascript
+  button.classList.toggle('btn-primary')
+  button.classList.toggle('btn-secondary')
+  ```
 
 **12. 좋아요 인원 표시 만들기**
 
 - `좋아요 인원 표시` 문구를 `<p>`태그의 `<span>` 태그 안에 넣은 후, `<script>` 태그에서 가져오기 위해 id 값을 넣어준다.
-- 왜 굳이 `p > span` 태그에 넣는 것일까?? (질문)
+- 왜 굳이 `p > span` 태그에 넣는 것일까?? (질문 - `<span>` 없이 `<p>`에만 작성해도 상관은 없다.)
 
 ```html
 <p>
@@ -463,9 +555,12 @@ if (liked) {
 </p>
 ```
 
-- id 선택자로 가져와서 template literal로 가져와서 반응하도록 작성한다.
+- id 선택자로 가져와서 template literal로 반응하도록 작성한다.
+- :white_check_mark: reponse.data로부터 데이터를 받아왔는지 확인한다!!
 
 ```javascript
+// const { is_followed, followers, followings } = response.data
+
 const likeCount = document.querySelector(`#like-count-${articleId}`)
 
 likeCount.innerText = `${count} 명이 이 글을 좋아합니다.`
@@ -513,7 +608,8 @@ likeCount.innerText = `${count} 명이 이 글을 좋아합니다.`
   {% endfor %}
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
+    
+<script>
       const forms = document.querySelectorAll('.like-form')
 
       forms.forEach(function (form) {
