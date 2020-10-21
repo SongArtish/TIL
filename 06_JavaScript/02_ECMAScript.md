@@ -141,7 +141,7 @@ console.log(x) */
 
 ```javascript
 const foo = {}
-foor.bar = 4
+foo.bar = 4
 console.log(foo)
 console.log(foo.bar)
 ```
@@ -263,6 +263,8 @@ const g = NaN
 console.log(a, b, c, d, e, f, g)
 ```
 
+- `NaN` (Not a Number)은 연산 과정에서 잘못된 입력을 받았음을 나타내는 기호이다.
+
 
 
 #### String
@@ -307,7 +309,8 @@ const sayHello = `${name}이 인사합니다.`
 console.log(sayHello)
 ```
 
-- escape sequence를 <u>사용 할 수 없다</u>.
+- escape sequence를 <u>사용 할 수 없다</u>. (?)
+  - 실제로 Chrome console창에 사용해보면 되는데?
 
 ```javascript
 const nextSentence = `안녕
@@ -974,7 +977,7 @@ console.log(typeof parseData)	// objects
 arr.forEach(callback(element, index, array))
 ```
 
-- 예시
+예시
 
 ```javascript
 const colors = ['red', 'blue', 'white']

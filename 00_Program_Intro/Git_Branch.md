@@ -1,6 +1,6 @@
 # Git Branch
 
-> branch는 나무가지라는 의미로 코드의 분기를 의미한다.
+> branch는 나무가지라는 의미로 코드의 분기를 의미한다. 효율적인 협업과 분업을 위한 도구로써 사용한다.
 
 ---
 
@@ -92,6 +92,16 @@ $ git log --oneline --all --graph
 ```bash
 $ git merge <branch name>
 ```
+
+
+
+### <참고> 이상적인 branch name
+
+- master : 제품으로 출시될 수 있는 branch
+- develop : 다음 출시 버전을 개발하는 branch
+- feature : 기능을 개발하는 branch
+- release : 이번 출시 버전을 준비하는 branch
+- hotfix : 출시 버전에서 발생한 버그를 수정하는 branch
 
 
 
