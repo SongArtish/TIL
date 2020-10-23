@@ -1,4 +1,4 @@
-# Start
+# Computational Thinking
 
 2020.10.21
 
@@ -58,7 +58,7 @@
 
 ### log
 
-![log](img/log.jpg)
+![log](img/log.png)
 
 
 
@@ -68,7 +68,11 @@
 
 ![순열과 조합](img/combination_and_permutation.png)
 
+
+
 ## 4. 기초 수식
+
+시간복잡도
 
 
 
