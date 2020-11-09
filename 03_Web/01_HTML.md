@@ -315,6 +315,14 @@ id, class, hidden, lang, style, tabindex, title
 > 1. ` <div>는 박스 형태로 영역이 설정되며, `<span>`은 줄 단위로 영역이 설정되기 때문에 배경색의 길이가 다르다. (영역이 다르다)
 > 2. `<div>`는 줄 바꿈이 되지만, `<span>` 태그는 옆으로 붙는다. 결국 영역을 지정하는 방식의 차이가 있다.
 
+- :heavy_check_mark:**TIP** `#app` + `Enter`을 입력하면 다음과 같이 id가 app인 `<div>` 태그가 자동완성되어 생성된다.
+
+```html
+  <div id="app"></div>
+```
+
+
+
 ### 5) `<hr>`
 
 > 가로줄을 넣는 태그로 `<hr style="border: 선종류 선굵기 선색상">`으로 속성을 지정한다.
