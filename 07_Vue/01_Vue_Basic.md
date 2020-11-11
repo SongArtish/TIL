@@ -94,7 +94,7 @@ const app = new Vue({
 
 #### 1.2 Data Binding
 
-- 아래와 같이 데이터들을 묶어줄 수 있다.
+- `el`을 통해서 html의 데이터를 Vue 인스턴스로 가져올 수 있다.
 
 ```javascript
 const app = new Vue({
@@ -735,7 +735,6 @@ export default {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))  // setItem(key, value)
       }
     }
-
 
 
     const app = new Vue ({
