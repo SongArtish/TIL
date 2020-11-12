@@ -114,8 +114,8 @@ $ npm -v
 ### **`package-lock.json`**
 
 >`node_modules` 에 설치되는 모듈과 관련해서 모든 의존성을 알아서 설정한다. (패키지 버전을 고정) [문서](https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json) 참조
->
->- `npm install` 명렁어에 생성된다.
+
+- `npm install` 명렁어에 생성된다.
 
 ### **`babel.config.js`**
 
@@ -137,7 +137,8 @@ $ npm -v
 
 > Webpack이 빌드를 시작할 때 가장 먼저 불러오는 진입점으로, 실제 단일 파일에서 DOM과 Data를 연결 했던 것과 동일한 작업이 이루어지는 파일
 >
-> - Vue 전역에서 활용 할 모듈을 등록할 수 있는 파일
+
+- Vue 전역에서 활용 할 모듈을 등록할 수 있는 파일
 
 
 
@@ -822,6 +823,7 @@ selectVideo: function (video) {
 > `VideoDetail.vue` 파일에 `VideoListItem`으로부터 받은 `selectedVideo`파일을 prop한다.
 
 - 보내준다. (`App -> VideoDetail`)
+  - `App.vue`의 `selectedVideo`를 `VideoDetail.vue`에 `video`라는 이름으로 보내준다.
 
 ```vue
 <!-- App.vue -->
@@ -859,7 +861,7 @@ props: {
 - `VideoDetail.vue`의 `<template>` 태그에는 다음과 같이 코드를 작성하면 된다.
 
 ```vue
-<!-- VideoDetail.vue -->
+<!-- VideoDetail.vue --> <!-- 완성코드 -->
 <div v-if="video">
     <iframe :src="videoURI" frameborder="0"></iframe>
     <h1>{{ video.snippet.title | unEscape }}</h1>
@@ -891,8 +893,8 @@ selectedVideo: null,	// 보내줄 selectedVideo는 null 값을 입력해준다.
 computed: {
     videoURI: function () {
         const { videoId } = this.video.id
-        return `https://www.youtube.com/embed/${videoId}`
-        // backtick
+        // const videoId = this.video.id.videId
+        return `https://www.youtube.com/embed/${videoId}`	 // backtick
     }
 },
 ```
@@ -903,9 +905,10 @@ computed: {
 
 ##### (3) filter
 
-- 위에서와 같이 filter로 title을 처리해준다.
+- 위에서와 같이 `lodash`를 불러온 후, filter로 title을 처리해준다.
 
 ```javascript
+import _ from 'lodash'
 filters: {
     unEscape: function (text) {
         return _.unescape(text)
