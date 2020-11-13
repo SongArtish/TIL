@@ -514,6 +514,17 @@ methods: {
 
 ![](img/youtube_project_structrue.png)
 
+### :arrow_forward: 시작하기
+
+> Youtube API 키를 발급받는다.
+
+- [Google API Console](https://console.developers.google.com/)에 접속하여 로그인
+- `YouTube Data API v3` 검색 후 다운로드
+- 왼쪽 상단 `Google APIs` 로고 옆에 프로젝트를 생성한다.
+- 메뉴 > API 및 서비스 > 사용자 인증 정보 > API 발급
+- 발급된 API 키의 `이름` 클릭
+- 세부사항에서 `선택한 API`에서 `Youtube Data API v3` 선택 후 저장
+
 ### :arrow_forward: 컴포넌트 생성
 
 - 구조에 따라 컴포넌트를 생성하고 `App.vue`에서 하위 컴포넌트들을 등록해준다. (가져오기, 등록하기, 보여주기!!!)
