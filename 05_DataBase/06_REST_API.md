@@ -520,6 +520,13 @@ def article_detail_update_delete(request, article_pk):
 - request에서 body> `x-www-form-unlencoded` 지정 후 HTTP Method에 대한 응답을 테스트할 수 있다.
 - 단, 서버가 실행되고 있어야 동작한다.
 
+**사용방법**
+
+- `Collections`를 만들고 오른쪽 창에서 `+` 버튼을 누른 후 요청을 보낼 url을 입력한다.
+- 요청 방식(GET, POST 등)을 선택하고 `send` 버튼을 클릭한다.
+- `Ctrl` + `Enter`를 누르면 서버를 실행할 수 있다.
+- 데이터가 필요하다면 `body > form-data`에서 필요한 데이터 필드명을 KEY 값, 데이터값을 VALUE 값에 입력한 후 `send`한다.
+
 
 
 #### <참고> HTTP Status Code

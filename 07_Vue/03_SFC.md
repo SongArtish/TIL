@@ -160,6 +160,12 @@ $ npm install -g @vue/cli
 $ npm install
 ```
 
+- 혹은 다음의 명령어도 사용할 수 있다.
+
+```bash
+$ npm i
+```
+
 **프로젝트 생성**
 
 ```bash
