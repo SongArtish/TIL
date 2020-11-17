@@ -24,6 +24,35 @@
 
 - VS Code에서 `Django` extension을 설치한다.
   `Ctrl`+`Shift`+`P` > `Preference: Open Settings(JSON)`에 코드를 붙여준다. (`files.associations`, `emmet`)
+  
+  - 넣어주는 위치가 중요하다!
+  
+  ```json
+  // settings.json
+  
+  {
+      "editor.insertSpaces": true,
+      "editor.tabSize": 2,
+      "[python]" : {
+          "editor.tabSize": 4
+      },
+  
+      "emmet.includeLanguages": {"django-html": "html"},	//
+      
+      "files.associations": {
+          "**/*.html": "html",
+          "**/templates/**/*.html": "django-html",
+          "**/templates/**/*": "django-txt",
+          "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+      },	//
+  
+      "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "files.autoSave": "afterDelay",
+      "workbench.iconTheme": "eq-material-theme-icons-darker"
+  }
+  ```
+  
+  
 
 **설치**
 
