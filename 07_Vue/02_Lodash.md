@@ -22,6 +22,20 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
 ```
 
+- :white_check_mark: `node` 패키지를 사용할 때는 CDN 사용을 자제한다!!
+- `node` 패키지 사용시에는 설치한다.
+
+```bash
+$ npm install lodash
+```
+
+- 그리고 다음과 같이 가져온다.
+
+```javascript
+// vue파일
+import _ from 'lodash'
+```
+
 
 
 ## 기초 문법
@@ -89,7 +103,7 @@ console.log(nums3) // [1, 3, 5]
 
 
 
-### 4. random
+### 4. random	
 
 ```javascript
 console.log('-----------------3-2. random---------------')
@@ -201,3 +215,4 @@ console.log(sortedResult)
 
 
 ***Copyright* © 2020 Song_Artish**
+

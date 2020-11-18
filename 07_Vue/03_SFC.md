@@ -430,7 +430,7 @@ import Home from '../views/Home.vue'
 - 예시
 
 ```vue
-<Parent :appData="appData"/>
+<Child :appData="appData"/>
 ```
 
 #### 3.1.2 받아준다
@@ -666,7 +666,7 @@ onSearch: function (text) {
         }
       }).then (res=>
       // console.log(res.data.items)
-      this.videos = res.data.items)
+      this.videos = res.data.items
       .catch(err => console.log(err))
     }
 ```

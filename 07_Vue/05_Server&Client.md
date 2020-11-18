@@ -317,7 +317,6 @@ JWT_AUTH = {
 
    
 
-
 **가상환경 생성**
 
 > 필요에 따라 가상환경을 생성하여 프로젝트를 진행한다.
@@ -774,7 +773,7 @@ $ npm install axios
 // TodoList.vue
 name: 'TodoList',
   data: function () {
-    return {
+    rturn {
       todos: [],
     }
   },
@@ -818,7 +817,7 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 - :white_check_mark: url 마지막에 `/` (슬래시)를 꼭 넣어줄 수 있도록 주의한다 :exclamation::exclamation:
 - 아래와 같이 보안 처리 때문에 오류가 발생하는 것을 확인할 수 있다.
 
-![XMLHttpRequest Error](05_Server&Client.assets/XMLHttpRequest_Error.jpg)
+![XMLHttpRequest Error](img/XMLHttpRequest_Error.jpg)
 
 
 
@@ -1646,6 +1645,10 @@ export default {
 ```
 
 
+
+:exclamation: bootstrap
+
+`index.html`에 CDN을 넣어준다.
 
 
 
