@@ -29,4 +29,26 @@
 
 
 
+## 기존 사용자 Gitlab 정보 변경하기
+
+- 기존 사용자 정보를 bash 창에서 확인해본다.
+
+```bash
+$ git config --global --list
+```
+
+- 새로 입력할 이름을 입력한다.
+
+```bash
+$ git config --global user.name <사용자명>
+```
+
+- 그리고 `gitlab 아이디`를 이메일로 등록한다.
+
+```bash
+$ git config --global user.email <gitlab아이디>
+```
+
+
+
 ***Copyright* © Song_Artish**

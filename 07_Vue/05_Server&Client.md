@@ -773,7 +773,7 @@ $ npm install axios
 // TodoList.vue
 name: 'TodoList',
   data: function () {
-    rturn {
+    return {
       todos: [],
     }
   },
