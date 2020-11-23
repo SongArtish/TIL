@@ -273,8 +273,6 @@ JWT_AUTH = {
 
 > axios 요청을 보낼 때 `headers`에 담아서 요청을 보낸다.
 
-# 
-
 # <실습> TodoList 만들기
 
 ---
@@ -669,7 +667,9 @@ const routes = [
 ]
 ```
 
-# !!!!!!!!!!!!여기서부터 :star::star::star::star::star:
+
+
+### 1.2.3 하위 컴포넌트 생성
 
 - `App.vue`에 하위 컴포넌트로 이동하는 경로를 만들어준다.
   - :white_check_mark: 이름으로 찾아가기 위해서는 꼭 `v-bind`를 붙여주어야한다.
@@ -679,7 +679,7 @@ const routes = [
       <router-link :to="{ name: 'TodoList' }">TodoList</router-link> |
 ```
 
-- `CreateTodo.vue` 파일도 만들어준다.
+- `CreateTodo.vue` 라는 이름의 하위 컴포넌트 파일을 생성한다.
 
 ```vue
 <!-- views/todos/CreateTodo.vue -->
@@ -722,7 +722,9 @@ const routes = [
 
 
 
-### .env.local 관리하기
+### 1.2.4 `.env.local` 관리
+
+> `.env.local`이라는 파일을 통해 여러번 호출되는 값을 변수로 사용해서 관리할 수 있다.
 
 - 클라이언트 프로젝트 폴더의 최상위에 `.env.local`이라는 파일을 생성한다.
 - 관리할 변수 (여기서는 url주소)를 입력한다.
@@ -738,19 +740,35 @@ VUE_APP_SERVER_URL=http://127.0.0.1:8000
 process.env.VUE_APP_SERVER_URL
 ```
 
+- 예시
+
+```javascript
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+```
 
 
-### axios 설치하기
+
+### 1.2.5 axios 설치하기
+
+- 다음의 명령어로 `axios` 모듈 패키지를 설치한다.
 
 ```bash
 $ npm install axios
 ```
 
+- axios는 `<script>` 태그 내에서 다음과 같이 호출해 사용할 수 있다.
+
+```javascript
+// 예시
+import axios from 'axios'
+```
 
 
-### 전체 목록 불러오기
 
+### 1.2.6 전체 목록 불러오기
 
+- `v-for`를 활용해 todos 전체 목록을 출력한다.
+  - `:key`를 반드시 정의해주어야 한다!
 
 ```vue
 <!-- TodoList.vue -->
@@ -767,7 +785,7 @@ $ npm install axios
   </div>
 ```
 
-- `todos`를 받을 데이터를 만들어준다.
+- `todos`를 받을 데이터를 정의해준다.
 
 ```javascript
 // TodoList.vue
@@ -779,26 +797,7 @@ name: 'TodoList',
   },
 ```
 
-- 전체 리스트를 가져오는 버튼을 만든다.
-
-```vue
-<!-- TodoList.vue -->
-
-  <div>
-    <h2>TodoList</h2>
-    <button @click="getTodo">getTodo</button>	<!-- 버튼 만들기 -->
-    <ul>
-      <li 
-        v-for="todo in todos"
-        :key="todo.id"
-      >
-        {{ todo.title }}
-      </li>
-    </ul>
-  </div>
-```
-
-- 그리고 해당 함수를 작성한다.
+- 해당 함수를 작성한다.
 
 ```javascript
 // TodoList.vue
@@ -815,15 +814,24 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 ```
 
 - :white_check_mark: url 마지막에 `/` (슬래시)를 꼭 넣어줄 수 있도록 주의한다 :exclamation::exclamation:
-- 아래와 같이 보안 처리 때문에 오류가 발생하는 것을 확인할 수 있다.
+- 페이지가 생성될 때 함수가 작동할 수 있도록 만들어준다.
+
+```javascript
+// TodoList.vue
+  created: function () {
+    this.getTodo()
+  }
+```
+
+- 하지만, 아래와 같이 보안 처리 때문에 오류가 발생하는 것을 확인할 수 있다.
 
 ![XMLHttpRequest Error](img/XMLHttpRequest_Error.jpg)
 
 
 
-### CORS 처리
+### 1.2.7 CORS 처리
 
-[문서][https://github.com/adamchainz/django-cors-headers]
+> 서로 다른 출처의 자원은 공유하지 못하도록 기존 정책이 설정되어 있다. CORS 처리를 통해 서로 자원을 공유할 수 있도록 설정해준다. 자세한 내용은 [문서][https://github.com/adamchainz/django-cors-headers]를 참조한다.
 
 - 서버에 pip를 설치한다.
 
@@ -831,7 +839,7 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 $ python -m pip install django-cors-headers
 ```
 
-- 기타 추가해준다.
+- 해당 pip를 `settings.py`에 등록해준다.
 
 ```python
 # settings.py
@@ -856,39 +864,9 @@ CORS_ALLOWED_ORIGINS = [
 
 
 
-### TodoList 데이터 받아오기
+### 1.2.8 데이터 생성하기
 
-```javascript
-// TodoList.vue
-getTodo: function () {
-      axios.get('http://127.0.0.1:8000/todos/')
-      .then(res => {
-        this.todos = res.data
-      })
-      .catch(err => console.log(err))
-    }
-```
-
-- 페이지가 생성될 때 함수가 작동할 수 있도록 만들어준다.
-
-```javascript
-// TodoList.vue
-  created: function () {
-    this.getTodo()
-  }
-```
-
-- 버튼은 삭제하여도 될 것 같다.
-
-```vue
-<!-- TodoList.vue -->
-
-    <!-- <button @click="getTodo">getTodo</button> -->
-```
-
-
-
-### 데이터 생성하기
+> 다음의 작업은 `CreateTodo.vue` 파일에서 진행한다.
 
 - 데이터를 입력받을 `title`이라는 변수를 생성한다.
 
@@ -914,15 +892,14 @@ export default {
 </script>
 ```
 
-- 입력한 데이터를 server와 통신할 함수를 작성한다.
+- `Enter`를 눌렀을 때 작동할 함수를 달아준다.
 
 ```vue
 <!-- CreateTodo.vue -->
     <input type="text" v-model="title" @keypress.enter="createTodo">
-
 ```
 
-- 
+- 입력한 데이터를 server와 통신할 함수를 작성한다.
 
 ```javascript
 // CreateTodo.vue
@@ -948,6 +925,7 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 - :white_check_mark: 여기서 console 창에 오류가 발생할 경우, 서버를 껐다가 켜준다.
 - POST 요청을 보내 성공적으로 데이터를 생성했을 경우 리스트 페이지로 넘어갈 수 있도록 처리해준다.
+  - :ballot_box_with_check: `thsi.$router.push` 기억하기!!
 
 ```javascript
 // CreateTodo.vue
@@ -962,9 +940,9 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 
 
-### Delete 버튼 만들기
+### 1.2.9 Delete 버튼 만들기
 
-
+- 각각의 todo 아이템에 삭제 버튼을 달아준다.
 
 ```vue
 <!-- TodoList.vue -->
@@ -978,7 +956,7 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 ```
 
 - 버튼에 넣은 함수를 작성해준다.
-- delete 요청을 보내 삭제한 후, 현재의 list에서도 해당 값을 id 값으로 찾아서 삭제해준다.
+- delete 요청을 보내 삭제한 후, 현재의 list에서도 해당 값을 id 값으로 찾아서 삭제해준다. (동기화 문제!)
 
 ```javascript
 // TodoList.vue
@@ -998,7 +976,9 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 
 
-### update 만들기
+### 1.2.10 update 버튼 만들기
+
+- `updateTodo`라는 함수를 제목을 클릭했을 때 실행될 수 있도록 달아주고, 함수에 `todo`인자를 넘겨준다.
 
 ```vue
 <!-- TodoList.vue -->
@@ -1009,7 +989,10 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 ```javascript
 // TodoList.vue
-
+const todoItem = {
+        title: todo.title,
+        completed: !todo.completed
+      }
 axios.put(`${SERVER_URL}/todos/${todo.id}/`, todoItem)
         .then((res) => {
           console.log(res)
@@ -1040,9 +1023,11 @@ axios.put(`${SERVER_URL}/todos/${todo.id}/`, todoItem)
 
 
 
-## 2.1 Accounts
+## 2.1 Accounts - Server
 
-### accounts 앱 생성
+### 2.1.1 accounts 앱 생성
+
+- `accounts` 앱을 생성한다.
 
 ```bash
 $ python manage.py startapp accounts
@@ -1060,7 +1045,7 @@ class User(AbstractUser):
     pass
 ```
 
-- 새롭게 정의한 User 모델과 앱을 등록해준다.
+- 새롭게 정의한 User 모델과 앱을 `settings.py`에 등록해준다.
 
 ```python
 # settings.py
@@ -1073,7 +1058,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'accounts.User'
 ```
 
-- url 등록
+- url을 등록한다.
 
 ```python
 # drf_server/urls.py
@@ -1112,7 +1097,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 
-### User - TodoList 1:N 관계 연결하기
+### 2.1.2 User - Todo 모델 참조
+
+- `Todo` 모델에 `User` 모델을 참조하는 `user`라는 1:N 관계의 필드를 정의해준다.
 
 ```python
 # todos/models.py
@@ -1121,16 +1108,18 @@ from django.db import models
 from django.conf import settings
 
 class Todo(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='todos')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='todos')	# 정의해준다.
     title = models.CharField(max_length=50)
     completed = models.BooleanField(default=False)
 ```
 
 - 여기서 모델을 수정했으므로 `todos/migrations/0001_initial.py`, `db.sqlite3` 파일을 삭제하고 migration을 다시 진행한다.
 
-### todo 생성시 user 정보 담기
 
 
+### 2.1.3 todo 생성시 user 정보 담기
+
+- view 함수를 수정하여 todo 인스턴스 생성시 user 정보가 함께 저장될 수 있도록 로직을 변경한다.
 
 ```python
 # todos/views.py
@@ -1153,9 +1142,9 @@ def todo_list_create(request):
 
 
 
-### view 로직 작성
+### 2.1.4  Signup 로직
 
-### Signup 함수 만들기
+- 먼저 url을 생성한다.
 
 ```python
 # accounts/urls.py
@@ -1199,7 +1188,9 @@ def signup(request):
 
 
 
-### 회원가입 페이지 만들기
+## 2.2 Accounts - Client
+
+### 2.2.1 회원가입 컴포넌트 생성
 
 - `views/accounts/SignUp.vue` 파일 생성한다.
 
@@ -1231,7 +1222,7 @@ const routes = [
   }]
 ```
 
-- 주소도 변경해준다.
+- 주소를 변경하여 App 별로 관리할 수 있도록 한다.
 
 ```javascript
 // index.js
@@ -1264,7 +1255,9 @@ const routes = [
       <router-link :to="{ name: 'SignUp' }">SignUp</router-link>
 ```
 
-**페이지 템플릿을 작성**
+### 2.2.2.회원가입 템플릿 작성
+
+- 템플릿을 작성한다.
 
 ```vue
 <!-- SignUp.vue -->
@@ -1277,16 +1270,16 @@ const routes = [
     </div>
     <div>
       <label for="password">password : </label>
-      <input type="password" id="password" autofocus>
+      <input type="password" id="password">
     </div>
     <div>
       <label for="passwordConfirmation">passwordConfirmation : </label>
-      <input type="password" id="passwordConfirmation" autofocus>
+      <input type="password" id="passwordConfirmation">
     </div>
   </div>
 ```
 
-- 데이터 틀을 만들어준다.
+- 데이터 틀을 딕셔너리 형태로 만들어준다.
 
 ```javascript
 // SignUp.vue
@@ -1301,6 +1294,7 @@ data: function () {
 ```
 
 - 해당 데이터를 `<input>` 태그에 `v-model`로 달아준다.
+  - :heavy_check_mark: 데이터를 불러올 때 `credentials.username` 등의 형태로 불러와야 한다는 것에 주의한다.
 
 ```vue
 <!-- SignUp.vue -->
@@ -1321,8 +1315,9 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
     signup: function () {
       // axios 요청을 보낼 것이다. signup -> user Create -> post
       axios.post(`${SERVER_URL}/accounts/signup/`, this.credentials)
-        .then((response) => {
-          console.log(response)
+        .then(() => {
+         // console.log(response)
+          this.$router.push({ name: 'Login' })	// 변경해준다!!
         })
         .catch((error) => {
           console.log(error)
@@ -1331,20 +1326,90 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
   }
 ```
 
-**SignUp 로직 변경**
+
+
+### 2.2.3 JWT 발급
+
+> `존왓탱`
+>
+> 로그인 로직 처리를 위해 선행되는 단계로, Json Web Token을 발급한다. [공식 사이트](https://jpadilla.github.io/django-rest-framework-jwt/)를 참고한다.
+
+- 먼저 pip를 설치한다.
+
+```bash
+$ pip install djangorestframework-jwt
+```
+
+- 등록한다. (이건 dummy로 등록하는 코드이다!)
+
+```python
+# settings.py
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+```
+
+- 사용한다.
+  - `obtain_jwt_token`도 하나의 view 함수라고 할 수 있다.
+
+```python
+# accounts/urls
+
+from rest_framework_jwt.views import obtain_jwt_token
+urlpatterns = [
+    ...
+    path('api-token-auth/', obtain_jwt_token),
+]
+```
+
+
+
+### 2.2.4 로그인 템플릿 작성
+
+- `views/accounts/Login.vue` 파일을 생성한다.
+
+- 뼈대를 만든다.
+
+```vue
+<!-- Login.vue -->
+<template>
+  <div>
+    <h2>Login</h2>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Login'
+}
+</script>
+```
+
+- 컴포넌트를 router에 등록한다.
 
 ```javascript
-signup: function () {
-      // axios 요청을 보낼 것이다. signup -> user Create -> post
-      axios.post(`${SERVER_URL}/accounts/signup/`, this.credentials)
-        .then(() => {
-          // console.log(response)
-          this.$router.push({ name: 'Login' })	// 변경해준다!!
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
+// index.js
+import Login from '@/views/accounts/Login'
+const routes = [
+  {
+    path: '/accounts/login',
+    name: 'Login',
+    component: Login
+  }
+]
+```
+
+- `App.vue`에서 링크도 달아준다.
+
+```vue
+<!-- App.vue -->
+      <router-link :to="{ name: 'Login' }">Login</router-link>
 ```
 
 - `Login.vue`의 템플릿을 작성한다.
@@ -1403,97 +1468,54 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 
 
+### 2.2.4 login 상태에 따른 분기
 
-
-### JWT 발급
-
-> Json Web Token을 발급한다. [공식 사이트](https://jpadilla.github.io/django-rest-framework-jwt/)를 참고한다.
-
-- 설치한다.
-
-```bash
-$ pip install djangorestframework-jwt
-```
-
-- 등록한다.
-
-```python
-# settings.py
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
-}
-```
-
-- 사용한다.
-  - `obtain_jwt_token`도 하나의 view 함수라고 할 수 있다.
-
-```python
-# accounts/urls
-
-from rest_framework_jwt.views import obtain_jwt_token
-urlpatterns = [
-    ...
-    path('api-token-auth/', obtain_jwt_token),
-]
-```
-
-
-
-
-
-### 로그인 페이지 만들기
-
-- `views/accounts/Login.vue` 파일을 생성한다.
-
-- 뼈대를 만든다.
-
-```vue
-<!-- Login.vue -->
-<template>
-  <div>
-    <h2>Login</h2>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'Login'
-}
-</script>
-```
-
-- 컴포넌트를 router에 등록한다.
+- `App.vue`에 `login` 데이터를 생성한다.
 
 ```javascript
-// index.js
-import Login from '@/views/accounts/Login'
-const routes = [
-  {
-    path: '/accounts/login',
-    name: 'Login',
-    component: Login
-  }
-]
+// App.vue
+
+data: function () {
+    return {
+        login: false
+    }
+}
 ```
 
-- `App.vue`에서 링크도 달아준다.
+- Vue가 생성될 때 localStorage에서 토큰이 있는지 확인하고 `login` 데이터의 값을 변경해준다.
+
+```javascript
+// App. vue
+  created: function () {
+    const token = localStorage.getItem('jwt')
+
+    if (token) {
+      this.login = true
+    }
+  }
+```
+
+- 다음으로 로그인 여부에 따른 분기를 템플릿에서 작성해준다.
 
 ```vue
 <!-- App.vue -->
-      <router-link :to="{ name: 'Login' }">Login</router-link>
+<span v-if="login">
+    <router-link :to="{ name: 'Login' }">Login</router-link>
+    <router-link :to="{ name: 'SignUp' }">SignUp</router-link>
+</span>
+<span v-else>
+    <router-link router-link @click.native="logout" to="#">Logout</router-link>
+</span>
 ```
 
 
 
-### 토큰 값 저장
+### 2.2.5 JWT 값 저장
 
-- JWT 시간 변경!!
+>`localStorage.setItem`
+
+- 먼저 JWT 만료 시간을 변경해준다.
+  - 여기서는 연습을 위해서 `days=1`으로 넉넉하게 변경한다.
 
 ```python
 # settings.py
@@ -1504,7 +1526,8 @@ JWT_AUTH = {
 }
 ```
 
-- localStorage에 넣어준다.
+- 토큰을 localStorage에 넣어준다.
+  - `jwt`이라는 임의의 이름으로 저장해준다.
 
 ```javascript
 // Login.vue
@@ -1524,7 +1547,9 @@ JWT_AUTH = {
 
 
 
-### token 보내기
+### 2.2.6 token 보내기
+
+> `localStorage.getItem`
 
 - `getToken` 이라는 함수를 생성한다.
 
@@ -1574,7 +1599,7 @@ axios.post(`${SERVER_URL}/todos/`, todoItem, config)
 
 
 
-### 신규가입이 되지 않는 문제 해결하기
+### 2.2.7 회원가입 오류 해결하기
 
 - `settings.py`의 `REST_FRAMEWORK`는 주석처리해준다.
 
@@ -1590,9 +1615,8 @@ axios.post(`${SERVER_URL}/todos/`, todoItem, config)
 # }
 ```
 
-
-
-- decorator를 가져온다.
+- `todos`의 `views.py`에서 decorator를 가져온다.
+  - :white_check_mark: 데코레이터 순서가 중요하므로 유의한다!!
 
 ```python
 # todos/views.py
@@ -1614,11 +1638,9 @@ def todo_update_delete(request, todo_pk):
     pass
 ```
 
-- 데코레이터 순서가 중요하다!!
 
 
-
-### 로그아웃
+### 2.2.8 로그아웃
 
 - `App.vue`에 `<script>` 태그를 생성한다.
 
@@ -1646,13 +1668,19 @@ export default {
 
 
 
-:exclamation: bootstrap
+## <참고>
 
-`index.html`에 CDN을 넣어준다.
+### Vue Bootstrap 적용
 
+- bootstrap npm을 설치한다.
 
+```bash
+$ npm install vue bootstrap-vue bootstrap
+```
 
-### 로그인 되었는지 확인하는 로직???!!
+- 해당 패키지를 등록한다. 자세한 내용은 [공식홈페이지](https://bootstrap-vue.org/docs)를 참조한다.
+- CDN을 사용할 경우, `index.html`에 넣어준다.
+- :white_check_mark: Vue에서는 npm으로 관리하기 때문에 되도록이면 CDN을 사용하지 않는 편이 좋다!!
 
 
 
