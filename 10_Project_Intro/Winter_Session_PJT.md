@@ -8,6 +8,8 @@
 
 ---
 
+
+
 ## 1. 소프트웨어 개발 방법론
 
 ### 1) 요구사항 정의
@@ -205,6 +207,8 @@ cv2.putText(img, 'OpenCV', (10,500), cv2.FONT_HERSHEY_SIMPLEX, 4, (255,255,255),
 > [얼굴인식 오프소스](https://pypi.org/project/face-recognition/)
 >
 > * 참고: Google Teachable Machine
+> * 어떻게 활용할 수 있을까?
+>   * `오프라인 매장 초개인화 마케팅 데이터`
 
 ```bash
 $ pip install face-recognition
@@ -235,7 +239,7 @@ from matplotlib import pyplot as plt
 image_path = "/content/drive/My Drive/omg.jpg"
 ```
 
-- 이미지를 불러오기 전, 드라이브 접근 권한을 받는다.
+- 이미지를 불러오기 전, **드라이브 접근 권한**을 받는다.
 
 ```python
 from google.colab import drive
@@ -257,10 +261,25 @@ plt.imshow(image)
 plt.show()
 ```
 
+- 오마이걸 사진을 face detaction하면 다음과 같은 결과가 나온다.
+
+![omg face detaction](img/omg_face_recognition.jpg)
+
 **Face Recognition 연습**
 
 - 먼저 동일인물 사진 2장과 나머지 다른 인물의 사진을 준비한다.
+  
   - <참고> 인물 사진은 [unsplash - 무료 공개 이미지 사이트](http://unsplash.com)에서 가져와서 사용할 수 있다.
+  
+- 예시 사진은 다음과 같다.
+
+  - 비교 target
+
+  ![target](img/face1.jpg)
+
+  - 비교 data
+
+  ![data](img/face2.jpg)
 
 ```python
 ## 인물 얼굴 가져오기
@@ -295,6 +314,10 @@ for face in known_face_list:
   plt.show()
 ```
 
+- 얼굴을 인식하여 감지된 부분을 잘라내어 저장한 known_face_list는 다음과 같다.
+
+![known_face_list](img/get_data_faces.jpg)
+
 - 비교대상의 얼굴을 가져온다.
 
 ```python
@@ -320,6 +343,10 @@ plt.imshow(enc_unknown_face)
 plt.show()
 ```
 
+- 비교 대상이 되는 unkown_face는 다음과 같다.
+
+![unknown_face](img/get_target_face.jpg)
+
 - 마지막으로 동일인물인지 비교한다.
 
 ```python
@@ -336,6 +363,11 @@ for face in known_face_list:
     plt.imshow(face)
     plt.show()
 ```
+
+- distance가 0.5 미만, 즉 동일인물이라고 판단되는 known_face_list의 face 결과를 출력하면 다음과 같다.
+  - `distance는 보통 0.6 이하, 엄격하게 적용하면 0.5 이하일 때 동일 인물이라고 간주할 수 있다.`
+
+![face recognition result](img/face_recognition_result.jpg)
 
 
 
@@ -356,14 +388,43 @@ for face in known_face_list:
 - 또한 각 블록이 이전 해시 값을 가지고 다른 블록과 연결되어 있다. (체인)
   - Genesis 블록의 경우, empty 값(null과는 다른) 혹은 random 값을 넣어주면 된다.
 
+**해시의 활용**
+
+- 비밀번호 저장시, DB에서는 해시함수로 암호화하여 저장
+
+- 버전관리 혹은 문서 복제 등을 검사하기 위해 사용
+  
+  - 해시함수는 문자열로 축소하기 때문에 문서의 모든 단어를 비교하는 것보다 속도가 빠르다.
+  
+- 문자를 숫자나 저장되는 주소로 치환하여 검색에 사용
+
+  ```markdown
+  # 블록체인 활용 분야
+  
+  - 음식의 유통 경로 추적
+  - 소프트웨어 개발에 보안 더하기
+  - 디지털 콘텐츠 관리
+  - 의료 기록 추적
+  - 대출 승인
+  - 보험금 청구
+  - 감사 추적
+  - 투표
+  - 스마트 계약
+  - 암호화폐
+  ```
+
+  - `출처: 보안뉴스 (https://www.boannews.com/media/view.asp?idx=65690, 검색일: 2020.12.24)`
+
 ### Nonce
 
 > 암호화 임시값
+>
+> nonce를 사용하여 정해진 규칙에 부합하는 hash 값을 생성할 수 있다.
 
 - Proof of Work(Pow) : nounce를 변경해가면서 최종 해시를 구하는 작업
 - 마이닝(채굴) : 작업증명(Pow)을 통해 최종 블록을 생성하는 것
 
-### <실습>  블록체인 코드 구현1
+### <실습> 블록체인 코드 구현1
 
 **블록 구조체 구현**
 
@@ -441,6 +502,121 @@ for i in range(num_of_block_to_add):
 
 
 ### <실습> 블록체인 코드 구현2
+
+```python
+import hashlib, time
+
+class Block():
+    def __init__(self, index, timestamp, data):
+        self.index = index
+        self.timestamp = timestamp
+        self.data = data
+        self.prevhash = ''
+        self.nonce = 0
+        self.hash = self.getHash()
+
+    def getHash(self):
+        # 주석의 코드를 하면 속도가 느리다.
+        # sha = hashlib.sha256()
+        # new_str_bin = str(self.index) +  str(self.timestamp) + str(self.data) + str(self.prevhash)
+        # sha.update(new_str_bin.encode())
+        # return sha.hexdigest()
+        return hashlib.sha256(
+            str(self.index).encode() + str(self.data).encode() + 
+            str(self.nonce).encode() + str(self.timestamp).encode() + 
+            str(self.prevhash).encode()
+        ).hexdigest()
+
+    # 조건: 앞의 5자리까지가 0 (difficulty)
+    # 위의 조건에 만족하는 hash값을 찾는 함수
+    def mine(self, difficulty):
+        ans = ["0"]*difficulty
+        answer = "".join(ans)
+        while str(self.hash)[:difficulty] != answer:
+            self.nonce += 1
+            self.hash = self.getHash()
+        return self.hash
+
+
+class BlockChain:
+    def __init__(self, ):
+        self.chain = []
+        self.difficulty = 5
+        self.createGenesis()
+
+    def createGenesis(self):
+        self.chain.append(Block(0, time.time(), 'Genesis Block'))
+
+    def addBlock(self, nBlock):
+        nBlock.prevhash = self.chain[len(self.chain)-1].hash
+        nBlock.hash = nBlock.mine(self.difficulty)
+        self.chain.append(nBlock)
+
+    def getLatestBlock(self):
+        return self.chain[len(self.chain)-1]
+
+blocks = BlockChain()
+blocks.addBlock(Block(len(blocks.chain),time.time(), "2nd"))
+blocks.addBlock(Block(len(blocks.chain),time.time(), "3rd"))
+for block in blocks.chain:
+    print(f'nonce: {block.nonce}')
+    print(f'data: {block.data}')
+    print(f'prevhash: {block.prevhash}')
+    print(f'hash: {block.hash}')
+    print()
+```
+
+- hash 값을 구하는 함수에서 아래의 코드로 작성하면 계산이 되지 않는다. (시간이 지체가 된다.)
+
+  ```python
+      def getHash(self):
+          sha = hashlib.sha256()
+          new_str_bin = str(self.index) +  str(self.timestamp) + str(self.data) + str(self.prevhash)
+          sha.update(new_str_bin.encode())
+          return sha.hexdigest()
+  ```
+
+  - 정상적으로 작동하는 코드
+
+  ```python
+  def getHash(self):
+          return hashlib.sha256(
+              str(self.index).encode() + str(self.data).encode() + 
+              str(self.nonce).encode() + str(self.timestamp).encode() + 
+              str(self.prevhash).encode()
+          ).hexdigest()
+  ```
+
+  - `왜 그럴까?`
+
+- 위의 코드를 실행하면 아래와 같은 결과값을 출력한다.
+
+```console
+$ python blockchain.py
+
+nonce: 0
+data: Genesis Block
+prevhash:
+hash: 81d46e8b146c73799c8317545b57a841dc8b73ae277ffd22810017ce31caefc6
+
+nonce: 830748
+data: 2nd
+prevhash: 81d46e8b146c73799c8317545b57a841dc8b73ae277ffd22810017ce31caefc6
+hash: 00000c04cb0ab258b1eab58da76e798ac497148b74db851a3a3fc44c3a01160d
+
+nonce: 244822
+data: 3rd
+prevhash: 00000c04cb0ab258b1eab58da76e798ac497148b74db851a3a3fc44c3a01160d
+hash: 00000249ef371ca574bbba7b02fccd726e8d16ffc80c2054ef32f69be9bea381
+```
+
+
+
+이더리움(Ethereum)
+
+- 블록체인 기술을 기반으로 스마트 ㄱ
+
+솔리디티(Solidity)
 
 
 
