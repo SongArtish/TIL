@@ -49,6 +49,8 @@ $ git config --global user.name <사용자명>
 $ git config --global user.email <gitlab아이디>
 ```
 
+- 이후 `git push`를 하면 git의 로그인 페이지가 뜬다.
+
 
 
 ***Copyright* © Song_Artish**
