@@ -1,6 +1,6 @@
-# Web Crawling
+# Web Crawler
 
-> Notes of Python Web Crawling
+> Notes of Python Web Crawler
 
 ---
 
@@ -10,7 +10,7 @@
 
 
 
-## 1. Crawler
+## 개요
 
 - 크롤러는 크롤링 소프트웨어를 말한다.
 - Python 웹 크롤러로는 `Selenium`, `BeautifulSoup`, `Scrapy` 등이 있다.
@@ -23,7 +23,7 @@
 
 
 
-### 1.1 BeautifulSoup
+## BeautifulSoup
 
 > [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)는 HTML, XML 파일의 정보를 추출해내는 python 라이브러리이다.
 >
@@ -36,7 +36,7 @@
 
 - *`BeatifulSoup`을 활용한 웹 크롤링 기초는 [블로그](http://hleecaster.com/python-web-crawling-with-beautifulsoup/)를 참조하였다.*
 
-#### 1.1.1 웹 요청보내기: `requests` 라이브러리
+### 1) 웹 요청보내기: `requests` 라이브러리
 
 > 파이썬에서는 `requests`라는 라이브러리를 활용하여 편리하게 웹 페이지에 요청을 보낼 수 있다.
 >
@@ -53,7 +53,7 @@ print(webpage.text)
 
 
 
-#### 1.1.2 파싱하기: `BeautifulSoup` 라이브러리
+### 2) 파싱하기: `BeautifulSoup` 라이브러리
 
 > [BeautifulSoup 라이브러리](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)는 HTML 문서를 탐색해서 원하는 부분만 쉽게 가져올 수 있도록 한다.
 >
@@ -100,7 +100,7 @@ print(soup)
 
 
 
-#### 1.1.3 태그(Tag) 탐색하기
+### 3) 태그(Tag) 탐색하기
 
 **특정 태그 탐색**
 
@@ -140,14 +140,14 @@ print(soup)
 
 
 
-#### 1.1.4 웹사이트 구조 분석하기: 개발자 도구
+### 4) 웹사이트 구조 분석하기: 개발자 도구
 
 - 거의 모든 웹 브라우저에서 개발자 도구를 사용할 수 있으며, 개발자 도구를 통해서  편리하게 HTML 문서 구조를 확인할 수 있다.
 - Google Chrome의 경우 `F12`키를 누르면 개발자 도구를 사용할 수 있다.
 
 
 
-#### 1.1.5 원하는 부분 가져오기 1: `find_all`
+### 5) 원하는 부분 가져오기 1: `find_all`
 
 > `.find_all()`을 사용하여 원하는 태그를 모두 가져올 수 있다.
 >
@@ -176,7 +176,7 @@ print(soup.find_all("h2"))
   <class 'bs4.element.ResultSet'>
   ```
 
-##### (1) 정규식 활용하기
+#### (1) 정규식 활용하기
 
 - `<ol>` 및 `<ul>`이 포함된 리스트를 가져오는 경우 아래와 같이 코드를 작성한다.
 
@@ -195,7 +195,7 @@ print(soup.find_all("h2"))
   - :heavy_exclamation_mark: 어째서인지 VSCode로 네이버 홈 페이지를 가져오는 경우 잘 작동하지 않는다.
     - 해결방안: 앞에 `print()`를 붙여주면 해결된다!!
 
-##### (2) 리스트 활용하기
+#### (2) 리스트 활용하기
 
 - 리스트로 원하는 태그들을 지정해서 가져올 수도 있다.
 
@@ -205,7 +205,7 @@ print(soup.find_all("h2"))
   soup.find_all(['h1', 'p'])
   ```
 
-##### (3) html 속성 활용하기
+#### (3) html 속성 활용하기
 
 - html 속성을 지정해서 가져올 수도 있다.
 
@@ -221,7 +221,7 @@ print(soup.find_all("h2"))
   soup.find_all(attrs={'class':'footer-list', 'id':'footer-address-list'})
   ```
 
-##### (4) 함수 활용하기
+#### (4) 함수 활용하기
 
 - 원하는 부분을 지정하기가 어려운 경우, 함수를 활용해서 가져올 수 있다.
 
@@ -235,7 +235,7 @@ print(soup.find_all("h2"))
 
 
 
-#### 1.1.6 원하는 부분 가져오기 2: `select()`
+### 6) 원하는 부분 가져오기 2: `select()`
 
 > `select()`라는 메서드를 통해 CSS 선택자를 활용하여 원하는 부분을 가져올 수도 있다.
 
@@ -257,7 +257,7 @@ print(soup.find_all("h2"))
 
   
 
-#### 1.1.7 텍스트만 읽어오기: `get_text()`
+### 7) 텍스트만 읽어오기: `get_text()`
 
 > 태그의 텍스트 부분만 가져오는 경우 `.get_text()`라는 메서드를 사용한다.
 
@@ -269,7 +269,7 @@ for x in range(0,10):
 
 
 
-### 1.2 Selenium
+## Selenium
 
 > [Selenium](https://selenium-python.readthedocs.io/)은 웹 자동화 테스트 (버튼 클릭, 스크롤 조작 등등)에 사용되는 프레임워크이다.
 >
@@ -283,7 +283,7 @@ for x in range(0,10):
 
 
 
-### 1.3 Scrapy
+## Scrapy
 
 > [Scrapy](https://github.com/scrapy/scrapy)는 크롤링을 위해 개발된 유료 프레임워크이다.
 
