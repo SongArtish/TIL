@@ -109,7 +109,7 @@ search: false
 3. [Function](Python/03_Function.md)
 4. [Error & Exception](Python/04_Error&Exception.md)
 5. [Data Structure](Python/05_Data_Structure.md)
-6. [Module](Python/06 _Module.md)
+6. [Module](Python/06_Module.md)
 7. [OOP](Python/07_OOP.md)
 
 
