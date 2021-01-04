@@ -1,5 +1,7 @@
 # Today I Learned
 
+> 2020년 7월 20일부터 공부한 것들을 차근차근 정리하고 있다.
+
 ---
 
 [TOC]
@@ -114,14 +116,14 @@ search: false
 
 
 
-## [Vue](Vue)
+## [Vue](Vue.js)
 
-1. [Vue Basic](Vue/01_Vue_Basic.md)
-2. [Lodash](Vue/02_Lodash.md)
-3. [SFC](Vue/03_SFC.md)
-4. [Vuex](Vue/04_Vuex.md)
-5. [Server & Client](Vue/05_Server&Client.md)
-6. [Vue.js Practice](Vue/06_Vue.js_practice.md)
+1. [Vue Basic](Vue.js/01_Vue_Basic.md)
+2. [Lodash](Vue.js/02_Lodash.md)
+3. [SFC](Vue.js/03_SFC.md)
+4. [Vuex](Vue.js/04_Vuex.md)
+5. [Server & Client](Vue.js/05_Server&Client.md)
+6. [Vue.js Practice](Vue.js/06_Vue.js_practice.md)
 
 
 
@@ -136,3 +138,7 @@ search: false
 ## [Web Crawling](Web_Crawling)
 
 - [Web_Crawler](Web_Crawling/Web_Crawler.md)
+
+
+
+***Copyright* © Song_Artish**
