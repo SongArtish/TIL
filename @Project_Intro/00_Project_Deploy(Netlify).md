@@ -1,4 +1,4 @@
-# Project Deploy
+# Project Deploy (Netlify)
 
 2020.11.13
 
