@@ -10,7 +10,7 @@
 
 
 
-## Installation
+
 
 Before installing Android Studio, make sure JDK 8(Java SE Development Kit 8) is installed on your computer.
 
@@ -26,6 +26,10 @@ Before installing Android Studio, make sure JDK 8(Java SE Development Kit 8) is 
 
     - The route for the JDK installation directory should be typed in the `""`.
 
+
+
+## Installation
+
 > System Requirements for Android Studio is as below in Windows environment.
 >
 > - Microsoft Windows 7/8/10 (64-bit)
@@ -34,6 +38,13 @@ Before installing Android Studio, make sure JDK 8(Java SE Development Kit 8) is 
 > - 1280 x 800 minimum screen resolution
 
 You can download Android Studio on the [Android Studio Website](https://developer.android.com/studio?hl=ko).
+
+
+
+- Complete Android Studio Setup.
+- 처음 Android Studio를 설치하는 경우 이전에 설정된 세팅 내용이 ㅇ벗기 때문에 `Do not import settings`를 선택하고 `OK` 버튼을 클릭한다.
+- :white_check_mark: `Install Type`의 경우 나만의 개발환경을 만들고 싶으면 `Custom`을 선택한다.
+- 이후의 과정은 기본 설정대로 진행하고 기본적인 세팅을 완료하면 된다.
 
 
 
