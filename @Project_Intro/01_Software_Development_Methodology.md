@@ -53,4 +53,10 @@
 
 
 
+**개발 흐름**
+
+![development flow](img/development_flow.png)
+
+
+
 ***Copyright* © 2020 Song_Artish**

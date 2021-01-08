@@ -17,4 +17,14 @@
 
 
 
+- Activity
+
+![Activity](img/MainActivity.png)
+
+- Layout
+
+![Layout](img/activity_main.png)
+
+
+
 ***Copyright* © 2021 Song_Artish**

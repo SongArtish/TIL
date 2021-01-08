@@ -1,13 +1,6 @@
 # Git
 
-> Git은 분산버전관리시스템(DVCS, Distributed Version Control System)으로 소스코드의 버전 및 이력을 관리할 수 있다.
 
-```한국어
-git 공간
-- working dir: 실제 작업공간
-- staging area: 명령어를 입력했을 때 임시로 저장이 되는 공간
-- local repository: 명령어를 입력했을 때 버전이 기록되는 공간
-```
 
 ---
 
@@ -17,169 +10,225 @@ git 공간
 
 
 
-## 준비하기
+## Git 구조
 
-윈도우에서 git을 활용하기 위해서 git bash를 설치한다.
+![Git Structure](img/git_structure.jfif)
 
- git-bash는 CLI(Command-line Interface)이다. git을 활용하기 위해서 GUI(Graphic User Interface) 툴인 `source tree`, `github desktop` 등을 활용할 수도 있다.
-
-초기 설치를 완료한 이후에 컴퓨터에 author 정보를 입력한다.
-
-```bash
-$ git config --global user.name {user name}		# 이름 등록
-$ git config --global.user.email {user email}	# 이메일 등록
-```
-
-- 예시) `git config --global user.email "bulgen@naver.com"`
-
-  ​		 `git config --global user.name "Song-Artish"`
-
-- 뒤에 `{}` 항목을 빼고 입력하면 현재 등록 정보를 확인할 수 있다.
+(출처: https://ndb796.tistory.com/187)
 
 
 
-## 로컬 저장소(repository) 활용하기
+git flow
 
-### 1. 저장소 초기화
+develop release master 나눠서 하는 형상관리 전략?0?
 
-```bash
-$ git init
-```
 
-- `.git`폴더가 생성되며, 여기에 git과 관련된 모든 정보가 저장된다.
-- git bash에 `(master)`라고 표시되는데, 이는 현재 폴더가 git으로 관리되고 있다는 뜻이며, `master`라는 branch에 있다는 뜻이다.
 
-> git 저장소를 제거할 때는 해당 폴더에서 git bash를 실행하고 다음의 명령어를 입력한다.
->
-> ```bash
-> $ rm -rf .git
-> ```
+- commit
+- branch
+- checkout
+- cherry-pick
+- reset
+- revert
+- rebase
+- merge
 
----
 
-### 2. `add` 
 
-`working directory`, 즉 작업 공간에서 변경된 사항을 이력으로 저장하기 위해서는 반드시 `staging area`를 거쳐야 한다.
+트리공유
 
-```bash
-$ git add {파일/폴더}
-```
+export tree 
 
-```bash
-# 예시
-$ git add markdown.md   # 파일 (확장자명 포함)
-$ git add images/       # 폴더 (뒤에 '/'가 붙으면 폴더이다.)
-$ git add .			    # 현재 디렉토리에 있는 모든 파일과 폴더
-```
+import tree
 
-- `git status`라는 명령어를 통해 새롭게 작성/수정된 파일이 git으로 관리되고 있는지를 확인할 수 있다.
 
-``` bash
-$ git status
-```
 
-- git에 등록된 파일/폴더를 삭제하고 싶을 경우, `git rm -r --cached <파일/폴더명>`라는 명령어를 입력한다.
+학습자료
 
----
+build level
 
-### 3. `commit`
+import level
 
-commit은 **이력을 확정짓는 명령어**로, 해당 시점의 스냅샷을 기록한다.
 
-커밋시에는 반드시 메시지를 작성해야 하며, <u>메시지는 변경사항을 알 수 있도록 명확하게 작성한다.</u>
+
+## Main
+
+## 1. Commit
+
+### 1.1 Git Commit
+
+> `commit`은 Git 저장소에 디렉토리에 있는 몯ㄴ 파일에 대한 스냅샷을 기록하는 것이다.
 
 ```bash
-$ git commit -m "마크다운 정리"
-[master (root-commit) 6c84015] 마크다운 정리
- 1 file changed, 170 insertions(+)
- create mode 100644 markdown.md				# 최초 커밋시의 메시지
+$ git commit
 ```
 
-- 커밋 메시지 변경시, `git commit --amend`라는 명령어를 입력한다. 단, 되도록이면 사용하지 않는 것이 좋다.
 
-커밋 이후에는 아래의 명령어를 통해 지금까지 작성된 커밋 이력을 확인한다. 커밋은 해시값을 바탕으로 구분된다.
+
+### 2. Git Branch
+
+**브랜치 생성**
 
 ```bash
-$ git log
-commit 1aad18d102376b6b77631d93135c393efcd28b4d (HEAD -> master, origin/master)
-								# commit 뒤에는 commit의 기록을 나타내는 `해시값`
-Author: Song-Artish <bulgen@naver.com>
-Date:   Fri Jul 17 11:49:05 2020 +0900
-
-    마크다운 정리
-    
-$ git loge --oneline							     # 이력을 간단하게 보기 위한 명령어
-1aad18d (HEAD -> master, origin/master) 마크다운 정리	 # 해시값의 7자리까지만 나타냄
+$ git branch <브랜치명>
 ```
 
-
-
-## 원격 저장소(remote repository) 활용하기
-
-원격 저장소 기능을 제공하는 다양한 서비스 중에 Github을 기준으로 설명한다. Github에 respository를 생성한 후에 아래의 절차를 진행한다.
-
-
-
-### 1. 원격 저장소 등록
+**브랜치 이동**
 
 ```bash
-$ git remote add origin {github url}
+$ git checkout <브랜치명>
 ```
 
-- 원격저장소(remote)로 origin이라는 이름으로 github url을 등록(add)한다.
-- 등록된 원격 저장소를 보기 위해서는 아래의 명령어를 활용한다.
+**브랜치 병합**
+
+- 병합할 브랜치로 이동한다.
 
 ```bash
-$ git remote -v
-origin  https://github.com/Song-Artish/TIL.git (fetch)
-origin  https://github.com/Song-Artish/TIL.git (push)
+$ git merge <브랜치명>
 ```
 
----
 
-**원격 저장소**
 
-- 원격 저장소 확인
+### 3. Git Rebase
+
+> branch를 베이스(Base)로 commit을 재정렬하는 과정
+
+- rebase를 할 브랜치로 이동한다.
+- master로 rebase를 할 경우 아래와 같이 입력한다.
 
 ```bash
-$ git remote show
+$ git rebase master
 ```
 
-- 특정 원격 저장소 정보 확인
+- 아래의 코드로 A 브랜치를 B 브랜치 위치로 진행 시킬 수도 있다.
 
 ```bash
-$ git remote show <저장소 이름>
+$ git rebase <A> <B>
 ```
 
-- 원격저장소 제거
+
+
+
+
+## Commit 트리 이동하기
+
+`HEAD`
+
+> 현재 checkout된 commit (현재 작업중인 commit)
+
+**HEAD 분리하기**
 
 ```bash
-$ git remote rm <저장소 이름>
+$ git checkout <해당 해시값>
 ```
 
----
 
-### 2. `push` - 원격 저장소로 업로드
+
+
+
+**상대참조**
+
+- 한번에 한 커밋 위로 움직이는 `^`
+- 한번에 여러 커밋 위로 올라가는 `~<num>`
+
+- master의 부모로 이동하기
 
 ```bash
-$ git push origin master
+$ git checkout master^
 ```
 
-`origin`이라는 이름의 원격 저장소로 commit 기록들을 업로드한다.
-
-이후 변경사항이 생길 때마다, `add`, `commit`, `push`를 반복한다.
-
----
-
-### 3. `pull` - 원격 저장소로부터 불러오기
+- HEAD의 부모로 이동하기
 
 ```bash
-$ git pull origin master
-$ git clone <주소>		# 최초로 복사할 경우에는 clone 사용
+$ git checkout HEAD^
 ```
 
-`origin`이라는 이름의 원격 저장소로부터 새로운 commit 기록들을 불러온다.
+- 아래와 같이 조부모로 이동할 수도 있다.
+
+```bash
+$ git checkout HEAD^^
+```
 
 
 
-***Copyright* © Song_Artish**
+강제로 이동
+
+- master를 `HEAD`의 3칸 위로 이동시킬 경우
+
+```bash
+$ git branch -f master HEAD~3
+```
+
+
+
+작업 되돌리기
+
+- 현재의 작업을 삭제하고 이전 작업으로 되돌린다.
+
+```bash
+$ git reset
+```
+
+- 현재의 작업을 남기고 이전 작업을 추가한다.
+
+```bash
+$ git revert
+```
+
+
+
+Git Cherry-pick
+
+> 현재 위치(`HEAD`) 아래에 있는 일련의 commit에 대한 복사본을 만든다.
+
+```bash
+$ git cherry-pick <Commit1> <Commit2> <...>
+```
+
+- :ballot_box_with_check: 여기서 각각의 commit 사이에는 `,`(쉼표)가 아닌 공백으로 구분해준다!
+
+
+
+Git Interactive Rebase
+
+리베이스 UI 열기
+
+- 현재 위치에서 4단계 위까지 우선 복사한다.
+
+```bash
+$ git rebase -i HEAD~4
+```
+
+- 열린 UI 창에서 복사할 commit 기록과 순서를 선택한다.
+
+
+
+commit 내용 정정하기
+
+```bash
+$ git commit --amend
+```
+
+
+
+Git Tag
+
+> 태그란, 커밋을 참조하기 쉽도록 알기 쉬운 이름을 붙이는 것
+
+```bash
+$ git tag <태그명> <위치>
+```
+
+
+
+Git Describe
+
+> 태그와 커밋 횟수, 축약된 커밋 이름으로 사람이 읽고 구분할 수 있는 버전 정보를 알려준다.
+
+- 실제로 해보니 작동하지는 않는다.
+
+```bash
+$ git describe
+$ git describe <브랜치명>
+```
+
