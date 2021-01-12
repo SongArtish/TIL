@@ -217,6 +217,8 @@ Git-flow는 총 5가지의 브랜치를 사용해서 운영을 한다.
 
 `(출처: https://uxgjs.tistory.com/183 [UX 공작소])`
 
+- 참고링크: [배달의링크 Git Flow](https://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)
+
 
 
 ## Git Init
