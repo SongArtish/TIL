@@ -31,3 +31,31 @@
 - Jira
 - Trello
 - REDMINE
+
+
+
+## DOCS - 공유문서 관리
+
+공유문서
+
+- Wikipedia
+- Markdown
+
+실시간 공유문서
+
+- Confluence
+- Google Docs
+- Notion
+
+
+
+## CHAT - 커뮤니케이션
+
+- 카카오톡
+- JANDO
+- Slack
+- Mattermost
+
+
+
+***Copyright* © 2021 Song_Artish**
