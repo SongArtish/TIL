@@ -53,12 +53,17 @@ Agile software development is an approach to software development under which re
 >
 > - :ballot_box_with_check: `스프린트(Sprint)`:  일정한 주기를 바탕으로 반복되는 개발 주기
 > - :ballot_box_with_check: `이슈(Issues)`: 제품에 관해 회사에서 대화의 대상이 되는 거의 모든 것. 쉽게 말하면 `일감`
->   - 이슈의 3가지 카테고리
->   - :white_check_mark: `Task`: 업무
->   - :white_check_mark: `Bug`: 수정해야 하는 오류
->   - :white_check_mark: `User Story`: 최종 사용자의 입장에서 무엇이 필요하고, 그것이 왜 필요한지를 설명하기 위한 이슈
+>   - 이슈의 3가지 카테고리: `Task`, `Bug`, `Story`
 >
 > [참고사이트](https://hanminwoo.com/60)
+
+| Issue Type |                             설명                             |                          예시                           |
+| :--------: | :----------------------------------------------------------: | :-----------------------------------------------------: |
+|    Epic    | 최상위 수준의 기능/작업 단위<br />(프로젝트 전반 또는 여러 Sprint에 걸쳐 진행할 정도의 범위) |                 회원 관리, 로그인 관리                  |
+|   Story    |         epic에 대한 하위 Level 수준의 기능/작업 단위         | 회원 가입, 회원 정보 수정, 회원 탈퇴, 로그인, 비번 찾기 |
+|    Bug     |             프로젝트 개발/검증 중 발견도니 버그              |       상품 검색 시 특정 상품이 조회되지 않는 문제       |
+|    Task    | 개발에 직접 해당되지는 않으나 Sprint 안에 포함하여 해야 할 일 |               ERD 작성, 테스트케이스 작성               |
+|  Sub-task  |   위 Issue들과 관련하여 세부 단위 작업 등이 필요할 때 등록   |                                                         |
 
 
 
@@ -91,6 +96,12 @@ Agile software development is an approach to software development under which re
 
 - :white_check_mark: 백로그에만 이슈를 등록하면 활성 스프린트 보드에는 표시가 안된다.
   - 이런 경우, 해당 이슈를 등록할 때 스프린트에 현재 스프린트를 선택해준다!
+
+
+
+## Jira & Git
+
+
 
 
 
