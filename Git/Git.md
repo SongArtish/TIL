@@ -119,7 +119,7 @@ Date:   Fri Jul 17 11:49:05 2020 +0900
 
     마크다운 정리
     
-$ git loge --oneline							     # 이력을 간단하게 보기 위한 명령어
+$ git log --oneline							     # 이력을 간단하게 보기 위한 명령어
 1aad18d (HEAD -> master, origin/master) 마크다운 정리	 # 해시값의 7자리까지만 나타냄
 ```
 

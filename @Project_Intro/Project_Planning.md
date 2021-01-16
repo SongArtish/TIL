@@ -1,7 +1,5 @@
 # 프로젝트 설계
 
-2021.01.08
-
 ---
 
 [TOC]
@@ -51,6 +49,8 @@
 
 `(출처: https://seopressor.com/wp-content/uploads/2015/06/colour-culture1.png)`
 
+[참조 사이트](https://colorhunt.co/)
+
 
 
 ### Tools
@@ -62,20 +62,36 @@
 
 
 
-## Mockup
+### <참고>
 
-### Tools
+[모바일 UI/UX 디자인시 고려사항](https://brunch.co.kr/@chulhochoiucj0/8)
+
+
+
+## 화면설계
+
+### 1. Wireframe
+
+> UI 중심의 화면 레이아웃
+
+### 2. Mockup
+
+> 실물과 흡사한 정적인 형태의 모형
+
+**Tools**
 
 - :ballot_box_with_check: justinmind
 - :ballot_box_with_check: balsamiq
 - :ballot_box_with_check: adobeXD
 - :ballot_box_with_check: ovenapp
 
+### 3. Prototype
 
+> 다양한 interaction이 결합되어 실제 서비스처럼 작동하는 모형
 
-:white_check_mark: **디자인 tool**
+### 4. Storyboard
 
-- 미리캔버스
+> 정책, 프로세스, 와이어프레임, 디스크립션 등이 모두 포함된 설계 문서
 
 
 
