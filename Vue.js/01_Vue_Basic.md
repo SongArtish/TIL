@@ -35,6 +35,19 @@ Vue.js는 특징으로는 CSR (Client Side Rendering), SPA (Single Page Applicat
 
 **설치하기**
 
+> 자세한 건 [SFC문서](03_SFC.md)의 Intro 파트를 참조한다.
+
+- 먼저 `node.js`를 설치한다.
+- 그리고 다음의 명령어로 `vue-cli`를 설치한다.
+
+```bash
+$ npm install -g @vue/cli
+```
+
+
+
+**extensions 설치하기**
+
 - Chrome 웹 스토어 tool 설치
 
   ```markdown
@@ -54,6 +67,24 @@ Vue.js는 특징으로는 CSR (Client Side Rendering), SPA (Single Page Applicat
   ```
 
   > `Vue.js`의 자동 완성 등을 담당한다.
+  
+  ```markdown
+  - Live Server
+  ```
+  
+  > `Eclipse`에서 사용하는 extension으로 VS Code에서 사용하는 서버이다. 로컬 서버 변경 자동 반영
+  
+  ```markdown
+  - Vue 3 Snippets
+  ```
+  
+  > Vetur에서 지원하지 않는 자동완성까지 적용
+  
+  ```markdown
+  - Prettier
+  ```
+  
+  > `file >> preference >> setting or Ctrl + ,(comma)`
 
 **CDN**
 
@@ -72,8 +103,6 @@ Vue.js는 특징으로는 CSR (Client Side Rendering), SPA (Single Page Applicat
 <!-- 상용버전, 속도와 용량이 최적화됨. -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ```
-
-
 
 
 
