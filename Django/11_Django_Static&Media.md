@@ -255,4 +255,4 @@ class Article(models.Model):
 
 
 
-***Copyright* © Song_Artish**
+***Copyright* 2020 © Song_Artish**

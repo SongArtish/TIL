@@ -178,6 +178,14 @@ current output mode: csv
 sqlite> .import hellodb.csv examples
 ```
 
+- :ballot_box_with_check: 불러온 데이터를 저장할 경우 아래의 명령어를 입력한다.
+
+  ```sqlite
+  sqlite> .save data.db data
+  ```
+
+  - `data`라는 테이블로 불러온 데이터를 `data.db`라는 파일로 저장한다.
+
 
 
 ### 데이터 조회
