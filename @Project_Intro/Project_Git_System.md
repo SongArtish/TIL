@@ -111,4 +111,77 @@
 
 
 
+## <참고> GitLab , Jira, MM 연동
+
+> 여기서 Mattermost를 MM으로 약칭한다.
+
+### 1. MM에서 Jira 구독
+
+**1.1 push 채널 생성**
+
+외부 push 메시지 수신을 위한 채널 생성
+
+**1.2 Webhook 생성**
+
+GitLab 연동을 위한 Webhook URL 생성
+
+- MM `프로필 > 햄버거 메뉴 > 통합`을 클릭한다.
+- `Incoming Webhook > 추가` 버튼을 클릭한다.
+- 제목, 설명 등을 적절히 입력하고, 채널을 선택하고 `이 채널로 고정`을 체크한다.
+- 생성된 URL을 복사한다. :point_left:
+
+**1.3 Jira 구독**
+
+생성한 push 채널에서 지라를 연결(connect)하고 이슈 구독(subscribe)을 설정
+
+- MM 아무 채팅 창에서 아래의 슬래시 명령어 실행
+
+  ```
+  /jira connect
+  ```
+
+- Jira 로그인을 위한 Git 로그인 창에서 로그인을 진행한다.
+
+- MM에서 Jira로 연결을 허용한다.
+
+- 완료되면 창을 종료한다.
+
+- 지라를 구독할 push 채널에서 아래의 슬래시 명령어 실행
+
+  ```
+  /jira subscribe
+  ```
+
+- `Create subscription` 버튼 클릭 후 구독 정보를 설정한다.
+
+- 설정한 `변경사항(Events)`이 발생할 때 push 채널에 업데이트 된다.
+
+- :white_check_mark: `/jira help` 슬래시 명령어로 할 수 있는 추가기능도 확인할 수 있다.
+
+
+
+### 2. GitLab에서 Jira/MM 연동
+
+> GitLab과 Jira가 연동이 완료되면 GitLab의 commit 정보가 Jira 이슈에 연결 되고 MR이 닫힐 때 이슈도 같이 완료된다.
+
+**2.1 GitLab에서 Jira 연동**
+
+- `GitLab Repository > 설정 > Integrations > Project services > Jira > Active`를 체크한다.
+- 상세정보를 설정한다.
+  - Web URL에 JIRA 사이트 url을 입력한다.
+    - :white_check_mark: Web URL을 입력할 때 url 끝에 `/(슬래시)`를 입력하지 않도록 주의한다.
+  - username/password에 로그인 정보를 설정한다.
+  - `Transition ID`를 입력한다. (예시: 11,21,31)
+    - Transition ID는 JIRA에 사전 정의된 이슈 상태 변경 코드로 사용된다.
+  - 저장하고 테스트 `Success` 메시지를 확인한다.
+
+**2.2 GitLab에서 MM 연동**
+
+- 위와 같이 MM의 Integration 설정에서도 Active를 체크한다.
+- Webhook URL에 MM에서 생성한 주소를 복사하여 입력한다. :point_left:
+- 저장하고 Success 메시지를 확인한다.
+
+
+
 ***Copyright* © 2021 Song_Artish**
+
