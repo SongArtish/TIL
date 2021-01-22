@@ -17,6 +17,7 @@ search: false
 ## [@Program Intro](@Program_Intro)
 
 - [Eclipse](@Program_Intro/Eclipse.md)
+- [Jira](@Program_Intro/Jira.md)
 - [Markdown](@Program_Intro/Markdown.md)
 - [Python_IDE](@Program_Intro/Python_IDE(Conda+PyCharm).md)
 - [VS_Code](@Program_Intro/VS_Code.md)
@@ -26,10 +27,14 @@ search: false
 
 ## [@Project Intro](@Project_Intro)
 
-0. [Project Deploy (Netlify)](@Project_Intro/00_Project_Deploy(Netlify).md)
-1. [Software_Development_Methodology](@Project_Intro/01_Software_Development_Methodology.md)
-2. [Face_Recognition](@Project_Intro/02_Face_Recognition.md)
+0. [Vue Project Practice](@Project_Intro/00_Vue_Project_Practice.md)
+1. [Software Development Methodology](@Project_Intro/01_Software_Development_Methodology.md)
+2. [Face Recognition](@Project_Intro/02_Face_Recognition.md)
 3. [Blockchain](@Project_Intro/03_Blockchain.md)
+
+- [Project Collaboration Tools](@Project_Intro/Project_Collaboration_Tools.md)
+- [Project Git System](@Project_Intro/Project_Git_System.md)
+- [Project Planning](@Project_Intro/Project_Planning.md)
 
 
 
@@ -48,20 +53,31 @@ search: false
 
 
 
-## [Android Studio](Android_Studio)
+## [Android](Android)
 
-- [Android_Studio](Android_Studio/00_Android_Studio.md)
+0. [Android Studio Basic](Android/00_Android_Studio_Basic.md)
+
+
+
+## [API](API)
+
+- [Kakao Map API](API/Kakao_Map_API.md)
 
 
 
 ## [DataBase](DB)
 
-1. [DB 1:N Relationship](DB/01_DB_Relationship(1toN).md)
-2. [SQL](DB/02_SQL.md)
-3. [SQL&ORM](DB/03_SQL&ORM.md)
-4. [User_Model_Custom](DB/04_User_Model_Custom.md)
-5. [DB M:N Relationship](DB/05_DB_Relationship(MtoN).md)
-6. [REST_API](DB/06_REST_API.md)
+2. [SQL](DB/01_SQL.md)
+3. [SQL&ORM](DB/02_SQL&ORM.md)
+
+- [Data Import](DB/Data_Import.md)
+- [MySQL Server](DB/MySQL_Server.md)
+
+
+
+## [Deployment](Deployment)
+
+- [Netlify](Deployment/Netlify.md)
 
 
 
@@ -73,23 +89,28 @@ search: false
 4. [Django CRUD](Django/04_Django_CRUD.md)
 5. [Django Form](Django/05_Django_Form.md)
 6. [Django Auth](Django/06_Django_Auth.md)
-7. [Django Static & Media](Django/07_Django_Static&Media.md)
-8. [Django Test](Django/08_Django_Test)
+7. [DB_Relationship(1toN)](Django/07_DB_Relationship(1toN).md)
+8. [User_Model_Custom](Django/08_User_Model_Custom.md)
+9. [DB_Relationship(MtoN)](Django/09_DB_Relationship(MtoN).md)
+10. [REST_API](Django/10_REST_API.md)
+11. [Django Static & Media](Django/11_Django_Static&Media.md)
+12. [Django Test](Django/12_Django_Test)
 
 
 
 ## [Git](Git)
 
 - [Git](Git/Git.md)
-- [Git Branch](Git/Git_Branch.md)
-- [Git User](Git/Git_User.md)
 
+- [Git Alias](Git/Git_Alias.md)
 
+  
 
 ## [Java](Java)
 
-0. [Java Basic](Java/00_Java_Basic.md)
-1. [Inheritance](Java/01_Inheritance.md)
+0. [Java_Tutorial](Java/00_Java_Tutorial.md)
+1. [Java Basic](Java/10_Java_Basic.md)
+2. [Inheritance](Java/11_Inheritance.md)
 
 
 
@@ -100,6 +121,12 @@ search: false
 2. [ECMASciprt](JavaScript/02_ECMAScript.md)
 3. [AJAX](JavaScript/03_AJAX.md)
 4. [JSON](JavaScript/04_JSON.md)
+
+
+
+## [Network](Network)
+
+- [Network](Network/Network.md)
 
 
 
@@ -116,6 +143,12 @@ search: false
 
 
 
+## [Spring](Spring)
+
+0. [Spring Intro](Spring/00_Spring_Intro.md)
+
+
+
 ## [Vue](Vue.js)
 
 1. [Vue Basic](Vue.js/01_Vue_Basic.md)
@@ -123,7 +156,9 @@ search: false
 3. [SFC](Vue.js/03_SFC.md)
 4. [Vuex](Vue.js/04_Vuex.md)
 5. [Server & Client](Vue.js/05_Server&Client.md)
-6. [Vue.js Practice](Vue.js/06_Vue.js_practice.md)
+
+- [Vue 설치](Vue.js/Vue 설치.md)
+- [Vue Frameworks](Vue.js/Vue_Frameworks.md)
 
 
 
