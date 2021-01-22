@@ -99,10 +99,4 @@ Agile software development is an approach to software development under which re
 
 
 
-## Jira & Git
-
-
-
-
-
 ***Copyright* © 2021 Song_Artish**
