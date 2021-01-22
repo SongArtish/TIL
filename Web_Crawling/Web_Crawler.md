@@ -302,4 +302,4 @@ for x in range(0,10):
 
 https://aonee.tistory.com/40 참고하기
 
-***Copyright* © 2020 Song_Artish**
+***Copyright* © 2021 Song_Artish**
