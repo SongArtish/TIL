@@ -42,4 +42,12 @@
 
 
 
+## [추가 학습 자료]
+
+- [Awesome React](https://github.com/enaqx/awesome-react)
+- [Awesome React Components](https://github.com/brillout/awesome-react-components)
+- [Awesome React Talks](https://github.com/tiaanduplessis/awesome-react-talks)
+
+
+
 ***Copyright* © 2021 Song_Artish**
