@@ -100,6 +100,8 @@ search: false
 
 ## [Git](Git)
 
+- [Commit Message](Git/Commit_Msg.md)
+
 - [Git](Git/Git.md)
 
 - [Git Alias](Git/Git_Alias.md)
