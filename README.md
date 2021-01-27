@@ -166,7 +166,7 @@ search: false
 4. [Vuex](Vue.js/04_Vuex.md)
 5. [Server & Client](Vue.js/05_Server&Client.md)
 
-- [Vue 설치](Vue.js/Vue 설치.md)
+- [Vue_Installation](Vue.js/Vue_Installation.md)
 - [Vue Frameworks](Vue.js/Vue_Frameworks.md)
 
 
