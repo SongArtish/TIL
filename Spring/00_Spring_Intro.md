@@ -125,6 +125,7 @@ Spring의 **구조**를 나타내는 모델로 Enterprise Application 개발 시
 - 받을 데이터: 3번에서는 프론트에서 받을 데이터를 정의한다.
   - `@RequestBody`는 여러 개의 데이터가 담겨있는 객체를 가져올 때 사용한다.
   - `@PathVariable`은 하나의 데이터를 가져올 때 사용한다.
+- :white_check_mark: 데이터 전송에서 문제가 발생하므로, naming은 `carmelCase`를 따라야한다!
 
 
 
