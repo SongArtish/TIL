@@ -465,6 +465,7 @@ const router = new VueRouter({
 **사용**
 
 - `router push`를 할 경우 아래와 같이 사용하여 위에서 정의한 페이지로 이동할 수 있다.
+- `params`를 이용하여 변수를 URL로 전달한다.
 
 ```javascript
 data: function () {
@@ -477,6 +478,16 @@ methods: {
         this.$router.push({ name: 'Home', params { id: this.user }})
     }
 }
+```
+
+**받은 데이터 사용**
+
+- 전환되는 페이지에서는 다음과 같이 이전 페이지에서 받은 변수를 사용할 수 있다.
+
+```javascript
+this.$route.parmas.id
+this.$route.params.address
+this.$route.params.keyword
 ```
 
 
