@@ -361,6 +361,12 @@ $ vue add router
 
 ```javascript
 // index.js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+
+    ...
+
 const routes = [
   {
     path: '/',	// url 주소
@@ -375,36 +381,103 @@ const routes = [
 ]
 ```
 
-- component에 들어가는 요소는 `index.js`에서 다음과 같이 정의된다.
+### 2.1 Router
+
+**등록**
+
+- component에 들어가는 요소는 `index.js`에서 다음과 같이 가져온다.
 
 ```javascript
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// index.js
+import Home from '../views/Home.vue'	// 1번 방법
+import About from '@/views.About'	// 2번 방법
 ```
 
-- 이렇게 router로 관리되는 url을 템플릿 =에서는 아래와 같이 사용할 수 있다!
+- 가져온 component를 등록한다.
+
+```javascript
+// index.js
+
+const routes = [
+  {
+    path: '',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+  },
+]
+```
+
+**사용**
+
+- 이렇게 router로 관리되는 url을 템플릿에서는 아래와 같이 사용할 수 있다!
 
 ```vue
 <!-- App.vue -->
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link> |	<!-- 1번 방법 -->
+      <router-link :to="{ name: 'About'}">About</router-link> <!-- 1번 방법 -->
     </div>
     <router-view/>
   </div>
 </template>
 ```
 
-- 아래와 같은 방법으로도 url 주소를 작성할 수 있다.
+- 아래와 같이 `router push`로 클릭시 함수를 실행시켜 이동하게 할 수도 있다.
 
 ```html
-<router-link :to="{ name: 'TheLunch'}">TheLunch</router-link> |
+<div @click="toHome">
+    Home
+</div>
 ```
 
+```javascript
+methods: {
+    toHome: function () {
+        this.$router.push({ name: 'Home' })
+    }
+}
+```
 
+### 2.3 Dynamic Route Matching (동적 라우트 매칭)
+
+**등록**
+
+- router 파일에서 아래와 같이 컴포넌트를 등록한다.
+
+```javascript
+// index.js
+import User from '@/views/User'
+
+const router = new VueRouter({
+    routes: [
+        { path: '/user/:id', component: User }
+    ]
+})
+```
+
+**사용**
+
+- `router push`를 할 경우 아래와 같이 사용하여 위에서 정의한 페이지로 이동할 수 있다.
+
+```javascript
+data: function () {
+    return {
+        user: 'bulgen'
+    }
+},
+methods: {
+    toUser: function () {
+        this.$router.push({ name: 'Home', params { id: this.user }})
+    }
+}
+```
 
 
 
