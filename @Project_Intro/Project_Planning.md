@@ -33,7 +33,19 @@
 
 
 
+### UI/UX 정의
+
+> :ballot_box_with_check: 어느 플랫폼에서? (디지털 기기)
+> :ballot_box_with_check: 누가? (사용자)
+> :ballot_box_with_check: 어떻게 사용할 것인가? (상호 작용)
+
+
+
 ### Inspirations
+
+- 플랫폼 개발사의 공식 문서 디자인 가이드를 배우자.
+  - [Google Marterial Design](https://material.io/)
+  - [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/)
 
 - 아래의 사이트에서 디자인 영감을 얻을 수 있다.
 
@@ -71,6 +83,37 @@
 
 - Photoshop
 - Sketch
+
+
+
+### 프로젝트 퀄리티를 한층 더 높여주는 5가지 작은 팁
+
+> 2021년 2월 9일 신채원 실습코치님의 필기를 참고하였다.
+
+**1. 파비콘 및 페이지 제목**
+
+- 사이트의 성격을 드러내자.
+  - [<title> 요소 활용하기](https://developer.mozilla.org/ko/docs/Web/HTML/Element/title)
+  - [Vue Router 활용하기](https://medium.com/@hulunhao/how-to-config-title-for-each-router-in-vue-router-1cc7352bbb94)
+  - [Favicon Generator](https://www.favicon-generator.org/)
+
+**2. 메뉴 sticky 속성**
+
+- 메뉴는 항상 보이는 곳에 두자
+
+**3. 로딩 페이지**
+
+- 유저를 기다리게 하지 말자
+- 현재 어떤 일이 일어나고 있는지 화면에 시각적인 피드백을 제공해준다.
+
+**4. 버튼/링크 디자인**
+
+- 누를 수 있는 곳과 없는 곳을 확실하게 하자.
+
+**5. tool & popup tip**
+
+- 유저를 헤매게 하지 말자
+- 툴팁과 팝업팁을 통해 유저가 참고할 수 있는 정보 또는 설명을 제공하면 좋다.
 
 
 

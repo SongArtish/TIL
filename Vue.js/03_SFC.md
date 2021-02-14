@@ -490,6 +490,11 @@ this.$route.params.address
 this.$route.params.keyword
 ```
 
+:ballot_box_with_check: **`params` vs `query`**
+
+- `query`는 데이터가 주소창에 노출된다.
+- `params`는 데이터를 주소창에 노출시키지 않고 넘겨준다!
+
 
 
 ## 3. Pass Props & Emit Events
