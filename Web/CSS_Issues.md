@@ -11,6 +11,33 @@
 
 
 
+## Background
+
+### 1. 글자에 형광펜처럼 밑줄긋기
+
+- 먼저 다음과 같이 전체 배경색을 적용하여 효과를 줄 수 있다.
+
+![분홍색 밑줄 예시](img/0216_ul_pink.png)
+
+```stylus
+#underline_pink {
+  background-color: #FF00DD;
+  color: #fff;
+}
+```
+
+- 다음과 같이 형광펜 같은 밑줄 느낌의 CSS를 적용할 수도 있다.
+
+![노란색 밑줄 예시](img/0216_ul_yellow.png)
+
+```stylus
+#underline_yellow {
+  background: linear-gradient(to top, #FFE400 50%, transparent 50%);
+}
+```
+
+
+
 ## Carousel
 
 ### 1. 이미지 크기를 고정하는 이슈
