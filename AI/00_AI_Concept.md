@@ -1,4 +1,4 @@
-# AI 기초
+# AI Concept
 
 > Artificial Intelligence(인공지능)
 

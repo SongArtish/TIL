@@ -19,6 +19,7 @@
 
 # 설치된 폴더로 이동
 $ cd C:\Program Files\Miniconda3\condabin
+$ cd c:\ProgramData\Anaconda3\condabin
 
 # 아나콘다 버전 확인
 $ conda --v

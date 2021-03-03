@@ -20,6 +20,21 @@
 
 
 
+## Cryptography
+
+- 복호화 가능
+  - 대칭키 암호화
+    - AES, DES...
+    - ARIA, SEED
+  - 비대칭키 암호화(공개키 암호화)
+    - RSA, ECC
+    - ECDSA
+    - DS(전자서명)
+- 복호화 불가능(단방향 암호화, 해시함수)
+  -  SHA256, keccak256, RIPEMD-16
+
+
+
 ## Hash Function
 
 > 임의의 길이의 데이터를 고정된 길이의 데이터로 매핑하는 함수 (블록해시)

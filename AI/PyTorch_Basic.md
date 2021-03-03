@@ -419,7 +419,7 @@ y_train = torch.randint(45, 85, (50, ))
 
 
 
-### 8)  concatenate
+### 8) concatenate
 
 - `torch.cat()`을 이용하여 2개의 tensor를 연결한다.
   - `torch.cat((텐서1, 텐서2), dim)`
