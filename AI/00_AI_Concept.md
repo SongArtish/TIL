@@ -8,18 +8,22 @@
 
 ---
 
+![AI/머신러닝/딥러닝의 관계](img/ai_boundary.png)
+
+`(출처: http://tobetong.com/?p=9393)`
+
 
 
 ## History
 
-### Perceptron
+### 1. Perceptron
 
 > Rosenblatt, 1958
 
 - 1950년대부터 연구 시작
 - 최초로 구현된 인공 신경망
 
-![single-layer perceptron](img/0223_percetron.png)
+![single-layer perceptron](../../폴더/img/0223_percetron.png)
 
 `(출처: https://untitledtblog.tistory.com/27)`
 
@@ -29,7 +33,7 @@
   - (if문 분기) 일정 값이 넘으면 다음 단계에 신호를 전달해주고, 아니면 신호를 버리는 구조
 - :white_check_mark: 하지만 Perceptron만으로는 XOR 문제도 풀 수 없다는 이야기 때문에, AI의 겨울이 찾아오게 됨
 
-### LeNEt-5
+### 2. LeNEt-5
 
 > Lecun et al., Proceedings of the IEEE 1998
 
@@ -40,11 +44,11 @@
   - 이 재사용으로 성능/속도 향상 및 학습의 용이성에 기여
 - 우편번호 인식에 큰 성공을 거둠
 
-![LeNet-5](img/0223_lenet.png)
+![LeNet-5](../../폴더/img/0223_lenet.png)
 
 `(출처: https://arnabfly.github.io/arnab_blog/lenet4/)`
 
-### AlexNet(NIPS2012)
+### 3. AlexNet(NIPS2012)
 
 > `Convolutional Neural Networks`
 
@@ -52,7 +56,7 @@
 - 대량의 데이터를 input으로 주어 기계가 직접 학습하야 알고리즘을 개발하게 함
 - 게임에만 사용했던 GPU를 기계 학습에 사용하여 연산 능력을 개선
 
-![기계학습 패러다임의 변화](img/0223_machine_deep_learning.png)
+![기계학습 패러다임의 변화](../../폴더/img/0223_machine_deep_learning.png)
 
 `(출처: https://hyeonjiwon.github.io/machine%20learning/ML-1/)`
 
@@ -64,14 +68,14 @@
 
 > 기계 지능을 다루는 컴퓨터 공학 분야
 
-### 지각능력
+### 1. 지각능력
 
 - (입력, 출력) 데이터
 - 인간은 자라면서, 상호작용을 하면서 세상을 배움
 - 인간처럼 multi-modal의 상호관계성으로부터 유용한 정보 수집
 - 기계가 세상을 인식하는 방법을 개발하는 것은 아직 활발한 연구 분야 
 
-### 강화학습
+### 2. 강화학습
 
 > 지각 능력을 갖춘 후 다음과 같이 학습한다.
 
@@ -87,40 +91,120 @@
 
 ### :arrow_forward: 응용사례
 
-**자연어 처리(GPT-3)**
+#### 1) 자연어 처리(GPT-3)
 
 > Generative Pre-trained Transformer 3 (GPT-3) is an autoregressive language model that uses deep learning to produce human-like text (출처: 위키백과)
 
-**Art application**
+#### 2) Art application
 
-`StyleGAN`
+`StyleGAN`: target 스타일로 얼굴을 변환시켜줌
 
-- target 스타일로 얼굴을 변환시켜줌
+`Living Portraits`: 인물 이미지로부터 애니메이션 생성
 
-`Living Portraits`
-
-- 인물 이미지로부터 애니메이션 생성
-
-**텍스트로부터 이미지 생성(GPT-3)**
+#### 3) 텍스트로부터 이미지 생성(GPT-3)
 
 - description에 따라서 이미지 생성
 
-**자율주행(RTM3D)**
+#### 4) 자율주행(RTM3D)
 
 
 
-## 기계학습
+## Machine Learning
 
-```markdown
-### 구성요소
+### 1. 구성요소
+
 - 경험 사례
 - 모델
 - 평가 기준
-```
+
+### 2. 과정
 
 - **계산/추론**: 함수를 주고 output이 나오도록 계산
 - **최적화**: 한 세트의 (input, output)을 주고, 관계를 가장 잘 설명하는 함수를 찾는 것
 - **일반화**: 본적이 없는 input 데이터로도 일관성 있는 output이 계산 가능
   - 기계학습에는 **일반화** 과정까지 포함하여야 한다.
+
+### 3. 유형
+
+1. **지도학습**
+
+> Supervised Learning
+
+- 명확한 목표 task와 그에 따른 입출력 데이터 쌍이 주어진 상황에서의 모델을 학습
+
+2. **비지도학습**
+
+> Unsupervised Learning
+
+- 명확한 정답 라벨 데이터가 주어지지 않고, 입력 데이터만 주어진 상황에서 데이터 안의 숨겨진 패턴을 찾아내는 형태의 학습법
+
+3. **강화학습**
+
+> Reinforcement Learning
+
+- 환경 내에 정의된 에이전트가 현재의 상태를 인식하여, 선택 가능한 행동들 중 최대한 이익이 될 것으로 판단되는 행동 혹은 행동 순서를 수행하는 방법
+
+|                |                   지도 학습                   |                   비지도 학습                   |
+| :------------: | :-------------------------------------------: | :---------------------------------------------: |
+|   학습 방법    |             매핑 함수를 통한 학습             |          데이터 내 숨겨진 구조를 학습           |
+| 정답 존재 여부 |                       O                       |                        X                        |
+|   활용 Task    | 이미지 분류<br />이미지 캡셔닝<br />객체 인식 | 데이터 클러스터링<br />특성 학습<br />밀도 추정 |
+
+![머신러닝 구조](../../폴더/img/machine_learning_structure.png)
+
+`(출처: https://www.wordstream.com/blog/ws/2017/07/28/machine-learning-applications)`
+
+
+
+## CNN
+
+### 1. NN & MLP
+
+> **Neural Networks** & **Multi_Layer Perceptron**
+
+**1) Perceptron** (Singel Layer Neural Network)
+
+- 가장 기본적인 신경망 구조
+- 입력 벡터 x에 대해 (**Wx+b**) 형태
+  - W는 입력에 곱해지는 가중치 파라미터 행렬
+  - b는 역치를 조정하는 offset parameter
+  - Affine 변환식으로 볼 수도 있음
+- **Fully Connected (FC) layer**
+  - 모든 노드가 서로 연결되어있기 때문에 계산량이 너무 많아짐
+  - 입력 데이터가 1차원(배열) 형태로 한정됨!!
+- 단, 표현력에 한계가 있음
+
+**2) Multi-Layer Perceptron(MLP)**
+
+- perceptron을 다중으로 쌓아서 활용
+
+**3) 메커니즘**
+
+- NN의 최종 출력이 타겟의 차원과 일치하도록 설계
+- 입력과 원하는 출력(라벨)을 이용하여 parameter 학습
+- NN에 입력 값을 넣었을 때 마지막 층에서 나온 출력과 라벨과의 차이(error)를 네트워크를 학습하는데 사용
+  - **뉴럴넷에서의 학습**: Gradient descent 최적화 방법 중 특수 케이스인 Back-propagation이라는 알고리즘을 통해 위의 에러를 줄이는 방향으로 parameter를 update
+
+
+
+### 2. CNN
+
+Convolutional Neural Network
+
+> FC layer와는 달리 모든 입력을 다음 층(layer)와 연결하지 않고, 국부적인 영역에 대한 filter 연산만으로 locally connected된 부분에 대해서만 출력을 계산하는 layer이다.
+>
+> - 이때 하나의 filter가 영상의 위치에 상관 없이 재활용되는 합성곱(convolution)연산을 활용하며, 이 때문에 Convolutional layer라고 불린다.
+
+- CNN은 **공간적인 구조 정보를 보존**하면서 연산 및 학습이 가능하다.
+- CNN의 출력은 FC layer와 달리 **채널, 세로, 가로의 3차원**으로 구성된다.
+  - 입력 이미지 데이터 역시 3채널의 RGB 칼라, 가로, 세로 축을 갖는다.
+- :white_check_mark: Convolutional layer에 추가적으로 pooling layer, 비선형 활성화 함수 (non-linear activation function) 등을 여러 번 깊게 적층한 구조를 **Deep CNN 구조**라고 한다.
+
+**참고자료**
+
+- [CNN 연산의 이해](https://wikidocs.net/64066): 합성곱 연산 및 3차원 텐서를 이용한 설명
+- [CNN 모델 구현](https://nittaku.tistory.com/264): 설명 및 Keras를 이용한 구현 예시
+
+
 
 ***Copyright* © 2021 Song_Artish**

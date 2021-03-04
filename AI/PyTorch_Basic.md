@@ -1,12 +1,21 @@
 # PyTorch 기초
 
-> [PyTorch](https://tutorials.pytorch.kr/beginner/blitz/tensor_tutorial.html)는 Python을 위한 오픈소스 머신 러닝 라이브러리이다. [wikidocs](https://wikidocs.net/57168)를 많이 참고하였다.
+> [wikidocs](https://wikidocs.net/57168)를 많이 참고하였다.
 
 ---
 
 [TOC]
 
 ---
+
+
+
+## 소개
+
+> [PyTorch](https://tutorials.pytorch.kr/beginner/blitz/tensor_tutorial.html)는 Python을 위한 오픈소스 머신 러닝 프레임워크이다. 
+
+- 페이스북이 주도적으로 개발/유지하고 있는 머신러닝 및 딥러닝 개발 프레임워크
+- Simplicity, Great API, Performance
 
 
 
@@ -433,4 +442,3 @@ weight = torch.cat((weight, y_train), 0)
 
 
 ***Copyright* © 2021 Song_Artish**
-
