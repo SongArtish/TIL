@@ -1,7 +1,5 @@
 # Jira
 
-2021.01.12
-
 > 애자일 소프트웨어 개발을 위한 이슈 추적 시스템으로 버그 추적, 이슈 추적, 프로젝트 관리 기능을 제공한다.
 
 ---
@@ -44,6 +42,18 @@ Agile software development is an approach to software development under which re
 ```
 
 `(출처: 위키피디아)`
+
+**DevOps** 
+
+> 소프트웨어의 개발(Development)과 운영(Operations)의 합성어로서, 소프트웨어 개발자와 정보기술 전문가 간의 소통, 협업 및 통합을 강조하는 개발 환경이나 문화
+
+DevOps라는 개념을 잘 수행하기 위하여 아래의 조건이  필요하다.
+
+- tool을 이용한 반복적인 작업의 자동화
+- 팀원 모두가 알고 있는 하나의 공유된 지표 필요
+- 장애/이슈 발생 시 팀원들과 공유 필요
+
+이러한 맥락에서 등장한 tool 중 하나가 `Jira`이다.
 
 
 
@@ -99,4 +109,79 @@ Agile software development is an approach to software development under which re
 
 
 
-***Copyright* © 2021 Song_Artish**
+## JQL
+
+> **Jira Query Language**는 Jira Issue를 구조적으로 **검색**하기 위해 제공하는 언어이다.
+>
+> - SQL(Standard Query Language)와 비슷한 문법
+> - Jira의 각 필드들에 맞는 특수한 예약어 제공
+> - 쌓인 Issue들을 재가공해 유의미한 데이터를 도출해 내는데 활용 (Gadget, Agile Board 등)
+
+### 1 JQL Operators
+
+- [x] =, !=, >, >=
+- [x] in, not in
+- [x] ~ (contains), !~ (not contains)
+- [x] is empty, is not empty, is null, is not null
+- [x] was, was in, was not in
+- [x] changed (from xxx to xxx)
+
+### 2. Relatvie Dates
+
+상대적 날짜값을 사용할 수도 있다.
+
+- 예시
+
+```markdown
+- 1d, 2d, 3d
+- -1d, -2d, -3d
+- 1w, 2w
+- -1w, -2w
+```
+
+### 3. JQL Keywords
+
+- [x] AND
+- [x] OR
+- [x] NOT
+- [x] EMPTY
+- [x] NULL
+- [x] ORDER BY (DESC, ASC)
+
+### 4. JQL Funcionts
+
+- [x] endOfDay(), startOfDay()
+  - 오늘 24시, 오늘 00시
+- [x] endOfWeek(), startOfWeek()
+  - Saturday, Sunday
+- [x] endOfMonth(), startOfMonth(), endOfYear(), startOfYear()
+- [x] currentLogin()
+- [x] currnetUser()
+- [x] updatedBy(user, dateFrom(optional), dateTo(optional))
+
+
+
+## JQL 활용 예시
+
+### 1. Filter share
+
+### 2. Dashboard, Gadget
+
+> Jira 메인 페이지에서 Dashboard를 만들 수 있다.
+
+`Dashboards > Manage Dashboards > Create New Dashboard`
+
+- 대시보드를 생성 후 favorite에 추가하면 메인 페이지에 표시할 수 있다.
+- 내 대시보드 관리 페이지에서 gadget을 추가할 수도 있다.
+
+### 3. Agile Board
+
+`Project 메인 > 왼쪽 상단 프로젝트 아이콘 > Create board`에서 생성할 수 있다.
+
+### 4. Issue Export
+
+- 나의 미완료 이슈를 확인하는 페이지에서 `우측 상단 Export 버튼 > (주로) Excel 버튼`을 클릭하면 해당 이슈들을 파일로 다운받아 볼 수 있다.
+
+
+
+***opyright* © 2021 Song_Artish**
