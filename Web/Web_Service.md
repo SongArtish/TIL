@@ -31,4 +31,16 @@
 
 
 
+## Web-WAS Architecture
+
+![Web Application 아키텍처](img/web_app_architecture.png)
+
+`(출처: https://cybersecuritynews.co.uk/popular-web-application-attacks-and-recommendations/)`
+
+- 기능을 분리하여 서버 부하 방지
+- 물리적으로 분리하여 보안 강화
+- 여러 대의 WAS를 연결
+
+
+
 ***Copyright* © 2021 Song_Artish**
