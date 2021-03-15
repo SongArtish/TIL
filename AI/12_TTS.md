@@ -76,8 +76,4 @@
 
 
 
-rnn, lstm, attention mechanism
-
-tts 모델 tacotron2
-
 ***Copyright* © 2021 Song_Artish**

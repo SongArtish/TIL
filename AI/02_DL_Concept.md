@@ -167,13 +167,6 @@ Sequence-to-Sequence
 
 디코더를 통해 생성한 mel-spectrogram을 보코더에 입력하여 음성 waveform을 합성할 수 있다.
 
-- 
-  - **인코더**: 
-
-
-
-
-
 
 
 ***Copyright* © 2021 Song_Artish**
