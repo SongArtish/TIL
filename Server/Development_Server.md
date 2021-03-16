@@ -47,6 +47,17 @@ ssh <아이디>@<ip주소> -p 22
 
 
 
+## MobaXterm
+
+> ultimate toolbox for remote computing (참고: 공식홈페이지)
+
+- 먼저 [공식홈페이지](https://mobaxterm.mobatek.net/)에서 MobaXterm을 설치한다.
+- 프로그램 실행 후 왼쪽 위의 `Session` 버튼(`Ctrl + Shift + N`)을 누른 후 `SSH`를 클릭한다.
+- `Remote host`에 할당받은 ip주소를 입력하고 `OK` 버튼을 클릭한다.
+- 이후 할당받은 `아이디`와 `비밀번호`를 입력한다.
+
+
+
 ## <참고사항>
 
 - :ballot_box_with_check: 반드시 VPN에 접속이 되어 있어야 개발 서버를 사용할 수 있다.
