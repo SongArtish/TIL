@@ -50,10 +50,18 @@ ssh <아이디>@<ip주소> -p 22
 ## <참고사항>
 
 - :ballot_box_with_check: 반드시 VPN에 접속이 되어 있어야 개발 서버를 사용할 수 있다.
+
 - :ballot_box_with_check: 개발 서버는 **conda** 와 동일한 환경에서 이용할 수 있다.
+
 - :ballot_box_with_check: 서버 연결 후에는 해당 서버 내에서 **git clone**을 받아 코드 작업을 할 수 있다.
 
+  - 위 작업을 하기 전, 먼저 command 창에서 git을 설치한다.
 
+    ```powershell
+    conda install git
+    ```
+
+    
 
 ***Copyright* © 2021 Song_Artish**
 
