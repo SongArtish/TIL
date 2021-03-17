@@ -168,17 +168,31 @@ plt.title("Power spectrum")
 
 > STFT(Short-time Fourier Transform, 단시간 푸리에 변환)는 푸리에 변환 관계가 시간에 따라 변화하는 신호로서, 로컬 섹션의 정현파 주파수와 위상 콘텐츠를 결정하기 위해 사용된다. (출처: 위키백과)
 
+- :white_check_mark: Spectrogram: 소리나 파동을 시각화하여 파악하기 위한 도구로, 파형(waveform)과 스펙트럼(spectrum)의 특징이 조합되어 있다. (출처: 위키백과)
+- 먼저 전체 frame 수와 frame 하나당 sample의 수를 지정한다.
+  - :white_check_mark: 홉 (단위): 홉 또는 합(合)은 적근법의 단위이다. - 부피, 넓이 (출처: 위키백과)
+
 ```python
 hop_length = 512  # 전체 frame 수
 n_fft = 2048  # frame 하나당 sample 수
+```
 
-# calculate duration hop length and window in seconds
+- calculate duration hop length and window in seconds
+
+```python
 hop_length_duration = float(hop_length)/sr
 n_fft_duration = float(n_fft)/sr
+```
 
-# STFT
+- `librosa` 라이브러리를 이용하여 STFT을 한다.
+
+```python
 stft = librosa.stft(sig, n_fft=n_fft, hop_length=hop_length)
+```
 
+- 그리고 구한 spectrogram을 표시한다.
+
+```python
 # 복소공간 값 절댓값 취하기
 magnitude = np.abs(stft)
 
@@ -193,6 +207,72 @@ plt.ylabel("Frequency")
 plt.colorbar(format="%+2.0f dB")
 plt.title("Spectrogram (dB)")
 ```
+
+#### Mel-spectrogram 생성하기
+
+> A **mel spectrogram** is a **spectrogram** where the frequencies are converted to the **mel** scale.
+
+- :ballot_box_with_check: **Mel-scale**: pitch에서 발견한 사람의 음을 인지하는 기준(threshold)을 반영한 scale 변환 함수
+- 먼저 mel 스케일로 spectrogram을 변환한다.
+
+```python
+n_mels = 80
+
+# mel spectrogram
+mel_basis = librosa.filters.mel(sr, n_fft, n_mels)  # (n_mels, 1+n_fft//2)
+mel = np.dot(mel_basis, magnitude)  # (n_mels, t)
+
+# to decibel
+mel = 20 * np.log10(np.maximum(1e-5, mel))
+
+# normalize
+mel = np.clip((mel - 20 + 100) / 100, 1e-8, 1)
+```
+
+- 구한 mel-spectrogram을 표시한다.
+
+```python
+plt.figure(figsize=FIG_SIZE)
+librosa.display.specshow(mel, y_axis='mel', sr=sr, hop_length=hop_length, x_axis='time')
+plt.colorbar(format='%+2.0f dB')
+plt.title('Mel-Spectrogram')
+plt.tight_layout()
+plt.show()
+```
+
+#### MFCC 확인
+
+> **MFCC(Mel-Frequency Cepstral Coefficient)**는 **오디오 신호**에서 추출할 수 있는 feature로, 소리의 고유한 **특징**을 나타내는 수치
+>
+> - 주로 **음성 인식**, **화자 인식**, **음성 합성**, **음악 장르 분류** 등 오디오 도메인의 문제를 해결하는 데 사용
+
+- 먼저 `librosa` 라이브러리를 이용해 the first 13 coefficient(MFCC)를 추출한다.
+
+```python
+# extract 13 MFCCs
+MFCCs = librosa.feature.mfcc(sig, sr, n_fft=n_fft, hop_length=hop_length, n_mfcc=13)
+```
+
+- 구한 MFCC를 표시한다.
+
+```python
+# display MFCCs
+plt.figure(figsize=FIG_SIZE)
+librosa.display.specshow(MFCCs, sr=sr, hop_length=hop_length)
+plt.xlabel("Time")
+plt.ylabel("MFCC coefficients")
+plt.colorbar()
+plt.title("MFCCs")
+
+# show plots
+plt.show()
+```
+
+
+
+### 1.2 Tacotron 모델 및 파라미터 구성
+
+
 
 
 
