@@ -10,9 +10,9 @@
 
 
 
-## <실습> 블록체인 코드 구현1
+## 블록체인 생성1
 
-**블록 구조체 구현**
+### 블록 구조체 구현
 
 - 하나의 정보단위인 block을 정의한다.
 
@@ -45,7 +45,7 @@ class Block(object):
       return hashlib.sha256(str(self.index).encode() + str(self.data).encode() + str(self.nonce).encode() + str(self.timestamp).encode() + str(self.previousHash).encode()).hexdigest()
   ```
 
-**Blcok 인스턴스 생성 함수**
+### Block 인스턴스 생성 함수
 
 - Genesis 블록을 생성하는 함수를 정의한다.
 - 이전 블록과 연결되는 블록을 생성하는 함수를 정의한다.
@@ -64,7 +64,7 @@ def create_next_block(last_block):
     )
 ```
 
-**block 생성하기**
+### block 생성하기
 
 ```python
 # 블록체인이기는 하지만, linear한 linked 구조라고 생각하면 된다.
@@ -87,7 +87,7 @@ for i in range(num_of_block_to_add):
 
 
 
-## <실습> 블록체인 코드 구현2
+## 블록체인 생성2
 
 ```python
 import hashlib, time
@@ -195,14 +195,6 @@ data: 3rd
 prevhash: 00000c04cb0ab258b1eab58da76e798ac497148b74db851a3a3fc44c3a01160d
 hash: 00000249ef371ca574bbba7b02fccd726e8d16ffc80c2054ef32f69be9bea381
 ```
-
-
-
-이더리움(Ethereum)
-
-- 블록체인 기술을 기반으로 스마트 기술...
-
-솔리디티(Solidity)
 
 
 
