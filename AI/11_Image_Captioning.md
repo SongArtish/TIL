@@ -64,9 +64,11 @@
 
 
 
-## 1. 데이터셋 준비 및 전처리
+## 1. Pytorch 이미지 분류기 구현
 
-### 1.1 데이터 load 및 normalize
+### 1.1 데이터셋 준비 및 전처리
+
+#### 1.1.1 데이터 load 및 normalize
 
 **`torchvision`**
 
@@ -111,7 +113,7 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship'
 
 
 
-### 1.2 데이터 시각화
+#### 1.1.2 데이터 시각화
 
 **`matplotlib`**
 
@@ -154,7 +156,7 @@ print(' '.join('%5s' % classes[labels[j]] for j in range(4)))
 
 
 
-## 2. 분류기 모델 설계
+### 1.2 분류기 모델 설계
 
 - **CNN**(Convolutional Neural Network)을 사용하여 모델을 설계한다.
 - 이미지는 3-channel을 입력으로 받고, 최종적으로 10개의 class에 대한 확률을 구한다.
@@ -183,7 +185,7 @@ class Classifier(nn.Module):
         super(Classifier, self).__init__()
         
         # 이미지 3-channel 입력
-        self.conv1 = nn.Conv2d(3, 16, 5)
+        self.conv1 = nn.Conv2d(3, 16, 5)	# CNN
         self.pool = nn.MaxPool2d(2, 2)
 
         # 최종 10개의 class에 대한 확률
@@ -204,7 +206,7 @@ classifier = Classifier()
 
 
 
-## 3. Loss function 정의
+### 1.3 Loss function 정의
 
 - 분류기를 위해서 **cross-entropy loss**를 사용한다.
 - optimzer로 SGD를 사용하고, learning rate, momentum등을 설정해준다.
@@ -228,7 +230,7 @@ optimizer = optim.SGD(classifier.parameters(), lr=0.001, momentum=0.9)
 
 
 
-## 4. 모델 학습시키기
+### 1.4 모델 학습시키기
 
 모델을 학습시키는 과정은 다음과 같다.
 
@@ -312,7 +314,7 @@ print('Finished Training')
 
 
 
-## 5. 테스트하기
+### 1.5 테스트하기
 
 >학습 완료된 모델을 testset이 저장되어 있는 **testloader**에 대하여 성능 평가를 진행한다.
 >
@@ -379,6 +381,10 @@ with torch.no_grad():
 print('Accuracy of the network on the 10000 test images: %d %%' % (
     100 * correct / total))
 ```
+
+
+
+## 2. Image Captioning 실행 및 결과 확인
 
 
 

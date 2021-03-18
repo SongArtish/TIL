@@ -103,6 +103,11 @@ Convolutional Neural Network
   - 입력 이미지 데이터 역시 3채널의 RGB 칼라, 가로, 세로 축을 갖는다.
 - :white_check_mark: Convolutional layer에 추가적으로 pooling layer, 비선형 활성화 함수 (non-linear activation function) 등을 여러 번 깊게 적층한 구조를 **Deep CNN 구조**라고 한다.
 
+![](img/0318_cnn.png)
+
+- 추출한 feature 특징을 바탕으로 LSTM에서 문장까지 추출해낸다.
+  - :ballot_box_with_check: **LSTM(Long Short-Term Memory, 장단기 기억)​**은 딥러닝 분야에서 사용되는 **인공 반복 신경망(RNN)** 아키텍처이다. 
+
 **참고자료**
 
 - [CNN 연산의 이해](https://wikidocs.net/64066): 합성곱 연산 및 3차원 텐서를 이용한 설명

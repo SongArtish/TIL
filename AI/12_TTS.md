@@ -212,7 +212,7 @@ plt.title("Spectrogram (dB)")
 
 > A **mel spectrogram** is a **spectrogram** where the frequencies are converted to the **mel** scale.
 
-- :ballot_box_with_check: **Mel-scale**: pitch에서 발견한 사람의 음을 인지하는 기준(threshold)을 반영한 scale 변환 함수
+- :ballot_box_with_check: **Mel-scale**: (Melody Scale) pitch에서 발견한 사람의 음을 인지하는 기준(threshold)을 반영한 scale 변환 함수
 - 먼저 mel 스케일로 spectrogram을 변환한다.
 
 ```python
