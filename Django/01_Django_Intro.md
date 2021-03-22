@@ -166,7 +166,7 @@ $ python manage.py startapp <앱 이름>
 # 앱 작성 순서
 
 INSTALLED_APPS = [
-    # 1. Local Appes
+    # 1. Local Apps
     'articles',
     # 2. Third Party Apps
     'haystack',
