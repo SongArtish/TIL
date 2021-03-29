@@ -168,8 +168,10 @@ def create(request):
 ```python
 # settings.py
 
+import os
 # 실제 파일이 저장되는 폴더 : [](괄호)를 사용하지 않는 것이 특징!
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')	# 혹은 이렇게 작성해도 된다! (이렇게 작성된 예시가 더 많다.)
 # 사용자가 접근하는 url 경로
 MEDIA_URL = '/media/'
 ```
@@ -208,6 +210,26 @@ def update(request, pk):
 ```
 
 - python에서 `키워드 인자`는 제일 마지막에 넣어줘야 한다. (인자 순서 주의!)
+
+
+
+### Media 파일 불러오기
+
+- 위에서 `settings.py`에 아래와 같이 **MEDIA_URL**을 작성하였다.
+
+```python
+# settings.py
+# 사용자가 접근하는 url 경로
+MEDIA_URL = '/media/'
+```
+
+- 따라서 이를 이용하여 파일에 접근하면된다.
+
+```python
+<img src="/media/{{ book.thumbnail_url }}">
+```
+
+- :white_check_mark: 참고로 여기서 `{{}}` 안에 들어있는 것은 변수이다.
 
 
 
