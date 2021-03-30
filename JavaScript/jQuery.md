@@ -149,4 +149,3 @@ npm install jquery
   
 
 ***Copyright* © 2021 Song_Artish**
-
