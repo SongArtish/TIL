@@ -326,6 +326,22 @@ $ git merge B
 $ git branch -d <브랜치명>
 ```
 
+### 브랜치 리스트 업데이트
+
+- 원격 저장소의 branch 리스트를 업데이트 한다.
+
+```bash
+$ git remote update origin --prune
+```
+
+### 모든 브랜치 리스트 조회
+
+- To show all local and remote branches that (local) Git knows about
+
+```bash
+$ git branch -a
+```
+
 
 
 ## Git Rebase
