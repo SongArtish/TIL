@@ -19,11 +19,26 @@ search: false
 0. [Vue Project Practice](@Project_Intro/00_Vue_Project_Practice.md)
 1. [Software Development Methodology](@Project_Intro/01_Software_Development_Methodology.md)
 2. [Face Recognition](@Project_Intro/02_Face_Recognition.md)
-3. [Blockchain](@Project_Intro/03_Blockchain.md)
 
 - [Project Collaboration Tools](@Project_Intro/Project_Collaboration_Tools.md)
 - [Project Git System](@Project_Intro/Project_Git_System.md)
 - [Project Planning](@Project_Intro/Project_Planning.md)
+- [Project README](@Project_Intro/Project_README.md)
+- [Secure Coding](@Project_Intro/Secure_Coding.md)
+
+
+
+## [AI](AI)
+
+0. [AI Concept](AI/00_AI_Concept.md)
+1. [ML Concept](AI/01_ML_Concept.md)
+2. [DL Concept](AI/02_DL_Concept.md)
+
+11. [Image Captioning](AI/11_Image_Captioning.md)
+12. [TTS](AI/12_TTS.md)
+13. [Voice Conversion](AI/13_Voice_Conversion.md)
+
+- [PyTorch Basic](AI/PyTorch_Basic.md)
 
 
 
@@ -46,6 +61,8 @@ search: false
 
 0. [Android Studio Basic](Android/00_Android_Studio_Basic.md)
 
+- [App Intro](Android/App_Intro.md)
+
 
 
 ## [API](API)
@@ -54,19 +71,30 @@ search: false
 
 
 
+## [Blockchain](Blockchain)
+
+0. [Blockchain Basic](Blockchain/00_Blockchain_Basic.md)
+1. [Block Construction](Blockchain/01_Block_Construction.md)
+
+
+
+## [CSS](CSS)
+
+1. [CSS](CSS/01_CSS.md)
+2. [CSS Layout](CSS/02_CSS_Layout.md)
+3. [CSS Properties](CSS/03_CSS_Properties.md)
+
+- [CSS Issues](CSS/CSS_Issues.md)
+
+
+
 ## [DataBase](DB)
 
-2. [SQL](DB/01_SQL.md)
-3. [SQL&ORM](DB/02_SQL&ORM.md)
+1. [SQL](DB/01_SQL.md)
+2. [SQL&ORM](DB/02_SQL&ORM.md)
 
 - [Data Import](DB/Data_Import.md)
 - [MySQL Server](DB/MySQL_Server.md)
-
-
-
-## [Deployment](Deployment)
-
-- [Netlify](Deployment/Netlify.md)
 
 
 
@@ -85,6 +113,16 @@ search: false
 11. [Django Static & Media](Django/11_Django_Static&Media.md)
 12. [Django Test](Django/12_Django_Test)
 
+- [Django & MySQL](Django/Django&MySQL.md)
+- [Django Environment Variable](Django/Django_EV.md)
+
+
+
+## [DOM](DOM)
+
+- [Base64](DOM/Base64.md)
+- [Blob](DOM/Blob.md)
+
 
 
 ## [Git](Git)
@@ -100,8 +138,11 @@ search: false
 ## [Java](Java)
 
 0. [Java_Tutorial](Java/00_Java_Tutorial.md)
-1. [Java Basic](Java/10_Java_Basic.md)
-2. [Inheritance](Java/11_Inheritance.md)
+1. [Variable](Java/01_Variable.md)
+2. [Data Type](Java/02_Data_Type.md)
+
+10. [Java Basic](Java/10_Java_Basic.md)
+11. [Inheritance](Java/11_Inheritance.md)
 
 
 
@@ -113,16 +154,27 @@ search: false
 3. [AJAX](JavaScript/03_AJAX.md)
 4. [JSON](JavaScript/04_JSON.md)
 
+- [jQuery](JavaScript/jQuery.md)
+- [Window Object](JavaScript/Window_Object.md)
 
 
-## [Network](Network)
 
-- [Network](Network/Network.md)
+## [Linux](Linux)
+
+- [Linux Commands](Linux/Linux_Commands.md)
+- [Sudo](Linux/Sudo.md)
+
+
+
+## [Markup](Markup)
+
+1. [HTML](Markup/01_HTML.md)
 
 
 
 ## [Program&Tools](Program&Tools)
 
+- [Anaconda](Program&Tools/Anaconda.md)
 - [Docker](Program&Tools/Docker.md)
 - [Eclipse](Program&Tools/Eclipse.md)
 - [Jira](Program&Tools/Jira.md)
@@ -148,7 +200,20 @@ search: false
 
 ## [React](React)
 
-- [React Intro](React/React_Intro.md)
+- [React Intro](React/00_React_Intro.md)
+- [React&Django](React/React&Django.md)
+
+
+
+## [Server](Server)
+
+0. [Deployment Intro](Server/00_Deployment_Intro.md)
+
+- [AWS](Server/AWS.md)
+- [AWS EC2](Server/AWS_EC2.md)
+- [Deployment Server](Server/Development_Server.md)
+- [Django Deployment](Server/Django_Deployment.md)
+- [Netlify](Server/Netlify.md)
 
 
 
@@ -166,18 +231,17 @@ search: false
 4. [Vuex](Vue.js/04_Vuex.md)
 5. [Server & Client](Vue.js/05_Server&Client.md)
 
-- [Vue_Installation](Vue.js/Vue_Installation.md)
+- [Plugins](Vue.js/Plugins.md)
 - [Vue Frameworks](Vue.js/Vue_Frameworks.md)
+- [Vue_Installation](Vue.js/Vue_Installation.md)
 
 
 
 ## [Web](Web)
 
-1. [HTML](Web/01_HTML.md)
-2. [CSS](Web/02_CSS.md)
-3. [CSS Layout](Web/03_CSS_Layout.md)
-
-- [CSS_Properties](Web/CSS_Properties.md)
+- [Network](Web/Network.md)
+- [Web_Service](Web/Web_Service.md)
+- [인터넷 페이지가 보이는 과정](Web/인터넷 페이지가 보이는 과정.md)
 
 
 
