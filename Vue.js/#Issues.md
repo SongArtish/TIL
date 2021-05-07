@@ -53,4 +53,30 @@ data: JSON.stringify(context),
 
 
 
+## JavaScript 관련
+
+### `.js` import가 안 될 때
+
+- 다른 외부 `.js` 파일을 Vue 프로젝트에서 import를 하려고 하는데 되지 않았다.
+
+**해결 방법**
+
+- 먼저 import할 컴포넌트에서 아래와 같이 코드를 작성하여 가져와준다.
+
+```javascript
+// CardPlay.vue
+import CMRotate from '@/assets/js/CMRotate.js'
+```
+
+- 그리고 해당 `.js` 파일의 제일 아래에 `export`문을 작성하여 내보낼 수 있도록 한다.
+
+```javascript
+// .CMRotate.js
+export default CMRotate;
+```
+
+
+
+
+
 ***Copyright* © 2021 Song_Artish**
