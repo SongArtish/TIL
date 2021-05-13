@@ -77,6 +77,22 @@ export default CMRotate;
 
 
 
+## CSS 관련
+
+### 로컬 이미지 가져오기
+
+- Vue의 `<style>` 태그에서 로컬이미지를 가져오는데, 기존에 사용해보았던 문법으로 시도해 보았지만 어려움이 있었다.
+
+**해결 방법**
+
+- 다음과 같은 문법을 사용한다.
+
+```css
+background-image: url("~@/assets/bgs/create_hall.png");
+```
+
+
+
 
 
 ***Copyright* © 2021 Song_Artish**
