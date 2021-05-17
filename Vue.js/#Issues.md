@@ -91,7 +91,31 @@ export default CMRotate;
 background-image: url("~@/assets/bgs/create_hall.png");
 ```
 
+### autofocus 미작동
 
+- Vue에서 `$router.push`로 이동하는 경우 `<input>` 태그의 `autofocus` 속성이 작동하지 않았다.
+
+**해결방법**
+
+> 사용자 지정 디렉티브 관련 [Vue 공식문서](https://kr.vuejs.org/v2/guide/custom-directive.html)
+
+- 먼저 사용자 지정 디렉티브를 등록한다.
+
+```javascript
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus()
+      }
+    },
+  },
+```
+
+- `<input>` 태그에 `v-focus`로 연결해준다.
+
+```html
+<input v-focus>
+```
 
 
 
