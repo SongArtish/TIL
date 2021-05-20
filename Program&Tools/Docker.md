@@ -57,4 +57,28 @@ $ docker images
 
 
 
+## 활용 예시
+
+### OpenVidu 사용하기
+
+- (자율프로젝트에서 openvidu 사용)
+
+- 먼저 Docker를 설치한 후, cmd에서 확인한다.
+
+  > [이 사이트](https://goddaehee.tistory.com/251) 참고
+
+  ```bash
+  docker -v
+  ```
+
+- 그리고 아래의 명령어로 OpenVidu를 실행한다.
+
+  ```bash
+  docker run -p 4443:4443 --rm -e OPENVIDU_SECRET=MY_SECRET openvidu/openvidu-server-kms:2.17.0
+  ```
+
+- (실제로 사용해보지는 않았다.)
+
+
+
 ***Copyright* © 2021 Song_Artish**

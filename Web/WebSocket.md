@@ -40,4 +40,22 @@ nodemon <파일명>.js
 
 
 
+## 간단한 구문
+
+### 1. 시그널 보내기
+
+```javascript
+socket.emit("시그널 이름", val1, val2) 
+```
+
+### 2. 시그널 받기
+
+- event listener
+
+```javascript
+socket.on("시그널 이름", (val1, val2) =>{});
+```
+
+
+
 ***Copyright* © 2021 Song_Artish**
