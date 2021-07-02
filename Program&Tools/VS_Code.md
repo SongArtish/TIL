@@ -164,4 +164,24 @@ $ code .
 
 
 
+## Issues
+
+### `terminal select default shell`이 나타나지 않는 경우
+
+> `Ctrl` + `P`를 하고 찾아봐도 `terminal select default shell` 메뉴창이 나타나지 않았다.
+
+**해결방법**
+
+[블로그](https://mishka.kr/2019/06/24/vscode-gitbash/)를 참고하였다.
+
+- VS Code의 `settings.json`에 들어간다.
+
+- 아래의 코드를 입력해준다.
+
+  ```json
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  ```
+
+  
+
 ***Copyright* 2020 © Song_Artish**
