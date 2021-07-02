@@ -20,7 +20,7 @@ manages study's randomization, drug distribution, and delivery logistics
 
 **BUILDER**
 
-interface to build Cube system environments
+interface to build Cube system environments (Designer Tool)
 
 ---
 
