@@ -78,7 +78,8 @@
   |      **PHASE**       |                  일반 EDC만 사용하는 과제                   |
   | **PMS**(시판후 조사) |             PMS나 OS 과제에 사용되는 라이브러리             |
 
-- :white_check_mark: `IWRSFULL, IWRSSUB, PHASE, PMS`가 주로 쓰인다.
+  - :arrow_forward: `DOUBLE_ENTRY`: 종이로 작성된 데이터를 디지털로 옮기기 위한 라이브러리 (2명이 입력하기 때문에 `double entry`이다.)
+  - :ballot_box_with_check: ​ `IWRSFULL, IWRSSUB, PHASE, PMS`가 주로 쓰인다.
 
 - 여기서 `IWRSFULL`을 import 한다.
 
@@ -133,11 +134,13 @@
 
 ### 2.4 ROLE & PRIV.
 
-> 앞선 `PROPERTY` 부분과 동일하게 과제 scope별 라이브러리를 사용한다.
+> CDMS에서 사용할 역할 & 권한
 
 - :ballot_box_with_check: 사이트에서 **ROLE**과 **Privilege**의 리스트를 확인할 수 있다.
-- 가급적이면 `Library Import` 기능을 이용하여 Role과 Privilege를 설정한다.
+  - 자세한건 `Basic_Training_Role&Priv_IWRS_FULL.xlsx` 파일을 참고한다.
+- 가급적이면 **Library Import 기능**을 이용하여 Role과 Privilege를 설정한다.
   - `Import` 방법은 앞선 [Property Import](####Property Import)와 동일하다.
+  - 앞선 `PROPERTY` 부분과 동일하게 과제 scope별 라이브러리를 사용한다.
 - 설정된 내용에 대한 Excel파일을 다운로드 할 수 있다.
 - 추후 과제를 오픈 한 후에 R&P에서 설정한 내용을 단독으로 `Check` 버튼을 통해 release 할 수 있다.
 
@@ -145,9 +148,95 @@
 
 ## 3. Entry
 
+> 연구자가 입력하는 **화면을 구성하는 메뉴**
+
+- :heavy_exclamation_mark: 본 실습은 실제 study 진행 시 반드시 아래의 2개의 문서를 토대로 진행하여야 한다.
+  - 기본 문서로  `CRF for EDC` 문서를 준비한다.
+  - `DB specification` 문서는 참고용으로 확인한다.
+
 ### 3.1 CYCLE & VISIT
 
+> 해당 과제에서 사용할 :cactus:**방문 구조** 결정하는 메뉴
 
+- :star: `e-CRF schedule` 표에서 작성되어 있는 방문 구조(일정)를 바탕으로 `CYCLE & VISIT`에 입력한다.
+
+#### 3.1.1 CYCLE 설정
+
+| Cycle 종류 |     full name     |                       설명                        |
+| :--------: | :---------------: | :-----------------------------------------------: |
+|   **NV**   |   Normal Visit    |                     정규방문                      |
+|   **UV**   | Unscheduled Visit |                예정되지 않은 방문                 |
+|   **AV**   |     All Visit     | 특정 방문에 속하지 않고 언제든지 입력 가능한 방문 |
+
+- `CYCLE ID`에는 NV, UV, AV를 입력한다.
+- `TYPE`에는 Normal Visit, Unscheduled Visit, All Visit으로 설정한다.
+- :white_check_mark: UV는 반복되기 때문에, 자동으로 `Repeat` 체크박스가 선택된다.
+
+#### 3.1.2 VISIT 설정
+
+> - `EN(Enrollment) ~ V5`까지가 정규방문(NV)에 속한다.
+> - `Code`: 해당 데이터가 어떤 방문에 속하는지 표시하기 위한 코드 (중복 입력X)
+>   - :ballot_box_with_check: 코드번호는 `DB spec > Visitinfo`에서 확인할 수 있다. 
+> - :white_check_mark: UV `Code`의 `#:+2000#`은 2000번부터 auto_increment가 된다는 의미이다.
+
+- NV에 EN ~ V5를 입력한다.
+- AV에 `Adverse Event`, `Prior and Concomitant Medications`, `Disposition`, `Principal Investigator's Signature` 등을 추가한다.
+- 기타 코드 등은 `DB spec > Visitinfo` 문서를 참고한다.
+- 이후 `Save` 버튼을 눌려 입력한 값들을 저장한다.
+
+
+
+### 3.2 CRF GROUP
+
+> `e-CRF schedule` 표를 참고하여​ :cactus:**CRF 그룹**을 생성하는 과정
+
+- ID 값과 Label 값은 `DB spec > TableList` 문서를 참고한다.
+  - DOMAIN -> Group ID
+  - Description -> Label
+- Type은 현재 EDC에 대한 페이지만을 생성하기 때문에, 모두 `Crfgroup for EDC`를 선택해준다.
+- review, freezing, lock, sign, save 등의 체크박스는 각 그룹을 해당 옵션에 포함할 것인지를 결정한다.
+  - 일반적으로는 모든 옵션을 체크하고 진행한다.
+- 순서가 잘못 지정된 경우, drag&drop으로 순서를 변경할 수 있다.
+- 작성이 완료되면 `Save` 버튼을 눌려서 설정을 저장한다.
+
+
+
+### 3.3 SCHEDULE
+
+> 앞에서 [Cycle&Visit](####3.1 CYCLE & VISIT)과 [CRF Group](####3.2 CRF GROUP)에서 설정한 내용 및 `e-CRF Schedule`표를 바탕으로 스케줄을 지정한다.
+
+- `e-CRF Schedule`표를 바탕으로 스케줄을 입력한다.
+  - :white_check_mark: `Quck Add`를 활성화하면 빠르게 스케줄을 입력할 수 있다.
+- :ballot_box_with_check: AV(All Visit)의 경우, AE, CM, DS, SN이 각각에 맞도록(모양 - 대각선으로) 입력해준다.
+- :white_check_mark: [참고] `Label hide`를 클릭하여 표시화면 Size를 줄일 수 있다.
+
+
+
+## 4. Data Set
+
+
+
+## 5. ECS
+
+> Edit Check Specifications. 함수를 이용하여 조건문을 생성하는 것.
+
+
+
+## 6. DCL
+
+> Entry와 ECS에 포함되지 않는 **기타 기능**을 집합
+
+
+
+## 7. User 등록
+
+> `ADMIN > STUDY(USER)`에서 사용자를 추가해야 해당 사용자가 내가 생성한 builder에 접속할 수 있다.
+
+ADMIN 메뉴
+
+- `ADMIN > STUDY(USER)`의 Privilege는 **Builder의 권한** 설정을 의미한다.
+- `ADMIN > RELEASE`
+  - **release**: 연구자들이 사용할 수 있는 real 사이트를 오픈하는 것
 
 
 

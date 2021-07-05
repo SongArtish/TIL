@@ -24,9 +24,14 @@
 
 > 임상시험의 진행과 수행을 관리하는 자
 
+- 데이터를 확인하는 업무
+
 ### CRC (Clinical Research Coordinator)
 
 > 임상시험 코디네이터, 연구간호사
+
+- 보통은 간호사 (임상시험 전문 간호사)
+- 주로 데이터 입력을 담당한다.
 
 ### CRF (Case Report Form )
 
@@ -40,6 +45,10 @@
 
 > 임상시험 결과보고서
 
+### CTA (Clinical Trial Assistant)
+
+- CT에서 유일하게 군(group) 정보를 알고 있음
+
 ### CTMS (Clinical Trial Management System)
 
 > 통합 임상시험 관리시스템. 모든 임상시험 관련 업무를 한 곳에서 통합적으로 관리할 수 있는 시스템
@@ -50,6 +59,8 @@
 
 ### DM (Data Management)
 
+> Study Data Manager. 데이터를 관리하는 사람
+
 ### DMP (Data Management Plan)
 
 ### DVS (Data Validation Specification)
@@ -57,6 +68,8 @@
 ## E
 
 ### ECS (Edit Check Specifications)
+
+> 함수를 이용하여 조건문을 생성하는 것.
 
 ### EDC (Electronic Data Capture)
 
@@ -102,6 +115,8 @@
 
 > 임상시험용 의약품
 
+### IPM (IP Manager)
+
 ### IRB (Institutional Review Board)
 
 > 의학연구윤리심의위원회
@@ -142,17 +157,21 @@
 
 ## P
 
-### PV (Pharmacovigilance)
-
-> 약물 감시. 약물의 부작용이나 악영향을 모니터링 하는 것
-
 ### PI (Principal Investigator)
 
-> a person(s) in charge of a clinical trial or a scientific research grant
+> 책임연구자. a person(s) in charge of a clinical trial or a scientific research grant
+
+### PM (Project Manager)
+
+- CRA의 관리자
 
 ### PMS (Post Marketing Surveillance)
 
 > 시판후 조사
+
+### PV (Pharmacovigilance)
+
+> 약물 감시. 약물의 부작용이나 악영향을 모니터링 하는 것
 
 ## Q
 
@@ -164,19 +183,27 @@
 
 > 품질관리
 
+### OS (Observational Surveillance)
+
+> 관찰연구
+
 ## R
 
 ### RBM (Risk Based Monitoring)
 
 > 위험기반 모니터링. 임상시험의 운영, 임상 데이터, 임상 실시 기관 등과 관련된 복합적인 위험요소를 사전에 평가하고 모니터링 함으로써 임상연구의 품질/비용/시간적 편익을 누릴 수 있는 솔루션
 
-### S
+## S
 
 ### SAE (Serious Adverse Event)
 
 > 심각한 이상반응
 
 ### SOP (Standard Operation Procedure)
+
+### Sponsor
+
+> 의뢰자, 일반적으로 제약사
 
 ## T
 

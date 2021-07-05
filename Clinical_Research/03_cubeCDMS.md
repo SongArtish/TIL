@@ -17,6 +17,10 @@
 - EDC, 즉 데이터를 입력하는 시스템
 - 시스템 내부에 data validation을 위한 **ECS**(Edit Check System)을 포함한다.
 
+
+
+## Subject
+
 **입력 데이터**
 
 |  visit  |                          설명                           |
