@@ -134,88 +134,57 @@
 
 > Domain은 SubITEM으로, 여기서는 CDISC( Clinical Data Interchange Standards Consortium, 국제임상데이터표준컨소시엄)의 SDTM(Study Data Tabulation Model) 용어를 우선적으로 사용한다.
 
-| No   | SDTM | Domain | Explanation_K              | Explanation_E                | PAGE Type                     | PURPOSE                                                      |
-| ---- | ---- | ------ | -------------------------- | ---------------------------- | ----------------------------- | ------------------------------------------------------------ |
-| 1    |      |        |                            |                              |                               | 임상시험에 따라 각 DOMAIN이 Primary Endpoint가 될 수 있음... 그 외의 수집 목적을 기술 |
-| 2    |      | EN     | 등록                       | Enrollment                   | Registration Page Type에 사용 | Subject 등록Version Control의 기준                           |
-| 3    | Y    | SV     | 방문일                     | Subject Visit                |                               | 방문기간이 적절한지 확인복약순응도, Primary Endpoint와 관련이 있음 |
-| 4    | Y    | DM     | 기초정보                   | Demographics                 |                               | Baseline Comparability확인즉 비교군간 대상자의 기본 특성의 차이여부를 확인 하기 위함 |
-| 5    | Y    | MH     | 병력                       | Medical History              |                               | 임상시험 참여에 문제가 있는 병력여부를 확인함                |
-| 6    | Y    | PE     | 신체검진                   | Physical Examination         |                               | 임상시험 참여에 문제가 있는 병력을 체크하기 위한 과정임상시험 참여후(IP투여후) AE(Adverse Event) 여부를 체크하기 위한 과정 |
-| 7    | Y    | VS     | 활력징후                   | Vital Sign                   |                               | 병력, AE각 방문/기관별 Trend Analysis                        |
-| 8    | Y    | EG     | 심전도                     | ElectrocardioGraphy          |                               | 병력, AE각 방문/기관별 Trend Analysis                        |
-| 9    | Y    | LB     | 실험실검사                 | LaBoratory test              | LAB Page Type에 사용          | 병력, AE각 방문/기관별 Trend Analysis                        |
-| 10   | Y    | IE     | 선정제외기준               | Inclusion Exclusion criteria |                               | **Baseline Data를 기반으로 임상시험 참여의 적합여부 확인**   |
-| 11   |      | RN     | 무작위 배정                | RaNdomization                |                               | IE 통과 후 임상시험 참여시 IWRS의 무작위 배정으로 특정 군에 배정 |
-| 12   |      | IP     | IP처방                     | Investigational Product      |                               | RN에서 배정된 특정군에 해당하는 IP처방/할당                  |
-| 13   | Y    | DA     | 복약순응도                 | Drug Accountability          |                               | 일정 수준의 약물을 복용해야 효과를 기대할 수 있음처방된 IP를 실제로 어느정도 복약했는지 확인복용한 약물을 count 한다는 의미 |
-| 14   | Y    | EX     | 임상시험용 의약품_투약기간 | Exposure                     |                               | Efficacy & Safety 가 임상시험의 목적임Safety는 PE, VS, EG, LB등의 방식으로 확인==>AE에 모두 기재하도록 되어 있음AE의 경우 원칙적으로 IP 투여 후 발현된 증상임.또한 IP최종 투여 후 일정 기간까지 발현된 증상임즉 AE수집 기간을 확인하기 위해 IP의 투여기간이 절대적으로 필요함 |
-| 15   | Y    | CM     | 선행/병용약물              | Concomitant Medication       |                               | 임상시험 전/중 IP와 선행/병용투여하지 말하야 할 약(금기약물=Prohibited Medication) 확인AE로 인해 투약된 약물을 확인함으로 써 AE double Check |
-| 16   | Y    | AE     | 이상반응                   | Adverse Event                | AE Page Type에 사용           | 임상시험의 목적 중 하나임즉 IP의 Safety를 조사하여 안전성을 확보해야 함 |
-| 17   | Y    | DS     | 임상시험 종료              | DiSposition                  |                               | IE, RN등과 같이 임상시험의 절차에 대한 내용임임상시험 완료여부, 탈락사유를 조사함 |
-| 18   |      | SN     | 시험책임자 서명            | SigNature                    |                               | PI의 확인!                                                   |
+|  No  | SDTM | Domain |       Explanation_K        |        Explanation_E         |           PAGE Type           |                           PURPOSE                            |
+| :--: | :--: | :----: | :------------------------: | :--------------------------: | :---------------------------: | :----------------------------------------------------------: |
+|  1   |      |        |                            |                              |                               | 임상시험에 따라 각 DOMAIN이 Primary Endpoint가 될 수 있음... 그 외의 수집 목적을 기술 |
+|  2   |      | **EN** |            등록            |          Enrollment          | Registration Page Type에 사용 |              Subject 등록Version Control의 기준              |
+|  3   |  Y   | **SV** |           방문일           |        Subject Visit         |                               | 방문기간이 적절한지 확인복약순응도, Primary Endpoint와 관련이 있음 |
+|  4   |  Y   | **DM** |          기초정보          |         Demographics         |                               | Baseline Comparability확인즉 비교군간 대상자의 기본 특성의 차이여부를 확인 하기 위함 |
+|  5   |  Y   | **MH** |            병력            |       Medical History        |                               |        임상시험 참여에 문제가 있는 병력여부를 확인함         |
+|  6   |  Y   | **PE** |          신체검진          |     Physical Examination     |                               | 임상시험 참여에 문제가 있는 병력을 체크하기 위한 과정임상시험 참여후(IP투여후) AE(Adverse Event) 여부를 체크하기 위한 과정 |
+|  7   |  Y   | **VS** |          활력징후          |          Vital Sign          |                               |            병력, AE각 방문/기관별 Trend Analysis             |
+|  8   |  Y   | **EG** |           심전도           |     ElectrocardioGraphy      |                               |            병력, AE각 방문/기관별 Trend Analysis             |
+|  9   |  Y   | **LB** |         실험실검사         |       LaBoratory test        |     LAB Page Type에 사용      |            병력, AE각 방문/기관별 Trend Analysis             |
+|  10  |  Y   | **IE** |        선정제외기준        | Inclusion Exclusion criteria |                               |  **Baseline Data를 기반으로 임상시험 참여의 적합여부 확인**  |
+|  11  |      | **RN** |        무작위 배정         |        RaNdomization         |                               | IE 통과 후 임상시험 참여시 IWRS의 무작위 배정으로 특정 군에 배정 |
+|  12  |      | **IP** |           IP처방           |   Investigational Product    |                               |         RN에서 배정된 특정군에 해당하는 IP처방/할당          |
+|  13  |  Y   | **DA** |         복약순응도         |     Drug Accountability      |                               | 일정 수준의 약물을 복용해야 효과를 기대할 수 있음처방된 IP를 실제로 어느정도 복약했는지 확인복용한 약물을 count 한다는 의미 |
+|  14  |  Y   | **EX** | 임상시험용 의약품_투약기간 |           Exposure           |                               | Efficacy & Safety 가 임상시험의 목적임Safety는 PE, VS, EG, LB등의 방식으로 확인==>AE에 모두 기재하도록 되어 있음AE의 경우 원칙적으로 IP 투여 후 발현된 증상임.또한 IP최종 투여 후 일정 기간까지 발현된 증상임즉 AE수집 기간을 확인하기 위해 IP의 투여기간이 절대적으로 필요함 |
+|  15  |  Y   | **CM** |       선행/병용약물        |    Concomitant Medication    |                               | 임상시험 전/중 IP와 선행/병용투여하지 말하야 할 약(금기약물=Prohibited Medication) 확인AE로 인해 투약된 약물을 확인함으로 써 AE double Check |
+|  16  |  Y   | **AE** |          이상반응          |        Adverse Event         |      AE Page Type에 사용      | 임상시험의 목적 중 하나임즉 IP의 Safety를 조사하여 안전성을 확보해야 함 |
+|  17  |  Y   | **DS** |       임상시험 종료        |         DiSposition          |                               | IE, RN등과 같이 임상시험의 절차에 대한 내용임임상시험 완료여부, 탈락사유를 조사함 |
+|  18  |      | **SN** |      시험책임자 서명       |          SigNature           |                               |                          PI의 확인!                          |
 
-Page - 전체
+- **VS(Vital Sign, 활력징후)**의 4가지
+  - 체온(BT - Body Temperature)
+  - 맥박(HR - Heart Rate)
+  - 호흡(RR - Respiratory Rate)
+  - 혈압(BP - Blood Pressure)
+    - SBP - Systolic Blood Pressure
+    - DBP - Diastolic Blood Pressure
 
-CRF - 페이지의 부분된 영역
+- CRF의 id 순서는 다음과 같다.
+  - `LB, LB01, LB02, ...`
+  - 이런식으로 순서를 매긴다. 즉, 4번째는 LB03
 
-Question(OST) - CRF의 행 단위 영역\
-
-- QST의 유형이 여러개 있는데, 이 유형을 아는 것이 중요하다.
-
-Item - 모든 항목
-
-layout - item의 입력 유형
-
-
-
-- DOMAIN=SubITEM: CDISC의 SDTM 용어를 우선적으로 사용함
-  - 한글 ->: 영어, 약어 외우기
-  - 순서대로 외우기
-  - 등등
-
-VS -> [체온, 맥박, 호흡, 혈압 및 산소포화도](https://nurserumi.tistory.com/11)
-
-
-
-LB순서는 LB, LB01, LB02, ...
-
-- 이런식으로 순서를 매긴다. 즉, 4번째는 LB03
-- LB는 CRF의 id
-
-page id와 qst id를 외워야함
-
-ND - not done -> 카테고리
-
-DM Domain, VS Domain은 예외 -> 앞에 domain약자를 붙이지 않는다.
-
-- item id는 8자는 넘기지 않는다.
-
-
-
-study treatment -> IP를 의미
-
-:ballot_box_with_check: AE related item 약어와 뜻(comment)를 외워야함
-
-congenital 선천적인
-
-AE related item은 term에 대한 것
-
-LB reltated item은 test에 대한 것
-
-- 하지머ㅏㄴ 사실, test 는 LB 밖에 없다
-
-CS ->clinical significance
+- :white_check_mark: ND - not done
+- :white_check_mark: CS - Clinical Significance
+- Domain 약자를 앞에 붙이지만, 예외도 존재한다.
+  - DM 도메인(AGE, SEX, BRTHDTC), VS 도메인(BT, HR, RR, BP)
 
 
 
 ## RDB: Relational Data Base
 
-mother table - 해당 테이블을 입력하지 않으면, 하위 테이블을 입력할 수 없다.
+```markdown
+### 용어
+- Table = domain = dataset
+- Column = Variable = Item
+- row
+```
 
-
-
-여기서 pk는 subject, visit, sequence만 쓴다!
+- :white_check_mark: Mother Table: 해당 테이블을 입력하지 않으면, 하위 테이블을 입력할 수 없다.
+- :white_check_mark: PK는 subject, visit, sequence만 쓴다!
 
 
 

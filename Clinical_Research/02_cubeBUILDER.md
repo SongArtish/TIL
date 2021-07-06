@@ -1,8 +1,6 @@
 # cubeBUILDER
 
-> CDMS를 setup하는 곳
-
-2021.07.05
+> CDMS를 setup하는 곳. 실습과정을 정리한다.
 
 ---
 
@@ -338,41 +336,121 @@ BUILDER에서 사용하는 CRF 구조
   - Label 값을 입력하면 실제 페이지에서 category위에 label 값이 표시된다.
 - `QST_CATEGORY` 하위에는 ITEM이 아닌 `QST_NORMAL`을 child로 넣어준다.
 
+**소수점 TYPE_LENGTH**
 
+- TYPE_LENGTH에서 `N3.1`은 정수 3자리, 소수점 1자리까지 입력하라는 의미이다.
+- `ITEM > Layout`에서 TEXT_INPUT > Number를 선택하고 `ITEM > Data Type Length`에서도 `3.1`이라고 입력하면 된다.
 
-#### 3.4.7 Local Laboratory Test
+**Comment 창 만들기**
 
+- comment 바로 앞의 `QST > Property`에서 COMMENT_APPEND를 설정하고, value에 comment를 입력하면 된다.
 
+#### 3.4.7 Local Laboratory Test (LB)
+
+여기서는 2개의 CRF를 생성해야 한다.
+
+**QST > Property의 Variant**
+
+- QST에서 Property를 입력하고, 해당 property의 가장 우측 아이콘을 클릭하면 각 property의 variant를 설정할 수 있다.
+
+  ```markdown
+  V1: *If there are any clinically significant abnormal result, please specify the details on the [Adverse Event] page.
+  Except V1: *If there are any newly noted abnormal result since the last Visit, please specify the details on the [Adverse Event] page
+  ```
+
+  - 위와 같은 경우, `else 구문`에 해당하는 아래의 문구를 property의 value에 입력한다.
+  - 그리고 `if 구문`에 해당하는 위의 문구를 property variant에서 조건문에 맞게 추가해준다.
+
+**Static Rownum Table**
+
+- 테이블 ID를 `LB01_ST`를 입력한다.
+
+- 이후 아래에 새로운 하위 QST들을 생성한다.
+
+- :ballot_box_with_check: `Static Rownum Table > QST > ITEM`에서는 **Sub Item이 매우매우 중요**하다:exclamation:
+
+  - Sub Item에서 해당 열의 번호를 알 수 있어야 한다!
+
+    > QST copy 기능을 통해, 하나의 QST만 생성해서 나머지를 copy할 예정이기 때문에!
+
+  - **LB.1.Erythroctytes**과 같이 Sub Item을 입력한다.
+
+  - 그리고 해당 `ITEM > Property`에서 `DEFAULT_VALUE`를 선택하고 `Erythrocytes`를 값으로 입력해준다.
+
+**copy 기능**
+
+> 하나만 만들어서 나머지를 copy하는 기능
+
+- `상단의 static table QST > Copy Question` 버튼을 클릭하고, `Question List`에서 dropdown을 통해 copy할 target QST을 찾는다.
+- target QST를 지정하고 copy 개수를 입력한다.
+- :ballot_box_with_check: 생성된 QST에서 `Sub Item`이라는 버튼을 클릭하면 `Sub Item`을 이름을 일괄적으로 변경할 수 있다.
+- 기타 변경해야 하는 것들을 직접 입력하여 변경해준다.
 
 #### 3.4.8 Pregnancy Test
 
-
+> 위에서 실습한 내용을 토대로 작성한다.
 
 #### 3.4.9 Inclusion/Exclusion Criteria
 
-
+- :ballot_box_with_check: 텍스트만 입력하는 QST는 **Dummy**라는 레이아웃을 사용한다
+  - :white_check_mark: `ITEM Property > LABEL_WRATE`를 활용해서 item label의 폭 비율을 100으로 맞춰준다.
+- :ballot_box_with_check: :star: **부동호의 경우** `<, >`을 입력하면 시스템에서 태그로 인식하여 오류가 발생할 수 있으므로, 반드시 **`ㄷ + 한자`를 사용하여 입력**한다.
 
 #### 3.4.10 Randomization
 
+> 위에서 실습한 내용을 토대로 작성한다.
 
+- IWRS와 관련된 세팅은 차후에 학습한다.
 
 #### 3.4.11 IP Prescription
 
-
+> 위에서 실습한 내용을 토대로 작성한다.
 
 #### 3.4.12 Adverse Event
 
+- QST_TABLE을 생성한다.
+- Line Number의 경우, ITEM Layout을 **ROWNUM**으로 설정한다.
 
+**DD(Dropdown)**
+
+- Dropdown을 생성하려는 경우, Layout에서 `Dropdown`을 선택하고 Radio와 동일하게 작업을 한다.
+
+**ITEM 2줄로 표시하기**
+
+:ballot_box_with_check: `ROWSPAN_ITEMS`
+
+- Table QST의 **`QST property > ROWSPAN_ITEMS`를 활용**하여 특정 항목의 순서 번호를 지정한다.
+- 전체 폭을 차지할 항목의 idx 값을 입력해준다.
+  - 예시) 1, 2번째 열은 전체 폭 차지 -> **[0, 1]**
+
+:ballot_box_with_check: `LAYOUT_WIDTH`
+
+> QST Property로 각 항목의 비율을 지정한다.
+
+- 한 줄당 100%가 되어야 한다.
+- 예시) 5%,15%,20%,20%,20%,20%,20%,20%,20%,20%
+  - 1~6번째가 한 줄
+  - 1,2, 7~10번째가 한 줄
 
 #### 3.4.13 Prior and Concomitant...
 
+**Dropdown 하위에 item 생성하기**
 
+- :ballot_box_with_check: `Dropdown > CODE`에서 모든 values의 `Type Text`를 체크해주어야만 사용할 수 있다!
+- Dropdown 하위에 ITEM을 생성한뒤, PARENT 옵션과 연결해준다.
 
 #### 3.4.14 Disposition
 
+> 위에서 실습한 내용을 토대로 작성한다.
 
+#### 3.4.15 Principal Investigator's Signature
 
-#### 3.4.15 Principal Investigator's ...
+**전자서명**
+
+- `ITEM > EVENT`에서 **SUPP_SUBJ.ESIGN_STATUS**를 활용하여 입력할 수 있다.
+- :ballot_box_with_check: `ITEM > Property > AUTOFILL`을 활용하면 연구자가 입력할 수 없도록 막을 수 있다.
+- `ITEM > EVENT > SUPP_SUBJ.ESIGN_TIME`을 활용하면 전자서명 날짜/시간과 자동으로 연동할 수 있다.
+- :white_check_mark: 전자서명 관련 ITEM들은 `Default Missing Chekc`를 NO로 체크해주어야한다.
 
 
 
