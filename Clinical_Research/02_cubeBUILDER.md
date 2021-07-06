@@ -100,10 +100,6 @@
   - 마지막으로 `Seq no.` 설정 후, `Number format > Seq no.`를 오른쪽으로 추가해준다.
   - `Confirm` 버튼을 누른 후, 마지막으로 `Save` 버튼을 눌려서 저장해준다.
 
-**Enrollment number부터 학습!!!!!!!!!!!!!**
-
-
-
 #### EDC 기타
 
 `Log-in Page Settings`
@@ -150,9 +146,12 @@
 
 > 연구자가 입력하는 **화면을 구성하는 메뉴**
 
-- :heavy_exclamation_mark: 본 실습은 실제 study 진행 시 반드시 아래의 2개의 문서를 토대로 진행하여야 한다.
-  - 기본 문서로  `CRF for EDC` 문서를 준비한다.
-  - `DB specification` 문서는 참고용으로 확인한다.
+- :heavy_exclamation_mark: Entry 진행 시 **반드시 아래의 2개의 문서를 토대로 진행**하여야 한다.
+
+  ```markdown
+  - CRF for EDC
+  - DB specification
+  ```
 
 ### 3.1 CYCLE & VISIT
 
@@ -209,6 +208,171 @@
   - :white_check_mark: `Quck Add`를 활성화하면 빠르게 스케줄을 입력할 수 있다.
 - :ballot_box_with_check: AV(All Visit)의 경우, AE, CM, DS, SN이 각각에 맞도록(모양 - 대각선으로) 입력해준다.
 - :white_check_mark: [참고] `Label hide`를 클릭하여 표시화면 Size를 줄일 수 있다.
+
+
+
+### 3.4 CRF Page
+
+#### Entry 트리구조
+
+BUILDER에서 사용하는 CRF 구조
+
+> 1. Page
+> 2. CRF
+> 3. Question
+> 4. Item - 연구자들이 데이터를 입력하는 필드
+
+- 즉, 가장 큰 범위에서부터 **PAGE > CRF > QST > ITEM**이다.
+
+#### 생성 및 삭제
+
+**생성**
+
+- 각 단계에서 생성을 위해서는 상위 단계에서 `ADD CRF`, `ADD Question`, `ADD Item`을 눌려서 생성한다.
+
+**삭제**
+
+- item을 삭제할 때는 `CRF PAGE `에서 item을 선택하고 `Deleted` 체크박스를 활성화해준다.
+- 다만, 삭제한 항목의 <u>id 값은 변경</u>해주면 좋다. 다른 item에서 사용될 수 있기 때문에
+  - 예시) `MH01` -> `MH01_DEL` 
+
+#### 3.4.1 Enrollment (EN)
+
+- :heavy_exclamation_mark: (스크리닝 번호가 포함된 페이지)는 반드시 page `TYPE`을 **Registration Page**로 설정한다. (one and unique)
+- `CRF for EDC`, `DB Spec` 문서에 따라 QST, ITEM을 등록하고 설정한다.
+  - `QST > Type`은 Normal Question으로 설정
+  - `Item > Layout`은 각각, DATE와 SYSDEFINED로 설정
+  - :white_check_mark: `ITEM > Default Missing Check`는 (누가?) **연구자가 반드시 입력해야하는 항목에 대해 누락** Query를 발행할지 설정하는 부분이다.
+    - :exclamation: 별도의 지시사항이 없으면, `YES`로 처리한다.
+- :ballot_box_with_check: `ITEM > Sub item`에 `Domain Name`, 즉 EN을 입력한다.
+  - 이하도 동일하다.
+- :ballot_box_with_check: `ITEM > EVENT`는 해당 아이템 값들에 이벤트를 걸어준다.
+  - 각각 `SUPP_SUBJ.IC_DATE`와 `SUBJECT.SCR_CODE` 이벤틀르 설정한다.
+
+#### 3.4.2 대상자 등록 -CDMS
+
+- 대상자를 등록하면, CDMS에서 BUILDER Page 작성 내용을 확인할 수 있다.
+
+[CDMS 문서](03_cubeCDMS.md) 참고
+
+#### 3.4.3 Subject Visit (SV)
+
+> 전반적인 내용은 CRF for EDC와 DB spec 문서를 참고하여 위와 동일하게 진행한다.
+
+**Radio 설정**
+
+> Radio는 선택 항목 중 단 하나만 선택할 수 있는 레이아웃이다.
+
+- `ITEM > Layout`에서 RADIO를 선택하면 `Code` 항목이 생겨난다.
+
+- `Code > [Add]` 버튼을 눌려 내용을 입력한다.
+
+  - 보통 Code Id와 Name은 해당 아이템의 ID, Label과 동일하게 대응되게 입력한다.
+
+  - 아래의 VALUES에 원하는만큼 값을 추가하고 각각의 Val.들을 입력해준다.
+
+    |           Value           |                             설명                             |
+    | :-----------------------: | :----------------------------------------------------------: |
+    |       **DB Value**        |                          DB 상의 값                          |
+    |       **UI Value**        |                      화면에 표시되는 값                      |
+    | **Rpt.(Reporting) Value** | Dataset 추출시 출력되는 값<br />**(보통 DB Val.과 동일하게 입력)** |
+
+  - :white_check_mark: Rpt. Val.는 데이터를 전달하기 위하여 엑셀로 데이터를 추출시에 출력되는 값을 의미한다.
+
+**기타 상세 입력**
+
+- radio에서 `others`를 선택한 경우, 상세 내용을 입력할 수 있는 창(`specify below`)을 만들어준다.
+- :ballot_box_with_check:**​ Property는 item을 꾸며주는 역할을 한다.**
+  - `NOTICE_APPEND`라는 property를 사용하면 radio element 뒤에 표시될 문자열을 입력할 수 있다.
+  - NOTICE_APPEND-$$에서 `$$`자리에 연결할 값의 DB value를 입력해준다.
+    - 여기서는 NOTICE_APPEND-2라고 입력하면 된다.
+    - 그리고 value에 `Specify below`라고 입력해준다.
+
+**특정 조건일 때만 표시**
+
+- UV일 경우에만 표시해주어야 하는 QST은 **Variant을 활용**한다. :ballot_box_with_check:
+- 각 아이템의 Variant에서 다음과 같이 조건문을 걸어준다.
+  - ALL일 경우, exclude
+  - UV일 경우, include
+
+#### 3.4.4 Demographics (DM)
+
+**뒤에 특정 문자열 표시하기**
+
+> Age 항목 옆에 Years라는 단위를 표시하기 위해 `ITEM > Property`에서 **UNIT_APPEND**를 설정한다.
+
+**나이 및 성별 연동**
+
+> Subject List 혹은 나이가 필요한 곳에 **해당 ITEM 값을 연동**하기 위해, `[AGE] ITEM > EVENT`에서 **SUPP_SUBJ.AGE**를 설정한다.
+
+- 성별도 마찬가지로 진행하여 값을 연동한다.
+
+#### 3.5.5 Medical History (MH)
+
+> :exclamation: MH의 QST들은 **Domain name이 `MH`가 아닌 `MY`**인 것에 주의한다!
+
+- 먼저 `QST_NORMAL`과 `QST_TABLE`을 각각 만들어준다.
+- :ballot_box_with_check: seq number의 `item > layout`은 sysdefined가 아닌, rownum으로 해야한다!
+- :white_check_mark: **MEDCODE**: 연구자가 병력을 검색해서 입력하는 형태
+
+**Radio 아이템의 좌우정렬**
+
+- `ITEM > Property`에서 CODE_WIDTHS_ARR를 지정 후, value에 `50%,50%`의 값을 지정해준다.
+  - `CODE_WIDTHS_ARR`는 radio element들의 폭배열을 설정하는 property이다.
+  - value는 radio 개수에 맞춰서 해야하며, 합이 반드시 100%가 되어야한다.
+
+**Date Unknown 값 배정**
+
+- `End date`를 설정할 때 UK도 지정할 수 있게 해야한다.
+- `ITEM > Property`에서 JSDATA_DDUK, JSDATA_MMUK, JSDATA_ YYUK를 설정해주면, 각각 일, 월, 년 별로 UK 값을 지정할 수 있게 된다.
+
+**Table 항목 폭**
+
+- `Table QST > Property`에서 `LAYOUT_WIDTH`를 설정해주고, 위에서 radio 아이템 좌우정렬을 한 것과 같이 원하는 비율을 지정해준다.
+
+#### 3.4.6 Vital Signs (VS)
+
+> `QST_CATEGORY`를 활용하여, 위에서 ND 옵션을 선택하게 되면 카테고리의 값을 입력하지 않아도 되도록 설정하는 구조를 만든다.
+
+- `QST_CATEGORY`의 ID 값은 **VS_CT**로 설정하며, Label은 필수가 아니다.
+  - Label 값을 입력하면 실제 페이지에서 category위에 label 값이 표시된다.
+- `QST_CATEGORY` 하위에는 ITEM이 아닌 `QST_NORMAL`을 child로 넣어준다.
+
+
+
+#### 3.4.7 Local Laboratory Test
+
+
+
+#### 3.4.8 Pregnancy Test
+
+
+
+#### 3.4.9 Inclusion/Exclusion Criteria
+
+
+
+#### 3.4.10 Randomization
+
+
+
+#### 3.4.11 IP Prescription
+
+
+
+#### 3.4.12 Adverse Event
+
+
+
+#### 3.4.13 Prior and Concomitant...
+
+
+
+#### 3.4.14 Disposition
+
+
+
+#### 3.4.15 Principal Investigator's ...
 
 
 
