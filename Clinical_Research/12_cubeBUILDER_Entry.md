@@ -1,6 +1,8 @@
-# cubeBUILDER
+# cubeBUILDER Entry
 
-> CDMS를 setup하는 곳. 실습과정을 정리한다.
+> Entry는 연구자들이 데이터를 입력하는 공간을 만드는 작업이다.
+
+2021.07.06
 
 ---
 
@@ -10,140 +12,6 @@
 
 
 
-## 1. 계정 생성
-
-- [builder 사이트](https://edu-builder.cubecdms.com/login)에 접속하여 계정을 생성한다.
-- 이후 로그인한다.
-
-
-
-## 2. 과제 생성
-
-### 2.0 List of Studies
-
-> 로그인을 하면 user가 설정 가능한 과제를 확인할 수 있는 리스트가 있다.
-
-- 해당 리스트에서 원하는 과제를 검색/생성할 수 있다.
-- :white_check_mark: organization이 `씨알에스큐브`인 과제는 샘플 과제로, review(참고) 목적으로 생성되어 있다.
-
-
-
-### 2.1 Study Information
-
-- 첫 화면 리스트에서 `Create` 버튼을 눌려 과제를 생성한다.
-
-|    필드값    |                             설명                             |                             예시                             |
-| :----------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|    **ID**    |                  해당 study의 id값 (고유값)                  |                HM_AS_201 (한미약품 아스피린)                 |
-| **Protocol** | **임상시험 계획서 제목 혹은 과제명**<br />(보통 ID와 Protocol명을 동일하게 설정) |                                                              |
-|  **Alias**   |                     과제를 지칭하는 별칭                     |                                                              |
-|  **Title**   |          임상시험 계획서의 첫 페이지에 나오는 제목           | 고혈압 환자를 대상으로 A약물이 효과가 있는지를 검증하는 임상시험 |
-|  **Phase**   |                     임상시험 단계를 설정                     |                                                              |
-|  **Active**  |                  (`No`는 과제 삭제를 의미)                   |                         `Yes`로 선택                         |
-|  **System**  | CRScube에서 제공하는 솔루션<br />(실습에서는 CDMS와 IWRS를 사용) |                                                              |
-
-- **System**에 대한 간단한 설명
-
-> CRScube에서 제공하는 솔루션은 아래와 같다.
-
-|  Solution   |                             Role                             |
-| :---------: | :----------------------------------------------------------: |
-|  **CDMS**   |                       데이터 수집공간                        |
-|  **IWRS**   |               약품 재고 관리 등 행정절차 제공                |
-|   **PRO**   | 환자가 직접 앱으로 데이터를 입력하는 것<br />(EDC로 데이터 입력됨) |
-|   **PR**    |                                                              |
-| **CONSENT** |                  Tablet을 통한 동의서 서명                   |
-|   **DDC**   |                          (초기단계)                          |
-
-- `[Create]`를 누르면 과제가 생성되며, 과제 리스트에서 확인할 수 있다.
-  - :ballot_box_with_check: Create 완료 후 CDMS에서 접속이 가능하다!
-- 생성한 과제의 ID를 클릭하여 과제에 접속한다.
-- `STUDY > INFO` 메뉴에서 앞에서 설정한 정보 확인 가능
-
-
-
-### 2.2 PROPERTY
-
-#### Property Import
-
-- `STUDY > PROPERTY > PROPERTY`에서 `Import`를 한다.
-
-  |         Type         |                            설명                             |
-  | :------------------: | :---------------------------------------------------------: |
-  |   **DOUBLE_ENTRY**   | Paper로 진행된 과제를 Double Entry로 QC하기 위한 라이브러리 |
-  |     **IWRSFULL**     |  EDC + 무작위배정 +임상시험 모든절차 등 모든 scope의 과제   |
-  |     **IWRSSUB**      |        EDC + 무작위배정<br />(IP 배송관리 및 배정 X)        |
-  |      **PHASE**       |                  일반 EDC만 사용하는 과제                   |
-  | **PMS**(시판후 조사) |             PMS나 OS 과제에 사용되는 라이브러리             |
-
-  - :arrow_forward: `DOUBLE_ENTRY`: 종이로 작성된 데이터를 디지털로 옮기기 위한 라이브러리 (2명이 입력하기 때문에 `double entry`이다.)
-  - :ballot_box_with_check: ​ `IWRSFULL, IWRSSUB, PHASE, PMS`가 주로 쓰인다.
-
-- 여기서 `IWRSFULL`을 import 한다.
-
-  - :white_check_mark: 상단의 `saved` 버튼은 이 과제에 저장된 property 표시 유뮤이다.
-
-- ::ballot_box_with_check: `Import`를 클릭하면 `Save`를 누르지 않아도 자동으로 설정된다.
-
-#### EDC 스크리닝 번호 설정
-
-- :ballot_box_with_check: `기관코드 자릿 수 설정`: 임상시험 진행 기관의 코드
-- 스크리닝 번호의 구성은 다음과 같다.
-  - **S + SC(사이트 코드) 2자리 + 일련번호 3자리**
-  - 예시) S02003
-
-- **설정 방법**
-  - `Identifier`에 S를 입력한 후, `Number format > Identifier`를 오른쪽으로 추가해준다.
-  - 앞에서 사이트코드(기관코드)를 입력했기 때문에, `Number format > Site Codwe`를 바로 오른쪽으로 추가해준다.
-  - 마지막으로 `Seq no.` 설정 후, `Number format > Seq no.`를 오른쪽으로 추가해준다.
-  - `Confirm` 버튼을 누른 후, 마지막으로 `Save` 버튼을 눌려서 저장해준다.
-
-#### EDC 기타
-
-`Log-in Page Settings`
-
-- 과제 ID가 포함된 과제의 웹사이트 주소를 생성하며 해당 주소로 접속할 수 있다.
-- 예시)` www.cubecdms.com/**cubedemo_2021**/login`
-
-`Image`
-
-- 설정된 웹사이트 주소로 접속했을 때 표시되는 그림을 지정
-- 지정하지 않으면 기본 설정
-
-`e-Training`
-
-- 과제에서 사용할 트레이닝 방법 선택
-- 기본적으로 `cubeCDMS training(System)`이 지정됨
-
-
-
-### 2.3 LANGUAGE
-
-> CDMS에서 사용할 언어를 설정한다.
-
-- 한국어, 영어, 중국어, 일본어를 지원한다.
-- 사용할 언어를 선택한 후, `Default` 언어를 반드시 하나 설정해준다.
-
-
-
-### 2.4 ROLE & PRIV.
-
-> CDMS에서 사용할 역할 & 권한
-
-- :ballot_box_with_check: 사이트에서 **ROLE**과 **Privilege**의 리스트를 확인할 수 있다.
-  - 자세한건 `Basic_Training_Role&Priv_IWRS_FULL.xlsx` 파일을 참고한다.
-- 가급적이면 **Library Import 기능**을 이용하여 Role과 Privilege를 설정한다.
-  - `Import` 방법은 앞선 [Property Import](####Property Import)와 동일하다.
-  - 앞선 `PROPERTY` 부분과 동일하게 과제 scope별 라이브러리를 사용한다.
-- 설정된 내용에 대한 Excel파일을 다운로드 할 수 있다.
-- 추후 과제를 오픈 한 후에 R&P에서 설정한 내용을 단독으로 `Check` 버튼을 통해 release 할 수 있다.
-
-
-
-## 3. Entry
-
-> 연구자가 입력하는 **화면을 구성하는 메뉴**
-
 - :heavy_exclamation_mark: Entry 진행 시 **반드시 아래의 2개의 문서를 토대로 진행**하여야 한다.
 
   ```markdown
@@ -151,13 +19,15 @@
   - DB specification
   ```
 
-### 3.1 CYCLE & VISIT
+
+
+## 1. CYCLE & VISIT
 
 > 해당 과제에서 사용할 :cactus:**방문 구조** 결정하는 메뉴
 
 - :star: `e-CRF schedule` 표에서 작성되어 있는 방문 구조(일정)를 바탕으로 `CYCLE & VISIT`에 입력한다.
 
-#### 3.1.1 CYCLE 설정
+### 1.1 CYCLE 설정
 
 | Cycle 종류 |     full name     |                       설명                        |
 | :--------: | :---------------: | :-----------------------------------------------: |
@@ -169,7 +39,7 @@
 - `TYPE`에는 Normal Visit, Unscheduled Visit, All Visit으로 설정한다.
 - :white_check_mark: UV는 반복되기 때문에, 자동으로 `Repeat` 체크박스가 선택된다.
 
-#### 3.1.2 VISIT 설정
+### 1.2 VISIT 설정
 
 > - `EN(Enrollment) ~ V5`까지가 정규방문(NV)에 속한다.
 > - `Code`: 해당 데이터가 어떤 방문에 속하는지 표시하기 위한 코드 (중복 입력X)
@@ -183,7 +53,7 @@
 
 
 
-### 3.2 CRF GROUP
+## 2. CRF GROUP
 
 > `e-CRF schedule` 표를 참고하여​ :cactus:**CRF 그룹**을 생성하는 과정
 
@@ -198,7 +68,7 @@
 
 
 
-### 3.3 SCHEDULE
+## 3. SCHEDULE
 
 > 앞에서 [Cycle&Visit](####3.1 CYCLE & VISIT)과 [CRF Group](####3.2 CRF GROUP)에서 설정한 내용 및 `e-CRF Schedule`표를 바탕으로 스케줄을 지정한다.
 
@@ -209,9 +79,9 @@
 
 
 
-### 3.4 CRF Page
+## 4. CRF Page
 
-#### Entry 트리구조
+### Entry 트리구조
 
 BUILDER에서 사용하는 CRF 구조
 
@@ -222,7 +92,7 @@ BUILDER에서 사용하는 CRF 구조
 
 - 즉, 가장 큰 범위에서부터 **PAGE > CRF > QST > ITEM**이다.
 
-#### 생성 및 삭제
+### 생성 및 삭제
 
 **생성**
 
@@ -234,7 +104,7 @@ BUILDER에서 사용하는 CRF 구조
 - 다만, 삭제한 항목의 <u>id 값은 변경</u>해주면 좋다. 다른 item에서 사용될 수 있기 때문에
   - 예시) `MH01` -> `MH01_DEL` 
 
-#### 3.4.1 Enrollment (EN)
+### 4.1 Enrollment (EN)
 
 - :heavy_exclamation_mark: (스크리닝 번호가 포함된 페이지)는 반드시 page `TYPE`을 **Registration Page**로 설정한다. (one and unique)
 - `CRF for EDC`, `DB Spec` 문서에 따라 QST, ITEM을 등록하고 설정한다.
@@ -247,13 +117,13 @@ BUILDER에서 사용하는 CRF 구조
 - :ballot_box_with_check: `ITEM > EVENT`는 해당 아이템 값들에 이벤트를 걸어준다.
   - 각각 `SUPP_SUBJ.IC_DATE`와 `SUBJECT.SCR_CODE` 이벤틀르 설정한다.
 
-#### 3.4.2 대상자 등록 -CDMS
+### 4.2 대상자 등록 -CDMS
 
 - 대상자를 등록하면, CDMS에서 BUILDER Page 작성 내용을 확인할 수 있다.
 
 [CDMS 문서](03_cubeCDMS.md) 참고
 
-#### 3.4.3 Subject Visit (SV)
+### 4.3 Subject Visit (SV)
 
 > 전반적인 내용은 CRF for EDC와 DB spec 문서를 참고하여 위와 동일하게 진행한다.
 
@@ -293,7 +163,7 @@ BUILDER에서 사용하는 CRF 구조
   - ALL일 경우, exclude
   - UV일 경우, include
 
-#### 3.4.4 Demographics (DM)
+### 4.4 Demographics (DM)
 
 **뒤에 특정 문자열 표시하기**
 
@@ -305,7 +175,7 @@ BUILDER에서 사용하는 CRF 구조
 
 - 성별도 마찬가지로 진행하여 값을 연동한다.
 
-#### 3.5.5 Medical History (MH)
+### 4.5 Medical History (MH)
 
 > :exclamation: MH의 QST들은 **Domain name이 `MH`가 아닌 `MY`**인 것에 주의한다!
 
@@ -328,7 +198,7 @@ BUILDER에서 사용하는 CRF 구조
 
 - `Table QST > Property`에서 `LAYOUT_WIDTH`를 설정해주고, 위에서 radio 아이템 좌우정렬을 한 것과 같이 원하는 비율을 지정해준다.
 
-#### 3.4.6 Vital Signs (VS)
+### 4.6 Vital Signs (VS)
 
 > `QST_CATEGORY`를 활용하여, 위에서 ND 옵션을 선택하게 되면 카테고리의 값을 입력하지 않아도 되도록 설정하는 구조를 만든다.
 
@@ -345,7 +215,7 @@ BUILDER에서 사용하는 CRF 구조
 
 - comment 바로 앞의 `QST > Property`에서 COMMENT_APPEND를 설정하고, value에 comment를 입력하면 된다.
 
-#### 3.4.7 Local Laboratory Test (LB)
+### 4.7 Local Laboratory Test (LB)
 
 여기서는 2개의 CRF를 생성해야 한다.
 
@@ -386,27 +256,27 @@ BUILDER에서 사용하는 CRF 구조
 - :ballot_box_with_check: 생성된 QST에서 `Sub Item`이라는 버튼을 클릭하면 `Sub Item`을 이름을 일괄적으로 변경할 수 있다.
 - 기타 변경해야 하는 것들을 직접 입력하여 변경해준다.
 
-#### 3.4.8 Pregnancy Test
+### 4.8 Pregnancy Test
 
 > 위에서 실습한 내용을 토대로 작성한다.
 
-#### 3.4.9 Inclusion/Exclusion Criteria
+### 4.9 Inclusion/Exclusion Criteria
 
 - :ballot_box_with_check: 텍스트만 입력하는 QST는 **Dummy**라는 레이아웃을 사용한다
   - :white_check_mark: `ITEM Property > LABEL_WRATE`를 활용해서 item label의 폭 비율을 100으로 맞춰준다.
 - :ballot_box_with_check: :star: **부동호의 경우** `<, >`을 입력하면 시스템에서 태그로 인식하여 오류가 발생할 수 있으므로, 반드시 **`ㄷ + 한자`를 사용하여 입력**한다.
 
-#### 3.4.10 Randomization
+### 4.10 Randomization
 
 > 위에서 실습한 내용을 토대로 작성한다.
 
 - IWRS와 관련된 세팅은 차후에 학습한다.
 
-#### 3.4.11 IP Prescription
+### 4.11 IP Prescription
 
 > 위에서 실습한 내용을 토대로 작성한다.
 
-#### 3.4.12 Adverse Event
+### 4.12 Adverse Event
 
 - QST_TABLE을 생성한다.
 - Line Number의 경우, ITEM Layout을 **ROWNUM**으로 설정한다.
@@ -432,18 +302,18 @@ BUILDER에서 사용하는 CRF 구조
   - 1~6번째가 한 줄
   - 1,2, 7~10번째가 한 줄
 
-#### 3.4.13 Prior and Concomitant...
+### 4.13 Prior and Concomitant...
 
 **Dropdown 하위에 item 생성하기**
 
 - :ballot_box_with_check: `Dropdown > CODE`에서 모든 values의 `Type Text`를 체크해주어야만 사용할 수 있다!
 - Dropdown 하위에 ITEM을 생성한뒤, PARENT 옵션과 연결해준다.
 
-#### 3.4.14 Disposition
+### 4.14 Disposition
 
 > 위에서 실습한 내용을 토대로 작성한다.
 
-#### 3.4.15 Principal Investigator's Signature
+### 4.15 Principal Investigator's Signature
 
 **전자서명**
 
@@ -451,34 +321,6 @@ BUILDER에서 사용하는 CRF 구조
 - :ballot_box_with_check: `ITEM > Property > AUTOFILL`을 활용하면 연구자가 입력할 수 없도록 막을 수 있다.
 - `ITEM > EVENT > SUPP_SUBJ.ESIGN_TIME`을 활용하면 전자서명 날짜/시간과 자동으로 연동할 수 있다.
 - :white_check_mark: 전자서명 관련 ITEM들은 `Default Missing Chekc`를 NO로 체크해주어야한다.
-
-
-
-## 4. Data Set
-
-
-
-## 5. ECS
-
-> Edit Check Specifications. 함수를 이용하여 조건문을 생성하는 것.
-
-
-
-## 6. DCL
-
-> Entry와 ECS에 포함되지 않는 **기타 기능**을 집합
-
-
-
-## 7. User 등록
-
-> `ADMIN > STUDY(USER)`에서 사용자를 추가해야 해당 사용자가 내가 생성한 builder에 접속할 수 있다.
-
-ADMIN 메뉴
-
-- `ADMIN > STUDY(USER)`의 Privilege는 **Builder의 권한** 설정을 의미한다.
-- `ADMIN > RELEASE`
-  - **release**: 연구자들이 사용할 수 있는 real 사이트를 오픈하는 것
 
 
 

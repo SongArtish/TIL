@@ -1,4 +1,4 @@
-# Introduction to Clinical Trial & Data Management
+# Clinical Trial & Data Management Intro
 
 2021.07.05
 
