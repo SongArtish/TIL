@@ -227,9 +227,65 @@ Date of Visit 1[[$A$]] is not within 28 days after date of informed consent([[$B
 - Is the Subject eligible to participate in this clinical trial due to having satisfied all eligibility criteria?가 [Yes]일 경우에 V2 활성화
 ```
 
+:white_check_mark: 본 실습도 library에서 `NV_NEXT_01(GL)`로 바로 사용할 수 있다.
 
+```markdown
+#### 실습8
+- 성별과 연령이 입력되었을 경우에만 Local Laboratory Test 활성화
+```
 
+- ECS type을 **NA Schedule**(Not Commit)으로 설정하여 instance를 생성한다.
 
+```markdown
+#### 실습9
+- 실험실검사 검사결과에 따른 정상/비정상 완전연동
+```
+
+> :small_red_triangle: 본 실습을 진행하기 위해서는 `DCL > Normal Range`가 설정되어 있어야 한다!
+
+```markdown
+Keyword
+#LF #Multi_Instance
+```
+
+- ECS Type을 `LF`, `Muilti Inst.`를 `Yes`로 체크하고 Main을 생성한다.
+
+- Multi Instance에서는 instance를 ID를 따로 작성할 필요가 없다.
+
+  - 자동으로 개수에 맞게 생성될 예정이다.
+
+- Target은 `LBNOR`이며, 처음에는 ST(static table) 의 첫 번째 요소를 입력한다.
+
+- node 추가에서 library를 사용하여 `LF_NRR`을 추가한다.
+
+- :ballot_box_with_check: **완전연동에서는 root type을 `condition`이 아닌 `source`로 변경해주어야** 한다!
+
+  - 따라서 DCD node에서 root type을 변경하여 전체 root type을 `Source`로 변경한다.
+
+- function
+
+  - DCD(Decode) - 조건에 맞는 값을 선택하여 반환
+
+    - 쉽게 말해 `DCD(a, b, c, d, e, f)`의 경우 다음과 같은 logic을 가진다.
+
+    ```python
+    if a == b:
+        return b
+    elif a == c:
+        return d
+    else:
+        e
+    ```
+
+  - NRR(Normal Range) - Normal Range 이탈 시 TRUE를 반환
+  
+- CDMS에 가서 첫 번째 행이 잘 작동하는지 확인한다.
+
+- 확인이 되면 Target에서 `+` 버튼을 눌려서 행을 4개 더 추가한다.
+
+- 각 행에 맞는 item을 연결해준다.
+
+- 그리고 Entry에서 Normality 항목에는 `autofill` property를 추가해준다.
 
 
 
