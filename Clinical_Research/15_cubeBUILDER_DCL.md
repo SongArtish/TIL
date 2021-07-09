@@ -2,7 +2,7 @@
 
 > Data Control Language
 
-2021.07.XX
+2021.07.09
 
 ---
 
@@ -81,6 +81,59 @@
 
 
 ## 3. Menu
+
+> **CDMS에서 사용하는 각 메뉴의 column을 정의하는 공간**
+
+- 필요한 column을 추가하거나 필요 없는 column은 보이지 않도록 설정 가능하다.
+- 그 밖에 column label 수정이 필요한 경우에는 `Col Alias`을 수정하면 된다.
+
+
+
+### 대상자 Status 설정
+
+> 임상시험에서 사용되는 status 값은 5가지로 분류된다.
+
+|     대상자 status     |                          설명                           |
+| :-------------------: | :-----------------------------------------------------: |
+|     **Screening**     |               대상자를 등록만 해놓은 상태               |
+| **Screening Failure** | 선정 제외 기준을 만족하지 못하여 스크리닝 탈락한 대상자 |
+|      **Ongoing**      |  선정 제외 기준 만족한 후에 무작위 배정을 받은 대상자   |
+|     **Drop out**      |        무작위 배정 받은 후에 중도 탈락한 대상자         |
+|     **Complete**      |              모든 임상시험을 완료한 대상자              |
+
+- 모든 `status`의 대상자 수를 합산한 값은 전체 대상자 수의 값과 동일하다.
+
+1. `Builder > DCL > Menu > Menu Tree> Subject > 2번째 Subject 메뉴`를 클릭한다.
+
+   - 1번째 Subject 메뉴 - INV를 제외한 나머지 SPONSER role을 가진 user가 보이게 되는 리스트
+   - 2번째 Subject 메뉴 -  INV user들의 리스트
+
+2. `SUBJ_STATUS` column의 `USE code` 버튼을 클릭한다.
+
+3. 나타나는 창에서 위의 5가지 status를 <u>순서대로</u> 입력하고 visible을 체크한 후 저장한다.
+
+   - 여기까지는 단순히 CDMS의 리스트에 나타날 필터 목록을 정의한 것에 불과하다.
+
+4. 다음으로는 `특정 데이터를 입력했을때 해당 status가 반환`될지에 대한 **event를 적용**한다.
+
+   - 조건은 다음과 같다.
+
+     |          status           |                        condition                         |
+     | :-----------------------: | :------------------------------------------------------: |
+     |     **Screening(00)**     | 별다른 조건 필요 없음<br />(대상자를 등록만 해놓은 상태) |
+     | **Screening Failure(01)** |           IEYN item이 `No`으로 선택되었을 경우           |
+     |      **Ongoing(02)**      |           RNYN item이 `Yes`로 선택되었을 경우            |
+     |     **Drop out(03)**      |         DSDECOD가 `Withdrawal`로 선택되었을 경우         |
+     |     **Complete(04)**      |         DSDECOD가 `Completed`로 선택되었을 경우          |
+
+5. 먼저 Screening Failure 조건을 설정하기 위해 `Builder > Entry > CRF Page > IEYN item`으로 이동한다.
+
+6. `EVENT`에서 status 번호에 알맞은 이벤트 `SUBJ_STATUS.L1.01`을 선택하고 `Value Type = Specify`, `Value = 2`로 설정하고 저장한다.
+
+   - 여기서 `Value = 2`는 `No`를 선택했을 경우를 의미한다.
+   - `Yes`일 경우에는 해당 item에 맞게 한다. 보통은 `Value = 1`로 세팅하면 된다.
+
+7. 이외의 status도 조건에 맞게 item에 event를 설정해준다.
 
 
 
