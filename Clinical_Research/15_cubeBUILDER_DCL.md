@@ -30,6 +30,8 @@
 
 > 앞에서 설정한 spec에 따라 각 기관별 검사항목에 따른 나이, 연령 등의 기준으로 정상범위를 등록한다.
 
+:heavy_exclamation_mark: Value 관련 기능은 Builder에서 CDMS로 이관되었기 때문에, CDMS에서 진행한다.
+
 1. CDMS에 SPM role로 접속하여 Admin > Lab 메뉴로 들어간다.
 
 2. `Template download`를 클릭하여 파일을 다운로드 한다.

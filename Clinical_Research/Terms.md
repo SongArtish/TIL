@@ -14,6 +14,10 @@
 
 > IP(Investigational Product, 임상시험용 의약품) 복용 후 발생한 의도하지 않은 결과를 총칭
 
+### ATC (Anatomical Therapeutic Chemical classification system)
+
+> 해부학적/치료학적 화화적 분류 체계
+
 ## B
 
 ## C

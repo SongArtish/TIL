@@ -74,6 +74,7 @@ Main > Instance
   ```
 
   - `Return Value`는 T/F(True, False, Null), value, count가 될 수 있다.
+  - :white_check_mark: 함수에 붙어있는 `ITEM`을 `LEAF`라고 한다.
 
 
 
@@ -131,7 +132,7 @@ Main > Instance
 |        함수        |                             기능                             |
 | :----------------: | :----------------------------------------------------------: |
 |     **SPLIT**      | 구분자를 기준으로 앞/뒤를 split<br />(예시 - CMINDCAE ==> 1^감기) |
-|      **CUT**       |                                                              |
+|      **CUT**       |                     문자열을 자르는 함수                     |
 |  **CCAT,  CLIST**  | CCAT: 그냥 텍스트를 합침<br />CLIST: 구분자를 넣어서 텍스트를 합침 |
 | **LOWER, UPPER  ** |                                                              |
 |      **LEN**       |                                                              |
@@ -161,11 +162,101 @@ Main > Instance
 |  함수   | 설명 |
 | :-----: | :--: |
 | **AND** |      |
-| **OR**  |      |
 | **ANY** |      |
-|  NOTOR  |      |
+| **NOT** |      |
 
-- ANY, NOTOR는 사용하지 않는다! 대신 ANY를 사용한다?
+- OR는 사용하지 않는다! 대신 ANY를 사용한다.
+
+
+
+---
+
+:exclamation: FROM HERE!!!
+
+### Aggregate
+
+> Aggregate Function(집계 함수)은 반복이 발생하는 구조(Visit, TB)에만 적용할 수 있다.
+
+**1. Aggregate**
+
+> A는 `aggregate`를 의미한다.
+
+|     Function     |         return         |
+| :--------------: | :--------------------: |
+|     **AROW**     |     마지막 행 번호     |
+|  **AMAX, AMIN**  |        max, min        |
+|     **ASUM**     |          sum           |
+| **ADMAX, ADMIN** | Aggregate Date Max/Min |
+
+**2. Aggregate Count**
+
+|     Function     |                                      |           return           |
+| :--------------: | :----------------------------------: | :------------------------: |
+|    **ACCEQ**     |          Aggregate Count -           |   인수와 같은 값의 개수    |
+| **ACDBT, ACNBT** | Aggregate Count Date/Numeric Between | 사이에 있는 날짜/숫자 개수 |
+|     **ACNT**     |          Aggregate Count -           |      살아있는 행 개수      |
+
+
+
+### Normal Range
+
+> return 값은 T/F
+
+**정상범위**
+
+| 정상범위 function |            설명            |
+| :---------------: | :------------------------: |
+|      **NRR**      |        Normal Range        |
+|     **NRLU**      | Normal Level Upper(상한치) |
+|     **NRLL**      |  Normal Level Low(하한치)  |
+
+**확장된 정상범위**
+
+- NRE, NREL, NREU 등이 있다. (E - extended)
+
+
+
+### Arithmetic
+
+| function | 설명 |
+| :------: | :--: |
+| **ADD**  |      |
+| **SUB**  |      |
+| **MUL**  |      |
+| **DIV**  |      |
+
+| function  |    설명    |
+| :-------: | :--------: |
+| **ROUND** |            |
+| **FLOOR** | 버림(바닥) |
+| **CEIL**  | 올림(천장) |
+
+| function  | 설명 |
+| :-------: | :--: |
+|  **LOG**  |      |
+| **LOG10** |      |
+|  **EXP**  |      |
+|  **POW**  |      |
+| **SQRT**  |      |
+
+- `LOG`는 거의 사용하지 않는다.
+
+| function |      설명      |
+| :------: | :------------: |
+| **MIN**  |                |
+| **MAX**  |                |
+| **MOD**  | modulo(나머지) |
+| **AVG**  |                |
+| **SUM**  |                |
+
+- :white_check_mark: **ADD vs SUM**
+  - ADD - null이 하나라도 있으면 계산되지 않는다.
+  - SUM - null이 있어도 계산이 가능하다.
+
+| function | 설명 |
+| :------: | :--: |
+| **ABS**  |      |
+| **AGE**  |  ?   |
 
 
 
