@@ -10,6 +10,8 @@
 
 ## A
 
+### ADR (Adverse Drug Reaction)
+
 ### AE (Adverse Event)
 
 > IP(Investigational Product, 임상시험용 의약품) 복용 후 발생한 의도하지 않은 결과를 총칭
@@ -204,6 +206,8 @@
 > 심각한 이상반응
 
 ### SOP (Standard Operation Procedure)
+
+### SUSAR (Suspected Unexpected Serious Adverse Reaction)
 
 ### Sponsor
 

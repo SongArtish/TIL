@@ -60,6 +60,7 @@ Main > Instance
 
 - :ballot_box_with_check: BL만 target이 `CRF, QST, ITEM`이 올 수 있고, 나머지는 모두 ITEM을 target으로 한다.
 - `Not Commit`은 저장된 페이지는 비활성화하지 않는 옵션이다.
+- ~:white_check_mark: `SQ`는 숫자와 날짜와 관련된 range를~
 
 
 
@@ -257,6 +258,51 @@ Main > Instance
 | :------: | :--: |
 | **ABS**  |      |
 | **AGE**  |  ?   |
+
+
+
+## ECS 순서
+
+> NV, NS, Blind, Linkforce, System Query 순으로 ECS를 작성/고려해야 한다.
+
+**NV**
+
+subject가 등록되면 V1을 제외하고 모든 방문이 비활셔ㅓㅇ화 되어 있고 순서대로 활성되는 로직 구현
+
+- IEYN이 Yes가 아니면 V2 비활성화
+- IEYN이 No이면 V1 비활성화 (미저장 페이지)
+- RNNO가 null이면 V3와 종료방문 비활성화
+- V4 ~ 종료방문 직전 방문의 경우 이전 방문이 입력되지 않으면 비활성화
+- DSCOMPL이 아니면 SVDTC없는 방문 비활성화
+
+**NS**
+
+- AGE, SEX가 입력되지 않으면 IE 페이지 비활성화
+- AGE, SEX가 입력되지 않으면 LB 페이지 비활성화
+- 가임여부가 Yes가 아니면 PG 페이지 비활성화
+- RNNO가 null이면 DS페이지 비활성화
+- Option: V2 IPDTC가 null이면 AE페이지 비활성화 등틍
+- 참고
+  - 남자는 임신검사를 않는다
+  - 임상시험용 의약품 처방 & 투여는 default로 NS 처리한다.
+
+
+
+**BLIND**
+
+- YN, ND, NONE 체크시 해당 영역(CRF, QST, ITEM) 비활성화
+- 가능한 item보다는 QST단위로 설정 (특수한 경우만 item에)
+
+**Linkforce**
+
+- 자동계산/입력 설정
+
+**System Query**
+
+- 저장가능: query 발생
+- 저장불가: 저장되지 않음 (100% 확실한 경우에만 설정)
+- 참고
+  - MH는 BRTHDTC~V1DTC이어야 한다.
 
 
 

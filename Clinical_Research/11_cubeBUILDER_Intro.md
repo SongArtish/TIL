@@ -21,6 +21,21 @@
 
 
 
+## 빠른 셋업하기
+
+> BUILDER 라이브러리를 사용하면 과제를 빠르게 셋업할 수 있다.
+
+**Study Copy**
+
+- `BUILDER > Copy 버튼` 클릭후 Library Study에서 `CLONE_IWRSFULL` 선택하고 과제를 copy해서 진행한다.
+- `Study > Info`에서 `Protocol, Aliasm, Title`을 입력하고 `Save`한다.
+
+**Entry Copy**
+
+`Entry > CRF GROUP > Group Copy`에서 `CRF_FOR_EDC_GL`  검색 후 필요한 Group 선택
+
+
+
 ## List of Studies
 
 > 로그인을 하면 user가 설정 가능한 과제를 확인할 수 있는 리스트가 있다.
