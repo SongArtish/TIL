@@ -109,7 +109,7 @@
 
 - 아이콘 클릭 후 SAE Report를 작성한다.
 
-- 보고서 작성을 완료하면 등록된 이메일로 SAE 보고서가 전송된다.
+- 보고서 작성을 완료하면 mail report privilege가 있는 모든 사용자의 이메일로 SAE 보고서가 전송된다.
 
   - :white_check_mark: 메일 전송 관련 사항은 `BUILDER > ROL&PRIV> > PRIVILEGE`에서 `MAIL` privilege 검색해서 참고한다.
 
