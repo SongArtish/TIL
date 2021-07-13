@@ -205,6 +205,8 @@
 
 > 심각한 이상반응
 
+### SDA (Source Data Validation)
+
 ### SOP (Standard Operation Procedure)
 
 ### SUSAR (Suspected Unexpected Serious Adverse Reaction)
