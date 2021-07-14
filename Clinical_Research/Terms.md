@@ -205,7 +205,7 @@
 
 > 심각한 이상반응
 
-### SDA (Source Data Validation)
+### SDV (Source Data Verification)
 
 ### SOP (Standard Operation Procedure)
 
