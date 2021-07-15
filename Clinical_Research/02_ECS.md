@@ -170,10 +170,6 @@ Main > Instance
 
 
 
----
-
-:exclamation: FROM HERE!!!
-
 ### Aggregate
 
 > Aggregate Function(집계 함수)은 반복이 발생하는 구조(Visit, TB)에만 적용할 수 있다.
