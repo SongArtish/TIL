@@ -209,4 +209,35 @@
 
 
 
+## Default Child Blind
+
+> 2021년 6월에 새로 업데이트된 기능
+
+- 주로 item layout `Dropbox_other`에서 볼 수 있다.
+- 사용자가 직접 로직을 작성한 경우 `Manual`로 체크되어 있다.
+- 일반적으로는 `Yes`로 세팅하면 된다.
+
+
+
+## PD
+
+> PD(Protocol Deviation)는 임상시험계획서에서 정의하는 계획서의 위반에 대한 유형 및 상세 내용을 다룬다.
+
+**R&P 설정**
+
+- `Builder > Role & Priv. > Role & Priv`의 검색창에서 `PD`를 검색하고 PD생성과 읽기 권한 등을 적용한다.
+
+**PD Class와 Code**
+
+- PD관련 R&P 설정 후 `Builder > DCL > Menu`로 들어가면 PD Tree가 생성된 것을 확인할 수 있다.
+- `PD_CODE`와 `PD_CLASS`를 수정하기 클릭 후 각각 `ICF, ICF`, `Class 1, Class 1`을 시범적으로 등록한다.
+
+**ECS 설정**
+
+- ECS > Main으로 가서 `SYSTEM_PD`라는 ECS ID로 system PD ECS main을 생성한다.
+- 그리고 `PD_CODING_01_MEDI(GL), PD_CODING_02_TERM(GL)` 라이브러리를 사용하여 인스턴스를 등록한다.
+  - 여기서 PD Class와 Code를 위에서 등록한 것으로 설정해준다.
+
+
+
 ***Copyright* © 2021 Song_Artish**
