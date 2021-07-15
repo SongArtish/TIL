@@ -154,7 +154,7 @@
 
 
 
-## System Documents
+## Pharmacy Doocuments
 
 |        Category        |            Documents             |          문서           |
 | :--------------------: | :------------------------------: | :---------------------: |

@@ -104,6 +104,11 @@ Main > Instance
 | **EQ**, NEQ, EQ  |   Equal   | Except Empty: 둘 다 값이 있을 경우 비교 |
 | **NE**, NNE, NEE | Not Equal |                                         |
 
+- :white_check_mark: `NE` vs `NEE`
+  - NE와 NEE는 모두 문자열 비동일 비교 결과를 반환한다.
+  - NE는 인수가 모두 NULL인 경우 FALSE를 반환한다.
+  - NEE는 인수 중 NULL이 존재하는 경우 NULL을 반환한다.
+
 
 
 ### NULL
@@ -250,8 +255,8 @@ Main > Instance
 | **SUM**  |                |
 
 - :white_check_mark: **ADD vs SUM**
-  - ADD - null이 하나라도 있으면 계산되지 않는다.
-  - SUM - null이 있어도 계산이 가능하다.
+  - SUM은 인수 중 NULL 문자가 존재하면 합계에서 제외한다.
+  - ADD는 인수 중 NULL 문자가 존재하면 NULL 문자를 반환한다.
 
 | function | 설명 |
 | :------: | :--: |
