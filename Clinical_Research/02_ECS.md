@@ -61,6 +61,9 @@ Main > Instance
 - :ballot_box_with_check: BL만 target이 `CRF, QST, ITEM`이 올 수 있고, 나머지는 모두 ITEM을 target으로 한다.
 - `Not Commit`은 저장된 페이지는 비활성화하지 않는 옵션이다.
 - ~:white_check_mark: `SQ`는 숫자와 날짜와 관련된 range를~
+- 기타 타입
+  - **Goto Page(GP)**: RADIO 레이아웃의 아이템에서 특정 code가 선택 된 후에 페이지가 저장이 되면 해당 code 옆에 다른 페이지로 이동할 수 있는 링크가 표시 되도록 하는 기능
+  - **Dynamic Comment(DC)**: QST 하단에 고정 코멘트를 지정하고 그 코멘트 내에서 특정 페이지 링크를 설정하여 이동할 수 있도록 하는 기능
 
 
 

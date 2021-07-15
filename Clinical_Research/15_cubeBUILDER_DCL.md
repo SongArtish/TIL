@@ -40,13 +40,15 @@
 
 3. 다운로드한 엑셀 파일을 열어서 `Low, Upper, Low ratio, Upper ratio, Low equal, Upper equal, Deleted` 값을 입력해준다.
 
+   - 실습에서는 Low부터 차례대로 `1, 10, 0.3, 3, Y, Y, N`을 각 행 동일하게 입력해주었다.
+
    |   Spec Value 항목   |                           설명                            |     return 값      |
    | :-----------------: | :-------------------------------------------------------: | :----------------: |
    |      **Unit**       |                           단위                            |                    |
    |     **Target**      |                  뇨검사 부분관련 text 값                  | Positive, Negative |
    |    **Low/Upper**    |                    정상 하한값/상한값                     |                    |
    | **Low/Upper ratio** |          정상으로 간주할 수 있는 하한/상한 범위           |                    |
-   | **Low/Upper equal** |         하한값/상한값을 범위에 넣을 것ㅇ니지 설정         |         YN         |
+   | **Low/Upper equal** |          하한값/상한값을 범위에 넣을 것인지 설정          |         YN         |
    |     **Deleted**     | 조건이 바뀌어 필요 없는 항목일 경우 "Y"로 표시하여 업로드 |         YN         |
 
    - `Upper ratio`의 경우, 10이 정상이고 Upper ratio가 3이라면 30(10*3) 이상 값이 올 경우 Query를 발생하는 로직 구현 시 사용한다.
