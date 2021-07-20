@@ -105,22 +105,51 @@ Main > Instance
 | **NE**, NNE, NEE | Not Equal |                                         |
 
 - :white_check_mark: `NE` vs `NEE`
-  - NE와 NEE는 모두 문자열 비동일 비교 결과를 반환한다.
-  - NE는 인수가 모두 NULL인 경우 FALSE를 반환한다.
-  - NEE는 인수 중 NULL이 존재하는 경우 NULL을 반환한다.
+
+  | function |          name          |         description          |         factor         | return value |
+  | :------: | :--------------------: | :--------------------------: | :--------------------: | :----------: |
+  |  **NE**  |       Not Equal        | 문자열 비동일 비교 결과 반환 | 2개의 인수(문자, 필수) |  true/false  |
+  | **NEE**  | Not Equal Except Empty | 문자열 비동일 비교 결과 반환 | 2개의 인수(문자, 필수) |  true/false  |
+
+  - NULL 문자를 포함하여 비교한다.
+  - :ballot_box_with_check: **인수 중 NULL 문자가 존재하는 경우**
+    - `NE`는 인수가 모두 NULL인 경우 false를 반환
+    - `NEE`는 인수 중 하나라도 NULL이 존재하는 경우 NULL문자를 반환
+
+  ```markdown
+  ## 요약
+  # 공통점
+  - 2개의 문자열이 서로 다른지를 체크
+  # 차이점
+  - NE는 인수가 모두 NULL인 경우 false를 반환하는 반면, NEE는 인수 중 하나라도 NULL이 존재하는 경우 NULL문자를 반환
+  ```
+
 
 
 
 ### NULL
 
-> empty
+> Relational.Empty Function (empty)
 
-|  함수   |        기능         |
-| :-----: | :-----------------: |
-| **EM**  |     null을 체크     |
-| **EMS** | NULL or INIT을 체크 |
+| function |        name        |                  description                  |      factor       | return value |
+| :------: | :----------------: | :-------------------------------------------: | :---------------: | :----------: |
+|  **EM**  |       Empty        |         인수값이 NULL문자열인지 점검          | 인수1 (문자,필수) |  true/false  |
+| **EMS**  | Empty or not saved | 인수값이 NULL 또는 **INIT 문자열**인지를 점검 | 인수1 (문자,필수) |  true/false  |
 
+```markdown
+## 요약
+# 공통점
+- NULL 값인지 체크한다.
+# 차이점
+- EMS는 저장되지 않았는지도 검사한다.
+```
+
+- :ballot_box_with_check: 헷갈릴 때는 더 강력한 **EMS를 사용**!
 - :white_check_mark: **INIT(initialize, 초기 상태상태)**, 즉 page가 저장되어 있지 않으면 ECS logic이 시행되지 않기 때문에 이러한 경우 EMS를 사용
+- :small_red_triangle: **참고** - **EMN** (Not Empty)
+  - 인수값이 NULL문자열이 아닌지를 점검
+  - 인수값이 NULL 인 경우 FALSE가 반환
+  - 인수값이 INIT(미저장) 상태인 경우 NULL이 반환 :heavy_check_mark:
 
 
 
@@ -255,8 +284,25 @@ Main > Instance
 | **SUM**  |                |
 
 - :white_check_mark: **ADD vs SUM**
-  - SUM은 인수 중 NULL 문자가 존재하면 합계에서 제외한다.
-  - ADD는 인수 중 NULL 문자가 존재하면 NULL 문자를 반환한다.
+
+  | function |   name    |           description            |        factor         | return value |
+  | :------: | :-------: | :------------------------------: | :-------------------: | :----------: |
+  | **ADD**  | Addition  | 인수로 입력된 숫자들의 합계 반환 | 1개 이상의 인수(숫자) | 합계 or NULL |
+  | **SUM**  | Summation | 인수로 입력된 숫자들의 합계 반환 | 1개 이상의 인수(숫자) | 합계 or NULL |
+
+  - 인수 중 숫자형이 아닌 경우 합계에서 제외된다.
+  - :ballot_box_with_check: **인수 중 NULL 문자가 존재하는 경우**
+    - `ADD`는 **NULL을 반환**
+    - `SUM`은 **NULL을 합계에서 제외**
+
+  ```markdown
+  ## 요약
+  # 공통점
+  - 인수로 입력된 숫자의 총합을 반환
+  # 차이점
+  - 인수 중 NULL 값이 있는 경우 ADD는 NULL을 return하지만, SUM은 NULL을 합계에서 제외
+  ```
+
 
 | function | 설명 |
 | :------: | :--: |
