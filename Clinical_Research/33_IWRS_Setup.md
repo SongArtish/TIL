@@ -1,5 +1,7 @@
 # IWRS Setup
 
+2021.07.20
+
 ---
 
 [TOC]
@@ -158,7 +160,7 @@
   | `IWRS.MAIL.RE_ASSIGN` |    -    |   IP 재배정 시 메일 발송   |
   | `IWRS_CODE.IP.VISIT`  | V1 ~ V5 | Bring IP Code through IWRS |
 
-### 3.2 불출, 반납 CRA 서명 페이지
+### 3.2 DIS, RTN, CSIGN
 
 - `Entry > CRF Group`으로 이동한다.
 
@@ -306,11 +308,19 @@
 - 다음으로 IPM으로 로그인하여 `Delivery`로 이동하여 `Delivery Status`의 항목을 클릭하여 배송 확인을 해준다.
 - 다음으로 PHARM으로 로그인하여 `Delivery Status`의 항목을 클릭하여 인수 확인을 해준다.
 
-### 4.2 IP 배정 페이지에서 IP 배정
+### 4.2 IP 배정
 
+> IP 배정 페이지에서 배정 버튼을 눌러서 IP가 배정되는지 확인한다. (PI 확인)
 
+- 무작위 배정표에 의한 visit2에 생성된 IP Code를 자동으로 불러오는지 확인한다.
+- SPM으로 접속하여 `Admin > IWRS > IP Code > Validation` 탭에서 IP 번호, 배정군 등이 알맞게 배정되었는지 확인한다.
 
+### 4.3 DIS, RTN, CSIGN
 
+- PHARM role로 로그인하여 `Dispense` 메뉴에서 해당 정보를 확인하며 불출 등록, 임상약 반납에 대한 등록을 한다.
+- `불출 상태`에서 `미불출`된 것을 클릭하여 Dispense, Return 페이지를 작성한다.
+- 다시 `Dispense` 메뉴로 오면 `불출완료`로 바뀐 것을 확인한다.
+- 다음으로 CRA role로 로그인하여 `Dispense > 서명 상태`에서 미서명된 것을 클릭하고 서명을 진행한다.
 
 
 
