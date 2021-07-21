@@ -163,6 +163,10 @@
 
 ## P
 
+### PD (Protocol Deviation)
+
+> 임상시험계획서에서 정의하는 계획서의 위반에 대한 유형 및 상세 내용을 다룸
+
 ### PI (Principal Investigator)
 
 > 책임연구자. a person(s) in charge of a clinical trial or a scientific research grant

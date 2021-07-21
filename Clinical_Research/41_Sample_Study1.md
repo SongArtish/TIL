@@ -1,4 +1,4 @@
-# Sample Study EDC
+# Sample Study1
 
 ---
 
