@@ -67,6 +67,7 @@
 `(출처: 의약품안전나라)`
 
 - Sponsor에서 CRO (Contract Research Organization)에게 계약에 의해 외주를 준다.
+- PV(Pharmacovigilance)이라는 역할도 있다.
 
 :ballot_box_with_check: **절차**
 
