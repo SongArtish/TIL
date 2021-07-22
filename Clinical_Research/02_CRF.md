@@ -27,7 +27,9 @@
 
 ## Type
 
-### Cycle
+### Cycle & Visit
+
+> Cycle은 유사한 형태의 visit의 집합이다.
 
 ```markdown
 - Normal (NV)
@@ -36,6 +38,49 @@
 - Follow-up (FU)
 - Report (SAE)
 ```
+
+
+
+### CRF Group
+
+| Group ID |              EN              |       KOR       |
+| :------: | :--------------------------: | :-------------: |
+|  **EN**  |          Enrollment          |      등록       |
+|  **SV**  |        Subject Visit         |     방문일      |
+|  **DM**  |         Demographics         |    기초정보     |
+|  **MH**  |       Medical History        |      병력       |
+|  **VS**  |          Vital Sign          |    활력징후     |
+|  **LB**  |       Laboratory Test        |   실험실검사    |
+|  **PG**  |          Pregnancy           |      임신       |
+|  **IE**  | Inclusion/Exclusion Criteria | 선정/제외 기준  |
+|  **RN**  |        Randomization         |   무작위 배정   |
+|  **IP**  |   Investigational Product    |     IP처방      |
+|  **AE**  |        Adverse Event         |    이상반응     |
+|  **CM**  |    Concomitant Medication    |  선행/병용약물  |
+|  **DS**  |         Disposition          |  임상시험 종료  |
+|  **SN**  |          Signature           | 시험책임자 서명 |
+
+- 그 외에도 다음의 Group ID가 있다.
+
+  - PE(Physical Examination, 신체검사)
+  - EG(ElectrocardioGraphy, 심전도)
+  - DA(Drug Accountability, 복약순응도)
+  - EX(Exposure, IP 투약기간)
+
+- Domain 약자를 앞에 붙이지만, 예외도 존재한다.
+
+  - DM 도메인(AGE, SEX, BRTHDTC), VS 도메인(BT, HR, RR, BP)
+
+- :white_check_mark: ND(Not Done), CS(Clinical Significance)
+
+- Vital Sign 유형
+
+  | VS 유형 |                             설명                             |
+  | :-----: | :----------------------------------------------------------: |
+  | **BP**  | Blood Pressure, 혈압<br />- SBP(Systolic Blood Pressure)<br />- DBP(Diastolic Blood Pressure) |
+  | **HR**  |                       Heart Rate, 맥박                       |
+  | **RR**  |                    Respiratory Rate, 호흡                    |
+  | **BT**  |                    Body Temperature, 체온                    |
 
 
 
@@ -119,6 +164,22 @@
 - :white_check_mark: Date, YearMon, Time:
   - `YYYY-MM-DD`, `HH:MM:SS` 형태로 입력
   - Date의 경우 년월까지 입력하거나 혹은 년월일에 각각 UK가 적용된 형태의 달력 사용할 수 있음(2021-UK-UK)
+
+
+
+## RDB
+
+> Relational Data Base
+
+```markdown
+### 용어
+- Table = domain = dataset
+- Column = Variable = Item
+- row
+```
+
+- :white_check_mark: Mother Table: 해당 테이블을 입력하지 않으면, 하위 테이블을 입력할 수 없다.
+- :white_check_mark: PK는 subject, visit, sequence만 쓴다!
 
 
 

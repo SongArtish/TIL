@@ -1,4 +1,4 @@
-# Sample Study1
+# Sample Study 1
 
 ---
 
@@ -8,22 +8,19 @@
 
 
 
-## Group과 Check box
+## EDC  Various Page
 
-**1.하나의 QST내에 2개 이상의 Check box layout을 설정해야 하는 경우**
+### 1. Item Group과 Check box
 
-- QST 내에 첫번째 Item으로 Layout이 `GROUP`인 item으로 생성한다.
-- 그리고 GROUP item의 child로 `check box layout`을 설정한다.
+- 하나의 QST내에 2개 이상의 Check box layout을 설정해야 하는 경우
+  - QST 내에 첫번째 Item으로 Layout이 `GROUP`인 item으로 생성한다.
+  - 그리고 GROUP item의 child로 `check box layout`을 설정한다.
+- 하나의 QST내에 2개 이상의 Group을 설정하는 경우
+  - QST 내에 첫번째 ITEM으로 Layout이 `GROUP`인 item을 생성한다.
+  - GROUP item의 child로 또 다시 layout이 `GROUP`인 item을 두개 추가한 후에 각 item에 `Check` layout을 설정한다.
+  - `Parent GROUP ITEM`에는 `CHILD_PLACEMENT` Property를 설정한다.
 
-**2. 하나의 QST내에 2개 이상의 Group을 설정하는 경우**
-
-- QST 내에 첫번째 ITEM으로 Layout이 `GROUP`인 item을 생성한다.
-- GROUP item의 child로 또 다시 layout이 `GROUP`인 item을 두개 추가한 후에 각 item에 `Check` layout을 설정한다.
-- `Parent GROUP ITEM`에는 `CHILD_PLACEMENT` Property를 설정한다.
-
-
-
-## Innter Table
+### 2. Inner Table
 
 > 행 추가가 가능한 Table Question 내에서 다시 하위 행을 추가할 수 있는 구조이다.
 
@@ -69,7 +66,7 @@
 
 
 
-## SAE
+## SAE Report
 
 > CRScube에서 제공하는 기본 SAE report form인 77-2호 양식, CIOMS 양식을 CRF Group copy를 통하여 설정하고 SAE발생에 따른 Report 작성 및 제출 방법에 대해 학습한다.]
 
@@ -132,14 +129,14 @@
 
 - Version 일괄 변경은 기존에 설정된 EDC화면을 재수정하여 변경을 진행
 
-**Version 일괄 변경**
+### 1. Version 일괄 변경
 
 - `BUILDER > Entry Version`에서 수정 버튼을 눌려서 version을 수정한다.
 - `ID`는 EDC의 버전을, `Version`은 CRF의 버전을 의미한다.
 - (기존 item을 삭제하고 새로 release하면 변경된다.)
 - :white_check_mark: version 일괄변경 작업을 하기 전, 이전 버전의 Blank eCRF와 Annotated eCRF을 꼭 다운로드 받아서 보관할 수 있도록 한다!
 
-**Version Control**
+### 2. Version Control
 
 > 일반적으로 기관별 IRB 승인일을 기준으로 버전을 관리한다.
 
@@ -209,16 +206,6 @@
 
 
 
-## Default Child Blind
-
-> 2021년 6월에 새로 업데이트된 기능
-
-- 주로 item layout `Dropbox_other`에서 볼 수 있다.
-- 사용자가 직접 로직을 작성한 경우 `Manual`로 체크되어 있다.
-- 일반적으로는 `Yes`로 세팅하면 된다.
-
-
-
 ## PD
 
 > PD(Protocol Deviation)는 임상시험계획서에서 정의하는 계획서의 위반에 대한 유형 및 상세 내용을 다룬다.
@@ -237,6 +224,18 @@
 - ECS > Main으로 가서 `SYSTEM_PD`라는 ECS ID로 system PD ECS main을 생성한다.
 - 그리고 `PD_CODING_01_MEDI(GL), PD_CODING_02_TERM(GL)` 라이브러리를 사용하여 인스턴스를 등록한다.
   - 여기서 PD Class와 Code를 위에서 등록한 것으로 설정해준다.
+
+
+
+## 기타
+
+### Default Child Blind
+
+> 2021년 6월에 새로 업데이트된 기능
+
+- 주로 item layout `Dropbox_other`에서 볼 수 있다.
+- 사용자가 직접 로직을 작성한 경우 `Manual`로 체크되어 있다.
+- 일반적으로는 `Yes`로 세팅하면 된다.
 
 
 
