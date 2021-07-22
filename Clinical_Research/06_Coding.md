@@ -52,6 +52,8 @@
 |  L4   |     C01BX      |
 |  L5   |    C01BX01     |
 
+<img src="img/atc_group.jpg" style="width: 80%;" />
+
 
 
 ## Function
@@ -81,7 +83,7 @@
 
 - 연구자가 입력한 결과이므로 `MCI`이다.
 
-| Functionㅅ  |                   설명                    |
+|  Function   |                   설명                    |
 | :---------: | :---------------------------------------: |
 | **MCIGEN**  |                                           |
 | **MCIEGEN** | 여기서 E가 붙으면 영어 성분명을 가져온다. |
