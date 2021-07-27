@@ -24,6 +24,10 @@
 
 ## C
 
+### CAPA (Capa Corrective and Preventive Action)
+
+> 부적합 또는 기타 바람직하지 않은 상황의 원인을 제거하기 위해 취해진 조직의 프로세스 개선
+
 ### CO (Clinical Operation)
 
 ### CRA (Clinical Research Associate)
@@ -178,6 +182,8 @@
 ### PMS (Post Marketing Surveillance)
 
 > 시판후 조사
+
+### PRO (Patient Report Outcome)
 
 ### PV (Pharmacovigilance)
 
