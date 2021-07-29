@@ -24,6 +24,10 @@
 
 ## C
 
+### CAPA (Corrective Action Preventive Action)
+
+> PD가 발생했을 때 작성하는 반성문 같은 문서
+
 ### CO (Clinical Operation)
 
 ### CRA (Clinical Research Associate)
