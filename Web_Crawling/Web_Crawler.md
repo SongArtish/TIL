@@ -255,7 +255,22 @@ print(soup.find_all("h2"))
   soup.select("#hot-articles-go-download")
   ```
 
-  
+
+기타 예시
+
+```python
+soup = BeautifulSoup(html, 'html5lib')
+# select method로 <td>태그 출력하기
+result  = soup.select('td')
+# select method로 <td>태그의 1번째 값 가져오기
+result = soup.select('td:nth-of-type(5)')
+# select method로 <tr>태그 하위의 <td>태그 값 출력하기
+result = soup.select('tr td')
+print(result)
+
+```
+
+
 
 ### 7) 텍스트만 읽어오기: `get_text()`
 
