@@ -1,6 +1,4 @@
-# BLE
-
-> Bluetooth Low Energy (저전력 근거리 통신 기술)
+# Bluetooth
 
 ---
 
@@ -10,9 +8,9 @@
 
 
 
-## 개념
+## BLE
 
-> Bluetooth 4.0부터 새롭게 포함된 저전력 통신 기술
+> Bluetooth Low Energy(저전력 근거리 통신 기술)는 Bluetooth 4.0부터 새롭게 포함된 저전력 통신 기술이다.
 
 - 저전력을 최우선시하는 통신 기술
   - 단, 데이터 전송 속도도 느리고 한 번에 전달하는 양도 적다!
@@ -25,9 +23,9 @@
 
 
 
-## 핵심 기술
+### 핵심 기술
 
-### 1. Advertise Mode
+#### Advertise Mode
 
 > Advertising Packet을 보내고 누군가는 그것을 찾아서 연결을 시도하는 과정이 이루어짐
 
@@ -45,9 +43,7 @@ Beacon
 
 - Scan Request, Scan Response로 추가 정보를 주고 받는 기능도 구현할 수 있다.
 
-
-
-### 2. Connection Mode
+#### Connection Mode
 
 > Advertise Mode에서 알게된 기기 중에 하나를 선택해서 1:1로 연결하는 것
 
