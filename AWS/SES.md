@@ -10,7 +10,9 @@
 
 
 
-## 개념
+## 개요
+
+### 개념
 
 > outbound만 가능한 이메일 전송 서비스
 
@@ -18,6 +20,15 @@
 - 발송한 이메일 수와 데이터 전송에 대해 요금이 부과됨 (사전 확약금 X)
 - 전송 작업의 상태를 쉽게 모니터링할 수 있어서 가용성이 높음
 - 입증된 네트워크 인프라와 데이터 센터에서 운영되므로 안정성이 높음
+
+### 기능
+
+- ISP(Internet Service Provider)는 SES 서비스를 거친 이메일을 신뢰하게 되기 때문에 이메일의 도달 가능성을 높여준다.
+- 컨텐츠 필터링 기능을 사용하여 바이러스나 멀웨어를 포함한 메시지를 감지하여 발신전에 차단한다.
+- ISP와 함께 수신 거부 피드백 루프를 유지한다. 이는 전송 전략을 추진하는 데 도움을 준다.
+- SPF(Sender Policy Framework) 및 DKIM(DomainKeys Identified Mail)과 같은 인증 메커니즘을 지원한다.
+
+
 
 
 
@@ -39,20 +50,12 @@
 
 
 
-https://www.sparkpost.com/resources/email-explained/email-sender-reputation/
+## 과정
 
-
-
-- 이메일의 도달 가능성을 높여줌: ISP(Internet Service Provider)는 SES 서비스를 거친 이메일을 신뢰하게 되기 때문에
-  - 컨텐츠 필터링 기능을 사용하여 바이러스나 멀웨어를 포함한 메시지를 감지하여 발신전에 차단한다.
-  - ISP와 함께 수신 거부 피드백 루프를 유지한다. 이는 전송 전략을 추진하는 데 도움을 준다.
-  - SPF(Sender Policy Framework) 및 DKIM(DomainKeys Identified Mail)과 같은 인증 메커니즘을 지원한다.
-
-http://wildpup.cafe24.com/archives/1003
-
-
-
-
+1. SES 실행과 Region 선택
+2. 이메일 주소 인증
+3. Production Access 승인 받기
+4. 메일 보내기
 
 
 
