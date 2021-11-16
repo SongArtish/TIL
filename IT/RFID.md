@@ -10,10 +10,14 @@
 
 
 
-## Outline
+## General
 
 - RFID is not a communications technology; rather, it's designed for identification.
 - RFID tags can hold a small amount of data
+
+
+
+## Type
 
 ### 1) Passive RFID
 
