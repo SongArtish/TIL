@@ -12,11 +12,15 @@
 
 ## General
 
+---
+
 - NFC targets are often programmable devices.
 
 
 
 ## Modes
+
+---
 
 ### Communication Modes
 
@@ -36,22 +40,31 @@
 
 
 
-## Format: NDEF
+## Formats
 
-> NFC Data Exchange Format
+---
 
-- a data format that NFC devices use between when exchanging data
+> **NDEF**(NFC Data Exchange Format) is a data format that NFC devices use between when exchanging data
 
-### Types
+### 1) Simple Text Records
 
-1. Simple Text Records
-   - contain text string
-   - generally don't contain instructions for the target device
-   - also include metadata indicating the language and encoding scheme (e.g., UTF-8)
-2. URIs
-   - contains network addresses
-   - expected to pass the record to an application of an target device that can display it, such as web browser
-3. Smart Posters
+- contain text string
+- generally don't contain instructions for the target device
+- also include metadata indicating the language and encoding scheme (e.g., UTF-8)
+
+### 2) URIs
+
+- contains network addresses
+- expected to pass the record to an application of an target device that can display it, such as web browser
+
+### 3) Smart Posters
+
+- contains data you might attach to a poster to give it more information
+- target device that receives a Smart Poster record might open a browser, SMS, or email application
+
+### 4) Signatures
+
+- a way to give trustworthy information about the origins of data contained in an NDEF record
 
 
 
