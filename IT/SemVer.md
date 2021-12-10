@@ -10,7 +10,7 @@
 
 ---
 
-![SemVe.version](img/SemVe.version.jpg)
+![SemVe.version](img/semver.version.jpg)
 
 `(출처: https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH%EC%99%80-%EB%AA%85%EC%84%B8%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC)`
 
