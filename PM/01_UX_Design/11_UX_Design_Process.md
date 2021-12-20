@@ -24,7 +24,7 @@
 
 > 사용자 중심의 디자인 프로세스를 나타내는 대표적인 방법론
 
-![Double_Diamond](img/02_Double_Diamond.jpg)
+![Double_Diamond](img/11_Double_Diamond.jpg)
 
 `(출처: https://m.blog.naver.com/youngdisplay/60205111308)`
 
