@@ -88,6 +88,21 @@ DevOps라는 개념을 잘 수행하기 위하여 아래의 조건이  필요하
 
 - 스프린트에서 이슈를 등록한다.
 - `summary`와 `description`을 잘 작성하도록 한다.
+- 이슈 연결 (이슈 관계)
+  - A `cause`s B
+    - A가 B의 원인이다.
+  - A `block`s B
+    - A를 끝내야 B를 할 수 있다.
+    - When one issue blocks another, it means that the first issue should be resolved before the second one is resolved.
+    - [참고 문서](https://developers.google.com/issue-tracker/guides/block-issue)
+  - `clone`
+    - 복사, 기존 이슈를 복사하고 싶을 때 clone 사용
+  - `duplicate`
+    - 중복, 실수로 같은 이슈를 2개 이상 올렸을 때 duplicate로 처리
+  - `splite to`, `split from`
+    - 분리
+  - `relates to`
+    - 연관
 
 ### 3. 스프린트 시작하기
 
