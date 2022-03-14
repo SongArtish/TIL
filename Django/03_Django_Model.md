@@ -20,7 +20,7 @@
 
 ## Model
 
-**`model.py` 정의**
+**`models.py` 정의**
 
 ```python
 # articles/models.py
