@@ -159,7 +159,7 @@ for block in blocks.chain:
           sha = hashlib.sha256()
           new_str_bin = str(self.index) +  str(self.timestamp) + str(self.data) + str(self.prevhash)
           sha.update(new_str_bin.encode())
-          return sha.hexdigest()
+          return sha.thexdigest()
   ```
 
   - 정상적으로 작동하는 코드

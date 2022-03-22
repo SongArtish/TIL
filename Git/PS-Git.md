@@ -1,6 +1,6 @@
-# git 이슈
+# Problem Solver: Git
 
-> git 관련 이슈를 정리한다.
+> Git 관련 이슈 및 해결 방안
 
 ---
 

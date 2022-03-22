@@ -20,6 +20,22 @@
 
 
 
+## Database (Schema) 생성
+
+- MySQL에서 스키마를 생성한다.
+
+  ```mysql
+  CREATE DATABASE <스키마명>;
+  ```
+
+- 해당 스키마를 MySQL에서 사용한다.
+
+  ```mysql
+  USE <스키마명>;
+  ```
+
+  
+
 ## 2. `settings.py` 설정
 
 먼저 Django 프로젝트의 `settings.py`에서 DB 연결을 설정하고 있는 **DATABASES** 파트를 아래와 같이 수정한다.
@@ -30,7 +46,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ari',
+        'NAME': 'ari', # Database (Schema) Name
         'USER': 'ari',
         'PASSWORD': '****',	# 비밀번호 값 입력
         'HOST': '*.io',	# 작성
@@ -41,6 +57,8 @@ DATABASES = {
     }
 }
 ```
+
+- 이후 `makemigrations`, `migrate`를 진행한다.
 
 
 
