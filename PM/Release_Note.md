@@ -8,8 +8,6 @@
 
 ---
 
-
-
 ## Overview
 
 > the technical documentation produced and distributed alongside the launch of a new software product or a product update
@@ -75,7 +73,7 @@ Contact information for support requests.
 
 
 
-## :bulb: Tips
+## 💡 Tips
 
 1. Use Plain Language
 2. Keep It Short
@@ -83,6 +81,16 @@ Contact information for support requests.
 4. Include Relevant Links
 5. Let Your Brand and Personality Shine
 
+## ✍️ How to write?
+1. Make the intent of the changes clear
+2. Focus release notes on the user
+3. Explain changes with visuals
+4. Keep release notes organized
+5. Don't get technical
+6. Go ahead and promote your brand...carefully
+7. Use a Releaes Notes Template
+   
+`(출처: https://www.appcues.com/blog/release-notes-examples)`
 
 
 ***Copyright* © 2022 Song_Artish**
