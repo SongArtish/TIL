@@ -71,7 +71,7 @@ Apple ID나 앱 암호 및 Slack URL을 관리하기 위한 환경변수 파일�
 
 APPLE_ID="${배포 권한이 있는 Apple ID를 여기 적어주세요}"
 FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD="${생성한 웹 암호를 여기 적어주세요}"
-SLACK_URL_PROJECT_DDC="https://hooks.slack.com/services/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"
+SLACK_URL_PROJECT_DDC="${Slack Webhoook 주소}"
 ```
 
 ### 3. Appfile 수정
