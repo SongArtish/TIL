@@ -163,7 +163,7 @@ function reducer(state = initialState, action) {
 
 
 
-## Installation
+## 설치하기
 
 **React 프로젝트 시작 단계인 경우**
 
