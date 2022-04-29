@@ -1,6 +1,4 @@
-# Problem Solver: Git
-
-> Git 관련 이슈 및 해결 방안
+# Git 관련 이슈
 
 ---
 
