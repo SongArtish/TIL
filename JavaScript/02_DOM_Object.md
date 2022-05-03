@@ -1,6 +1,4 @@
-# Window 객체
-
-2021.02.15
+# DOM 객체
 
 ---
 
@@ -10,17 +8,13 @@
 
 
 
-**Window 객체 계층구조**
+## Window 객체
 
-![window 객체 내 주요 산하 객체들](img/window_objects.jfif)
+![window 객체 계층구조](img/window_objects.jfif)
 
-`(출처: http://www.ktword.co.kr/test/view/view.php?nav=2&no=5991&sh=window+%EA%B0%9D%EC%B2%B4)`
+`(출처: http://www.ktword.co.kr/)`
 
-
-
-## Properties
-
-> [w3schools 자료](https://www.w3schools.com/jsref/obj_window.asp)를 참고하였다.
+### Property
 
 |    property     |                             설명                             |
 | :-------------: | :----------------------------------------------------------: |
@@ -42,9 +36,7 @@
 
 
 
-## Methods
-
->[w3schools 자료](https://www.w3schools.com/jsref/obj_window.asp)를 참고하였다.
+### Methods
 
 |      method       |                         설명                          |
 | :---------------: | :---------------------------------------------------: |
@@ -61,7 +53,7 @@
 
 
 
-## 1. location 객체
+### 1. location 객체
 
 `location.href`
 
@@ -80,4 +72,3 @@
 
 
 ***Copyright* © 2021 Song_Artish**
-
