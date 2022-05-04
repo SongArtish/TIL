@@ -125,4 +125,14 @@ var sub = function (num1, num2) {
 
 
 
+## 일급객체
+
+first class citizen
+
+1. **변수에 할당** 가능
+2. 다른 **함수의 인자**로 전달 가능
+3. 다른 함수의 **결과로서 리턴** 가능
+
+
+
 ***Copyright* © 2020 Song_Artish**

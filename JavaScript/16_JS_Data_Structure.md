@@ -552,4 +552,25 @@ console.log(hasSubmitted)
 
 
 
+### sort
+
+> 배열의 요소를 적절한 위치에 정렬한 후 그 배열을 반환한다.
+
+```javascript
+// 예시
+const months = ['March', 'Jan', 'Feb', 'Dec'];
+months.sort();
+console.log(months);
+// expected output: Array ["Dec", "Feb", "Jan", "March"]
+
+const array1 = [1, 30, 4, 21, 100000];
+array1.sort();
+console.log(array1);
+// expected output: Array [1, 100000, 21, 30, 4]
+```
+
+
+
+
+
 ***Copyright* © 2020 Song_Artish**
