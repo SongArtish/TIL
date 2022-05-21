@@ -1,11 +1,5 @@
 # AJAX
 
-2020.10.14
-
-> **Asynchronous JavaScript And XML**는 XMLHttpRequest 객체를 사용하여 `비동기`를 통해 사용자의 event가 있으면 전체 페이지가 아닌 일부분만을 업데이트 할 수 있게 해준다.
-
-:star: **학습목표 : 자바스크립트 비동기 처리** :star:
-
 ---
 
 [TOC]
@@ -14,7 +8,9 @@
 
 
 
-:star: **概要図**​ :star:
+## Overview
+
+AJAX(Asynchronous JavaScript And XMLHttpRequest)는 JavaScript, DOM, Fetch, XMLHttpRequest 등의 다양한 기술을 사용하는 웹 개발 기법이다. AJAX의 가장 큰 특징은 웹 페이지에 필요한 부분에, **필요한 데이터만 비동기적으로 받아와** 화면에 그려낼 수 있다는 것이다.
 
 ```markdown
 학습목표 : 자바스크립트 비동기 처리
@@ -31,21 +27,25 @@
 
 
 
-## :ballot_box_with_check: How JavaSciprt works?
-
-|          |         작동 원리         |                   설명                    |
-| :------: | :-----------------------: | :---------------------------------------: |
-| **핵심** | **Asynchronous** (비동기) |            기다려주지 않는다.             |
-| **이유** |     **Single Thread**     |       왜냐하면 혼자서 일하기 때문에       |
-| **방법** |      **Event Loop**       | 이벤트 루프에 기반한 메커니즘으로 일한다. |
 
 
+## 핵심 기술
+
+AJAX를 구성하는 핵심 기술은 **JavaScript와 DOM**, 그리고 **Fetch**이다.
+
+전통적인 웹 어플리케이션은 `<form>` 태그를 이용해 서버에 요청을 하고, 그 응답은 새로운 웹 페이지로 제공받아야 했다. 하지만, Fetch를 사용하면 페이지를 이동하지 않아도 서버로부터 필요한 데이터를 받아올 수 있다. 또한, JavaScript에서 DOM을 사용해 조작할 수 있기 때문에, **Fetch를 통해 필요한 데이터만 가져와 DOM에 적용**시켜, 새로운 페이지로 이동하지 않고 기존 페이지에서 필요한 부분만 변경할 수 있다.
 
 
 
-## 핵심 : Asynchronous (비동기)
+### 1) JavaScript & DOM
 
----
+|     작동 원리     |                       설명                       |
+| :---------------: | :----------------------------------------------: |
+| **Asynchronous**  |        비동기, 기다려주지 않는다. (핵심)         |
+| **Single Thread** |       왜냐하면 혼자서 일하기 때문에 (이유)       |
+|  **Event Loop**   | 이벤트 루프에 기반한 메커니즘으로 일한다. (방법) |
+
+#### 핵심 : Asynchronous
 
 ```javascript
 // 비동기1 : setTimeout
@@ -78,37 +78,17 @@ xhr.onload = function () {
 }
 ```
 
+#### 방법 : Event Loop
 
+> 자세한 내용은 [Async(비동기) TIL](#)을 참고한다.
 
-## 방법 : Event Loop
+- **Call Stack**: 요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 Stack(LIFO) 형태의 자료 구조 (함수 호출 기록)
 
----
+- **Web API (Browser API)**: JavaScript 엔진이 아닌 브라우저 영역에서 제공하는 API
 
-### 용어
+- **Task Queue**: Callback 함수가 대기하는 Queue(FIFO) 형태의 자료 구조
 
-- Call Stack
-  
-  ```markdown
-  요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 Stack(LIFO) 형태의 자료 구조 (함수 호출 기록)
-  ```
-
-- Web API (Browser API)
-
-  ```markdown
-  JavaScript 엔진이 아닌 브라우저 영역에서 제공하는 API
-  ```
-
-- Task Queue
-
-  ```markdown
-  Callback 함수가 대기하는 Queue(FIFO) 형태의 자료 구조
-  ```
-
-- Event Loop
-
-  ```markdown
-  Call Stack에 현재 실행 중인 Task가 없는지 확인하고 Task Queue에 Task가 있는지 확인
-  ```
+- **Event Loop**: Call Stack에 현재 실행 중인 Task가 없는지 확인하고 Task Queue에 Task가 있는지 확인
 
 ```javascript
 console.log('Hi')
@@ -125,51 +105,42 @@ console.log('Bye')
 
 
 
-### Callback Function
+### 2) XHR과 Fetch
 
-> 다른 함수의 인자로 넘어가는 함수
-
-- 예시 : `addEventListener`
+Fetch의 등장 이전에는 표준화된 XHR(XMLHttpRequest)을 사용했다. 그러나 XHR은 cross-site 이슈 등의 불편함이 있고, 그에 비해 Fetch는 간편함, promise 지원 등의 장점을 가지고 있기 때문에 오늘날에는 XHR보다 Fetch를 많이 사용한다.
 
 ```javascript
-const btn = document.querySelector('button')
+// XHR 예제
+var xhr = new XMLHttpRequest()
+xhr.open('get', 'http://localhost:3000/messages')
 
-btn.addEventListener('click' , function () {
-    alert('Button Clicked!')
-})
-```
-
-
-
-### Promise
-
-> `Promise` 는 비동기 작업의 최종 완료 또는 실패를 나타내는 객체로, `callback hell`을 해결해준다. (ES6에서 등장)
->
-> - **`.then(callBack)`**
-> - **`.catch(callBack)`**
-
-```javascript
-function questionToProfessor ('질문', solveQuestion) {
-    .then (solveQuestion) // 성공했을 때
-    .then (share) // 성공했을 때
-    .catch (resolveMyError) // 실패했을 때
+xhr.onreadystatechange = function() {
+    // readyState 4: 완료
+    if (xhr.readyState !== 4) return
+    // status 200: 성공
+    if (xhr.status === 200) {
+        console.log(xhr.responseText)	// 서버로부터 온 응답
+    } else {
+        console.log(xhr.status)	// 요청 도중 에러 발생
+    }
 }
+xhr.send()	// dycjd wjsthd
 ```
 
-- 예시
+Fetch는 XHR의 단점을 보완한 새로운 Web API이며, XML보다 가볍고 JavaScript와 호환되는 JSON을 사용한다.
 
 ```javascript
-const promise = new Promise(function (resolve) {
-    setTimeout(function () {
-        resolve('I am from setTimeout')
-    }, 1000)
-})
-promise.then(function (message) {
-    console.log('Hello SSAFY!')
-    console.log(message)
-    console.log('Bye SSAFY!')
-})
+// Fetch 예제
+fetch('http://localhost:3000/messages')
+	.then((response) => {
+    return response.json()
+	})
+	.then((json) => {
+    ...
+	})
 ```
+
+이 외에도 Axios와 같은 라이브러리도 존재하며 경우에 따라 적절한 것을 선택하여 사용하면 된다.
 
 
 
@@ -229,49 +200,7 @@ const promise = axios.get('https://jsonplaceholder.typicode.com/todos/1')
     console.log(promise)
 ```
 
-**Chaining**
-
-- 다음과 같이 특정 작업 수행을 성공했을 때, 다음의 요청을 promise 방식으로 chaining할 수 있다.
-
-```javascript
-axios.get('https://jsonplaceholder.typicode.com/todos/1')
-        .then(function (res) {
-        console.log(res)
-        return res.data
-    })
-        .then(function (res) {
-        console.log(res)
-        return res.title
-    })
-        .then(function (res) {
-        console.log(res)
-    })
-        .catch(function (err) {
-    	console.log(err)
-    })
-```
-
-
-
-### async & await 
-
-> 동기적인 것처럼 보이게 코드를 작성할 수 있다. (ES8+)
-
-- promise를 return하는 구문 앞에 await를 붙인다.
-
-```javascript
-async function getTodo2 () {
-    console.log('1')
-    await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-        .then(function (res) {
-        console.log(res)
-    })
-    console.log('2')
-}
-getTodo2()
-```
-
-- 기본 axios 요청은 비동기 요청이다.
+기본 axios 요청은 비동기 요청이다.
 
 ```javascript
 //3-1. 기본 axios 요청
@@ -288,11 +217,27 @@ getTodo()
 
 
 
+## 특징
+
+AJAX는 다음과 같은 **장점**이 있다.
+
+- 서버에서 HTML을 완성하여 보내주지 않아도 필요한 데이터를 비동기적으로 가져와 브라우저 화면 일부만 업데이트하여 렌더링 할 수 있다.
+- XHR이 표준화되면서 브라우저에 상관 없이 AJAX를 사용할 수 있게 되었다.
+- 유저 중심 어플리케이션 개발 AJAX를 사용하면, 필요한 일부분만 렌더링하기 때문에 빠르고 더 많은 상호작용이 가능한 어플리케이션을 만들 수 있다.
+- AJAX에서는 필요한 데이터를 텍스트 형태(JSON, XML 등)로 보내면 되기 때문에 비교적 데이터의 크기가 작으며, 더 작은 대역폭을 가진다.
+
+하지만 다음과 같은 **단점**은 존재한다.
+
+- Search Engine Optimization(SEO)에 불리
+- 뒤로 가기 버튼을 누르면, AJAX에서는 이전 상태를 기억하지 않기 때문에 사용자가 의도한 대로 동작하지 않는다. 이를 위해 별도로 History API를 사용해야 한다.
+
+
+
 ## <실습> 좋아요 기능 비동기 처리하기
 
 ### 전체 과정 보기
 
-> 아래의 일련의 과정에서의 코드는 `articles/index.html`, `articles/views.py`에서 작성되는 코드이다.
+> 아래의 일련의 과정에서의 코드는 `articles/index.html`, `articles/views.py`에서 작성되는 코드이다. (Django)
 
 **1. form태그 조정**
 
@@ -677,4 +622,4 @@ def like(request, article_pk):
 
 
 
-***Copyright* © 2020 Song_Artish**
+***Copyright* © 2022 Song_Artish**

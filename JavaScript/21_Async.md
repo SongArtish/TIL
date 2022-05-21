@@ -59,7 +59,7 @@ orderCoffeeAsync(request).onready = function(response) {
 
 ### 1. Callback
 
-비동기를 제어하기 위해서 사용한다.
+Callback 함수는 다른 함수의 인자로 넘어가는 함수를 의미한다. 비동기를 제어하기 위해서 사용한다.
 
 ```javascript
 const printString = (string, callback) => {
@@ -106,10 +106,23 @@ const callBack = (callback) => {
 
 ### 2. Promise
 
+`Promise` 는 비동기 작업의 최종 완료 또는 실패를 나타내는 객체로, `callback hell`을 해결해준다. (ES6에서 등장)
+
 ```javascript
 const newPromise = new Promise() // Promise 선언
 newPromise.resolve() // Go to next action
 newPromise.reject() // Handle error
+```
+
+> - **`.then(callBack)`**
+> - **`.catch(callBack)`**
+
+```javascript
+function questionToProfessor ('질문', solveQuestion) {
+    .then (solveQuestion) // 성공했을 때
+    .then (share) // 성공했을 때
+    .catch (resolveMyError) // 실패했을 때
+}
 ```
 
 위에서 callback으로 작성한 `printString` 함수를 promise로 작성하면 아래와 같다.
@@ -143,7 +156,27 @@ const printAll = () => {
 printAll()
 ```
 
-`.catch()`를 이용하여 에러를 잡아낸다.
+> **Chaining**
+
+다음과 같이 특정 작업 수행을 성공했을 때, 다음의 요청을 promise 방식으로 chaining할 수 있다.
+
+```javascript
+axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        .then(function (res) {
+        console.log(res)
+        return res.data
+    })
+        .then(function (res) {
+        console.log(res)
+        return res.title
+    })
+        .then(function (res) {
+        console.log(res)
+    })
+        .catch(function (err) {
+    	console.log(err)
+    })
+```
 
 > **Promise.all()**
 
@@ -164,7 +197,7 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 
 ### 3. async & await
 
-함수 앞에 `async`와 `await`를 붙여서 동기적으로 진행되도록 할 수 있다.
+함수 앞에 `async`와 `await`를 붙여서 동기적으로 진행되도록 할 수 있다. (ES8+)
 
 ```javascript
 const result = async () => {
@@ -172,6 +205,20 @@ const result = async () => {
     const two = await getTwo()
     ...
 }
+```
+
+promise를 return하는 구문 앞에 await를 붙인다.
+
+```javascript
+async function getTodo2 () {
+    console.log('1')
+    await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        .then(function (res) {
+        console.log(res)
+    })
+    console.log('2')
+}
+getTodo2()
 ```
 
 
