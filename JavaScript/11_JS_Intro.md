@@ -30,9 +30,44 @@
 
 
 
-## ECMAScript
+## ES6
 
-자바스크립트 표준화를 위해 만들어졌으며, 액션스크립트나 J스크립트 등 다른 구현체도 포함하고 있다.
+> **ECMAScript(ES)**는 표준화를 위해 만들어졌으며, 액션스크립트나 J스크립트 등 다른 구현체도 포함하고 있다.
+
+뒤에 숫자는 버전을 의미하며, `ES5`는 2009년, `ES6`는 2015년에 출시되었다. ES6의 주요 문법은 다음과 같다.
+
+1. let, const 키워드: 재선언 불가, 재할당 가능한 let 변수 선언 키워드와 상수 선언 키워드 const가 추가되었다.
+
+2. Templete Literal
+
+3. Object Literal
+
+4. Arrow Function
+
+5. 구조 분해 할당: 객체/배열의 값을 해체한 후, 개별 값을 변수로 새로 할당할 수 있다.
+
+   ```javascript
+   const arr = [1, 2, 3]
+   const [one, two, three ] = arr
+   ```
+
+6. Promise
+
+7. Class
+
+8. String Method: `includes`, `startsWith`, `endsWith`
+
+9. Multi-line String: 백틱을 사용하여 여러 줄의 문자열을 사용할 수 있게 되었다.
+
+10. Default Parameter
+
+11. Module: 모듈은 모듈 스코프를 가지며, import와 export 키워드를 이용하여 사용한다.
+
+    ```javascript
+    <script type="module" src="lib.mjs"></script>
+    ```
+
+12. Spread Operator: 배열, 문자열, 객체 등 반복 가능한 객체(Iterable Object)를 개별 요소로 분리할 수 있다.
 
 
 

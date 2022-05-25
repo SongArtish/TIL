@@ -1,4 +1,4 @@
-# JavaScript 타입과 연산자
+# JavaScript 타입
 
 ---
 
@@ -8,9 +8,9 @@
 
 
 
-## Primitive 타입
+## 기본 타입
 
-원시값, 원시 자료형 타입
+원시 타입(Primitive Type), 원시값, 원시 자료형 타입이라고도 한다.
 
 ### Number
 
@@ -123,129 +123,170 @@ typeof undefined
 
 
 
-## 연산자
+## 참조 타입
 
-### 할당 연산자
-
-> 연산과 동시에 변수에 어떠한 값을 할당하는 연산자
+### Array
 
 ```javascript
-let c = 10
+const numbers = [1, 2, 3, 4]
 
-c += 10
-console.log(c)
-
-c -= 10
-console.log(c)
-
-c *- 10
-console.log(c)
-
-c /= 10
-console.log(c)
-
-c++
-console.log(c) // 증강식 : 1을 더해주는 역할
-
-c--
-console.log(c) // 증감식 : 1을 빼주는 역할
+numbers[0]
+numbers[3]
+// numbers[-1]
+numbers.length
 ```
 
+- 단, `-1` 인덱스는 사용할 수 없다. 양의 정수 인덱스만 사용할 수 있다.
 
+**자주 사용하는 메서드**
 
-### 비교 연산자
-
-> 두 값을 비교하기 위해 사용하며, `true` or `false`를 반환한다.
-
-```javascript
-2 < 3	// true
-2 > 3	// false
-```
-
-- 문자열도 비교가 가능하다. 영어 소문자가 대문자보다 큰 값을 가진다.
-- 알파벳은 오름차순으로 비교한다.
-
-```javascript
-'A' < 'a'
-```
-
-
-
-### 동등 연산자 (`==`)
-
-- 형변환 했을 때 같은 값이면 일치한다고 본다.
-
-- JS는 자동으로 형변환을 해준다.
-
-- :white_check_mark:단, 자동 형변환으로 인한 얘기치 못한 상황이 발생할 수 있으므로 동등연산자 사용은 지양한다.
+- `push` && `pop`
 
   ```javascript
-  const a = 1
-  const b = '1'
+  numbers.push('5') // 5 새로운 배열의 길이
   
-  console.log(a == b)	 // true
-  console.log(a == Number(b))
+  numbers.pop() // '5' 가장 마지막 요소
   ```
 
-
-
-### 일치 연산자 (`===`)
-
-- 동등 연산자보다 엄격한 비교를 한다.
+- `reverse` : 배열을 반대로 정렬
 
   ```javascript
-  const a = 1
-  const b = '1'
-  
-  console.log(a === b)	// false
+  numbers.reverse() // [4, 1, 2, 1]
   ```
 
+- `unshift` && `shift`
 
-
-### 논리 연산자
-
-- `and` &&
+  - `unshift` : 배열의 앞에 추가
 
   ```javascript
-  true && true	// true
-  true && false	// false
-  
-  0 && 0	// 0
-  1 && 0	// 0
-  4 && 7	// 7
+  numbers.unshift('a')	// 5 새로운 배열의 길이
+  numbers	// ['a' , 1, 2, 3, 4]
   ```
 
-- `or` ||
+  - `shift` : 배열의 첫 요소를 제거
 
   ```javascript
-  true || false	// true
-  false || true	// true
-  
-  1 || 0	// 1
-  4 || 7	// 4
+  numbers.shift()	// 'a' 가장 처음 요소
+  numbers
   ```
 
-- `not` !
+- `include` : `true` or `false`로 boolean 값을 반환
 
   ```javascript
-  !true || false	// false
+  numbers.includes(1)
+  ```
+
+- `indexOf` : 배열의 특정 요소가 있는지 확인하고, 있으면 가장 첫번째로 찾은 요소의 index를 반환 (없으면 -1 반환)
+
+  ```javascript
+  numbers.indexOf(1)	// 0 번째 index 반환
+  numbers.indexOf(0)	// 없으므로 -1 반환
+  ```
+
+- `join` : 문자열로 반환
+
+  ```javascript
+  numbers.join()	// "1,2,3,4"
+  numbers.join('')	// "1234"
+  numbers.join('-') // "1-2-3-4""
   ```
 
 
 
-### 삼항 연산자
+### Object
 
-- 가장 앞의 조건식이 참이면 `:`을 기준으로 작성한 앞의 값이 반환되고, 반대의 경우 `:`의 뒤의 값이 반환된다.
+key 값은 문자열 형태로 작성, value는 모든 형태가 작성 될 수 있다.
 
 ```javascript
-true ? 1 : 2	// 1
-false ? 1 : 2	// 2
+const person = {
+    name : '홍길동',
+    'phone number' : '010-1234-1234',
+    pocket : {
+        phone : 'galaxy note 9',
+        earphone : 'buzz live',
+        'note book' : 'MacBook'
+    }
+}
+```
+
+- key 값에 공백이 있는 경우에는 `'phone number'`와 같이 문자열인 것을 표시해주어야한다.
+
+**요소 접근**
+
+- dot notation
+
+```javascript
+person.name	// '홍길동'
+person['name']	// '홍길동'
+person['phone number']
+person.pocket.phone
+person['pocket'].phone
+```
+
+**Object 축약 문법**
+
+- 객체를 정의할 때, key 값과 할당하는 변수의 이름이 같으면 축약이 가능하다.
+
+```javascript
+const books = ['python', 'JS']
+
+const professor = {
+    ggu : ['django', 'JS'],
+    json : ['python']
+}
+
+const anything = null
+
+const hphk = {
+    /* 'books' : books,
+    'professor' : professor,
+    'anything' : anything, */
+    books,
+    professor,
+    anything,
+}
+
+console.log(hphk)
 ```
 
 ```javascript
-const result = 3.14 > 4 ? 'Yes' : 'No'
-console.log(result)
+const userInformation = {
+    name : 'kim',
+    userId : 'ggu'
+}
 ```
+
+- ESS 이전
+
+```java
+const name = userInformation.name
+const userId = userInformation.userId
+```
+
+- ES6+ 이후
+
+```javascript
+const { name } = userInformation
+const { userId } = userInformation
+```
+
+```javascript
+function getUserInfo (userInformation) {
+    console.log(`userName = ${userInformation.name}`)
+}
+
+getUserInfo(userInformation)
+
+function getUserInfo({ name }) {
+    console.log(`username = ${name}`)
+}
+```
+
+
+
+### Function
+
+JavaScript 함수에 대해서는 별도 TIL에서 다룬다.
 
 
 

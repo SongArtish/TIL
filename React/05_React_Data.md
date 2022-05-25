@@ -10,7 +10,7 @@
 
 ## Overview
 
-React에서 데이터를 전달하는 방법에 대해서 다룬다.
+React는 **단방향 데이터 흐름(one-way data flow)**이라는 특징을 가지고 있다. 데이터 흐름이 하향식(top-down)이며, 데이터를 전달하는 주체가 부모 컴포넌트이다. 컴포넌트는 props를 통해 전달받은 데이터가 어디서 왔는지 알지 못한다.
 
 ![React Lifecycle](img/react_lifecycle.png)
 
@@ -27,69 +27,38 @@ React에서 데이터를 전달하는 방법에 대해서 다룬다.
 - **객체 형태**로 어떤 타입의 값도 props에 넣어서 전달할 수 있다.
 - 읽기 전용(read-only)이다.
 
-### props 사용하기
+> **props 사용하기**
 
 1. 하위 컴포넌트에 전달하고자 하는 값(data)과 속성을 정의한다.
+
+2. props를 이용하여 정의된 값과 속성을 전달한다.
+
+3. 전달받은 props를 렌더링한다.
 
    ```react
    function Parent() {
        return (
            <div className="parent">
                <h1>I am parent.</h1>
-               <Child />
+                {/* 2. 데이터 전달 */}
+               <Child text={"I am the oldest child."} />
            </div>
        );
    };
    
    function Child() {
      return (
-         <div className="child"></div>
-     );  
-   };
-   ```
-
-2. props를 이용하여 정의된 값과 속성을 전달한다.
-
-   ```react
-   function Parent() {
-       return (
-           <div className="parent">
-               <h1>I am parent.</h1>
-               {/* 2. 데이터 전달 */}
-               <Child text={"I am the oldest child."} />
-           </div>
-       );
-   };
-   ```
-
-3. 전달받은 props를 렌더링한다.
-
-   ```react
-   function Child(props) {
-     return (
          <div className="child">
-             {/* props 데이터 가져오기 */}
-             <p>{props.text}</p>
+         	{/* 3. props 데이터 가져오기 */}
+           <p>{props.text}</p>
          </div>
      );  
    };
    ```
 
-### props.children
-
-`props.children`을 이용하면 태그 사이의 value를 전달할 수 있다.
+> `props.children`을 이용하면 태그 사이의 value를 전달할 수 있다.
 
 ```react
-function Parent() {
-  return (
-      <div className="parent">
-          <h1>I am the parent.</h1>
-          {/* 데이터 넘겨주기 */}
-          <Child>I am the oldest child.</Child>
-      </div>
-  );  
-};
-
 function Child(props) {
   return (
       <div className="child">
@@ -102,6 +71,8 @@ function Child(props) {
 
 
 
+
+
 ## state
 
 컴포넌트의 사용 중 **컴포넌트 내부에서 변할 수 있는 값**으로 **상태**를 나타낸다.
@@ -110,7 +81,7 @@ function Child(props) {
 - 데이터 변경이 필요한 경우 `setState()` 함수를 통해 값을 변경한다.
 - React 컴포넌트는 state가 변경되면 새롭게 호출되고, 리렌더링 된다.
 
-### useState 사용하기
+> **useState 사용하기**
 
 `useState`는 state hook이다.
 
@@ -146,6 +117,46 @@ function CheckboxExample () {
             <span>{isChecked ? "Checked!" : "Not checked"}</span>
         </div>
     );
+}
+```
+
+
+
+## 사용하기
+
+### 1. 데이터 정의
+
+아래 항목 중 하나라도 만족하면 state가 아니다
+
+- 부무로부터 props를 통해 전달받나?
+- 시간이 지나도 변하지 않나?
+- 컴포넌트 안의 다른 state나 props를 가지고 계산 가능한다?
+
+### 2. State 위치 정하기
+
+공통 소유 컴포넌트(공통의 부모)를 찾아 그 곳에 상태를 위치해야 한다.
+
+### 3. 역방향 데이터 흐름 추가
+
+역방향 데이터 흐름을 추가하는 것을 **State 끌어올리기(Lifting state up)**라고 한다. 상태를 변경시키는 함수(handler)를 하위 컴포넌트에 props로 전달해서 제어할 수 있다.
+
+```react
+let ParentComponent = () => {
+    let [value, setValue] = useState('')
+    let handleChangeValue = (newValue) => {
+        setValue(newValue)
+    }
+    ...
+
+}
+        
+let ChildComponent = ({handleButtonClick}) => {
+	let handleClick = () => {
+		handleButtonClick()
+	}
+    return (
+    	<button onClick={handleClick}>Change Value</button>
+    )
 }
 ```
 

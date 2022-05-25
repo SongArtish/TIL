@@ -17,6 +17,8 @@
 ## 사용법
 
 ```javascript
+import fetch from 'node-fetch'
+
 let url = "<url주소>"
 fetch(url)
 	.then((response) => response.json())
