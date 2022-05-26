@@ -52,8 +52,4 @@ The [same-origin security policy](https://developer.mozilla.org/en-US/docs/Web/S
 
 
 
-
-
-
-
 ***Copyright* © 2022 Song_Artish**
