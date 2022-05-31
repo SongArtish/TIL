@@ -61,24 +61,63 @@ module.exports = router
 코드의 길이가 짧은 경우에는 위의 코드와 같은 식으로 작성해도 되지만, 코드 길이가 길어지게 되면 위의 코드와 같이 작성하는 경우 유지보수가 어려워질 수 있다. 이 때 **Router를 분리**하여 작성하는 효율적이다.
 
 ```javascript
-// App.js
+// App.js --> 서버를 선언한 파일
+const express = require('express')
+const cors = require('cors')
+const app = express()
+const port = 3000
+
 // Router init
-const userRouter = require("./routes/User")
-const infoRouter = require("./routes/Info")
+const userRouter = require("./router/userRouter")
+const infoRouter = require("./router/infoRouter")
+
 // Route Start
 app.use("/user", userRouter)
 app.use("/info", infoRouter)
+
+...
 ```
 
 ```javascript
-// /routes/index.js
+// /routes/userRouter.js
+const { getUsers, createUser } = require('../controller/userController')
 const express = require("express")
 const router = express.Router()
+
+router.get('/', getUsers)
+
+router.post('/:id', createUser)
+
+/**
 router.get('/', (req, res, next) => {
     // 내용
     res.render()
 })
+**/
 module.exports = router
+```
+
+```javascript
+// /controller/userController.js
+const users = require('../repository/userList')
+
+module.exports = {
+    getUsers: (req, res) {
+    	...
+    	// 쿼리 문으로 보낸 데이터를 가져온다.
+    	console.log(req.query)
+        console.log(req.query.userId)
+		// body에 담아 보낸 데이터를 가져온다.
+		console.log(req.body)
+		return res.status(200).json(req.body)
+	},
+    createUser: (req, res) {
+        // 넘겨 받은 id 값을 가져온다.
+        console.log(req.params.id)
+        let data
+        return res.json(data)
+    }
+}
 ```
 
 

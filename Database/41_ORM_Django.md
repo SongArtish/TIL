@@ -1,6 +1,6 @@
 
 
-# SQL & Django ORM
+# ORM Django
 
 2020.09.22.
 
@@ -39,7 +39,7 @@ TIL
   * migrate
 
     ```bash
-  $ python manage.py sqlmigrate users 0001
+    $ python manage.py sqlmigrate users 0001
     ```
 
 * `db.sqlite3` 활용
@@ -175,7 +175,7 @@ TIL
    ```python
    # orm
    # 1.
-user = User.objects.get(pk=101)
+   user = User.objects.get(pk=101)
    user.delete()
    # 2. 
    User.objects.get(pk=101).delete()
@@ -268,8 +268,8 @@ user = User.objects.get(pk=101)
    - sql에서 여러 개의 조건을 나열할 때는 `AND`를 사용한다.
 
       ```sql
-   -- sql
-   SELECT COUNT(*) FROM users_user WHERE age=30 AND last_name='김';
+      -- sql
+      SELECT COUNT(*) FROM users_user WHERE age=30 AND last_name='김';
       ```
 
 6. 나이가 30이거나 성이 김씨인 사람?
@@ -452,7 +452,7 @@ user = User.objects.get(pk=101)
    ```python
    # orm
    from django.db.models import Sum
-User.objects.aggregate(Sum('balance'))
+   User.objects.aggregate(Sum('balance'))
    ```
    
       ```sql

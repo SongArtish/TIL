@@ -24,6 +24,38 @@
 
 
 
+## 시작하기
+
+**React 프로젝트 시작 단계인 경우**
+
+```bash
+$ npm create-react-app <프로젝트명> --template redux
+```
+
+**React 프로젝트 진행 단계인 경우**
+
+- Redux를 프로젝트에 추가한다.
+
+```bash
+$ npm i redux
+```
+
+- Redux를 React 프로젝트에 추가한다.
+
+```bash
+$ npm i react-redux
+```
+
+- Chrome 확장 프로그램 설치와 연동하기 위해 tool kit을 설치한다.
+  - Store 값이 바뀌는 상태를 쉽게 확인 가능
+  - 개발 단계에서만 사용하는 경우 `-D` 옵션 추가
+
+```bash
+$ npm i -D redux-devtools
+```
+
+
+
 ## 기본 용어
 
 ### 1) Action
@@ -160,38 +192,6 @@ function reducer(state = initialState, action) {
 1. 하나의 어플리케이션 안에는 하나의 store를 갖는다.
 2. 상태는 read-only이다.
 3. Reducer는 순수한 함수여야 한다.
-
-
-
-## 설치하기
-
-**React 프로젝트 시작 단계인 경우**
-
-```bash
-$ npm create-react-app <프로젝트명> --template redux
-```
-
-**React 프로젝트 진행 단계인 경우**
-
-- Redux를 프로젝트에 추가한다.
-
-```bash
-$ npm i redux
-```
-
-- Redux를 React 프로젝트에 추가한다.
-
-```bash
-$ npm i react-redux
-```
-
-- Chrome 확장 프로그램 설치와 연동하기 위해 tool kit을 설치한다.
-  - Store 값이 바뀌는 상태를 쉽게 확인 가능
-  - 개발 단계에서만 사용하는 경우 `-D` 옵션 추가
-
-```bash
-$ npm i -D redux-devtools
-```
 
 
 
