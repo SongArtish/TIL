@@ -33,6 +33,30 @@ Vue.use(ToggleButton)
 
 
 
+## bootstrap-vue
+
+- bootstrap npm을 설치한다.
+
+```bash
+$ npm install vue bootstrap-vue bootstrap
+```
+
+- 해당 패키지를 등록한다. 자세한 내용은 [공식홈페이지](https://bootstrap-vue.org/docs)를 참조한다.
+- CDN을 사용할 경우, `index.html`에 넣어준다.
+- :white_check_mark: Vue에서는 npm으로 관리하기 때문에 되도록이면 CDN을 사용하지 않는 편이 좋다!!
+
+
+
+## packery
+
+> draggable한 레이아웃을 디자인할 수 있다.
+>
+> [github](https://github.com/metafizzy/packery)
+
+![packery](img/packery.png)
+
+
+
 ## vue-burger-menu
 
 > 좌/우에 햄버거 메뉴바를 만든다.
@@ -40,6 +64,34 @@ Vue.use(ToggleButton)
 > [github](https://github.com/mbj36/vue-burger-menu)
 
 ![vue-burger-menu](img/vue-burger-menu.png)
+
+
+
+## vue-glide-js
+
+> [Vue Glide 사이트](https://www.npmjs.com/package/vue-glide-js)
+
+- 먼저 패키지를 설치한다.
+
+  ```bash
+  npm i vue-glide-js
+  ```
+
+- `main.js`에 bootstrap을 등록해준다.
+
+  ```javascript
+  import Vue from 'vue'
+  import App from './App.vue'
+  import VueGlide from 'vue-glide-js'
+  import 'vue-glide-js/dist/vue-glide.css'
+   
+  Vue.use(VueGlide)
+   
+  new Vue({
+    el: '#app',
+    render: h => h(App)
+  })
+  ```
 
 
 
@@ -70,16 +122,6 @@ Vue.use(ToggleButton)
 > [github](https://github.com/gs-shop/vue-slick-carousel)
 
 ![vue-slick-carousel](img/vue-slick-carousel.png)
-
-
-
-## packery
-
-> draggable한 레이아웃을 디자인할 수 있다.
->
-> [github](https://github.com/metafizzy/packery)
-
-![packery](img/packery.png)
 
 
 

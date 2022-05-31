@@ -1,8 +1,4 @@
-# Vuex
-
-2020.11.13
-
-> Vue.js 애플리케이션에 대한 상태 관리 패턴 + 라이브러리 (중앙 집중식 저장소)
+# <실습> Todo List 만들기
 
 ---
 
@@ -12,71 +8,7 @@
 
 
 
-## 상태관리패턴
-
-```markdown
-Vuex는 모든 컴포넌트를 트리에 상관없이 상태(data)에 액세스하거나 동작을 트리거 할 수 있게 해주는 라이브러리이며 중대형 규모의 SPA에 적합하다.
-```
-
-**Vuex Concept**
-
-![Vuex Concept](img/vuex_concept.png)
-
-- `state`: 앱을 작동하는 원본 소스이다.
-- `view` : 상태의 선언적 매핑
-- `action` : 뷰에서 사용자 입력에 대해 반응적으로 상태를 바꾸는 방법
-
-
-
-## 용어
-
-### :black_large_square: State
-
-> 중앙에서 관리하는 모든 `데이터(data)`
-
-### :black_large_square: Getter
-
-> 저장소의 상태를 기준으로 계산해야 하는 값
-
-- `computed`와 유사하며, 실제 상태(data)를 변경하지는 않는다.
-
-### :black_large_square: Mutations
-
-> State를 변경하는 로직
->
-> - 동기적인 작업
-> - 메서드 호출 : `commit`
-> - 첫 번째 인자 : `state`
-
-- 상태를 변경시키기 때문에 첫 번째 인자로 항상 state를 받는다.
-
-```javascript
-mutations: {
-    <함수명>: function (state, <매개변수>) {
-        <코드블럭>
-    }}
-```
-
-### :black_large_square: Action
-
-> state를 직접 변경하지 않고 mutations에 정의된 메서드를 호출해서 변경한다. (데이터 fetch 및 처리 & 가공)
->
-> - 비동기 작업
-> - 메서드 호출 : `dispatch`
-> - 첫 번째 인자 : `context`
-
-```javascript
-actions: {
-    <함수명>: function (context, <매개인자>) {
-        <코드블럭>
-    }}
-```
-
-
-
-## <실습> Todo List 만들기
-
-### :arrow_forward: 시작하기
+## :arrow_forward: 시작하기
 
 :star: **Vuex 생성하기**
 
@@ -160,7 +92,7 @@ $ node <파일명>.js
 
 
 
-### :arrow_forward: 컴포넌트 생성
+## :arrow_forward: 컴포넌트 생성
 
 - `component` 폴더에 다음의 3개의 vue 파일을 만들어준다.
   - `Todo.vue`
@@ -169,7 +101,7 @@ $ node <파일명>.js
 
 
 
-### :arrow_forward: 데이터 작성
+## :arrow_forward: 데이터 작성
 
 - `index.js`에 state(데이터)를 작성해본다.
 
@@ -184,7 +116,7 @@ state: {
 
 
 
-### :arrow_forward: 데이터 가져오기
+## :arrow_forward: 데이터 가져오기
 
 ```javascript
 $store.state.<데이터명>
@@ -223,7 +155,7 @@ $store.state.<데이터명>
 
 
 
-### :arrow_forward: 항목 추가하기 (mutation)
+## :arrow_forward: 항목 추가하기 (mutation)
 
 :star: **mutation**
 
@@ -284,13 +216,13 @@ $store.state.<데이터명>
 
 
 
-### :arrow_forward: 항목 추가하기 (action)
+## :arrow_forward: 항목 추가하기 (action)
 
 > action은 state를 직접 변경하지 않고 mutation에 정의된 메서드를 호출해서 변경한다. (데이터 fetch 및 처리 & 가공)
 >
 > ```javascript
 > <함수명>: function (context, <매개인자>) {
->     context.commit('<mutations의 함수명', <매개인자>)
+>  context.commit('<mutations의 함수명', <매개인자>)
 > }
 > ```
 
@@ -330,7 +262,7 @@ $store.dispatch('<actions의 함수>', 매개인자)
 
 
 
-### :arrow_forward: 공백일 때는 데이터가 추가되지 않도록 처리 (trim)
+## :arrow_forward: 공백일 때는 데이터가 추가되지 않도록 처리 (trim)
 
 :star: **trim 메서드**
 
@@ -367,7 +299,7 @@ if (todoItem.title) {
 
 
 
-### :arrow_forward: <참고> destructuring 문법
+## :arrow_forward: <참고> destructuring 문법
 
 > 비구조화 문법을 통해서 편리하게 데이터를 가져올 수 있다.
 >
@@ -411,7 +343,7 @@ console.log(state) // { todo: '할 일 1' }
 
 
 
-### :arrow_forward: Delete 버튼 만들기
+## :arrow_forward: Delete 버튼 만들기
 
 - vuex의 `mutations`에 데이터를 삭제하는 코드를 작성한다.
 
@@ -462,7 +394,7 @@ console.log(state) // { todo: '할 일 1' }
 
 
 
-### :arrow_forward: 완료 여부 표시하기
+## :arrow_forward: 완료 여부 표시하기
 
 - 아래와 같이 mutation에 Todo의 완료 상태를 변경하는 함수를 생성한다.
   1. todos 배열을 반복하며 꺼내지는 todo 요소가 넘어온 todoItem과 동일한지 체크!
@@ -526,7 +458,7 @@ console.log(state) // { todo: '할 일 1' }
 
 
 
-### :arrow_forward: <참고> spread 문법
+## :arrow_forward: <참고> spread 문법
 
 > 기호 : **`...`**
 >
@@ -556,7 +488,7 @@ const myUpdateTodo2 = {
 
 
 
-### :arrow_forward: 데이터 개수 계산하기
+## :arrow_forward: 데이터 개수 계산하기
 
 :star: **getter**
 
@@ -615,7 +547,7 @@ const myUpdateTodo2 = {
 
 
 
-### :arrow_forward: <참고> `mapState` & `mapGetters`
+## :arrow_forward: <참고> `mapState` & `mapGetters`
 
 > `mapState`와 `mapGetters`를 활용해서 컴포넌트에서 편리하게 mapping 할 수 있다.
 
@@ -696,7 +628,7 @@ import { mapGetters } from 'vuex'
 
 
 
-### :arrow_forward: 로컬에 데이터 저장 (vuex-persistedstate 모듈)
+## :arrow_forward: 로컬에 데이터 저장 (vuex-persistedstate 모듈)
 
 :star: **vuex-persistedstate 모듈**
 
@@ -730,34 +662,6 @@ export default new Vuex.Store({
 
 - 그리고 서버를 시작해서 데이터를 작성/수정/삭제한다.
 - 새로고침을 해보면 데이터가 그대로 남아있는 것을 확인할 수 있다.
-
-
-
-## :exclamation: 오류 디버깅
-
-### Vuex 설치 오류
-
-```bash
-$ vue add vuex
-```
-
-- 위의 명령어를 통해 Vuex를 설치하려고 하는데 아래의 오류가 발생했다.
-
-```
-ERROR  Error: The package.json file at 'C:\Users\bulge\Documents\Python Scripts\07_Vue\02_vuex\1113_workshop\src\package.json' does not exist
-```
-
-> - 검색 해보니 `npm ini`을 해주라는 설명이 있었다.
->
-> ```bash
-> $ npm init
-> ```
->
-> - :exclamation: 하지만 이 방법은 문제를 해결해 주지 않았다.
-> - 위의 코드는 `npm`을 현재의 위치에 다시 생성해주는 코드인데, 내 문제와 같은 경우에는 원인이 달랐다.
-
-- 위의 에러는 bash 창 현재 위치에 package.json이 없기 떄문에 일어나는 오류이다.
-- 따라서 bash 창의 위치를 확인해준다.
 
 
 

@@ -10,6 +10,61 @@
 
 
 
+## vue-cli 관련
+
+### vue-cli-service 은(는) 내부 또는 외부 명령 실행할 수 있는 프로그램 또는 배치 파일이 아닙니다
+
+**해결방안1** : Vue CLI 재설치
+
+- Vue CLI를 제거 후 재설치 한다.
+
+```bash
+$ npm uninstall vue-cli -g
+```
+
+```bash
+$ npm install -g @vue/cli
+```
+
+**해결방안2** : npm 확인
+
+- 프로젝트에 `node_modules` 폴더가 있는지 확인한다.
+- 있다면 지우고 npm을 다시 설치한다.
+
+```bash
+$ npm install
+```
+
+
+
+## Vuex 관련
+
+### Vuex 설치 오류
+
+```bash
+$ vue add vuex
+```
+
+- 위의 명령어를 통해 Vuex를 설치하려고 하는데 아래의 오류가 발생했다.
+
+```
+ERROR  Error: The package.json file at 'C:\Users\bulge\Documents\Python Scripts\07_Vue\02_vuex\1113_workshop\src\package.json' does not exist
+```
+
+> - 검색 해보니 `npm ini`을 해주라는 설명이 있었다.
+>
+> ```bash
+> $ npm init
+> ```
+>
+> - :exclamation: 하지만 이 방법은 문제를 해결해 주지 않았다.
+> - 위의 코드는 `npm`을 현재의 위치에 다시 생성해주는 코드인데, 내 문제와 같은 경우에는 원인이 달랐다.
+
+- 위의 에러는 bash 창 현재 위치에 package.json이 없기 떄문에 일어나는 오류이다.
+- 따라서 bash 창의 위치를 확인해준다.
+
+
+
 ## axios 관련
 
 ### CORS 문제
