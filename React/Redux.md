@@ -29,7 +29,7 @@
 **React 프로젝트 시작 단계인 경우**
 
 ```bash
-$ npm create-react-app <프로젝트명> --template redux
+$ npx create-react-app <프로젝트명> --template redux
 ```
 
 **React 프로젝트 진행 단계인 경우**
@@ -52,6 +52,96 @@ $ npm i react-redux
 
 ```bash
 $ npm i -D redux-devtools
+```
+
+
+
+## 간단한 사용법
+
+여기서 작성되는 예시는 `src > redux` 폴더 안에서 파일을 생성하여 진행한다. 먼저 `store.js` 파일을 생성하고, reducer를 store에 등록해준다.
+
+```javascript
+// store.js
+import { createStore } from "redux"
+import rootReducer from "./rootReducer"
+
+const store = createStore(rootReducer)
+
+export default store
+```
+
+reducer 파일을 만든다. reducer 파일에서는 state와 action을 정의한다.
+
+```javascript
+// rootReducer.js
+const initialState = {
+    dogData: ['hello', 'bye', 'baby'],
+}
+
+const rootReducer = (state = initialState, action) => {
+    // console.log(state)  // --> {dogData: Array(3)}
+    switch (action.type) {
+        case "SET_DOGS":
+            return {...state, dogData: [...state.dogData, action.payload]}
+        default:
+            return state
+    }
+}
+
+export default rootReducer
+```
+
+다음으로는 action을 받을 파일을 만든다.
+
+```javascript
+// actions.js
+export const setDogs = data => ({
+    type: "SET_DOGS",
+    payload: data
+})
+```
+
+`App.js` 파일에서 state를 받아서 사용한다. 또한, dispatch를 이용하여 데이터를 변경한다.
+
+```javascript
+// App.js
+...
+// redux의 데이터를 받아오기 위해 사용한다.
+import { connect } from "react-redux";
+// action을 가져온다.
+import { setDogs } from "./redux/actions";
+
+// state를 가져와주는 함수를 정의한다.
+const mapStateToProps = state => {
+  return {
+    dogData: state.dogData,
+  };
+};
+
+// 데이터를 변경(dispatch)하는 함수를 정의한다.
+const mapDispatchToProps = dispatch => {
+  return {
+    setDogs: dog => dispatch(setDogs(dog)),
+  };
+}
+
+// 데이터를 받아준다.
+function App({ dogData, setDogs }) {
+
+  let clickHandler = () => {
+    // 함수에서 state의 값을 변경하는 함수를 사용한다.
+    setDogs('hello dog')
+    console.log(dogData)
+  }
+
+  return (
+    ...
+}
+
+// export를 변경한다.
+// export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+// export default connect(null, mapDispatchToProps)(App);
 ```
 
 

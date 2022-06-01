@@ -42,7 +42,7 @@ SELECT CustomerId, AVG(Total) FROM invoices GROUP BY CustomerID HAVING AVG(Total
 SELECT COUNT(<column>) FROM <table>
 ```
 
-- column을 모두 지정할 때는 `*`을 사용하면 된다.
+column을 모두 지정할 때는 `*`을 사용하면 된다. (정확하게 count를 하는 경우에는 id 값을 column에 넣는 것이 좋은 것 같다~)
 
 ### SUM()
 

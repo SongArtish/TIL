@@ -61,28 +61,45 @@ SELECT * FROM 테이블_이름 ORDER BY 특성_1 DESC
 
 
 
-## INNER JOIN
+## JOIN
 
-둘 이상의 테이블을 서로 공통된 부분을 기준으로 연결한다. `JOIN`으로 실행할 수도 있다.
+A `JOIN` clause is used to combine rows from two or more tables, based on a related column between them.
+
+### INNER JOIN
+
+둘 이상의 테이블을 서로 공통된 부분(**교집합**)을 기준으로 연결한다. 앞의 INNER을 생략하고 `JOIN`으로도 실행할 수 있다. (`WHERE A=B`는 대신해서 쓰는 느낌이다~)
 
 ```sql
 SELECT * FROM 테이블_1 JOIN 테이블_2 ON 테이블_1.특서_A = 테이블_2.특성_B
 ```
 
+### OUTER JOIN
 
+`OUTER JOIN`은 기준 테이블에서 JOIN 대상 테이블에 일치하는 값이 없을 경우 null로 조회하여 노출된다. 즉, **기준이 되는 테이블의 값들은 모두 노출되며, JOIN대상 테이블의 값이 있을 경우 값이 노출되고 없으면 Null 값이 노출**된다. (**합집합**)
 
-## OUTER JOIN
-
-`Outer Join`은 다양한 선택지가 있다. `LEFT OUTER JOIN`으로 Left Inclusive를 실행할 수 있다.
+`Outer Join`은 다양한 선택지가 있다. `LEFT (OUTER) JOIN`으로 Left Inclusive를 실행할 수 있다.
 
 ```sql
-SELECT * FROM 테이블_1 LEFT OUTER JOIN 테이블_2 ON 테이블_1.특성_A = 테이블_2.특성_B
+SELECT * FROM 테이블_1 LEFT JOIN 테이블_2 ON 테이블_1.특성_A = 테이블_2.특성_B
 ```
 
-`RIGHT OUTER JOIN`으로 Right Inclusive를 실행할 수도 있다.
+`RIGHT (OUTER) JOIN`으로 Right Inclusive를 실행할 수도 있다.
 
 ```sql
-SELECT * FROM 테이블_1 RIGHT OUTER JOIN 테이블_2 ON 테이블_1.특성_A = 테이블_2.특성_B
+SELECT * FROM 테이블_1 RIGHT JOIN 테이블_2 ON 테이블_1.특성_A = 테이블_2.특성_B
+```
+
+아래는 JOIN을 이용한 활용 예시이다.
+
+```sql
+-- TODO: Q 5-2-8. category의 name이 soccer인 content의 title, body, created_at, user의 name을 찾기위한 SQL을 작성해주세요.
+
+const PART5_2_8 = `SELECT content.title, content.body, content.created_at, user.name FROM content
+    LEFT JOIN user ON content.userId=user.id
+    JOIN content_category ON content.id=content_category.contentId
+    JOIN category ON category.id=content_category.categoryId
+    WHERE category.name = "soccer"
+`;
 ```
 
 

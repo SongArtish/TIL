@@ -26,15 +26,75 @@
 
 
 
+## dotenv
+
+Dotenv is a zero-dependency module that loads environment variables from a `.env` file into [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env).
+
+```bash
+npm i dotenv
+```
+
+- 공식 문서: https://www.npmjs.com/package/dotenv
+
+설치 후 `.evn` 파일을 프로젝트 root 폴더에 만들고 환경 변수로 관리할 데이터를 입력한다.
+
+```
+S3_BUCKET="YOURS3BUCKET"
+SECRET_KEY="YOURSECRETKEYGOESHERE"
+```
+
+js 파일에서 아래와 같이 환경 변수의 데이터를 가져올 수 있다.
+
+```javascript
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it working
+console.log(process.env.S3_BUCKET)
+```
+
+
+
+## mysql
+
+A pure node.js JavaScript Client implementing the MySQL protocol.
+
+```bash
+npm install mysql
+```
+
+- 공식 문서: https://github.com/mysqljs/mysql
+
+사용법 예시는 다음과 같다.
+
+```javascript
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'me',
+  password : 'secret',
+  database : 'my_db'
+});
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+  if (error) throw error;
+  console.log('The solution is: ', results[0].solution);
+});
+
+connection.end();
+```
+
+
+
 ## nodemon
 
 nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
-- 공식 문서: https://www.npmjs.com/package/nodemon
-
 ```bash
 npm install -g nodemon
 ```
+
+- 공식 문서: https://www.npmjs.com/package/nodemon
 
 설치 후, 아래 명령어를 통해 서버를 실행하면 코드가 바뀔 떄마다 자동으로 재시작을 해준다.
 
