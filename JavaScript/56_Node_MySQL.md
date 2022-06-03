@@ -25,9 +25,9 @@ JavaScript 파일에서 MySQL을 다음과 같이 불러온다.
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'me',
-  password : 'secret',
-  database : 'my_db'
+  user     : 'me',	// root 등 사용자
+  password : 'secret',	// 반드시 환경변수로 관리한다.
+  database : 'my_db'	// 사용할 DB명
 });
 
 connection.connect();
@@ -145,6 +145,12 @@ C:\Program Files\MySQL\MySQL Server 8.0\bin
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<변경할 비밀번호>';
 ```
+
+
+
+## 작동 원리
+
+![mc_example1](img/mc_example1.png)![mc_example2](img/mc_example2.png)![mc_example3](img/mc_example3.png)
 
 
 
