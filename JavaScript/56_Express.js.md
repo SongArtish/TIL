@@ -265,7 +265,7 @@ app.use((req, res, next) => {
         next()
     }
     else {
-        res.status(400).sned('invalid user')
+        res.status(400).send('invalid user')
     }
 })
 ```
