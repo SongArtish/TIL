@@ -375,4 +375,200 @@ refreshTokenRequest() {
 
 
 
+## OAuth
+
+> OAuth 인증방식으로 Github를 사용한다.
+
+### Github 내 App 등록
+
+- 참고 문서: https://www.oauth.com/oauth2-servers/accessing-data/create-an-application/
+
+Github에 접속한 후 `Settings > Developer settings > OAuth Apps`에서 OAuth 앱을 생성한다. 사용할 홈페이지 URL을 정확하게 작성해준다. 생성이 완료되면 `Client ID`와 `Client secrets` 코드를 복사하여 서버의 `.env`에서 관리해준다.
+
+### Login
+
+클라이언트에서는 로그인을 할 때 github로 url을 요청해준다. url에는 위에서 발급받은 client id를 입력해준다.
+
+```javascript
+// load and display the document at the URL specified
+window.location.assign(`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`)
+```
+
+- 참고 문서: https://docs.github.com/en/free-pro-team@latest/developers/apps/identifying-and-authorizing-users-for-github-apps
+
+```react
+// components/Login.js
+import React, { Component } from 'react';
+
+class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.socialLoginHandler = this.socialLoginHandler.bind(this)
+
+    // TODO: GitHub로부터 사용자 인증을 위해 GitHub로 이동해야 합니다. 적절한 URL을 입력하세요.
+    // OAuth 인증이 완료되면 authorization code와 함께 callback url로 리디렉션 합니다.
+    this.GITHUB_LOGIN_URL = 'https://github.com/login/oauth/authorize?client_id=a5740e69d30e4fbcfa42'
+  }
+
+  socialLoginHandler() {
+    // load and display the document at the URL specified
+    window.location.assign(this.GITHUB_LOGIN_URL)
+  }
+
+  render() {
+    return (
+      <div className='loginContainer'>
+        OAuth 2.0으로 소셜 로그인을 구현해보세요.
+        <img id="logo" alt="logo" src="https://images.velog.io/images/gunu/post/abc4347b-d1ad-4b80-a238-e168a7a05d9e/github.png" />
+        <button
+          onClick={this.socialLoginHandler}
+          className='socialloginBtn'
+        >
+          Github으로 로그인
+          </button>
+      </div>
+    );
+  }
+}
+
+export default Login;
+```
+
+로그인을 하게 되면, authorization server로부터 클라이언트로 리디렉션이 되고, authorization code가 함께 전달된다. `componentDidMount()`를 사용하여 마운트된 직후, **authorization code를 서버로 전달**할 수 있도록 처리해준다.
+
+- `componentDidMount()`는 컴포넌트가 마운트된 직후, 즉 트리에 삽입된 직후에 호출된다.
+
+```javascript
+// App.js
+componentDidMount() {
+    const url = new URL(window.location.href)
+    const authorizationCode = url.searchParams.get('code')
+    if (authorizationCode) {
+        // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+        // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+        this.getAccessToken(authorizationCode)
+    }
+}
+```
+
+Server에 Access Code를 전달하여 `Access Token`을 받아올 수 있도록 한다.
+
+```javascript
+// App.js
+  async getAccessToken(authorizationCode) {
+    // 받아온 authorization code로 다시 OAuth App에 요청해서 access token을 받을 수 있습니다.
+    // access token은 보안 유지가 필요하기 때문에 클라이언트에서 직접 OAuth App에 요청을 하는 방법은 보안에 취약할 수 있습니다.
+    // authorization code를 서버로 보내주고 서버에서 access token 요청을 하는 것이 적절합니다.
+    
+    // TODO: 서버의 /callback 엔드포인트로 authorization code를 보내주고 access token을 받아옵니다.
+    // access token을 받아온 후
+    //  - 로그인 상태를 true로 변경하고,
+    //  - state에 access token을 저장하세요
+    await axios.post('http://localhost:8080/callback', {
+      authorizationCode: authorizationCode
+    })
+      .then((res) => {
+        if (res.data.accessToken !== 'bad_verification_code') {
+          // 이런 순서로 한다!!! --> 순서대로 하지 않으면, MyPage에 넘어갔을 때 accessToken이 미처 갱신되지 않은 상태가 됨!
+          await this.setState({accessToken: res.data.accessToken})
+          await this.setState({isLogin: true})
+        }
+      })
+  }
+```
+
+서버에서는 githubdp Access Code를 보내고 `Access Token`을 받아온다.
+
+- 참고 문서: https://docs.github.com/en/free-pro-team@latest/developers/apps/identifying-and-authorizing-users-for-github-apps#2-users-are-redirected-back-to-your-site-by-github
+
+```react
+// controller/callback.js (server)
+require('dotenv').config();
+
+const clientID = process.env.GITHUB_CLIENT_ID;
+const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+const axios = require('axios');
+
+module.exports = (req, res) => {
+  // req의 body로 authorization code가 들어옵니다. console.log를 통해 서버의 터미널창에서 확인해보세요!
+  // console.log(req.body);
+
+  // TODO : 이제 authorization code를 이용해 access token을 발급받기 위한 post 요청을 보냅니다. 다음 링크를 참고하세요.
+  axios({
+    method: 'post',
+    url: 'https://github.com/login/oauth/access_token',
+    headers: {
+      accept: 'application/json'  // 이 부분을 작성해야 객체 형태로 응답을 받는다. (아니면 문자열이 옴)
+    },
+    data: {
+      client_id: clientID,
+      client_secret: clientSecret,
+      code: req.body.authorizationCode
+    }
+  })
+    .then(data => {
+      let accessToken = data.data.access_token
+      res.status(200).send({accessToken: accessToken, message: "ok"})
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(400).send()
+    })
+}
+```
+
+### 사용자 정보 요청
+
+Github API를 통해 사용자 정보를 받아온다. Github에 Access Token을 보내고 받아올 수 있다. 요청을 보낼 때 headers에 다음의 내용을 담아준다.
+
+```javascript
+authorization: `token ${ACCESS_TOKEN}`
+```
+
+- 참고 문서: https://docs.github.com/en/free-pro-team@latest/rest/reference/users#get-the-authenticated-user
+
+```react
+// components/MyPage.js
+...
+class Mypage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      images: [],
+      // TODO: GitHub API 를 통해서 받아올 수 있는 정보들 중에서
+      // 이름, login 아이디, repository 주소, public repositoty 개수를 포함한 다양한 정보들을 담아주세요.
+      name: '',
+      login: '',
+      html_url: '',
+      public_repos: ''
+    }
+  }
+
+  async getGitHubUserInfo() {
+    // TODO: GitHub API를 통해 사용자 정보를 받아오세요.
+    // https://docs.github.com/en/free-pro-team@latest/rest/reference/users#get-the-authenticated-user
+    await axios.get("https://api.github.com/user", {
+      headers: {
+        authorization: `token ${this.props.accessToken}`,
+        accept: 'application/json'
+      }
+    })
+      .then(res => {
+        const { name, login, html_url, public_repos } = res.data;
+        
+        this.setState({
+          name,
+          login,
+          html_url,
+          public_repos
+        })
+    })
+  }
+    ...
+}
+```
+
+
+
 ***Copyright* © 2022 Song_Artish**
