@@ -241,6 +241,8 @@ docker container cp ./ 컨테이너_이름:/usr/local/apache2/htdocs	# 예시
 
 ```bash
 docker exec -it CONTAINER_NAME bash
+# 작동이 안 되는 경우
+docker exec -it CONTAINER_NAME sh
 ```
 
 - `root@` 다음에 오는 번호는 랜덤이다.
