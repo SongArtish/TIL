@@ -1,4 +1,4 @@
-# 블록 구조
+# Blockchain with Python
 
 2020.12.23
 
