@@ -178,4 +178,20 @@ nonce를 사용하여 정해진 규칙에 부합하는 hash 값을 생성할 수
 
 
 
+## <참고> Blockchain vs Protocol vs Coin vs Token
+
+![blockchain&protocol&coin&token](img/blockchain&protocol&coin&token.jpg)
+
+- 블록체인: 분산 데이터 저장 기술
+
+- 프로토콜: 블록체인 기술 위에서의 노드 간 커뮤니케이션 방법 정의
+
+- 코인: 프로토콜에 의해 정의됨
+
+- 토큰: 스마트 컨트랙트에 의해 정의됨
+
+  
+
+
+
 ***Copyright* © 2022 Song_Artish**
