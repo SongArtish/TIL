@@ -760,12 +760,32 @@ http-rpc 서버와 관련된 옵션으로, 해당 옵션을 사용하면 외부�
 ```shell
 --http				   # Enable the HTTP-RPC server
 --http.addr value		# HTTP-RPC server listening interface (default: "localhost")
---http.port value
---http.api value
---http.corsdomain value
+--http.port value		# HTTP-RPC server listening port (default: 8545)
+--http.api value		# API's offered over the HTTP-RPC interface
+--http.corsdomain value	 # Comma separated list of domains from which to accept cross origin requests (browser enforced)
 ```
 
+#### `--ws` 관련 옵션
 
+geth에서는 websocket을 지원하며, 사용법은 http 옵션과 비슷하다.
+
+```shell
+--ws				# Enable the WS-RPC server
+--ws.addr value		 # WS-RPC server listening interface (default: "localhost")
+--ws.port value		 # WS-RPC server listening port (default: 8546)
+--ws.api value		 # API's offered over the WS-RPC interface
+--ws.origins value	 # Origins rom which to accept websockets requests
+```
+
+### 외부 계정 unlock
+
+geth에서는 보안 상의 이유로 rpc를 사용할 때 외부에서 계정을 unlock하는 것을 금지하고 있다. 따라서 외부에서 계정으로 unlock하기 위해서는 다음의 옵션을 사용해야 한다.
+
+```shell
+--unlock value				# Comma separated list of accounts to unlock
+--allow-insecure-unlock		 # Allow insecure account unlocking when account related RPC's are exposed by http
+--password value			# Password file to use for non-interactive password input
+```
 
 
 
