@@ -89,7 +89,14 @@ docker container rm CONTAINER_NAME
 
 ### Container 종료
 
-실행되고 있는 container는, container 안에서 `Ctrl` + `C`로 종료할 수 있다.
+다음 명령어를 통해 실행 중인 컨테이너를 종료한다.
+
+```shell
+# docker container kill: 컨테이너를 지정해서 종료
+docker container kill CONTAINERNAME
+```
+
+혹은 실행되고 있는 container 내에서 `Ctrl` + `C`로 종료할 수 있다.
 
 
 
