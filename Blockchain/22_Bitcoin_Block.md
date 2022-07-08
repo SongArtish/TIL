@@ -1,4 +1,4 @@
-# Bitcoin
+# Bitcoin 블록구조
 
 ---
 
@@ -8,29 +8,33 @@
 
 
 
-## 블록 구조
+## Overview
+
+비트코인의 블록은 **Header**와 **Transaction(거래)**으로 구성되어 있다.
 
 <img src="img/block_structure.jpg" width="60%" />
 
-### Header
+
+
+## Header
 
 실제 [예시](https://www.blockchain.com/btc/block/1)를 참고한다.
 
 <img src="img/bitcoin_block_header.jpg" width="30%" />
 
-#### 1. Version
+### 1. Version
 
 비트코인의 **어떤 버전**을 쓰고 있는지를 표기한다. 이는 소프트웨어 프로토콜 업그레이드 추적을 위한 버전 번호이기도 하다.
 
-#### 2. Previous Block Header Hash
+### 2. Previous Block Header Hash
 
 블록체인을 **체인**으로 만드는 중요한 개념으로, 해시는 실제로 블록 전체가 아닌, **헤더**를 해시한다. **이전 블록(N-1번째 블록)에 대한 헤더 해시**를 직접 계산(정확히는 2번 해시)하여 헤더에 넣는다.
 
-#### 3. Time Stamp
+### 3. Time Stamp
 
 유닉스 타임(1970년 1월 1일) 기준으로 초 단위 해당 **블록 채굴 시각**을 기록하게 된다.
 
-#### 4. Merkle Tree
+### 4. Merkle Tree
 
 > 구성 방법
 
@@ -55,7 +59,7 @@
 1. 데이터 유효성 검증을 O(log_2 N)만에 할 수 있다.
 2. 모든 데이터를 가지고 있지 않아도 머클루트와 머클경로로 해결할 수 있기 때문에 용량 절감이 엄청나다.
 
-#### 5. Difficulty Bit
+### 5. Difficulty Bit
 
 - **난이도(Difficulty)**: 해당 블록을 채굴할 때의 난이도로, 숫자는 블록의 높이에 따라 자동 설정된다.
 - **목표값(Bit)**: 블록 생성 시 해당 난이도에 맞는 목표값으로, 이 수는 계수와 지수로 이루어져 있다.
@@ -81,7 +85,7 @@ $$
 Next Difficulty = Current Difficulty * 2 weeks / T (Time in which previous 2016 blocks found)
 $$
 
-#### 6. Nonce
+6. ### Nonce
 
 논스(Nonce)는 모든 랜덤한 과정에  있어서 유일하게 변하는 값(Number+Once)이다. 논스는 0부터 시작해서 무수히 큰 숫자까지 증가시키며 목표값보다 낮은 해시 결과값을 찾도록 쓰인다.
 
@@ -91,9 +95,42 @@ $$
 
 
 
-### 거래
+## Transaction
 
-개별 거래내역
+![UTXO_Transaction](img/UTXO_Transaction.png)
+
+하나의 트랜잭션은 위와 같은 모양이며, 다양한 데이터 구조들로 구성되어 있다.
+
+### 1. Transaction Version
+
+네트워크에서 트랜잭션의 유형을 지정하는 버전 번호이다. 트랜잭션은 버전 별로 구조와 규칙이 조금씩 다르다.
+
+### 2. Lock Time
+
+Lock Time(잠금 시간)은 트랜잭션을 블록체인에 바로 포함시킬 수 있는지, 아니면 지정된 시간이 지나면 포함시킬 수 있는지를 지정한다.
+
+![UTXO_IO](img/UTXO_IO.png)
+
+### 3. Inputs
+
+**포인터(Pointer)**와 **해제키(Unlocking Key)**가 들어있다. 포인터(Pointer)는 이전 트랜잭션의 출력을 가리키며, 키(Key)는 포인터로 가리키고 있는 이전 출력을 해제하는 데 사용된다.
+
+- **Prev. Tx ID, TxIndex**: 해제하고자 하는 이전의 출력을 가리키는 포인터
+- **ScriptSig**: 이전의 출력을 해제하는 키
+
+### 4. Outputs
+
+**잠금(Lock)**과 **값(Value)**으로 구성되어 있다. 기본적으로 잠겨있으며, 값(Value)은 출력 내에 잠겨있는 사토시(비트코인의 단위)의 양을 의미한다.
+
+- **ScriptPubkey**: 잠금. ScriptPubkey의 소유자(해당 공개키의 소유자)만이 ScriptSig를 만들 수 있다.
+- **Amount**: 잠긴 비트코인의 양(단위: 사토시)
+
+```markdown
+예시
+트랜잭션 출력은 일종의 5만원 권, 트랜잭션 입력은 지불할 치킨 값 2만원과 비슷하다. 그리고 남은 3만 원은 돈을 지불한 사람에게 돌려주어야 하기 때문에, 새로운 출력을 만든다.
+```
+
+정리하자면, 출력에는 자산이 잠겨있고, 입력으로 출력을 해제하여 출력에 있는 값을 꺼내, 새로운 출력에 자산을 담는다. 따라서, **트랜잭션은 이전 출력을 해제하고, 새로운 출력을 만드는 추상적인 액션**이라고 볼 수 있다. 그리고 **입력에 의해 생성된 후, 다른 입력에 의해 해제되지 않은 트랜잭션 출력을 UTXO**라고 한다.
 
 
 
