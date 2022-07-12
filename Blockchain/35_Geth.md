@@ -726,6 +726,136 @@ geth --datadir test_node2 init test_node2/genesis.json
 
 
 
+## <실습> 스마트 컨트랙트 빌드하기
+
+Geth console과 Web3를 사용해 스마트 컨트랙트를 이더리움 Ropsten Testnet에 배포한다.
+
+1. `simpleStorage.sol` 코드를 디렉토리에 저장한다.
+
+   ```solidity
+   // simpleStorage.sol
+   
+   // SPDX-License-Identifier: GPL-3.0
+   pragma solidity 0.8.15;	// (compiler 버전과 맞게 작성해야 한다.)
+   
+   contract SimpleStorage {
+   	uint storedData;
+   	
+   	function set(uint x) public {
+   		storedData = x;
+   	}
+   	
+   	function get() public view returns (uint) {
+   		return storedData;
+   	}
+   }
+   ```
+
+2. 배포할 스마트 컨트랙트 코드를 **solc**를 사용해 컴파일한다.
+
+   > 여기서부터는 Ubuntu에서 실행해야 한다. Windows bash에서 하면 명령어가 제대로 작동하지 않는 것 같다.
+
+   터미널에 다음과 같이 입력한다.
+   
+   ```bash
+   solc --abi --bin simpleStorage.sol
+   ```
+   
+   콘솔창에 ABI와 바이트코드가 출력된 것을 확인할 수 있다. 출력된 결과물을 잠시 복사해둔다.
+   
+   ```
+   ======= simpleStorage.sol:SimpleStorage =======
+   Binary:
+   608060405234801561001057600080fd5b50610150806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806360fe47b11461003b5780636d4ce63c14610057575b600080fd5b610055600480360381019061005091906100c3565b610075565b005b61005f61007f565b60405161006c91906100ff565b60405180910390f35b8060008190555050565b60008054905090565b600080fd5b6000819050919050565b6100a08161008d565b81146100ab57600080fd5b50565b6000813590506100bd81610097565b92915050565b6000602082840312156100d9576100d8610088565b5b60006100e7848285016100ae565b91505092915050565b6100f98161008d565b82525050565b600060208201905061011460008301846100f0565b9291505056fea26469706673582212205abb23b8f847e2e8514fcf94c635014f10154e830201a3ed316e7b289b012eda64736f6c634300080f0033
+   Contract JSON ABI
+   [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+   ```
+   
+3. geth console을 실행한다. 이더리움 ropsten 테스트넷에 배포할 예정이기 때문에, `--ropsten` 옵션을 포함한다.
+
+   ```shell
+   geth console 2> /dev/null --ropsten
+   ```
+
+4. `simpleAbi` 변수를 선언하고, 컴파일한 결과값 중 ABI로 초기화한다.
+
+   ```shell
+   var simpleAbi = <컴파일한 결과값 중 ABI>
+   # 에시
+   var simpleAbi = [{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+   ```
+
+   `simpleAbi`를 터미널에 입력하여 변수가 잘 초기화 되었는지 확인한다.
+
+   ```shell
+   simpleAbi
+   ```
+
+5. `simpleBytecode` 변수를 선언하고, 컴파일한 결과값 중 Bytecode로 초기화한다.
+
+   ```shell
+   var simpleBytecode = "<컴파일한 결과값 중 Bytecode>"
+   # 예시
+   var simpleBytecode = "608060405234801561001057600080fd5b50610150806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806360fe47b11461003b5780636d4ce63c14610057575b600080fd5b610055600480360381019061005091906100c3565b610075565b005b61005f61007f565b60405161006c91906100ff565b60405180910390f35b8060008190555050565b60008054905090565b600080fd5b6000819050919050565b6100a08161008d565b81146100ab57600080fd5b50565b6000813590506100bd81610097565b92915050565b6000602082840312156100d9576100d8610088565b5b60006100e7848285016100ae565b91505092915050565b6100f98161008d565b82525050565b600060208201905061011460008301846100f0565b9291505056fea26469706673582212205abb23b8f847e2e8514fcf94c635014f10154e830201a3ed316e7b289b012eda64736f6c634300080f0033"
+   ```
+
+   `simpleBytecode`를 터미널에 입력하여 변수가 잘 초기화되었는지 확인한다.
+
+   ```shell
+   simpleBytecode
+   ```
+
+6. `eth.contract()`를 사용해 ABI를 설정한다.
+
+   ```shell
+   var simpleContract = eth.contract(simpleAbi)
+   ```
+
+   `simpleContract`에는 컨트랙트 관련 정보가 들어간다.
+
+   ```shell
+   simpleContract
+   ```
+
+7. 컨트랙트 배포를 위해서는 gas가 필요하다. 컨트랙트를 배포할 계정의 lock을 풀어준다.
+
+   ```shell
+   personal.unlockAccount(eth.accounts[0])
+   ```
+
+   비밀번호를 입력한 후, `true`가 반환되면 정상적으로 lock이 풀린 것이다.
+
+8. `SimpleContract.new()`를 입력하면 배포가 시작된다.
+
+   `new()`에는 객체가 인자로 들어가며, 객체에는 `from`, `data`, `gas`가 들어간다.
+
+   - `from`: 컨트랙트를 배포할 계정
+   - `data`: 컨트랙트 바이트코드
+   - `gas`: 계정에서 소비할 가스
+
+   ```shell
+   var contractObj = simpleContract.new({from: eth.accounts[0], data: simpleBytecode, gas: 2000000});
+   
+   var contractObj = simpleContract.new(simpleTransferObject);
+   ```
+
+   > :warning: Error Case
+   >
+   > 혹시 아래와 같은 오류가 발생하는 경우, `simpleBytecode` 변수에서 기존 값 앞에 `0x`를 붙여서 재정의해준다.
+   >
+   > ```
+   > Error: invalid argument 0: json: cannot unmarshal hex string without 0x prefix into 
+   > Go struct field TransactionArgs.data of type hexutil.Bytes
+   > ```
+
+   `contractObj` 객체를 통해 컨트랙트 정보를 얻을 수 있다.
+
+   `address`가 `undefined`인 이유는 아직 컨트랙트를 배포한 트랜잭션이 채굴되지 않았기 때문이다. 시간이 잠시 지난 후 다시 확인해보면 `address`와 컨트랙트 내 함수가 정상적으로 나오는 것을 확인할 수 있다.
+
+9. contractObj의 `transactionHash`를 [ropsten.etherscan.io](http://ropsten.etherscan.io)에 검색하면, 스마트 컨트랙트가 정상적으로 배포된 것을 확인할 수 있다.
+
+
+
 ## 명령어
 
 ### Geth 실행 시 옵션
