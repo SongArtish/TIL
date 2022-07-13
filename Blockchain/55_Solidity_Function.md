@@ -26,6 +26,13 @@ function 함수이름(파라미터, ...) returns (반환 형식) {...}
 
 ## 접근 수준
 
+```markdown
+1. public: contract의내부/외부 모두에서 해당 함수 호출 가능
+2. private: contract 내부에서만 호출 가능
+3. internal: cotract 내부 혹은 상속된 contract에서 호출 가능
+4. external: contract의 외부에서만 호출 가능 (contract 내부 호출 불가)
+```
+
 - `public` (default)
   - 외부에서도 접근 가능
   - 컨트랙트 내부, 외부, 클라이언트 코드에서 모두 호출 가능
