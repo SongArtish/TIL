@@ -36,14 +36,9 @@ contract SimpleStorage {
 
 ### 접근 수준
 
-컨트랙트 내의 상태(state) 변수를 선언할 때는 지정할 수 있는 접근 수준을 함께 표기한다. 접근 수준은 4가지로 나뉜다.
+> 여기 내용은 **상태 변수 접근 수준**으로, **함수 접근 수준**과는 다른 내용이다.
 
-```markdown
-1. public: contract의내부/외부 모두에서 해당 함수 호출 가능
-2. private: contract 내부에서만 호출 가능
-3. internal: cotract 내부 혹은 상속된 contract에서 호출 가능
-4. external: contract의 외부에서만 호출 가능 (contract 내부 호출 불가)
-```
+컨트랙트 내의 상태(state) 변수를 선언할 때는 지정할 수 있는 접근 수준을 함께 표기한다. 접근 수준은 4가지로 나뉜다.
 
 1. `internal` (default)
    - 상태 변수에 기본적으롤 사용

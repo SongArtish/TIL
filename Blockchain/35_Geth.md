@@ -805,7 +805,9 @@ Geth console과 Web3를 사용해 스마트 컨트랙트를 이더리움 Ropsten
    simpleBytecode
    ```
 
-6. `eth.contract()`를 사용해 ABI를 설정한다.
+6. `eth.contract()`를 사용해 컨트랙트 객체를 생성한다.
+
+   > eth.contract(<abi 배열>)
 
    ```shell
    var simpleContract = eth.contract(simpleAbi)
@@ -825,7 +827,7 @@ Geth console과 Web3를 사용해 스마트 컨트랙트를 이더리움 Ropsten
 
    비밀번호를 입력한 후, `true`가 반환되면 정상적으로 lock이 풀린 것이다.
 
-8. `SimpleContract.new()`를 입력하면 배포가 시작된다.
+8. `SimpleContract.new()`를 입력하면 네트워크에 컨트랙트를 **배포**할 수 있다.
 
    `new()`에는 객체가 인자로 들어가며, 객체에는 `from`, `data`, `gas`가 들어간다.
 
