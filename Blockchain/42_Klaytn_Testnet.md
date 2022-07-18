@@ -28,4 +28,32 @@ baobab(바오밥)은 크레이튼 기반 테스트넷으로, 메인넷에서 새
 
 
 
+## <실습> Baobab Network에 스마트 컨트랙트 배포하기
+
+### Klaytn IDE 사용
+
+[Klaytn IDE](https://ide.klaytn.foundation
+)를 사용하여 Baobab Network에 스마트 컨트랙트를 배포해본다.
+
+1. Klaytn IDE의 contract 폴더에 Count.sol 파일을 만들고, 다음 코드를 입력한다.
+
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
+
+contract Count {
+    uint256 public count = 0;
+
+    function setCount(uint256 _count) public {
+        count = _count;
+    }
+}
+```
+
+2. KLAY를 받은 계정을 IDE에 import하여 Baobab Network에 배포를 진행한다.
+3. 
+
+
+
 ***Copyright* © 2022 Song_Artish**
