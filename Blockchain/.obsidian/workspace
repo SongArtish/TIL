@@ -1,0 +1,133 @@
+{
+  "main": {
+    "id": "100f0a9c4d90d601",
+    "type": "split",
+    "children": [
+      {
+        "id": "64b428990c47bdf8",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "37_ERC-721.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5bb08fb0cb5ae60a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0934d571e2f9c5bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ed78a4e5b653247",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "df2d164e12aab9fd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6aca6e7a2d1953e2",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2fa4f755ddbc6aa9",
+    "type": "split",
+    "children": [
+      {
+        "id": "3412457372a55a63",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9b014d5fcdbc89d5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "37_ERC-721.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e4151f1375e56103",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "37_ERC-721.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "32b4409e3fdbcb0d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "bd1f33041c26a221",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "37_ERC-721.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "64b428990c47bdf8",
+  "lastOpenFiles": []
+}
