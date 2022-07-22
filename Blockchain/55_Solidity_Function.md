@@ -6,8 +6,6 @@
 
 ---
 
-
-
 ## 함수 선언
 
 솔리디티에서 함수는 다음과 같이 선언한다.
@@ -22,14 +20,12 @@ function 함수이름(파라미터형식1 마라미터1, 파라미터형식2 파
 function 함수이름(파라미터, ...) returns (반환 형식) {...}
 ```
 
-
-
 ## 접근 수준
 
 > 여기 내용은 **함수 접근 수준**으로, **상태 변수 접근 수준**과는 다른 내용이다.
 
 ```markdown
-1. public: contract의내부/외부 모두에서 해당 함수 호출 가능
+1. public: contract의 내부/외부 모두에서 해당 함수 호출 가능
 2. private: contract 내부에서만 호출 가능
 3. internal: cotract 내부 혹은 상속된 contract에서 호출 가능
 4. external: contract의 외부에서만 호출 가능 (contract 내부 호출 불가)
@@ -52,12 +48,10 @@ function 함수이름(파라미터, ...) returns (반환 형식) {...}
 
 ```solidity
 contract exampleC {
-	function changeName(address account, string newName) internal {...}
-	function checkGas(uint256 amount) private returns (bool) {...}
+    function changeName(address account, string newName) internal {...}
+    function checkGas(uint256 amount) private returns (bool) {...}
 }
 ```
-
-
 
 ## Qualifier
 
@@ -71,17 +65,17 @@ contract exampleC {
 ```solidity
 proagma solidity ^0.8.14;
 contract exampleC {
-	uint256 public constant maxLimit = 1000;
-	mapping(address => bool) public frozenAccount;
-	
-	function checkGas(uint256 amount) private pure returns (bool) {
-		if (amount < maxLimit) return true;
-		return false;
-	}
-	function validateAccount(address account) internal view returns (bool) {
-		if (frozenAccount[account]) return true;
-		return false;
-	}
+    uint256 public constant maxLimit = 1000;
+    mapping(address => bool) public frozenAccount;
+
+    function checkGas(uint256 amount) private pure returns (bool) {
+        if (amount < maxLimit) return true;
+        return false;
+    }
+    function validateAccount(address account) internal view returns (bool) {
+        if (frozenAccount[account]) return true;
+        return false;
+    }
 }
 ```
 
@@ -92,15 +86,13 @@ contract exampleC {
 ```solidity
 proagma solidity ^0.8.14;
 contract exampleC {
-	function getEther() payable returns (bool) {
-		if (msg.value === quoteFee) {
-			// ...
-		}
-	}
+    function getEther() payable returns (bool) {
+        if (msg.value === quoteFee) {
+            // ...
+        }
+    }
 }
 ```
-
-
 
 ## 생성자 함수(constructor)
 
@@ -109,14 +101,12 @@ contract exampleC {
 ```solidity
 proagma solidity ^0.8.14;
 contract exampleC {
-	address public account;
-	constructor(address _account) internal {
-		account = _account
-	}
+    address public account;
+    constructor(address _account) internal {
+        account = _account
+    }
 }
 ```
-
-
 
 ## selfdestruct
 
@@ -125,8 +115,6 @@ contract exampleC {
 ```solidity
 selfdestruct(컨트랙트 생성자의 주소);
 ```
-
-
 
 ## 함수 제어자(modifier)
 
@@ -139,9 +127,9 @@ selfdestruct(컨트랙트 생성자의 주소);
 ```solidity
 int public num = 0;
 modifier changeNum {
-	num++;	// 함수 실행 전 실행됨
-	_;	// 함수 실행
-	num--;	// 함수 실행 후 실행됨
+    num++;    // 함수 실행 전 실행됨
+    _;    // 함수 실행
+    num--;    // 함수 실행 후 실행됨
 }
 ```
 
@@ -149,15 +137,13 @@ modifier changeNum {
 
 ```solidity
 function func() public changeNum {
-	if (num == 1) {
-		// do something
-	}
+    if (num == 1) {
+        // do something
+    }
 }
 ```
 
 함수 변경자를 사용하면 함수를 **선언적**으로 사용할 수 있다는 특징이 있다.
-
-
 
 ## Function Overloading
 
@@ -180,7 +166,5 @@ contract A {
 ```
 
 - [참고 자료](https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=constant#function-overloading)
-
-
 
 ***Copyright* © 2022 Song_Artish**

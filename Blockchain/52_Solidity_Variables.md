@@ -6,20 +6,16 @@
 
 ---
 
-
-
 ## Overview
 
 솔리디티에서 변수는 크게 **상태변수**, **지역변수**, **전역변수**로 나누어진다. 상태변수와 지역변수는 일반적인 프로그래밍 언어에서의 변수와 동일하다.
 
 ```solidity
-{데이터타입} {변수명};	// 변수명으로 선언
-{데이터타입} {변수명} = {초기화할 값};	// 선언 및 초기화
+{데이터타입} {변수명};    // 변수명으로 선언
+{데이터타입} {변수명} = {초기화할 값};    // 선언 및 초기화
 ```
 
 전역변수는 솔리디티만의 특수한 변수(함수)로서, 주로 블록체인에 관한 정보를 제공하며, 따로 선언이나 초기화 없이 불러와서 사용한다.
-
-
 
 ## 1. 상태변수
 
@@ -29,8 +25,8 @@
 pragma solidity ^0.8.14;
 
 contract SimpleStorage {
-	uint storedData;	// 상태변수 선언
-	uint storedData2 = 20	// 상태변수 선언 및 초기화
+    uint storedData;    // 상태변수 선언
+    uint storedData2 = 20    // 상태변수 선언 및 초기화
 }
 ```
 
@@ -55,8 +51,6 @@ contract SimpleStorage {
    - 선언될 때 값을 할당해야 함
    - 상수화 = **변경 불가능**
 
-
-
 ## 2. 지역변수
 
 함수가 실행될 때까지만 존재하는 변수를 의미한다. 지역변수 역시 기본값으로는 `스토리지`에 저장된다. (reference type의 경우 재정의 가능) 보통 함수 아래에 선언되는 변수를 말한다.
@@ -65,18 +59,16 @@ contract SimpleStorage {
 pragma solidity ^0.8.14;
 
 contract SimpleStorage {
-	...
-	function simpleFunction() public pure returns(uint) {
-		uint a;	// 지역변수 선언
-		uint b = 1;	// 지역변수 선언 및 초기화
-		a = 1
-		uint result = a + b
-		return result
-	}
+    ...
+    function simpleFunction() public pure returns(uint) {
+        uint a;    // 지역변수 선언
+        uint b = 1;    // 지역변수 선언 및 초기화
+        a = 1
+        uint result = a + b
+        return result
+    }
 }
 ```
-
-
 
 ## 3. 전역변수
 
@@ -84,9 +76,9 @@ contract SimpleStorage {
 
 ```solidity
 function f(uint start, uint daysAfter) public {
-	if (block.timestamp >= start + daysAfter * 1 days) {
-		// 여기서 block.timestamp는 전역변수
-	}
+    if (block.timestamp >= start + daysAfter * 1 days) {
+        // 여기서 block.timestamp는 전역변수
+    }
 }
 ```
 
@@ -95,24 +87,22 @@ function f(uint start, uint daysAfter) public {
 - **tx**: 트랜잭션 데이터를 가지고 있다.
 - **This**: 현재 컨트랙트를 참조한다. 현재 컨트랙트 주소로 암시적으로 변환된다.
 
-|          전역변수           |   데이터 형식   |                  설명                   |
-| :-------------------------: | :-------------: | :-------------------------------------: |
-| blockhash(uint blockNumber) |     byte32      |        주어진 블록의 해시를 반환        |
-|        block.basefee        |      uint       |         현재 블록의 기본 수수료         |
-|        block.chainid        |      uint       |           현재 블록의 체인 ID           |
-|       block.coinbase        | address payable |         현재 블록의 채굴자 주소         |
-|      block.difficulty       |      uint       |           현재 블록의 난이도            |
-|       block.gaslimit        |      uint       |          현재 블록의 가스 한도          |
-|        block.number         |      uint       |            현재 블록의 번호             |
-|       block.timestamp       |      uint       |      현재 블록의 유닉스 타임스탬프      |
-|          gasleft()          |     uint256     |        남아있는 가스의 양을 반환        |
-|          msg.data           | bytes calldata  |           전체 콜데이터 본문            |
-|         msg.sender          |     address     | 현재 호출을 수행하고 있는 메시지 발신자 |
-|           msg.sig           |     bytes4      |  호출 데이터의 첫 4바이트(함수 식별자)  |
-|          msg.value          |      uint       |    메시지와 함께 보낸 이더(Wei) 금액    |
-|         tx.gasprice         |      uint       |           트랜잭션 가스 비용            |
-|          tx.origin          |     address     |             트랜잭션 발신자             |
-
-
+| 전역변수                        | 데이터 형식          | 설명                     |
+|:---------------------------:|:---------------:|:----------------------:|
+| blockhash(uint blockNumber) | byte32          | 주어진 블록의 해시를 반환         |
+| block.basefee               | uint            | 현재 블록의 기본 수수료          |
+| block.chainid               | uint            | 현재 블록의 체인 ID           |
+| block.coinbase              | address payable | 현재 블록의 채굴자 주소          |
+| block.difficulty            | uint            | 현재 블록의 난이도             |
+| block.gaslimit              | uint            | 현재 블록의 가스 한도           |
+| block.number                | uint            | 현재 블록의 번호              |
+| block.timestamp             | uint            | 현재 블록의 유닉스 타임스탬프       |
+| gasleft()                   | uint256         | 남아있는 가스의 양을 반환         |
+| msg.data                    | bytes calldata  | 전체 콜데이터 본문             |
+| msg.sender                  | address         | 현재 호출을 수행하고 있는 메시지 발신자 |
+| msg.sig                     | bytes4          | 호출 데이터의 첫 4바이트(함수 식별자) |
+| msg.value                   | uint            | 메시지와 함께 보낸 이더(Wei) 금액  |
+| tx.gasprice                 | uint            | 트랜잭션 가스 비용             |
+| tx.origin                   | address         | 트랜잭션 발신자               |
 
 ***Copyright* © 2022 Song_Artish**
