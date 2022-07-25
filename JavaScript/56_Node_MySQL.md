@@ -6,8 +6,6 @@
 
 ---
 
-
-
 ## 시작하기
 
 Node.js에서 MySQL 데이터베이스를 사용하기 위해서는, 먼저 컴퓨터에 MySQL이 설치되어 있어야 한다.설치를 확인한 후, npm을 통해 MySQL 드라이버를 설치한다.
@@ -25,9 +23,9 @@ JavaScript 파일에서 MySQL을 다음과 같이 불러온다.
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'me',	// root 등 사용자
-  password : 'secret',	// 반드시 환경변수로 관리한다.
-  database : 'my_db'	// 사용할 DB명
+  user     : 'me',    // root 등 사용자
+  password : 'secret',    // 반드시 환경변수로 관리한다.
+  database : 'my_db'    // 사용할 DB명
 });
 
 connection.connect();
@@ -39,8 +37,6 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
 
 connection.end();
 ```
-
-
 
 ## 환경 변수 설정하기
 
@@ -91,8 +87,6 @@ module.exports = class DatabaseConnector extends SingletonBase {
 ...
 ```
 
-
-
 ## SQL문 작성하기
 
 SQL문은 프로젝트에서 sql 파일을 생성하여 작성할 수 있다. `migrations > schema.sql`과 같이 구조를 관리하면 편리하다. 아래 예시와 같이 작성할 수 있다.
@@ -126,8 +120,6 @@ ALTER TABLE `user` ADD roleId int;
 ALTER TABLE `user` ADD FOREIGN KEY (`roleId`) REFERENCES `role` (`id`);
 ```
 
-
-
 ## Issues
 
 ### windows 'mysql'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다.
@@ -146,12 +138,8 @@ C:\Program Files\MySQL\MySQL Server 8.0\bin
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<변경할 비밀번호>';
 ```
 
-
-
 ## 작동 원리
 
 ![mc_example1](img/mc_example1.png)![mc_example2](img/mc_example2.png)![mc_example3](img/mc_example3.png)
-
-
 
 ***Copyright* © 2022 Song_Artish**

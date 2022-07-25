@@ -6,15 +6,11 @@
 
 ---
 
-
-
 ## Overview
 
 http 모듈을 사용하여 간단한 웹 서버를 구현할 수 있다.
 
 - 공식 문서: https://nodejs.org/dist/latest-v14.x/docs/api/http.html
-
-
 
 ## 서버 생성
 
@@ -36,8 +32,6 @@ server.on('request', (request, response) => {
     // 여기서 작업이 진행된다!
 })
 ```
-
-
 
 ## 데이터 처리
 
@@ -78,7 +72,5 @@ server.listen(PORT, ip, () => {
   console.log(`http server listen on ${ip}:${PORT}`);
 });
 ```
-
-
 
 ***Copyright* © 2022 Song_Artish**

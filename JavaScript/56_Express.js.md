@@ -6,13 +6,9 @@
 
 ---
 
-
-
 ## Overview
 
 Node.js를 위한 웹 프레임워크의 하나로, 웹 서버 또는 API 서버를 제작하기 위해 설계되었다.
-
-
 
 ## 시작하기
 
@@ -21,8 +17,6 @@ Node.js를 위한 웹 프레임워크의 하나로, 웹 서버 또는 API 서버
 ```bash
 $ npm install express --save
 ```
-
-
 
 ## Basic Routing
 
@@ -41,8 +35,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 ```
-
-
 
 ## Router 사용하기
 
@@ -103,14 +95,14 @@ const users = require('../repository/userList')
 
 module.exports = {
     getUsers: (req, res) {
-    	...
-    	// 쿼리 문으로 보낸 데이터를 가져온다.
-    	console.log(req.query)
+        ...
+        // 쿼리 문으로 보낸 데이터를 가져온다.
+        console.log(req.query)
         console.log(req.query.userId)
-		// body에 담아 보낸 데이터를 가져온다.
-		console.log(req.body)
-		return res.status(200).json(req.body)
-	},
+        // body에 담아 보낸 데이터를 가져온다.
+        console.log(req.body)
+        return res.status(200).json(req.body)
+    },
     createUser: (req, res) {
         // 넘겨 받은 id 값을 가져온다.
         console.log(req.params.id)
@@ -119,8 +111,6 @@ module.exports = {
     }
 }
 ```
-
-
 
 ## Middleware
 
@@ -143,11 +133,11 @@ const express = require('express')
 const app = express()
 
 const myLogger = (req, res, next) => {
-    console.log("현재 request는: " + req)	// 로그를 이런 식으로 찍을 수 있다.
-    next()	// 다음 미들웨어를 실행하게 하는 역할을 한다.
+    console.log("현재 request는: " + req)    // 로그를 이런 식으로 찍을 수 있다.
+    next()    // 다음 미들웨어를 실행하게 하는 역할을 한다.
 }
 
-app.use(myLogger)	// 모든 요청에 동일한 미들웨어(myLooger)를 적용한다.
+app.use(myLogger)    // 모든 요청에 동일한 미들웨어(myLooger)를 적용한다.
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -165,12 +155,12 @@ app.listen(3000)
 let body = []
 request
     .on('data', (chunk) => {
-    	body.push(chunk)
-	})
-	.on('end', () => {
-    	body = Buffer.concat(body).toString()
+        body.push(chunk)
+    })
+    .on('end', () => {
+        body = Buffer.concat(body).toString()
     // body 변수에는 문자열 형태로 payload가 담겨져 있다.
-	})
+    })
 ```
 
 body-parser 미들웨어를 사용하면 이 과정을 간단하게 처리할 수 있다.
@@ -191,8 +181,8 @@ app.post('/api/users', jsonParser, (req, res) => {
 var express = require('express')
 var app = express()
 
-app.use(express.json())	// for parsing application/json
-app.use(express.urlencoded({ extended: true }))	// for parsing application/x-www-form-urlencoded
+app.use(express.json())    // for parsing application/json
+app.use(express.urlencoded({ extended: true }))    // for parsing application/x-www-form-urlencoded
 
 app.post('/api/users', (req, res, next) => {
     console.log(req.body)
@@ -271,7 +261,5 @@ app.use((req, res, next) => {
 ```
 
 이것을 사용하면 로그인 없이 웹사이트에 접근했을 때, 로그인 창 등으로 되돌려 보내는 로직 등을 작성할 수 있다.
-
-
 
 ***Copyright* © 2022 Song_Artish**
