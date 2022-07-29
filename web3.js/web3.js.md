@@ -182,11 +182,41 @@ web3.eth.getBlock(blockNum)
 
 ### 특정 주소 조회
 
-`getTransactionsByAccount()` 함수를 사용하면 특정 주소의 거래내역을 확인할 수 있다. `getTransactionsByAccount()` 함수는 다음의 기능을 가지고 있다.
+📌 특정 주소의 거래 내역을 조회할 수 있는 `getTransactionsByAccount()` 함수를 <u>작성</u>해본다.
 
-- 계정 주소값과 블록 범위(ex. 11,300,000번째 블록부터 11,400,000번째 블록까지)를 입력하면 해당 블록 범위에 있는 블록에 기록된 트랜잭션 중 해당 계정이 참여한 트랜잭션만 추출한다.
-- 인자로 주소값 `account`와 블록 숫자로 이루어진 블록 범위값 `startBlock`, `endBlock`을 인자로 가진다.
-- 해당 블록 범위 내에 송신 또는 수신자로 참여한 트랜잭션들로 구성된 배열을 반환한다.
+```javascript
+// getTransactionsByAccount.js
+
+const Web3 = require('web3')
+const rpcURL = "https://ropsten.infura.io/v3/PROJECT_ID"
+
+const web3 = new Web3(rpcURL)
+
+const account = "0x81b7E08F65Bdf5648606c89998A9CC8164397647" // 예시 계정
+
+async function getTransactionsByAccount(account, startBlock, endBlock) {
+    let work = async () => {
+        let result = []
+        for (let i = startBlock; i <= endBlock; i++) {
+            await web3.eth.getBlock(i, true)
+            .then((block) => {
+                if (block != null && block.transactions != null) {
+                    block.transactions.forEach((tx) => {
+                        if (account == "*" || account == tx.from || account == tx.to) {
+                            result.push(tx)
+                        }
+                    })
+                }
+            })
+        }
+        return result
+    }
+    return await work()
+}
+
+getTransactionsByAccount(account, 12679719, 12679719)
+```
+
 
 
 ***Copyright* © 2022 Song_Artish**
