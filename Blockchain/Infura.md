@@ -42,7 +42,7 @@ curl https://ropsten.infura.io/v3/자신의_API_KEY \
 ```
 
 위 명령어는 원격 이더리움 노드를 통해 특정 계정 주소의 잔액을 확인하는 요청이다. 요청에 성공하면 다음과 같은 결과가 표시된다
-
+~~~~
 ```bash
 jsonrpc":"2.0","id":1,"result":"0x14b26fcaebcb36790"}
 ```
