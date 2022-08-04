@@ -132,4 +132,14 @@ $ git remote rm <저장소 이름>
 
 
 
+## Git Stash
+
+아직 commit하지 않은 작업을 스택에 임시로 저장한다.
+
+```bash
+git stash
+```
+
+
+
 ***Copyright* 2021 © Song_Artish**
