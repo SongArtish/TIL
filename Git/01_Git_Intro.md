@@ -24,7 +24,7 @@ Git은 분산버전관리시스템(DVCS, Distributed Version Control System)으�
 
 ```bash
 $ git config --global user.name <user_name>		# 이름 등록
-$ git config --global.user.email <user_email>	# 이메일 등록
+$ git config --global user.email <user_email>	# 이메일 등록
 ```
 
 - 예시) `git config --global user.email "bulgen@naver.com"`
@@ -35,7 +35,7 @@ $ git config --global.user.email <user_email>	# 이메일 등록
 
 ```bash
 $ git config --global user.name
-$ git config --global.user.email
+$ git config --global user.email
 ```
 
 
