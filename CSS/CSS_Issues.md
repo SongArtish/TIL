@@ -90,4 +90,23 @@
 
 
 
+## 기타
+
+### 텍스트 드래그 방지
+
+CSS를 통해 텍스트를 드래그 할 수 없도록 처리한다. 여기서는 클래스를 `stop-dragging`으로 정의하고, 해당 클래스에 CSS 코드 작성한다.
+
+```css
+.stop-dragging
+{
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+```
+
+
+
 ***Copyright* © 2021 Song_Artish**
