@@ -262,4 +262,17 @@ app.use((req, res, next) => {
 
 이것을 사용하면 로그인 없이 웹사이트에 접근했을 때, 로그인 창 등으로 되돌려 보내는 로직 등을 작성할 수 있다.
 
+
+
+## 폴더구조
+
+권장하는 폴더 구성은 다음과 같다. (참고자료 - [Route-Controller-Service Structure](https://sodocumentation.net/node-js/topic/10785/route-controller-service-structure-for-expressjs))
+
+- `models`: DB 스키마를 정의
+- `routes`: API route를 정의
+- `controllers`: 요청과 응답에 대한 로직을 담당
+- `services`: DB와 CRUD를 하고 결과를 controller에 전달
+
+
+
 ***Copyright* © 2022 Song_Artish**
