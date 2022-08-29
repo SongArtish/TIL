@@ -137,6 +137,21 @@ https
 
 이제 서버를 실행한 후 https://localhost:3001로 접속하면 브라우저의 url창 왼쪽에 자물쇠가 잠겨 있는 `HTTPS` 프로토콜을 이용한다는 것을 확인할 수 있다.
 
+### React에서 실행하기
+
+Windows에서는 기존의 명령어로 react 앱을 실행할 경우, `HTTPS` 명령어를 찾을 수 없다면서 실행되지 않는다.
+
+```javascript
+// 실행되지 않는다.
+"start": "HTTPS=true SSL_CRT_FILE=../server/cert.pem SSL_KEY_FILE=../server/key.pem react-scripts start",
+```
+
+이런 경우 명령어를 다음과 같이 수정하여, react 앱을 실행할 수 있다.
+
+```javascript
+"start": "set HTTPS=true && set SSL_CRT_FILE=../server/cert.pem && set SSL_KEY_FILE=../server/key.pem && react-scripts start",
+```
+
 
 
 ***Copyright* © 2022 Song_Artish**
