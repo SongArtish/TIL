@@ -49,5 +49,21 @@ warding                    https://f08a-220-72-126-167.jp.ngrok.io -> http://loc
 
 
 
+## Issues
+
+### `Invalid Host header`가 발생하는 경우
+
+ngrok 주소로 접속했는데 `Invalid Host header`라는 에러가 발생하였다.
+
+**해결 방안**
+
+- `ngrok http <PORT>` 명령어 대신, 다음과 같은 명령어를 입력하여 ngrok을 실행한다.
+
+```bash
+ngrok http 8080 --host-header=”localhost:8080”
+```
+
+
+
 ***Copyright* © 2022 Song_Artish**
 
