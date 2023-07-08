@@ -48,6 +48,11 @@
          "exclude": ["node_modules"]
      }
      ```
+   - don't need to create the file, just command as below.
+
+    ```bash
+    tsc --init
+    ```
 
 4. Create `index.ts` file
 
@@ -71,12 +76,13 @@
      ```json
        "scripts": {
          ...
-         "start": "node indesx.js"
+         "start": "node index.js"
        },
      ```
 
      - `npm start` command will compile `index.js`
      - execute TypeScript before start
+        - 2023.07.08 script `prestart` not working
 
      ```json
        "scripts": {
@@ -105,7 +111,7 @@ const name = "Songyoung",
     age = 27,
     gender = "male";
 
-const sayHi = (name, age, gender) => {
+const sayHi = (name: any, age: number, gender: any) => {
     console.log(`Hello ${name}, you are ${age}, and you are a ${gender}.`);
 }
 
@@ -138,6 +144,7 @@ const sayHi = name, age, gender?) => {
 - `string`
 - `number`
 - `void`: empty data
+- `any`
 
 ```ts
 const sayHi = (name:string, age:number, gender?:string) => {
